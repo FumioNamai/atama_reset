@@ -10,6 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.10.7"
+    "@fontsource/noto-sans-jp": "^5.0.8",
+    "@fontsource/noto-serif-jp": "^5.0.7",
+    "astro": "^2.10.7",
+    "ress": "^5.0.2"
   }
 }

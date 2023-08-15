@@ -1,0 +1,65 @@
+
+@import '@fontsource/noto-serif-jp';
+@import '@fontsource/noto-sans-jp';
+
+/* 基本色 */
+:root {
+  --primary: #3A486D;
+  --secondary: #66AFC3;
+  --positive: #FFB6C1;
+  --highlight: #E37B00;
+  --attention: #FF5B74;
+  --alert: #FF0000;
+  --link: #0066FF;
+  --bgPrimary:#F4F4F4; /*全ページのバックグラウンド*/
+  --bgSecondary:#F0F0F0;
+  --bgFooter: #A6B5BE;
+  --bgBottomNav: #54699EF2;
+  --polkaDots:#66AFC312;
+  --menu: #66AFC34D;
+  --menuSub: #66AFC31A;
+  --textBlack: #2E2E2E;
+  --textGray: #707070;
+  --textWhite: #F4F4F4;
+  --gray-50: #707070;
+  --white: #FFFFFF;
+  --black: #000000;
+}
+
+/* 基本設定 */
+body {
+  color: var(--textBlack);
+  background-color: var(--bgPrimary);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Noto Serif JP', serif;
+  margin: 0;
+  height: 100%;
+  overflow-x: hidden;
+
+}
+
+/* 文字サイズ */
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+h1 {
+  font-size: 3.4rem;
+  font-family: 'Noto Serif JP', serif;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+
+p {
+  font-size: 1.8rem;
+}
+
+
+
+/* スペーシング */
