@@ -10,9 +10,8 @@ import GlobalNav from "./GlobalNav.astro";
         <span></span>
         <span></span>
         <span></span>
+        <p>MENU</p>
       </button>
-      <!-- <input type="checkbox" id="check">
-    <label for="check"><span></span></label> -->
       <div class="logo">
         <a href="/">
           <img src="logo2.png" alt="ロゴ" />
@@ -80,6 +79,7 @@ import GlobalNav from "./GlobalNav.astro";
     margin-right: 1rem;
     margin-bottom: -1rem;
   }
+
   nav {
     display: flex;
     justify-content: space-between;
@@ -93,17 +93,14 @@ import GlobalNav from "./GlobalNav.astro";
     align-items: center;
   }
 
-  .logo {
-  }
-
   .hamburger {
     width: 60px;
     height: 60px;
     padding: 0 18px;
     background-color: transparent;
     border-color: transparent;
-    z-index: 100;
-
+    z-index: 1000;
+    cursor: pointer;
   }
 
   .hamburger span {
@@ -116,10 +113,10 @@ import GlobalNav from "./GlobalNav.astro";
     transition: ease .5s;
     filter:drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.60));
   }
+
   .hamburger span:nth-child(2) {
     margin: 6px 0;
   }
-
 
   .hamburger.active span:nth-child(1) {
     top: 8px;
@@ -136,6 +133,13 @@ import GlobalNav from "./GlobalNav.astro";
     top: -8px;
     transform: rotate(-45deg);
     background-color: var(--textWhite);
+  }
+
+  .hamburger p {
+    display: none;    /* デスクトップのときに表示させる */
+    padding-top: 2px;
+    margin-left: -2px;
+    transform: scale(0.7);
   }
 
   .logo img {
@@ -173,6 +177,7 @@ import GlobalNav from "./GlobalNav.astro";
   /* GlobalNav */
   .container {
     width: 100%;
+    height: auto;
     position: absolute;
     top: 0;
     background: linear-gradient(
@@ -183,18 +188,12 @@ import GlobalNav from "./GlobalNav.astro";
     padding-bottom: 24px;
     transform: translateX(100%);
     transition: ease .5s;
-    z-index: 10;
+    z-index: 100;
   }
 
   .container.active {
     transform: translateX(0);
-    /* display: block; */
   }
-
-  /* nav {
-    display: flex;
-    justify-content: space-between;
-  } */
 
   .globalNav-logo {
     display: block;
