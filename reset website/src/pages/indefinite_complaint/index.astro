@@ -1,0 +1,55 @@
+---
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout>
+  <main>
+    <h3>～不定愁訴<span>（ふていしゅうそ）</span>とは～</h3>
+    <div class="image">
+      <img src="/stiff_neck.jpg" alt="" />
+    </div>
+    <article>
+      <p>
+        ・頭が重い(痛い)<br />・首や肩がこる<br />・イライラする<br
+        />・疲労感が取れない<br />・寝つきが悪い<br />・何度も目が覚める<br
+        />・なんとなく体調が悪い<br />・体がダルい<br />・足がむくむ<br
+        />・手足が冷える<br />・のぼせる<br />・便秘や下痢を繰り返す<br
+        />・息切れや動悸がする<br />・めまい<br />・生理不順
+      </p>
+      <p>
+        などといった、<br />自覚症状の訴えがあるものの、<br
+        />検査をしても原因となる病気は見つからない状態のこと。
+      </p>
+      <p>
+        疲労やストレスなどによる<br />自律神経の乱れが原因とされています。
+      </p>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 104px auto 100px auto;
+		padding-inline: 2rem;
+    height: auto;
+		max-width: 640px;
+  }
+
+  span {
+    font-size: 1.4rem;
+  }
+
+  .image img{
+		max-width: 100%;
+    width: auto;
+  }
+
+  article {
+    /* max-width: 900px; */
+    line-height: 1.75;
+  }
+</style>
