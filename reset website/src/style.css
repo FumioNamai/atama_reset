@@ -33,13 +33,22 @@ body {
   font-family: 'Noto Sans JP', sans-serif;
   font-family: 'Noto Serif JP', serif;
   margin: 0;
-  height: 100%;
+  /* height: auto; */
   overflow-x: hidden;
+  overflow-y: auto;
+
 }
 
 /* 文字サイズ */
 html {
   font-size: 62.5%; /* 1rem = 10px */
+}
+
+/* オーバーレイの下でページが不要にスクロールするのを防ぐ*/
+.inactive {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
 }
 
 h1 {

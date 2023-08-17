@@ -23,12 +23,13 @@
   </nav>
 
   <div class="container">
+    <div class="globalNav">
     <a href="/" class="globalNav-logo"><img src="/logo.png" alt="ロゴ" /></a>
 
     <div class="wrapper" id="globalNav">
-      <div class="btn-contact"><a href="">ご予約・お問い合わせ</a></div>
       <div class="menu top">
         <ul>
+          <li class="btn-contact"><a href="/">ご予約・お問い合わせ</a></li>
           <li><a href="/">ホーム</a></li>
           <li><a href="/">ごあいさつ</a></li>
           <li><a href="/">お知らせ</a></li>
@@ -58,10 +59,12 @@
       </div>
     </div>
   </div>
+  </div>
 </header>
 
 <style>
   header {
+    position: relative;
     width: 100%;
     height: 64px;
     z-index: 10;
@@ -80,7 +83,6 @@
   }
 
   .left {
-    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -168,56 +170,68 @@
   }
 
   /* GlobalNav */
+
   .container {
-    width: 0%;
     height: auto;
     position: absolute;
     top: 0;
-
+    right: -100%;
     background: linear-gradient(
       180deg,
       rgba(84, 105, 158, 0.9) 0%,
       rgba(174, 183, 206, 0.9) 100%
-    );
-    padding-bottom: 24px;
-    transition: all ease 2.5s;
-    opacity: 0;
-    right: 0;
+      );
+      padding-bottom: 24px;
+      z-index: 100;
+      opacity: 0;
+      width: 100%;
+    transition: all ease .5s;
   }
 
   .container.open {
-    z-index: 100;
     opacity: 1;
-    width: 100%;
+    transform: translate(-100%, 0);
+    overflow-y: auto;
   }
 
+  .globalNav {
+    height: 100vh;
+    overflow: scroll;
+  }
   .globalNav-logo {
     display: block;
     margin: 16px 16px auto auto;
     width: 60px;
   }
 
-  .globalNav-logo img {
+  .container img {
     display: block;
     width: 60px;
   }
 
   .btn-contact {
-    display: block;
     margin-block: 45px;
-    text-align: center;
+    margin-inline: auto;
+    width: fit-content;
   }
 
-  .btn-contact a {
-    text-decoration: none;
-    color: var(--textWhite);
-    font-size: 1.8rem;
-    padding: 5px 16px;
-    border-radius: 18px;
+  .btn-contact>a:hover {
+    background-color: rgba(58, 72, 109, 0.5);
+    font-size: 2rem;
+  }
+
+  .btn-contact>a {
+    padding: 4px 16px;
+    border-radius: 20px;
     border: 1px solid var(--textWhite);
   }
 
+  .btn-contact>a::after {
+    opacity: 0; /* 下線を消す */
+  }
+
   .wrapper {
+    height: 1200px;
     padding-inline: 10%;
   }
 
@@ -226,12 +240,13 @@
   }
 
   .wrapper.open a {
-    transition: all ease 3s;
+    transition: all ease 1.3s;
     transform: translateY(0%);
   }
 
   ul {
     display: inline-block;
+    width: 100%;
     padding: 0;
   }
 
@@ -271,7 +286,6 @@
   }
 
   .middle a {
-    /* display: inline-block; */
     text-align: end;
   }
 
@@ -280,11 +294,13 @@
 </style>
 
 <script>
+  const body = document.querySelector("body")
   const hamburger = document.querySelector(".hamburger");
   const container = document.querySelector(".container");
   const wrapper = document.querySelector(".wrapper");
 
   hamburger.addEventListener("click", function () {
+    body.classList.toggle("inactive");
     hamburger.classList.toggle("open");
     container.classList.toggle("open");
     wrapper.classList.toggle("open");
