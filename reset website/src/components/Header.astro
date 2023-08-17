@@ -1,5 +1,4 @@
 ---
-
 ---
 
 <header>
@@ -23,52 +22,46 @@
     </div>
   </nav>
 
+  <div class="container">
+    <a href="/" class="globalNav-logo"><img src="/logo.png" alt="ロゴ" /></a>
 
-<div class="container" id="js-container">
-    <a href="/"><img src="/logo.png" alt="ロゴ" class="globalNav-logo" /></a>
-
-  <div class="btn-contact"><a href="">ご予約・お問い合わせ</a></div>
-
-  <div class="wrapper">
-    <div class="menu top">
-      <ul>
-        <li><a href="/">ホーム</a></li>
-        <li><a href="/">ごあいさつ</a></li>
-        <li><a href="/">お知らせ</a></li>
-        <li><a href="/">ブログ</a></li>
-        <li><a href="/">施術メニュー & 料金</a></li>
-        <li><a href="/">初めてのお客様へ</a></li>
-        <li><a href="/">よくあるご質問</a></li>
-        <li><a href="/">お客様の声</a></li>
-      </ul>
-    </div>
-    <div class="menu middle">
-      <ul>
-        <li><a href="/">期待される効果</a></li>
-        <li><a href="/">脳疲労とは？</a></li>
-        <li><a href="/">脳脊髄液と睡眠</a></li>
-        <li><a href="/">腸セラピー</a></li>
-        <li><a href="/">ふくらはぎほぐし</a></li>
-        <li><a href="/indefinite_complaint">不定愁訴とは</a></li>
-        <li><a href="/">施術の流れ</a></li>
-      </ul>
-    </div>
-    <div class="menu bottom">
-      <ul>
-        <li><a href="/">企業・団体様</a></li>
-        <li><a href="/">プライバシーポリシー</a></li>
-      </ul>
+    <div class="wrapper" id="globalNav">
+      <div class="btn-contact"><a href="">ご予約・お問い合わせ</a></div>
+      <div class="menu top">
+        <ul>
+          <li><a href="/">ホーム</a></li>
+          <li><a href="/">ごあいさつ</a></li>
+          <li><a href="/">お知らせ</a></li>
+          <li><a href="/">ブログ</a></li>
+          <li><a href="/">施術メニュー & 料金</a></li>
+          <li><a href="/">初めてのお客様へ</a></li>
+          <li><a href="/FAQ">よくあるご質問</a></li>
+          <li><a href="/">お客様の声</a></li>
+        </ul>
+      </div>
+      <div class="menu middle">
+        <ul>
+          <li><a href="/">期待される効果</a></li>
+          <li><a href="/">脳疲労とは？</a></li>
+          <li><a href="/">脳脊髄液と睡眠</a></li>
+          <li><a href="/">腸セラピー</a></li>
+          <li><a href="/">ふくらはぎほぐし</a></li>
+          <li><a href="/indefinite_complaint">不定愁訴とは</a></li>
+          <li><a href="/">施術の流れ</a></li>
+        </ul>
+      </div>
+      <div class="menu bottom">
+        <ul>
+          <li><a href="/">企業・団体様</a></li>
+          <li><a href="/">プライバシーポリシー</a></li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 </header>
-
 
 <style>
   header {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 64px;
     z-index: 10;
@@ -110,33 +103,33 @@
     background-color: var(--primary);
     display: block;
     position: relative;
-    transition: ease .5s;
-    filter:drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+    transition: ease 0.5s;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
   }
 
   .hamburger span:nth-child(2) {
     margin: 6px 0;
   }
 
-  .hamburger.active span:nth-child(1) {
+  .hamburger.open span:nth-child(1) {
     top: 8px;
     transform: rotate(45deg);
     background-color: var(--textWhite);
   }
 
-  .hamburger.active span:nth-child(2) {
+  .hamburger.open span:nth-child(2) {
     opacity: 0;
     background-color: var(--textWhite);
   }
 
-  .hamburger.active span:nth-child(3) {
+  .hamburger.open span:nth-child(3) {
     top: -8px;
     transform: rotate(-45deg);
     background-color: var(--textWhite);
   }
 
   .hamburger p {
-    display: none;    /* デスクトップのときに表示させる */
+    display: none; /* デスクトップのときに表示させる */
     padding-top: 2px;
     margin-left: -2px;
     transform: scale(0.7);
@@ -144,7 +137,7 @@
 
   .logo img {
     width: 75px;
-    filter:drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
   }
 
   .right {
@@ -164,35 +157,38 @@
     font-size: 1.6rem;
     color: var(--primary);
     font-weight: bold;
-    filter:drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.5));
   }
 
   p {
     font-size: 1rem;
     margin: 0;
     color: var(--primary);
-    filter:drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
   }
 
   /* GlobalNav */
   .container {
-    width: 100%;
+    width: 0%;
     height: auto;
     position: absolute;
     top: 0;
+
     background: linear-gradient(
       180deg,
       rgba(84, 105, 158, 0.9) 0%,
       rgba(174, 183, 206, 0.9) 100%
     );
     padding-bottom: 24px;
-    transform: translateX(100%);
-    transition: ease .5s;
-    z-index: 100;
+    transition: all ease 2.5s;
+    opacity: 0;
+    right: 0;
   }
 
-  .container.active {
-    transform: translateX(0);
+  .container.open {
+    z-index: 100;
+    opacity: 1;
+    width: 100%;
   }
 
   .globalNav-logo {
@@ -201,13 +197,21 @@
     width: 60px;
   }
 
+  .globalNav-logo img {
+    display: block;
+    width: 60px;
+  }
+
   .btn-contact {
+    display: block;
     margin-block: 45px;
     text-align: center;
   }
 
   .btn-contact a {
-    line-height: ;
+    text-decoration: none;
+    color: var(--textWhite);
+    font-size: 1.8rem;
     padding: 5px 16px;
     border-radius: 18px;
     border: 1px solid var(--textWhite);
@@ -215,6 +219,15 @@
 
   .wrapper {
     padding-inline: 10%;
+  }
+
+  .wrapper a {
+    transform: translateY(110%);
+  }
+
+  .wrapper.open a {
+    transition: all ease 3s;
+    transform: translateY(0%);
   }
 
   ul {
@@ -225,14 +238,16 @@
   li {
     list-style: none;
     margin-block-end: 24px;
+    overflow: hidden;
   }
 
-  a {
+  .menu a {
     padding-bottom: 4px;
     position: relative;
     text-decoration: none;
     color: var(--textWhite);
     font-size: 1.8rem;
+    display: inline-block; /* 下線のアニメーションを文字幅に合わせるため */
   }
 
   .menu a::after {
@@ -243,7 +258,7 @@
     height: 1px;
     left: 0;
     position: absolute;
-    transition: 0.1s all;
+    transition: 0.1s;
     width: 0;
   }
 
@@ -256,7 +271,7 @@
   }
 
   .middle a {
-    display: inline-block;
+    /* display: inline-block; */
     text-align: end;
   }
 
@@ -265,11 +280,13 @@
 </style>
 
 <script>
-  const hamburger = document.querySelector("#js-hamburger");
-  const container = document.querySelector("#js-container");
+  const hamburger = document.querySelector(".hamburger");
+  const container = document.querySelector(".container");
+  const wrapper = document.querySelector(".wrapper");
 
   hamburger.addEventListener("click", function () {
-    hamburger.classList.toggle("active");
-    container.classList.toggle("active");
+    hamburger.classList.toggle("open");
+    container.classList.toggle("open");
+    wrapper.classList.toggle("open");
   });
 </script>

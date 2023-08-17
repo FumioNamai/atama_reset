@@ -1,0 +1,35 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Accordion from '@components/Accordion.astro';
+
+---
+
+<Layout>
+  <main>
+    <h3>よくあるご質問</h3>
+    <div class="image">
+      <img src="/Q&A.jpg" alt="" />
+    </div>
+    <Accordion />
+  </main>
+</Layout>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto 100px auto;
+		padding-inline: 2rem;
+    height: auto;
+		max-width: 640px;
+  }
+
+  .image img{
+		max-width: 100%;
+    width: auto;
+  }
+
+
+</style>

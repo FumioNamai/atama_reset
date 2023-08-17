@@ -1,0 +1,65 @@
+---
+
+---
+<nav>
+  <a href="/">
+    <img src="/blog.svg" alt="">
+    <p>ブログ</p>
+  </a>
+
+  <a href="/">
+    <img src="/menu.svg" alt="">
+    <p>メニュー</p>
+  </a>
+
+  <a href="/">
+    <img src="/mail.svg" alt="">
+    <p>お問い合わせ</p>
+  </a>
+
+  <a href="#globalNav">
+    <img src="/hamburger.svg" alt="">
+    <p>その他</p>
+  </a>
+
+</nav>
+
+<style>
+  nav {
+    background: rgba(84, 105, 158, 0.95);
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    z-index: 200;
+  }
+  a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 60px;
+    text-decoration: none;
+  }
+
+  a:nth-child(1) {
+    margin-top: 2px; /* 微調整 */
+  }
+
+  a:nth-child(2) {
+    margin-top: 3px; /* 微調整 */
+  }
+
+
+  p {
+    margin: 0;
+    color: var(--textWhite);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1rem;
+  }
+</style>
