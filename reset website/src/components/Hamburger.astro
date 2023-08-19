@@ -1,0 +1,78 @@
+---
+import GlobalNav from "./GlobalNav.astro";
+---
+
+
+<button class="hamburger" id="js-hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+  <p>MENU</p>
+</button>
+
+<GlobalNav />
+
+<style>
+  .hamburger {
+    width: 60px;
+    height: 60px;
+    padding: 0 18px;
+    background-color: transparent;
+    border-color: transparent;
+    z-index: 1000;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    width: 20px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: var(--primary);
+    display: block;
+    position: relative;
+    transition: ease 0.5s;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+  }
+
+  .hamburger span:nth-child(2) {
+    margin: 6px 0;
+  }
+
+  .hamburger.open span:nth-child(1) {
+    top: 8px;
+    transform: rotate(45deg);
+    background-color: var(--textWhite);
+  }
+
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+    background-color: var(--textWhite);
+  }
+
+  .hamburger.open span:nth-child(3) {
+    top: -8px;
+    transform: rotate(-45deg);
+    background-color: var(--textWhite);
+  }
+
+  .hamburger p {
+    display: none; /* デスクトップのときに表示させる */
+    padding-top: 2px;
+    margin-left: -2px;
+    transform: scale(0.7);
+  }
+</style>
+
+<script>
+  const body = document.querySelector("#js-body")
+  const hamburger = document.querySelector("#js-hamburger");
+  const globalNav = document.querySelector("#js-globalNav");
+  const menu = document.querySelector("#js-globalNav-menu");
+
+  hamburger.addEventListener("click", function () {
+    body.classList.toggle("inactive");
+    hamburger.classList.toggle("open");
+    globalNav.classList.toggle("open");
+    menu.classList.toggle("open");
+  });
+</script>

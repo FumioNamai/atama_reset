@@ -1,5 +1,5 @@
 ---
-
+import Hamburger2 from "@components/Hamburger2.astro";
 ---
 <nav>
   <a href="/">
@@ -16,13 +16,9 @@
     <img src="/mail.svg" alt="">
     <p>お問い合わせ</p>
   </a>
-
-  <a href="" class="">
-    <img src="/hamburger.svg" alt="">
-    <p>その他</p>
-  </a>
-
+    <Hamburger2 />
 </nav>
+
 
 <style>
   nav {
@@ -55,11 +51,12 @@
     margin-top: 3px; /* 微調整 */
   }
 
-
   p {
     margin: 0;
     color: var(--textWhite);
     font-family: 'Noto Sans JP', sans-serif;
     font-size: 1rem;
   }
+
+
 </style>

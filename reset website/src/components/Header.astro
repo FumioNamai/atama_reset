@@ -1,91 +1,13 @@
 ---
-const nav = [
-  {
-    href: '/',
-    label: 'ご予約・お問い合わせ'
-  },
-  {
-    href: '/',
-    label: 'ホーム'
-  },
-  {
-    href: '/',
-    label: 'ごあいさつ'
-  },
-  {
-    href: '/',
-    label: 'お知らせ'
-  },
-  {
-    href: '/',
-    label: 'ブログ'
-  },
-  {
-    href: '/',
-    label: '施術メニュー & 料金'
-  },
-  {
-    href: '/',
-    label: '初めてのお客様へ'
-  },
-  {
-    href: '/FAQ',
-    label: 'よくあるご質問'
-  },
-  {
-    href: '/',
-    label: 'お客様の声'
-  },
-  {
-    href: '/',
-    label: '期待される効果'
-  },
-  {
-    href: '/',
-    label: '脳疲労とは？'
-  },
-  {
-    href: '/',
-    label: '脳脊髄液と睡眠'
-  },
-  {
-    href: '/',
-    label: '腸セラピー'
-  },
-  {
-    href: '/',
-    label: 'ふくらはぎほぐし'
-  },
-  {
-    href: '/indefinite_complaint',
-    label: '不定愁訴とは'
-  },
-  {
-    href: '/',
-    label: '施術の流れ'
-  },
-  {
-    href: '/',
-    label: '企業・団体様'
-  },
-  {
-    href: '/',
-    label: 'プライバシーポリシー'
-  },
-]
+import Hamburger from "@components/Hamburger.astro";
 
 ---
 
 <header>
   <p>名古屋市天白区のヘッドマッサージサロン</p>
-  <nav>
+  <div class="headerNav">
     <div class="left">
-      <button class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-        <p>MENU</p>
-      </button>
+      <Hamburger />
       <div class="logo">
         <a href="/">
           <img src="logo2.png" alt="ロゴ" />
@@ -95,22 +17,9 @@ const nav = [
     <div class="right">
       <a href="">ご予約</a>
     </div>
-  </nav>
-
-  <div class="container">
-    <div class="globalNav">
-    <a href="/" class="globalNav-logo"><img src="/logo.png" alt="ロゴ" /></a>
-
-    <div class="wrapper">
-      <div class="menu top">
-        <ul>
-          {nav.map((nav_item) => <li><a href={nav_item.href}>{nav_item.label}</a></li>)}
-        </ul>
-      </div>
-    </div>
-  </div>
   </div>
 </header>
+
 
 <style>
   header {
@@ -126,7 +35,7 @@ const nav = [
     margin-bottom: -1rem;
   }
 
-  nav {
+  .headerNav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -138,54 +47,6 @@ const nav = [
     align-items: center;
   }
 
-  .hamburger {
-    width: 60px;
-    height: 60px;
-    padding: 0 18px;
-    background-color: transparent;
-    border-color: transparent;
-    z-index: 1000;
-    cursor: pointer;
-  }
-
-  .hamburger span {
-    width: 20px;
-    height: 2px;
-    border-radius: 1px;
-    background-color: var(--primary);
-    display: block;
-    position: relative;
-    transition: ease 0.5s;
-    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
-  }
-
-  .hamburger span:nth-child(2) {
-    margin: 6px 0;
-  }
-
-  .hamburger.open span:nth-child(1) {
-    top: 8px;
-    transform: rotate(45deg);
-    background-color: var(--textWhite);
-  }
-
-  .hamburger.open span:nth-child(2) {
-    opacity: 0;
-    background-color: var(--textWhite);
-  }
-
-  .hamburger.open span:nth-child(3) {
-    top: -8px;
-    transform: rotate(-45deg);
-    background-color: var(--textWhite);
-  }
-
-  .hamburger p {
-    display: none; /* デスクトップのときに表示させる */
-    padding-top: 2px;
-    margin-left: -2px;
-    transform: scale(0.7);
-  }
 
   .logo img {
     width: 75px;
@@ -219,136 +80,4 @@ const nav = [
     filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
   }
 
-  /* GlobalNav */
-
-  .container {
-    height: auto;
-    position: absolute;
-    top: 0;
-    right: -100%;
-    background: linear-gradient(
-      180deg,
-      rgba(84, 105, 158, 0.9) 0%,
-      rgba(174, 183, 206, 0.9) 100%
-      );
-      padding-bottom: 24px;
-      z-index: 100;
-      opacity: 0;
-      width: 100%;
-    transition: all ease .5s;
-  }
-
-  .container.open {
-    opacity: 1;
-    transform: translate(-100%, 0);
-    overflow-y: auto;
-  }
-
-  .globalNav {
-    height: 100vh;
-    overflow: scroll;
-  }
-  .globalNav-logo {
-    display: block;
-    margin: 16px 16px auto auto;
-    width: 60px;
-  }
-
-  .container img {
-    display: block;
-    width: 60px;
-  }
-
-  .menu li:nth-child(1){
-    margin-block: 45px;
-    margin-inline: auto;
-    width: fit-content;
-  }
-
-  .menu li:nth-child(1)>a:hover {
-    background-color: rgba(58, 72, 109, 0.5);
-  }
-
-  .menu li:nth-child(1)a {
-    padding: 4px 16px;
-    border-radius: 20px;
-    border: 1px solid var(--textWhite);
-  }
-
-  .menu li:nth-child(1)>a::after {
-    opacity: 0; /* 下線を消す */
-  }
-
-  .wrapper {
-    height: 1200px;
-    padding-inline: 10%;
-  }
-
-  .wrapper a {
-    transform: translateY(110%);
-  }
-
-  .wrapper.open a {
-    transition: all ease 1.3s;
-    transform: translateY(0%);
-  }
-
-  ul {
-    display: inline-block;
-    width: 100%;
-    padding: 0;
-  }
-
-  li {
-    list-style: none;
-    margin-block-end: 24px;
-    overflow: hidden;
-  }
-
-  .menu a {
-    padding-bottom: 4px;
-    position: relative;
-    text-decoration: none;
-    color: var(--textWhite);
-    font-size: 1.8rem;
-    display: inline-block; /* 下線のアニメーションを文字幅に合わせるため */
-  }
-
-  .menu a::after {
-    background-color: var(--textWhite);
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 1px;
-    left: 0;
-    position: absolute;
-    transition: 0.1s;
-    width: 0;
-  }
-
-  .menu a:hover::after {
-    width: 100%;
-  }
-
-  .menu li:nth-child(n+10):nth-child(-n+16){
-    text-align: right;
-  }
-
-
-  .contact {
-  }
 </style>
-
-<script>
-  const body = document.querySelector("body")
-  const hamburger = document.querySelector(".hamburger");
-  const container = document.querySelector(".container");
-  const wrapper = document.querySelector(".wrapper");
-
-  hamburger.addEventListener("click", function () {
-    body.classList.toggle("inactive");
-    hamburger.classList.toggle("open");
-    container.classList.toggle("open");
-    wrapper.classList.toggle("open");
-  });
-</script>
