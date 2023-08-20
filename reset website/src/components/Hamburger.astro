@@ -1,5 +1,6 @@
 ---
-import GlobalNav from "./GlobalNav.astro";
+// import GlobalNav from "./GlobalNav.astro";
+
 ---
 
 
@@ -10,7 +11,7 @@ import GlobalNav from "./GlobalNav.astro";
   <p>MENU</p>
 </button>
 
-<GlobalNav />
+<!-- <GlobalNav /> -->
 
 <style>
   .hamburger {
@@ -50,6 +51,7 @@ import GlobalNav from "./GlobalNav.astro";
   }
 
   .hamburger.open span:nth-child(3) {
+    opacity: 0;
     top: -8px;
     transform: rotate(-45deg);
     background-color: var(--textWhite);
@@ -67,12 +69,14 @@ import GlobalNav from "./GlobalNav.astro";
   const body = document.querySelector("#js-body")
   const hamburger = document.querySelector("#js-hamburger");
   const globalNav = document.querySelector("#js-globalNav");
+  const hamburgerClose = document.querySelector("#js-hamburgerClose");
   const menu = document.querySelector("#js-globalNav-menu");
 
   hamburger.addEventListener("click", function () {
     body.classList.toggle("inactive");
     hamburger.classList.toggle("open");
     globalNav.classList.toggle("open");
+    hamburgerClose.classList.toggle("open")
     menu.classList.toggle("open");
   });
 </script>

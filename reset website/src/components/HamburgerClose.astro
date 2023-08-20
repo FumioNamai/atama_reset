@@ -1,6 +1,6 @@
-<button id="js-hamburger2">
-  <img src="/hamburger.svg" alt="">
-  <p>その他</p>
+<button id="js-hamburgerClose">
+  <img src="/close.svg" alt="">
+  <!-- <p>その他</p> -->
 </button>
 
 <style>
@@ -8,7 +8,19 @@
     background-color: transparent;
     border: transparent;
     cursor: pointer;
+    padding: 4px 0;
+    width: 60px;
   }
+
+  img {
+    opacity: 0;
+  }
+
+  .open img {
+    opacity: 1;
+    transition: all cubic-bezier(0.9, 0.24, 0.58, 0.66) 1.5s;
+  }
+
 
   p {
     margin: 0;
@@ -20,16 +32,15 @@
 
 <script>
   const body = document.querySelector("#js-body")
-  const hamburger = document.querySelector("#js-hamburger");
-  const hamburger2 = document.querySelector("#js-hamburger2");
   const hamburgerClose = document.querySelector("#js-hamburgerClose");
+  const hamburger = document.querySelector("#js-hamburger");
   const globalNav = document.querySelector("#js-globalNav");
   const menu = document.querySelector("#js-globalNav-menu");
 
-  hamburger2.addEventListener("click", function () {
+  hamburgerClose.addEventListener("click", function () {
     body.classList.toggle("inactive");
-    hamburger.classList.toggle("open");
     hamburgerClose.classList.toggle("open")
+    hamburger.classList.toggle("open");
     globalNav.classList.toggle("open");
     menu.classList.toggle("open");
   });

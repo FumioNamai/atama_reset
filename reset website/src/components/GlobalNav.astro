@@ -1,205 +1,229 @@
 ---
+import HamburgerClose from "./HamburgerClose.astro";
 const nav = [
   {
-    href: '/',
-    label: 'ご予約・お問い合わせ'
+    href: "/",
+    label: "ご予約・お問い合わせ",
   },
   {
-    href: '/',
-    label: 'ホーム'
+    href: "/",
+    label: "ホーム",
   },
   {
-    href: '/',
-    label: 'ごあいさつ'
+    href: "/",
+    label: "ごあいさつ",
   },
   {
-    href: '/',
-    label: 'お知らせ'
+    href: "/",
+    label: "お知らせ",
   },
   {
-    href: '/',
-    label: 'ブログ'
+    href: "/",
+    label: "ブログ",
   },
   {
-    href: '/',
-    label: '施術メニュー & 料金'
+    href: "/",
+    label: "施術メニュー & 料金",
   },
   {
-    href: '/',
-    label: '初めてのお客様へ'
+    href: "/",
+    label: "初めてのお客様へ",
   },
   {
-    href: '/FAQ',
-    label: 'よくあるご質問'
+    href: "/FAQ",
+    label: "よくあるご質問",
   },
   {
-    href: '/',
-    label: 'お客様の声'
+    href: "/",
+    label: "お客様の声",
   },
   {
-    href: '/',
-    label: '期待される効果'
+    href: "/",
+    label: "期待される効果",
   },
   {
-    href: '/',
-    label: '脳疲労とは？'
+    href: "/",
+    label: "脳疲労とは？",
   },
   {
-    href: '/',
-    label: '脳脊髄液と睡眠'
+    href: "/",
+    label: "脳脊髄液と睡眠",
   },
   {
-    href: '/',
-    label: '腸セラピー'
+    href: "/",
+    label: "腸セラピー",
   },
   {
-    href: '/',
-    label: 'ふくらはぎほぐし'
+    href: "/",
+    label: "ふくらはぎほぐし",
   },
   {
-    href: '/indefinite_complaint',
-    label: '不定愁訴とは'
+    href: "/indefinite_complaint",
+    label: "不定愁訴とは",
   },
   {
-    href: '/',
-    label: '施術の流れ'
+    href: "/",
+    label: "施術の流れ",
   },
   {
-    href: '/',
-    label: '企業・団体様'
+    href: "/",
+    label: "企業・団体様",
   },
   {
-    href: '/',
-    label: 'プライバシーポリシー'
+    href: "/",
+    label: "プライバシーポリシー",
   },
-]
+];
 ---
 
 <div class="globalNav" id="js-globalNav">
   <div class="container">
-  <a href="/" class="globalNav-logo"><img src="/logo.png" alt="ロゴ" /></a>
-
-  <div class="wrapper" id="js-globalNav-menu">
-    <div class="menu">
-      <ul>
-        {nav.map((nav_item) => <li><a href={nav_item.href}>{nav_item.label}</a></li>)}
-      </ul>
+    <nav>
+    <HamburgerClose />
+    <a href="/" class="globalNav-logo"><img src="/logo.png" alt="ロゴ" /></a>
+    </nav>
+    <div class="wrapper" id="js-globalNav-menu">
+      <div class="menu">
+        <ul>
+          {
+            nav.map((nav_item) => (
+              <li>
+                <a href={nav_item.href}>{nav_item.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 
-<style>
-  .globalNav {
-    height: auto;
-    position: absolute;
-    top: 0;
-    right: -100%;
-    background: linear-gradient(
-      180deg,
-      rgba(84, 105, 158, 0.9) 0%,
-      rgba(174, 183, 206, 0.9) 100%
+  <style>
+    .globalNav {
+      height: auto;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      background: linear-gradient(
+        180deg,
+        rgba(84, 105, 158, 0.95) 0%,
+        rgba(174, 183, 206, 0.95) 100%
       );
       padding-bottom: 24px;
-      z-index: 100;
+      z-index: 500;
       opacity: 0;
       width: 100%;
-    transition: all ease .5s;
-  }
+      transition: all ease 0.5s;
+    }
 
-  .globalNav.open {
-    opacity: 1;
-    transform: translate(-100%, 0);
-    overflow-y: auto;
-  }
+    .globalNav.open {
+      opacity: 1;
+      transform: translate(-100%, 0);
+      /* overflow-y: auto; */
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+    }
 
-  .container {
-    height: 100vh;
-    overflow: scroll;
-  }
+    button {
+      background-color: transparent;
+      border: transparent;
+      padding: 0;
+      margin-top: 5px;
+      height: 60px;
+      width: 60px;
+      position: absolute;
+    }
 
-  .globalNav-logo {
-    display: block;
-    margin: 16px 16px auto auto;
-    width: 60px;
-  }
+    .container {
+      height: 100vh;
+      overflow: scroll;
+    }
 
-  .globalNav img {
-    display: block;
-    width: 60px;
-  }
+    .globalNav-logo {
+      display: block;
+      margin: 16px 16px auto auto;
+      width: 60px;
+    }
 
-  .menu li:first-child{
-    margin-block: 45px;
-    margin-inline: auto;
-    width: fit-content;
-  }
+    .globalNav img {
+      display: block;
+      width: 60px;
+    }
 
-  .menu li:first-child a:hover {
-    background-color: rgba(58, 72, 109, 0.5);
-  }
+    .menu li:first-child {
+      margin-block: 45px;
+      margin-inline: auto;
+      width: fit-content;
+    }
 
-  .menu li:first-child a {
-    padding: 4px 16px;
-    border-radius: 20px;
-    border: 1px solid var(--textWhite);
-  }
+    .menu li:first-child a:hover {
+      background-color: rgba(58, 72, 109, 0.5);
+    }
 
-  .menu li:first-child a::after {
-    opacity: 0; /* 下線を消す */
-  }
+    .menu li:first-child a {
+      padding: 4px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--textWhite);
+    }
 
-  #js-globalNav-menu {
-    height: 1200px;
-    padding-inline: 10%;
-  }
+    .menu li:first-child a::after {
+      opacity: 0; /* 下線を消す */
+    }
 
-  #js-globalNav-menu a {
-    transform: translateY(110%);
-  }
+    #js-globalNav-menu {
+      height: 1100px;
+      padding-inline: 10%;
+    }
 
-  #js-globalNav-menu.open a {
-    transition: all ease 1.3s;
-    transform: translateY(0%);
-  }
+    #js-globalNav-menu a {
+      transform: translateY(110%);
+    }
 
-  ul {
-    display: inline-block;
-    width: 100%;
-    padding: 0;
-  }
+    #js-globalNav-menu.open a {
+      transition: all ease 1.3s;
+      transform: translateY(0%);
+    }
 
-  li {
-    list-style: none;
-    margin-block-end: 24px;
-    overflow: hidden;
-  }
+    ul {
+      display: inline-block;
+      width: 100%;
+      padding: 0;
+    }
 
-  .menu a {
-    padding-bottom: 4px;
-    position: relative;
-    text-decoration: none;
-    color: var(--textWhite);
-    font-size: 1.8rem;
-    display: inline-block; /* 下線のアニメーションを文字幅に合わせるため */
-  }
+    li {
+      list-style: none;
+      margin-block-end: 24px;
+      overflow: hidden;
+    }
 
-  .menu a::after {
-    background-color: var(--textWhite);
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 1px;
-    left: 0;
-    position: absolute;
-    transition: 0.1s;
-    width: 0;
-  }
+    .menu a {
+      padding-bottom: 4px;
+      position: relative;
+      text-decoration: none;
+      color: var(--textWhite);
+      font-size: 1.8rem;
+      display: inline-block; /* 下線のアニメーションを文字幅に合わせるため */
+    }
 
-  .menu a:hover::after {
-    width: 100%;
-  }
+    .menu a::after {
+      background-color: var(--textWhite);
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 1px;
+      left: 0;
+      position: absolute;
+      transition: 0.1s;
+      width: 0;
+    }
 
-  .menu li:nth-child(n+10):nth-child(-n+16){
-    text-align: right;
-  }
-</style>
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    .menu li:nth-child(n + 10):nth-child(-n + 16) {
+      text-align: right;
+    }
+  </style>
+</div>

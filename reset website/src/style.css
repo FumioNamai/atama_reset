@@ -36,7 +36,6 @@ body {
   /* height: auto; */
   overflow-x: hidden;
   overflow-y: auto;
-
 }
 
 /* 文字サイズ */
@@ -46,8 +45,8 @@ html {
 
 /* オーバーレイの下でページが不要にスクロールするのを防ぐ。オーバーレイが外側に残ることを防ぐ*/
 .inactive {
-  position: fixed;
-  overflow: hidden;
+  /* position: relative; */
+  /* overflow: hidden; */
   width: 100%;
 }
 
