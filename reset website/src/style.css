@@ -33,9 +33,9 @@ body {
   font-family: 'Noto Sans JP', sans-serif;
   font-family: 'Noto Serif JP', serif;
   margin: 0;
-  /* height: auto; */
-  overflow-x: hidden;
+  overflow-x: auto;
   overflow-y: auto;
+  min-width: 375px;
 }
 
 /* 文字サイズ */
@@ -53,6 +53,7 @@ html {
 h1 {
   font-size: 3.4rem;
   font-family: 'Noto Serif JP', serif;
+  font-weight: 400;
 }
 
 h2 {
