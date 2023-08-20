@@ -9,14 +9,12 @@
         <img src="logo.png" alt="ロゴ" />
       </a>
       <div class="detail">
-        <ul>
-          <li>営業時間｜12時～21時［不定休］</li>
-          <li>TEL｜080-9271-7855</li>
-          <li>E-mail｜atama.reset@gmail.com</li>
-          <li>〒468-0066</li>
-          <li>愛知県名古屋市天白区元八事1-107</li>
-          <li>「リライフ治療院」内</li>
-        </ul>
+          <p>営業時間｜12時～21時［不定休］</p>
+          <p>TEL｜080-9271-7855</p>
+          <p>E-mail｜atama.reset@gmail.com</p>
+          <p>〒468-0066</p>
+          <address>愛知県名古屋市天白区元八事1-107</address>
+          <p>「リライフ治療院」内</p>
       </div>
     </div>
       <div class="copyright">
@@ -53,18 +51,26 @@
     width: 90px;
   }
 
-  ul {
+  .detail {
     padding: 0;
     margin: 0;
   }
 
-  li {
+  .detail p {
+    margin: 0;
     font-size: 1.2rem;
-    list-style: none;
     font-family: 'Noto Sans JP', sans-serif;
     color: var(--textWhite);
     line-height: 125%;
-    text-decoration: none;
+  }
+
+  .detail address {
+    font-style: normal;
+    margin: 0;
+    font-size: 1.2rem;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--textWhite);
+    line-height: 125%;
   }
 
   .copyright p {
