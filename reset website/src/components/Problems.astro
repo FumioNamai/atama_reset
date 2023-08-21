@@ -19,26 +19,27 @@ const problems = [
 <section>
   <div class="problems">
     <h3>こんなお悩みございませんか？</h3>
-    <div class="wrapper">
+    <div class="wrapper box">
     <ul>
       {
         problems.map((problem) => (
-          <li class="fadein">
+          <li class="list">
             <img src="/checked.svg" alt="チェック" width="14px" height="15px" />
             {problem}
-          </li>
-        ))
-      }
+            </li>
+            ))
+          }
     </ul>
-      <div class="image fadein">
-      </div>
+    <div class="image">
     </div>
   </div>
+</div>
 
+</section>
 
   <style>
     section {
-      padding-block: 2.4rem;
+      padding-block: 24rem;
       padding-left: 2.4rem;
       overflow: hidden;
     }
@@ -56,6 +57,7 @@ const problems = [
     }
 
     .image {
+      opacity: 0;
       position: absolute;
       z-index: -10;
       top: 0 ;
@@ -67,7 +69,7 @@ const problems = [
       background-repeat: no-repeat;
       background-image: url(/problem.jpg);
       filter: blur(1px);
-      opacity: 0.6;
+      /* opacity: 0.6; */
       border-radius: 16px 0 0 16px;
     }
 
@@ -76,6 +78,7 @@ const problems = [
     }
 
     li {
+      opacity: 0;
       font-size: 1.6rem;
       line-height: 200%;
       list-style: none;
@@ -89,7 +92,7 @@ const problems = [
       padding-top: 4px;
     }
 
-    .fadein {
+    .fadein{
       opacity: 0;
       width: 100%;
       animation: fadein 1s forwards linear;
@@ -144,4 +147,36 @@ const problems = [
       }
     }
   </style>
-</section>
+
+<script>
+  const box = document.querySelector(".box");
+  const lists = [...document.querySelectorAll(".list")];
+  const image = document.querySelector(".image");
+
+  const options = {
+    // root:,
+    rootMargin: "-50% 0px",
+    threshold: 0
+  }
+
+  let setItemFadein = (entries) => {
+    entries.forEach((entry) => {
+      console.log(entry);
+      if(entry.isIntersecting) {
+        lists.map((list) => {
+          list.classList.add("fadein")
+        })
+        image.classList.add("fadein")
+      // } else {
+      //   lists.map((list) => {
+      //     list.classList.remove("fadein")
+      //   })
+      //   image.classList.remove("fadein")
+      }
+    }
+  )}
+
+  let observer = new IntersectionObserver(setItemFadein, options);
+  observer.observe(box)
+
+</script>
