@@ -39,14 +39,21 @@ const problems = [
 
   <style>
     section {
+      /* display: flex; */
+      /* justify-content: center; */
       padding-block: 24rem;
       padding-left: 2.4rem;
-      overflow: hidden;
+      max-width: 900px;
+      margin: 0 auto;
     }
     .problems {
       display: flex;
+      justify-content: center;
       flex-direction: column;
       gap: 2.4rem;
+      max-width: 512px;
+      /* min-width: 327px; */
+      overflow: hidden;
     }
     h3 {
       font-weight: normal;
@@ -60,10 +67,10 @@ const problems = [
       opacity: 0;
       position: absolute;
       z-index: -10;
-      top: 0 ;
+      top: 10% ;
       left: 40%;
       width: 60%;
-      height: 100%;
+      height: 80%;
       background-position: top;
       background-size: cover;
       background-repeat: no-repeat;
@@ -159,7 +166,7 @@ const problems = [
     threshold: 0
   }
 
-  let setItemFadein = (entries) => {
+  const setItemFadein = (entries) => {
     entries.forEach((entry) => {
       console.log(entry);
       if(entry.isIntersecting) {
@@ -176,7 +183,7 @@ const problems = [
     }
   )}
 
-  let observer = new IntersectionObserver(setItemFadein, options);
+  const observer = new IntersectionObserver(setItemFadein, options);
   observer.observe(box)
 
 </script>
