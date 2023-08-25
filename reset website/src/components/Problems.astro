@@ -163,58 +163,31 @@ const problems = [
 
     .suggestion {
       position: relative;
-      /* width: auto; */
-      /* height: auto; */
       max-width: 640px;
       max-height: 622px;
       padding: 16px;
-      /* min-width: 343px; */
     }
 
     .wrap {
-      /* position: relative; */
-      /* width: 91.5%; */
-      /* width: 100vw; */
-      /* height: auto; */
-      /* height: 67%; */
-      /* height: 296px; */
-      /* height: calc( 100vw * 0.95); */
-      /* border-radius: 16px; */
-      /* overflow: hidden; */
     }
 
     .image2 {
-      /* box-sizing: border-box; */
-      /* width: 640px; */
-      /* height: 479px; */
-      /* width: 482px;
-      height: 412px; */
       width: auto;
       max-width: 482px;
       min-width: 343px;
-      /* height: auto; */
-      /* width: 100vw; */
-      /* height: calc( 100vw * 0.95); */
-
       background-image: url(/stiffneck1.jpg);
       background-repeat: no-repeat;
       background-size: cover;
-      /* background-size: 482px 412px; */
       background-position: 20% 40%;
-      padding: 18px auto 12px 16px;
       border-radius: 16px;
       aspect-ratio: 482 / 412;
-
+      opacity: 0;
+      transition: 4s;
     }
     /* .wrap::before {
       content:"";
       display: block;
-      padding-top: 10%;
-    }
-    .wrap::after {
-      content:"";
-      display: block;
-      padding-bottom: 10%;
+      padding-top: 85%;
     } */
     .text-wrapper {
       position: absolute;
@@ -222,12 +195,12 @@ const problems = [
       left: 8%;
       width: 328px;
       height: 291px;
+      opacity: 0;
+      transition: 4s;
+
     }
 
     .suggestion p {
-      /* position: absolute;
-      top :0;
-      left: 0; */
       font-size: 2.0rem;
       line-height: 175%;
       padding-inline-start: 16px;
@@ -246,6 +219,7 @@ const problems = [
   </style>
 
 <script>
+
   const box = document.querySelector(".box");
   const lists = [...document.querySelectorAll(".list")];
   const image = document.querySelector(".image");
@@ -272,4 +246,22 @@ const problems = [
   const observer = new IntersectionObserver(setItemFadein, options);
   observer.observe(box)
 
+
+  const suggestion = document.querySelector(".suggestion");
+  const image2 = document.querySelector(".image2");
+  const textWrapper = document.querySelector(".text-wrapper");
+
+  const Fadein = (entries) => {
+    console.log(entries);
+    entries.forEach((entry) => {
+      if(entry.isIntersecting) {
+        image2.style.opacity = "1";
+        textWrapper.style.opacity = "1";
+      }
+    })
+  }
+
+  const observer2 = new IntersectionObserver(Fadein,options)
+
+  observer2.observe(suggestion)
 </script>
