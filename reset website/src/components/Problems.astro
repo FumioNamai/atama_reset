@@ -207,10 +207,11 @@ const problems = [
   </style>
 
 <script>
+  document.addEventListener('DOMContentLoaded' , function () {
 
-  const problems = document.querySelector(".problems");
-  const lists = [...document.querySelectorAll(".list")];
-  const image = document.querySelector(".image");
+    const problems = document.querySelector(".problems");
+    const lists = [...document.querySelectorAll(".list")];
+    const image = document.querySelector(".image");
 
   const options = {
     // root:,
@@ -231,28 +232,29 @@ const problems = [
 
       }
     }
-  )}
+    )}
 
-  const observer = new IntersectionObserver(setItemFadein, options);
-  observer.observe(problems)
-
-
-  const suggestion = document.querySelector(".suggestion");
-  const image2 = document.querySelector(".image2");
-  const textWrapper = document.querySelector(".text-wrapper");
+    const observer = new IntersectionObserver(setItemFadein, options);
+    observer.observe(problems)
 
 
-  const Fadein = (entries) => {
-    console.log(entries);
-    entries.forEach((entry) => {
-      if(entry.isIntersecting) {
-        image2.style.opacity = 0.6;
-        textWrapper.style.opacity = 1;
-      }
-    })
-  }
+    const suggestion = document.querySelector(".suggestion");
+    const image2 = document.querySelector(".image2");
+    const textWrapper = document.querySelector(".text-wrapper");
 
-  const observer2 = new IntersectionObserver(Fadein,options)
 
-  observer2.observe(suggestion)
-</script>
+    const Fadein = (entries) => {
+      console.log(entries);
+      entries.forEach((entry) => {
+        if(entry.isIntersecting) {
+          image2.style.opacity = 0.6;
+          textWrapper.style.opacity = 1;
+        }
+      })
+    }
+
+    const observer2 = new IntersectionObserver(Fadein,options)
+
+    observer2.observe(suggestion)
+  })
+  </script>
