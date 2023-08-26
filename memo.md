@@ -81,3 +81,4 @@ ___
 - すでに作成したページにContainer.astroコンポーネントを追加
 - h1,h2,h3,p,ul,liのマージンを0に変更
 - Problemコンポーネント実装
+  intersectionObserver

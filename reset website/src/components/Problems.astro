@@ -19,7 +19,7 @@ const problems = [
 <section>
   <div class="problems">
     <h3>こんなお悩みございませんか？</h3>
-    <div class="wrapper box">
+    <div class="wrapper">
     <ul>
       {
         problems.map((problem) => (
@@ -36,12 +36,10 @@ const problems = [
 </div>
 
 <div class="suggestion">
-  <div class="wrap">
     <div class="image2"></div>
     <div class="text-wrapper">
     <p>あなたのお悩み<br>「脳疲労」による<br><span class="highlight">自律神経のしわざ</span>かも･･･</p>
     <p>疲れた頭や体を<br>究極の癒しで<span class="primary">リセット</span>しませんか</p>
-  </div>
 </div>
 </div>
 
@@ -71,20 +69,20 @@ const problems = [
     }
 
     .image {
-      opacity: 0;
       position: absolute;
       z-index: -10;
       top: 10% ;
       left: 40%;
-      width: 60%;
+      width: 100%;
       height: 80%;
       background-position: top;
       background-size: cover;
       background-repeat: no-repeat;
       background-image: url(/problem.jpg);
-      filter: blur(1px);
-      /* opacity: 0.6; */
       border-radius: 16px 0 0 16px;
+      filter: blur(1px);
+      opacity: 0;
+      transition: 2s 1s;
     }
 
     ul {
@@ -152,23 +150,11 @@ const problems = [
       animation-delay: 1.3s;
     }
 
-    @keyframes fadein {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
     .suggestion {
       position: relative;
       max-width: 640px;
       max-height: 622px;
       padding: 16px;
-    }
-
-    .wrap {
     }
 
     .image2 {
@@ -180,15 +166,17 @@ const problems = [
       background-size: cover;
       background-position: 20% 40%;
       border-radius: 16px;
-      aspect-ratio: 482 / 412;
+      /* aspect-ratio: 482 / 412; */
+      filter: blur(1px);
+      transition: 3s;
       opacity: 0;
-      transition: 4s;
     }
-    /* .wrap::before {
+    .image2::before {
       content:"";
       display: block;
-      padding-top: 85%;
-    } */
+      width: 100%;
+      padding-top: 85.48%;
+    }
     .text-wrapper {
       position: absolute;
       top: 10%;
@@ -220,7 +208,7 @@ const problems = [
 
 <script>
 
-  const box = document.querySelector(".box");
+  const problems = document.querySelector(".problems");
   const lists = [...document.querySelectorAll(".list")];
   const image = document.querySelector(".image");
 
@@ -235,28 +223,31 @@ const problems = [
       if(entry.isIntersecting) {
         lists.map((list) => {
           list.classList.add("fadein")
-          setTimeout(function(){
-            image.classList.add("fadein");
-          },1500)
+          // setTimeout(function(){
+          //   image.classList.add("fadein");
+          // },1500)
+          image.style.opacity = 0.6;
         })
+
       }
     }
   )}
 
   const observer = new IntersectionObserver(setItemFadein, options);
-  observer.observe(box)
+  observer.observe(problems)
 
 
   const suggestion = document.querySelector(".suggestion");
   const image2 = document.querySelector(".image2");
   const textWrapper = document.querySelector(".text-wrapper");
 
+
   const Fadein = (entries) => {
     console.log(entries);
     entries.forEach((entry) => {
       if(entry.isIntersecting) {
-        image2.style.opacity = "1";
-        textWrapper.style.opacity = "1";
+        image2.style.opacity = 0.6;
+        textWrapper.style.opacity = 1;
       }
     })
   }
