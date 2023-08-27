@@ -53,14 +53,26 @@ const problems = [
       </p>
     </div>
   </div>
+
+  <div class="cause">
+      <p class="text-1 fadeinText">「眠い」「疲れた」「飽きた」</p>
+      <p class="text-2 fadeinText">それは<span class="bold">『 脳疲労 』</span>のサイン</p>
+      <div class="image3"></div>
+      <p class="text-3 fadeinText">脳の疲労が脳を「酸化」させ</p>
+      <div class="icon fadeinText"></div>
+      <p class="text-4 fadeinText">脳が誤作動を起こし</p>
+      <div class="icon fadeinText"></div>
+      <p class="text-5 fadeinText">疲れていない体が疲労感を感じる</p>
+      <p class="text-6 fadeinText">自律神経の乱れを引き起こし<br>体のあらゆる部分に不調が出ます</p>
+      <p class="text-7 fadeinText highlight">原因不明の体の不調のほとんどが<br>自律神経の乱れによるものです</p>
+  </div>
 </section>
 
 <style>
   section {
     padding-block: 24rem;
-    max-width: 900px;
-    margin: 0 auto;
   }
+
   .problems {
     display: flex;
     justify-content: center;
@@ -69,6 +81,7 @@ const problems = [
     max-width: 512px;
     overflow: hidden;
     padding-block: 24px;
+    margin: 0 auto;
   }
   h3 {
     font-weight: normal;
@@ -161,9 +174,10 @@ const problems = [
 
   .suggestion {
     position: relative;
-    max-width: 640px;
+    max-width: 482px;
     max-height: 622px;
     padding: 16px;
+    margin: 0 auto;
   }
 
   .image2 {
@@ -211,56 +225,171 @@ const problems = [
     color: var(--primary);
     font-weight: bold;
   }
+
+  .cause {
+    text-align: center;
+    max-width: 1024px;
+    margin: 40px auto 0 auto;
+    padding-block: 2.4rem;
+  }
+
+  .image3 {
+    max-width: 1024px;
+    background-image: url(/yawning.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 75%;
+    aspect-ratio: 375/128;
+    /* 画面幅が900pxを超えたらより細くする必要あり */
+    opacity: 0;
+    transition: 3s;
+  }
+  /* .image3::before {
+    contain: "";
+    display: block;
+    width: 100%;
+    padding-top: 34%;
+  } */
+
+  .cause p {
+    text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.15);
+    letter-spacing: 3px;
+  }
+  .fadeinText {
+    opacity: 0;
+    transition: 3s;
+  }
+  .text-1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .text-2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.6rem;
+  }
+  .bold {
+    font-size: 2.4rem;
+    font-weight: bold;
+  }
+  .icon {
+    margin: 0 auto;
+    width: 24px;
+    height: 24px;
+    background-image: url(/arrow-down.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .text-3 {
+    margin-block: 1.6rem ;
+  }
+  .text-4 {
+    margin-block: 1.6rem;
+  }
+  .text-5 {
+    margin-block-start: 1.6rem;
+    margin-block-end: 4rem;
+  }
+  .text-6 {
+    margin-block-end: 4rem;
+  }
+  .text-7 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: none;
+  }
+
 </style>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-
-    const cb1 = function(el,isIntersecting) {
-      if(isIntersecting) {
-        const lists = [...document.querySelectorAll(".list")];
-        const image = document.querySelector(".image");
-        lists.map((list) => {list.classList.add("fadein");});
-        image.style.opacity = 0.6;
-      }
-    }
-    const cb2 = function(el,isIntersecting) {
-      if(isIntersecting) {
-        const image2 = document.querySelector(".image2");
-        const textWrapper = document.querySelector(".text-wrapper");
-        image2.style.opacity = 0.6;
-        textWrapper.style.opacity = 1;
-      }
-    }
-
     class ScrollObserver {
       constructor(els, cb, options) {
+        //監視対象のelementsを取得
         this.els = document.querySelectorAll(els);
+        //オプションのデフォルト設定を定義
         const defaultOptions = {
           root: null,
-          rootMargin: "-50% 0px",
+          rootMargin: "0px",
           threshold: 0,
         };
         this.cb = cb;
+        //デフォルト設定に、個別設定のオプションをマージする
         this.options = Object.assign(defaultOptions, options);
+        //
         this._init();
       }
       _init() {
         const callback = (entries) => {
           entries.forEach((entry) => {
+            //監視対象の要素が領域内に入った場合の処理
             if (entry.isIntersecting) {
-              console.log(entries);
-              this.cb(entry.target, true) //true=isIntersectingがtrue
-            } else {
-              this.cb(entry.target, false)
+              this.cb(entry.target, true); //true=isIntersectingがtrue
+              //処理後に監視を切る処理
+              observer.unobserve(entry.target);
             }
+            // else {
+            //   this.cb(entry.target, false);
+            // }
           });
         };
         const observer = new IntersectionObserver(callback.bind(this), this.options);
+        //対象の要素elを監視
         this.els.forEach(el => observer.observe(el));
       }
     }
-    const problems = new ScrollObserver('.problems', cb1, null)
-    const suggestion = new ScrollObserver('.suggestion', cb2, null)
+
+    //Problemパート
+    const cb1 = function (el, isIntersecting) {
+      if (isIntersecting) {
+        //監視対象elとアニメーション対象が異なるため,elを使わずに要素を個別に取得
+        const lists = [...document.querySelectorAll(".list")];
+        const image = document.querySelector(".image");
+        lists.map((list) => {
+          list.classList.add("fadein");
+        });
+        image.style.opacity = 0.6;
+      }
+    };
+    //ScrollObserverの初期化(第1引数"entry.target",第2引数コールバック関数、第3引数オプションの個別設定)
+    const problems = new ScrollObserver(".problems", cb1, {
+      rootMargin: "-50px 0px",
+      threshold: 0.5,
+    });
+
+    //Suggestionパート
+    const cb2 = function (el, isIntersecting) {
+      if (isIntersecting) {
+        const image2 = document.querySelector(".image2");
+        const textWrapper = document.querySelector(".text-wrapper");
+        image2.style.opacity = 0.6;
+        textWrapper.style.opacity = 1;
+      }
+    };
+    const suggestion = new ScrollObserver(".suggestion", cb2, {
+      rootMargin: "-50px 0px",
+      threshold: 0.5,
+    });
+
+
+    //Causeパート
+    const causeImg = function (el, isIntersecting) {
+      if (isIntersecting) {
+        //監視対象=アニメーション対象なのでelを使用
+        el.style.opacity = 0.6;
+      }
+    };
+    const image3 = new ScrollObserver(".image3", causeImg, {
+      threshold: 1,
+    });
+
+    const textFading = function (el, isIntersecting) {
+      if (isIntersecting) {
+        el.style.opacity = 1;
+      }
+    };
+    const fadeinText = new ScrollObserver(".fadeinText",  textFading, {
+      rootMargin: '-30% 0px',
+      threshold: 0,
+    });
   });
 </script>

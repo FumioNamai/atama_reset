@@ -50,7 +50,7 @@ Sass　パッケージをインストール　➡　保留
 - [→] フッターのE-mailアドレスにハイパーリンクを消す
 
 - [ ] AstroImageを使う
-- [ ] Problemコンポ―ネントのアニメーションイベント発火タイミングを設定する
+- [x] Problemコンポ―ネントのアニメーションイベント発火タイミングを設定する
 
 ___
 ##作業工程記録
@@ -82,3 +82,5 @@ ___
 - h1,h2,h3,p,ul,liのマージンを0に変更
 - Problemコンポーネント実装
   intersectionObserver
+  intersectionObserverをClass化
+  完成　8.27
