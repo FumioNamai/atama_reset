@@ -35,12 +35,12 @@ const problems = [
           ))
         }
       </ul>
-      <div class="image"></div>
+      <div class="problems-image"></div>
     </div>
   </div>
 
   <div class="suggestion">
-    <div class="image2"></div>
+    <div class="suggestion-image"></div>
     <div class="text-wrapper">
       <p>
         あなたのお悩み<br />「脳疲労」による<br /><span class="highlight"
@@ -57,7 +57,7 @@ const problems = [
   <div class="cause">
       <p class="text-1 fadeinText">「眠い」「疲れた」「飽きた」</p>
       <p class="text-2 fadeinText">それは<span class="bold">『 脳疲労 』</span>のサイン</p>
-      <div class="image3"></div>
+      <div class="cause-image"></div>
       <p class="text-3 fadeinText">脳の疲労が脳を「酸化」させ</p>
       <div class="icon fadeinText"></div>
       <p class="text-4 fadeinText">脳が誤作動を起こし</p>
@@ -91,7 +91,7 @@ const problems = [
     position: relative;
   }
 
-  .image {
+  .problems-image {
     position: absolute;
     z-index: -10;
     top: 10%;
@@ -178,9 +178,10 @@ const problems = [
     max-height: 622px;
     padding: 16px;
     margin: 0 auto;
+    transform: translateY();
   }
 
-  .image2 {
+  .suggestion-image {
     width: auto;
     max-width: 482px;
     min-width: 343px;
@@ -191,10 +192,11 @@ const problems = [
     border-radius: 16px;
     /* aspect-ratio: 482 / 412; */
     filter: blur(1px);
+    transform: translateY(20px);
     transition: 3s;
     opacity: 0;
   }
-  .image2::before {
+  .suggestion-image::before {
     content: "";
     display: block;
     width: 100%;
@@ -207,6 +209,7 @@ const problems = [
     width: 328px;
     height: 291px;
     opacity: 0;
+    transform: translateY(20px);
     transition: 4s;
   }
 
@@ -233,7 +236,7 @@ const problems = [
     padding-block: 2.4rem;
   }
 
-  .image3 {
+  .cause-image {
     max-width: 1024px;
     background-image: url(/yawning.jpg);
     background-repeat: no-repeat;
@@ -244,7 +247,7 @@ const problems = [
     opacity: 0;
     transition: 3s;
   }
-  /* .image3::before {
+  /* .cause-image::before {
     contain: "";
     display: block;
     width: 100%;
@@ -252,25 +255,34 @@ const problems = [
   } */
 
   .cause p {
-    text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.15);
-    letter-spacing: 3px;
+    letter-spacing: 4px;
   }
+
   .fadeinText {
     opacity: 0;
     transition: 3s;
+    filter:drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5))
   }
+
+  .fadeinText:last-child {
+    filter:drop-shadow(2px 2px 2px rgba(0, 0, 0, 0))
+  }
+
   .text-1 {
     font-size: 2rem;
     font-weight: bold;
   }
+
   .text-2 {
     font-size: 1.8rem;
     margin-bottom: 1.6rem;
   }
+
   .bold {
     font-size: 2.4rem;
     font-weight: bold;
   }
+
   .icon {
     margin: 0 auto;
     width: 24px;
@@ -295,7 +307,6 @@ const problems = [
   .text-7 {
     font-size: 2rem;
     font-weight: bold;
-    text-shadow: none;
   }
 
 </style>
@@ -343,11 +354,11 @@ const problems = [
       if (isIntersecting) {
         //監視対象elとアニメーション対象が異なるため,elを使わずに要素を個別に取得
         const lists = [...document.querySelectorAll(".list")];
-        const image = document.querySelector(".image");
+        const problemsImage = document.querySelector(".problems-image");
         lists.map((list) => {
           list.classList.add("fadein");
         });
-        image.style.opacity = 0.6;
+        problemsImage.style.opacity = 0.6;
       }
     };
     //ScrollObserverの初期化(第1引数"entry.target",第2引数コールバック関数、第3引数オプションの個別設定)
@@ -359,10 +370,12 @@ const problems = [
     //Suggestionパート
     const cb2 = function (el, isIntersecting) {
       if (isIntersecting) {
-        const image2 = document.querySelector(".image2");
+        const suggestionImage = document.querySelector(".suggestion-image");
         const textWrapper = document.querySelector(".text-wrapper");
-        image2.style.opacity = 0.6;
+        suggestionImage.style.opacity = 0.6;
+        suggestionImage.style.transform = "translateY(-20px)";
         textWrapper.style.opacity = 1;
+        textWrapper.style.transform = "translateY(-20px)";
       }
     };
     const suggestion = new ScrollObserver(".suggestion", cb2, {
@@ -378,7 +391,7 @@ const problems = [
         el.style.opacity = 0.6;
       }
     };
-    const image3 = new ScrollObserver(".image3", causeImg, {
+    const causImage = new ScrollObserver(".cause-image", causeImg, {
       threshold: 1,
     });
 
