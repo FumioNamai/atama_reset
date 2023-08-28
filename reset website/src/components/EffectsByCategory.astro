@@ -1,0 +1,68 @@
+---
+const {
+  position,
+  imgSrc,
+  alt,
+  listItem1,
+  listItem2,
+  listItem3,
+  listItem4,
+  listItem5,
+  listItem6,
+} = Astro.props
+
+const listItems = [
+  listItem1,
+  listItem2,
+  listItem3,
+  listItem4,
+  listItem5,
+  listItem6,
+];
+
+---
+
+
+    <div class="wrapper" style={ position }>
+      <img src={ imgSrc } alt={ alt } width="104px" height="125px">
+      <ul class="list-effects">
+        {listItems.map((list) => (
+        <li>{ list }</li>
+        ))}
+      </ul>
+    </div>
+    <div class="bg-circle"></div>
+
+
+  <style>
+
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    background-color: #FBFBFB;
+    border-radius: 160px / 78px;
+    width: 320px;
+    height: 155px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .list-effects {
+    padding-inline-start: 0;
+  }
+  .list-effects li {
+    width: 192px;
+    list-style: none;
+    padding-bottom: 3px;
+  }
+  .list-effects li:last-child {
+    padding-bottom: 0px;
+  }
+
+  @media screen and (768px <= width){
+    .wrapper {
+      position: absolute;
+    }
+  }
+  </style>

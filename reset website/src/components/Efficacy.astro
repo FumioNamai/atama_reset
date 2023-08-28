@@ -1,4 +1,5 @@
 ---
+import EffectsByCategory from "./EffectsByCategory.astro";
 ---
 
 <section>
@@ -24,16 +25,51 @@
     </div>
   </div>
 
-  <img class="triangle-image" src="/triangle.svg" alt="効果をまとめると">
+  <img class="triangle-image" src="/triangle.svg" alt="効果をまとめると" />
+
+
+  <div class="treatement-effect">
+  <EffectsByCategory
+  position = "top: 0%; left: 0%;"
+  imgSrc="/physical-health.png"
+  alt="カラダへの効果"
+  listItem1 = "頭痛の改善"
+  listItem2 = "肩こり・首こりの改善"
+  listItem3 = "眼精疲労の改善"
+  listItem4 = "ドライアイの改善"
+  listItem5 = "代謝アップ"
+  listItem6 = "冷え性の改善"
+  />
+  <EffectsByCategory
+  position = "top: 23%; left: 54%;"
+  imgSrc="/mental-health.png"
+  alt="内面への効果"
+  listItem1 = "自律神経が整う"
+  listItem2 = "ホルモンバランスの改善"
+  listItem3 = "免疫力・自然治癒力の改善"
+  listItem4 = "不眠症の改善"
+  listItem5 = "疲労感の改善"
+  />
+  <EffectsByCategory
+  position = "top: 60%; left: 13%;"
+  imgSrc="/beauty.png"
+  alt="美容への効果"
+  listItem1 = "老廃物デトックス"
+  listItem2 = "リフトアップ"
+  listItem3 = "アンチエイジング"
+  listItem4 = "育毛"
+  />
+</div>
 
 </section>
 
 <style>
   section {
-
     padding: 2.4rem 1.6rem;
     background-color: var(--bgSecondary);
   }
+
+  /* effect */
   .effect {
     min-width: 343px;
     max-width: 900px;
@@ -51,19 +87,21 @@
       max-width: 500px;
     }
   }
+
   .effect-flexbox {
     display: flex;
     flex-direction: column;
+    margin-block-end: 4rem;
   }
   @media screen and (768px <= width) {
     .effect-flexbox {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 2.4rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 2.4rem;
+    }
   }
 
-  }
   .image {
     width: 100%;
     max-width: 432px;
@@ -75,22 +113,39 @@
     margin-bottom: 1.8rem;
   }
 
-  ul {
+  .effect ul {
     padding-inline-start: 16px;
   }
-  li {
+
+  .effect li {
     list-style: none;
-    padding-bottom: .8rem;
+    padding-bottom: 0.8rem;
   }
-  li::before {
+
+  .effect li::before {
     content: "・";
     margin-inline-start: -16px;
   }
-
   .triangle-image {
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 40px auto;
   }
 
+  .treatement-effect {
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+  }
 
+  @media screen and (768px <= width){
+    .treatement-effect {
+      position: relative;
+      display: block;
+      height: 350px;
+      margin: 0 auto;
+    }
+  }
 </style>
