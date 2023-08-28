@@ -68,9 +68,13 @@ p {
   font-size: 1.8rem;
 }
 
+li {
+  font-size: 1.6rem;
+}
 h1,h2,h3,p,ul,li {
   margin: 0;
 }
+
 
 
 

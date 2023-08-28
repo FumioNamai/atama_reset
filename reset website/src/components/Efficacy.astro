@@ -1,0 +1,96 @@
+---
+---
+
+<section>
+  <div class="effect">
+    <h3>ヘッドマッサージによって期待される効果</h3>
+    <div class="effect-flexbox">
+      <div class="image"></div>
+      <ul>
+        <li>凝り固まった頭をほぐし、血液やリンパの流れを改善</li>
+        <li>脳への血流を活性化</li>
+        <li>脳に溜まった疲労物質やストレスホルモンを分解</li>
+        <li>首を柔らかくし、脳脊髄液の流れを改善</li>
+        <li>免疫力を高め、疲労回復＆疲れない体に</li>
+        <li>自律神経を整える</li>
+        <li>頭皮のむくみや老廃物を排出=デトックス効果</li>
+        <li>頭皮を健康にし、毛乳頭細胞を活性化</li>
+        <li>
+          頭皮の健康状態を改善することで、お顔のしわ・たるみ・クマなどを改善
+        </li>
+        <li>頭皮を柔らかくしリフトアップ効果</li>
+        <li>リラックス効果によりセロトニン（幸せホルモン）が分泌される</li>
+      </ul>
+    </div>
+  </div>
+
+  <img class="triangle-image" src="/triangle.svg" alt="効果をまとめると">
+
+</section>
+
+<style>
+  section {
+
+    padding: 2.4rem 1.6rem;
+    background-color: var(--bgSecondary);
+  }
+  .effect {
+    min-width: 343px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h3 {
+    display: inline-block;
+    border-bottom: 3px solid var(--positive);
+    margin-block-end: 2.4rem;
+    max-width: 270px;
+  }
+  @media screen and (450px <= width) {
+    h3 {
+      max-width: 500px;
+    }
+  }
+  .effect-flexbox {
+    display: flex;
+    flex-direction: column;
+  }
+  @media screen and (768px <= width) {
+    .effect-flexbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2.4rem;
+  }
+
+  }
+  .image {
+    width: 100%;
+    max-width: 432px;
+    min-width: 240px;
+    background-image: url(/effect-headmasserge.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    aspect-ratio: 432/368;
+    margin-bottom: 1.8rem;
+  }
+
+  ul {
+    padding-inline-start: 16px;
+  }
+  li {
+    list-style: none;
+    padding-bottom: .8rem;
+  }
+  li::before {
+    content: "・";
+    margin-inline-start: -16px;
+  }
+
+  .triangle-image {
+    display: block;
+    margin: 0 auto;
+  }
+
+
+</style>
