@@ -6,7 +6,7 @@ import EffectsByCategory from "./EffectsByCategory.astro";
   <div class="effect">
     <h3>ヘッドマッサージによって期待される効果</h3>
     <div class="effect-flexbox">
-      <div class="image"></div>
+      <div class="effect-image"></div>
       <ul>
         <li>凝り固まった頭をほぐし、血液やリンパの流れを改善</li>
         <li>脳への血流を活性化</li>
@@ -27,11 +27,10 @@ import EffectsByCategory from "./EffectsByCategory.astro";
 
   <img class="triangle-image" src="/triangle.svg" alt="効果をまとめると" />
 
-
   <div class="treatement-effect">
   <EffectsByCategory
   position = "top: 0%; left: 0%;"
-  imgSrc="/physical-health.png"
+  src="/physical-health.png"
   alt="カラダへの効果"
   listItem1 = "頭痛の改善"
   listItem2 = "肩こり・首こりの改善"
@@ -42,7 +41,7 @@ import EffectsByCategory from "./EffectsByCategory.astro";
   />
   <EffectsByCategory
   position = "top: 23%; left: 54%;"
-  imgSrc="/mental-health.png"
+  src="/mental-health.png"
   alt="内面への効果"
   listItem1 = "自律神経が整う"
   listItem2 = "ホルモンバランスの改善"
@@ -52,7 +51,7 @@ import EffectsByCategory from "./EffectsByCategory.astro";
   />
   <EffectsByCategory
   position = "top: 60%; left: 13%;"
-  imgSrc="/beauty.png"
+  src="/beauty.png"
   alt="美容への効果"
   listItem1 = "老廃物デトックス"
   listItem2 = "リフトアップ"
@@ -60,6 +59,23 @@ import EffectsByCategory from "./EffectsByCategory.astro";
   listItem4 = "育毛"
   />
 </div>
+
+<div class="selling-point">
+  <strong><span class="marker">当店のヘッドマッサージは</span><br>
+    <span class="marker">頭の疲れだけではなく</span><br>
+    <span class="marker">全身の疲労回復を目的とします</span></strong>
+</div>
+
+<div class="refresh-image">
+  <img src="/refreshing.jpg" alt="スッキリ！" width="900px" height="551px">
+</div>
+
+<div class="add-info">
+  <p><span class="bold">
+    当店でおこなうヘッドマッサージは</span><br>セロトニン脳波測定の実験により<br><span class="secondary">
+    脳内のセロトニンが活性化される</span>ことが証明されました</p>
+</div>
+
 
 </section>
 
@@ -102,7 +118,7 @@ import EffectsByCategory from "./EffectsByCategory.astro";
     }
   }
 
-  .image {
+  .effect-image {
     width: 100%;
     max-width: 432px;
     min-width: 240px;
@@ -131,6 +147,8 @@ import EffectsByCategory from "./EffectsByCategory.astro";
     margin: 0 auto 40px auto;
   }
 
+
+  /* treatement-effect */
   .treatement-effect {
     max-width: 700px;
     display: flex;
@@ -138,14 +156,69 @@ import EffectsByCategory from "./EffectsByCategory.astro";
     align-items: center;
     justify-content: center;
     gap: 1.2rem;
+    margin: 6.4rem auto;
   }
 
   @media screen and (768px <= width){
     .treatement-effect {
       position: relative;
       display: block;
-      height: 350px;
-      margin: 0 auto;
+      height: 400px;
     }
+  }
+
+  /* selling point */
+  .selling-point {
+    text-align: center;
+    margin-block-end: 6.4rem;
+  }
+  strong {
+    font-size: 2.4rem;
+    color: var(--textBlack);
+    line-height: 200%;
+  }
+  .marker {
+    background-image: linear-gradient(90deg, var(--positive),var(--positive));
+    background-repeat: no-repeat;
+    background-position: bottom left;
+
+    /* lineが伸びるアニメは　0%　30%　でスタートする */
+    background-size: 100% 30%;
+  }
+  .refresh-image {
+    max-width: 900px;
+    max-height: 551px;
+    display: block;
+    margin: 0 auto;
+    /* background-color: rgba(0, 0, 0, 0.2); */
+  }
+  .refresh-image img {
+    width: 100%;
+    height: auto;
+    opacity: 0.8;
+    margin-block-end: 2.4rem;
+  }
+
+  .add-info {
+    margin: 0 auto;
+    max-width: 300px;
+    text-align: center;
+    margin-bottom: 1.6rem;
+  }
+  @media screen and (528px <= width ) {
+    .add-info {
+      max-width: 500px;
+    }
+  }
+  .add-info p {
+    font-size: 1.6rem;
+    line-height: 200%;
+  }
+  .bold {
+    font-weight: bold;
+  }
+  .secondary {
+    color: var(--secondary);
+    font-size: 2rem;
   }
 </style>
