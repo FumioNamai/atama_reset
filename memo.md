@@ -52,6 +52,8 @@ Sass　パッケージをインストール　➡　保留
 - [ ] AstroImageを使う
 - [x] Problemコンポ―ネントのアニメーションイベント発火タイミングを設定する
 
+- [ ] remとpxの使い分け方針検討と修正
+
 ___
 ##作業工程記録
 ###Figma 23.7.7~8.8
@@ -84,4 +86,7 @@ ___
   intersectionObserver
   intersectionObserverをClass化
   完成　8.27
-- Efficasyコンポーネント作成
+- Efficasyコンポーネント作成 8.28
+- Featuresコンポーネント移植（前もって作成済み）8.28
+- Problemsコンポーネントのレスポンシブ化 8.28
+　gridレイアウトを採用すると表示が崩れてしまうため、position:absolute;で実装
