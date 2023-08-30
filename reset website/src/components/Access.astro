@@ -40,7 +40,7 @@
           完全個室のプライベート空間で、ゆっくり落ち着いた癒しの時間をお過ごしくださいませ。
         </p>
       </div>
-      <!-- <div class="slider-group">
+      <div class="slider-group">
         <div class="clinic-image">
           <img src="/clinic_image_1.jpg" alt="" width="300" height="auto" />
         </div>
@@ -52,7 +52,7 @@
         </div>
         <div class="clinic-image">
           <img src="/clinic_image_4.jpg" alt="" width="300" height="auto"/>
-        </div> -->
+        </div>
       </div>
     </div>
 
@@ -64,7 +64,7 @@
         align-items: center;
         padding-inline: 1.6rem;
         max-width: 900px;
-        margin: 0 auto;
+        margin: 0 auto 40px auto;
       }
 
       h2 {
@@ -101,6 +101,11 @@
 
       h3 {
         text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .clinic {
+        width: 100%;
       }
 
       .clinic-text p {
@@ -121,11 +126,15 @@
         height: auto;
         display: flex;
         flex-wrap: nowrap;
+        overflow: hidden;
         overflow-x: auto;
+        gap: 16px;
       }
 
       .clinic-image {
-
+        flex: 0 0 auto;
+        max-width: 300px;
+        height: 225px ;
       }
 
       @media screen and (900px <= width) {
