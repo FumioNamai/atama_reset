@@ -1,6 +1,7 @@
 ---
 const {
-  position,
+  top,
+  left,
   src,
   alt,
   listItem1,
@@ -23,7 +24,7 @@ const listItems = [
 ---
 
 
-    <div class="wrapper" style={ position }>
+    <div class="wrapper">
       <img src={ src } alt={ alt } width="104px" height="125px">
       <ul class="list-effects">
         {listItems.map((list) => (
@@ -34,7 +35,7 @@ const listItems = [
     <div class="bg-circle"></div>
 
 
-  <style>
+  <style define:vars={{top , left}}>
 
   .wrapper {
     display: flex;
@@ -46,6 +47,8 @@ const listItems = [
     height: 155px;
     align-items: center;
     justify-content: center;
+    top: var(--top);
+    left: var(--left);
   }
 
   .list-effects {
