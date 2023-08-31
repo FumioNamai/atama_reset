@@ -59,6 +59,14 @@ import Layout from "@layouts/layout.astro";
     </p>
     <p>頭ほぐし専門店 reset</p>
   </div>
+  <div class="clinic-image-outer">
+    <div class="clinic-image">
+      <img src="/clinic_image_3.jpg" alt="" width="533px" height="400px">
+    </div>
+    <div class="clinic-image">
+      <img src="/clinic_image_4.jpg" alt="" width="533px" height="400px">
+    </div>
+  </div>
 </section>
   </main>
 </Layout>
@@ -66,7 +74,7 @@ import Layout from "@layouts/layout.astro";
 <style>
   section {
     text-align: center;
-    max-width: 700px;
+    max-width: 680px;
     margin: 0 auto;
     padding-block: 40px;
     padding-inline: 1.6rem;
@@ -83,5 +91,27 @@ import Layout from "@layouts/layout.astro";
   .certificatiion {
     margin-top: 64px;
     text-align: right;
+  }
+
+  .clinic-image-outer {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 680px;
+    height: auto;
+    gap: 40px;
+  }
+
+  .clinic-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  @media screen and ( 900px <= width ){
+    .clinic-image-outer {
+      flex-direction: row;
+    }
   }
 </style>
