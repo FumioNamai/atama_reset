@@ -93,3 +93,10 @@ ___
 　gridレイアウトを採用すると表示が崩れてしまうため、position:absolute;で実装
 - accsessコンポーネント
   スライダー実装
+- EfficasyコンポーネントにintersectionObserverを実装
+
+
+
+fadeinクラスのintersectionObseverアニメーションはEfficasy.astro内に定義
+fadein2クラスのintersectionObseverアニメーションはFeatures.astro内に定義
+fadeinImgクラスのintersectionObseverアニメーションはFeatures.astro内に定義
