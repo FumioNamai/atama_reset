@@ -233,6 +233,10 @@ const nav = [
     }
 
     @media screen and (768px <= width) {
+      .globalNav {
+      width: 50%;
+      right: -50%;
+    }
       nav {
         padding: 24px;
         align-items: center;
@@ -240,13 +244,17 @@ const nav = [
       }
 
       .globalNav img {
+        display: none;
+      }
+
+      /* 全画面表示の場合に使用 */
+      /* .globalNav img {
         width: 90px;
         height: 90px;
       }
-
       .globalNav-logo {
         margin: 0;
-      }
+      } */
     }
 
   </style>
