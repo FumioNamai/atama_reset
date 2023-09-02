@@ -98,5 +98,4 @@ ___
 
 
 fadeinクラスのintersectionObseverアニメーションはEfficasy.astro内に定義
-fadein2クラスのintersectionObseverアニメーションはFeatures.astro内に定義
 fadeinImgクラスのintersectionObseverアニメーションはFeatures.astro内に定義

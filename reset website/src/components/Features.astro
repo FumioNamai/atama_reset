@@ -3,16 +3,16 @@
 
 <section class="features">
   <div class="reason">
-    <h3 class="fadein2">選ばれる理由</h3>
+    <h3 class="fadein">選ばれる理由</h3>
     <div class="wrapper">
-      <div class="grid_item one fadein2">
+      <div class="grid_item one fadein">
         <h4>➀ 整体法を取り入れた施術</h4>
         <p>
           当店の頭ほぐしは、整体師監修のもと<br
           />整体法を取り入れたオールハンドの施術です。
         </p>
       </div>
-      <div class="grid_item two fadein2">
+      <div class="grid_item two fadein">
         <h4>➁ 解剖学に基づいた施術</h4>
         <p>
           脳の血流の80%を占めるとされる内頚動脈。外側からのマッサージで刺激するのは不可能です。<br
@@ -21,7 +21,7 @@
           しかし、当店では解剖学の視点からの手法により、内頸動脈を刺激し、血流を改善します。
         </p>
       </div>
-      <div class="grid_item three fadein2">
+      <div class="grid_item three fadein">
         <h4>➂ 科学的に根拠のある施術</h4>
         <p>
           当店で行うヘッドマッサージはセロトニン脳波測定の実験により、セロトニン神経が活性化することが証明されました。<br
@@ -33,7 +33,7 @@
         <button>詳しくはこちら</button>
       </div>
       <div class="grid_item img1  fadeinImg"></div>
-      <div class="grid_item four  fadein2">
+      <div class="grid_item four  fadein">
         <h4>➃ ベッドを使っての施術</h4>
         <p>
           当店の頭ほぐしは「頭から全身を整える」マッサージです。<br />
@@ -49,7 +49,7 @@
           頭の施術による首への負担を防ぐためにも、ベッドを使用します。
         </p>
       </div>
-      <div class="grid_item five fadein2">
+      <div class="grid_item five fadein">
         <h4>➄ タオルの上から揉みません</h4>
         <p>
           頭は非常に薄い筋肉で覆われているので、頭を強くも揉む（押す）ことはできません。<br
@@ -66,7 +66,7 @@
           ※頭以外の直接肌に触れる部分はタオルの上から施術します。
         </p>
       </div>
-      <div class="grid_item six fadein2">
+      <div class="grid_item six fadein">
         <h4>➅ 水やオイルを使いません</h4>
         <p>
           水やオイルを使わないドライマッサージです。お出掛けのご予定を気にせず、お気軽にお越しいただけます。
@@ -210,7 +210,7 @@
   }
 
     /* フェイドインアニメーション */
-  .fadein2 {
+  .fadein {
     opacity: 0;
     transform: translateY(20px);
     transition: 2s;
@@ -260,17 +260,6 @@
         this.els.forEach((el) => observer.observe(el));
       }
     }
-
-    const fadein2 = function (el, isIntersecting) {
-      if (isIntersecting) {
-        el.style.opacity = 1;
-        el.style.transform = "none";
-      }
-    };
-    const fadeinTrigger = new ScrollObserver(".fadein2", fadein2, {
-      rootMargin: "-200px 0px",
-      threshold: 0, //fadeinとの違い
-    });
 
     const fadeinImg = function (el, isIntersecting) {
       if (isIntersecting) {
