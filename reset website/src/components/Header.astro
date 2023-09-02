@@ -4,56 +4,80 @@ import Hamburger from "@components/Hamburger.astro";
 ---
 
 <header>
-  <p>名古屋市 昭和高校横 ヘッドマッサージサロン</p>
-  <div class="headerNav">
-    <div class="left">
-      <Hamburger />
-      <div class="logo">
-        <a href="/">
-          <img src="logo2.png" alt="ロゴ" />
-        </a>
+  <div class="small">
+    <p>名古屋市 昭和高校横 ヘッドマッサージサロン</p>
+    <div class="headerNav">
+      <div class="left">
+        <Hamburger />
+        <div class="logo">
+          <a href="/">
+            <img src="logo2.png" alt="ロゴ" />
+          </a>
+        </div>
+      </div>
+      <div class="right">
+        <a href="">ご予約</a>
       </div>
     </div>
-    <div class="right">
-      <a href="">ご予約</a>
+  </div>
+  <div class="large">
+    <p>名古屋市 昭和高校横 ヘッドマッサージサロン<span>　頭ほぐし専門店 reset</span></p>
+    <div class="wrapper">
+    <div class="headerNav">
+      <div class="left">
+        <div class="logo">
+          <a href="/">
+            <img src="logo.png" alt="ロゴ" />
+          </a>
+        </div>
+      </div>
+      <div class="right">
+        <div class="contact">
+        <a href="">ご予約・お問い合わせ</a>
+        </div>
+        <Hamburger />
+      </div>
     </div>
   </div>
 </header>
 
 
 <style>
-  header {
+  .small {
     position: relative;
     width: 100%;
     height: 64px;
     z-index: 300;
   }
 
-  header p {
+  .small p {
     text-align: end;
     margin-right: 1rem;
     margin-bottom: -1rem;
   }
 
-  .headerNav {
+  .large {
+    display: none;
+  }
+  .small .headerNav {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .left {
+  .small .left {
     display: flex;
     flex-direction: row;
     align-items: center;
   }
 
 
-  .logo img {
+  .small .logo img {
     width: 75px;
     filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
   }
 
-  .right {
+  .small .right {
     margin-right: 20px;
     text-align: center;
     width: 60px;
@@ -64,7 +88,7 @@ import Hamburger from "@components/Hamburger.astro";
     background-position: center;
   }
 
-  .right a {
+  .small .right a {
     line-height: 32px;
     text-decoration: none;
     font-size: 1.6rem;
@@ -79,12 +103,73 @@ import Hamburger from "@components/Hamburger.astro";
     color: var(--primary);
     filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
   }
+  span {
+    display: none;
+  }
 
   @media screen and (768px <= width) {
-    header {
+    .small {
+      display: none;
+    }
+    .large {
+      display: block;
       position: fixed;
       background-color: #f4f4f47a;
     }
+
+    .large {
+    width: 100%;
+    height: 130px;
+    z-index: 300;
+  }
+
+  .wrapper {
+    margin-top: -22px;
+  }
+
+  .large p {
+    font-size: 1.4rem;
+    text-align: end;
+    margin-right: 1rem;
+    margin-bottom: -1rem;
+  }
+  span {
+    display: inline;
+  }
+
+  .large .headerNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+  }
+
+  .large .logo img {
+    width: 90px;
+    filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
+  }
+
+  .large .contact {
+    background-image: url(/menu-background.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .large .right {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    width: auto;
+    gap: 40px;
+  }
+
+  .large .right a {
+    line-height: 90px;
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: var(--primary);
+    font-weight: bold;
+    filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.5));
+  }
   }
 
 </style>

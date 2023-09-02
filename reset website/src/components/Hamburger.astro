@@ -7,7 +7,7 @@
   <span></span>
   <span></span>
   <span></span>
-  <p>MENU</p>
+  <p class="menu">MENU</p>
 </button>
 
 
@@ -55,26 +55,80 @@
     background-color: var(--textWhite);
   }
 
-  .hamburger p {
+  .menu {
     display: none; /* デスクトップのときに表示させる */
     padding-top: 2px;
     margin-left: -2px;
     transform: scale(0.7);
   }
+
+
+  @media screen and ( 768px <= width ) {
+    .hamburger {
+    width: 90px;
+    height: 90px;
+    padding: 28px;
+  }
+  .hamburger span {
+    width: 30px;
+    height: 3px;
+    border-radius: 1.5px;
+    transition: ease 0.5s;
+
+  }
+  .hamburger span:nth-child(2) {
+    margin: 8px 0;
+  }
+
+  .hamburger.open span:nth-child(1) {
+    opacity: 0;
+    top: 10px;
+    transform: rotate(45deg);
+  }
+
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.open span:nth-child(3) {
+    opacity: 0;
+    top: -10px;
+    transform: rotate(-45deg);
+  }
+
+  .menu {
+    display: block; /* デスクトップのときに表示させる */
+    transform: translateY(10px);
+    margin-top: 5px;
+    margin-left: -11px;
+    transform: scale(0.7);
+    color: var(--primary);
+  }
+
+  .menu.open {
+    display: none;
+  }
+  }
 </style>
 
 <script>
   const body = document.querySelector("#js-body")
-  const hamburger = document.querySelector("#js-hamburger");
+  const hamburgers = document.querySelectorAll(".hamburger");
   const globalNav = document.querySelector("#js-globalNav");
   const hamburgerClose = document.querySelector("#js-hamburgerClose");
-  const menu = document.querySelector("#js-globalNav-menu");
+  const menuList = document.querySelector("#js-globalNav-menu");
+  const menu = document.querySelectorAll(".menu");
 
-  hamburger.addEventListener("click", function () {
-    body.classList.toggle("inactive");
-    hamburger.classList.toggle("open");
-    globalNav.classList.toggle("open");
-    hamburgerClose.classList.toggle("open")
-    menu.classList.toggle("open");
+  hamburgers.forEach((hamburger) => {
+    hamburger.addEventListener("click", function () {
+      body.classList.toggle("inactive");
+      hamburger.classList.toggle("open");
+      globalNav.classList.toggle("open");
+      hamburgerClose.classList.toggle("open")
+      menuList.classList.toggle("open");
+      menu.forEach((menu) => {
+        menu.classList.toggle("open");
+      })
+  })
   });
 </script>

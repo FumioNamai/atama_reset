@@ -79,8 +79,12 @@ const nav = [
 <div class="globalNav" id="js-globalNav">
   <div class="container">
     <nav>
-    <HamburgerClose />
-    <a href="/" class="globalNav-logo"><img src="/logo.png" alt="ロゴ" /></a>
+      <HamburgerClose />
+      <div class="logo">
+        <a href="/" class="globalNav-logo"
+          ><img src="/logo.png" alt="ロゴ" width="90px" height="90px" /></a
+        >
+      </div>
     </nav>
     <div class="wrapper" id="js-globalNav-menu">
       <div class="menu">
@@ -130,8 +134,8 @@ const nav = [
       border: transparent;
       padding: 0;
       margin-top: 5px;
-      height: 60px;
-      width: 60px;
+      height: 90px;
+      width: 0px;
       position: absolute;
     }
 
@@ -143,12 +147,14 @@ const nav = [
     .globalNav-logo {
       display: block;
       margin: 16px 16px auto auto;
-      width: 60px;
+      /* width: 60px;
+      height: 60px; */
     }
 
     .globalNav img {
       display: block;
       width: 60px;
+      height: 60px;
     }
 
     .menu li:first-child {
@@ -225,5 +231,43 @@ const nav = [
     .menu li:nth-child(n + 10):nth-child(-n + 16) {
       text-align: right;
     }
+
+    @media screen and (768px <= width) {
+      nav {
+        padding: 24px;
+        align-items: center;
+        flex-direction: row-reverse;
+      }
+
+      .globalNav img {
+        width: 90px;
+        height: 90px;
+      }
+
+      .globalNav-logo {
+        margin: 0;
+      }
+    }
+
   </style>
 </div>
+
+<script>
+  //ページ内リンクをクリックしたときに、ナビゲーションを閉じる
+  const body = document.querySelector("#js-body");
+  const hamburgerClose = document.querySelector("#js-hamburgerClose");
+  const menulists = document.querySelectorAll(".menu a");
+  const hamburger = document.querySelector("#js-hamburger");
+  const globalNav = document.querySelector("#js-globalNav");
+  const menu = document.querySelector("#js-globalNav-menu");
+
+  menulists.forEach((menulist) => {
+    menulist.addEventListener("click", function () {
+      body.classList.toggle("inactive");
+      hamburgerClose.classList.toggle("open");
+      hamburger.classList.toggle("open");
+      globalNav.classList.toggle("open");
+      menu.classList.toggle("open");
+    });
+  });
+</script>
