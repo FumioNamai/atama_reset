@@ -3,7 +3,7 @@ import EffectsByCategory from "./EffectsByCategory.astro";
 ---
 
 <section id="effect">
-  <div class="effect">
+  <div class="effect fadein">
     <h3>ヘッドマッサージによって期待される効果</h3>
     <div class="effect-flexbox">
       <div class="effect-image"></div>
@@ -25,55 +25,57 @@ import EffectsByCategory from "./EffectsByCategory.astro";
     </div>
   </div>
 
-  <img class="triangle-image" src="/triangle.svg" alt="効果をまとめると" />
+  <div class="triangle-image">
+    <img src="/triangle.svg" alt="効果をまとめると" />
+  </div>
 
   <div class="treatement-effect">
-  <EffectsByCategory
-  top = 0%
-  left = 0%
-  src ="/physical-health.png"
-  alt ="カラダへの効果"
-  listItem1 = "頭痛の改善"
-  listItem2 = "肩こり・首こりの改善"
-  listItem3 = "眼精疲労の改善"
-  listItem4 = "ドライアイの改善"
-  listItem5 = "代謝アップ"
-  listItem6 = "冷え性の改善"
-  />
-  <EffectsByCategory
-  top = 23%
-  left = 54%
-  src="/mental-health.png"
-  alt="内面への効果"
-  listItem1 = "自律神経が整う"
-  listItem2 = "ホルモンバランスの改善"
-  listItem3 = "免疫力・自然治癒力の改善"
-  listItem4 = "不眠症の改善"
-  listItem5 = "疲労感の改善"
-  />
-  <EffectsByCategory
-  top = 60%
-  left = 13%
-  src="/beauty.png"
-  alt="美容への効果"
-  listItem1 = "老廃物デトックス"
-  listItem2 = "リフトアップ"
-  listItem3 = "アンチエイジング"
-  listItem4 = "育毛"
-  />
+    <div class="physical fadein">
+      <EffectsByCategory
+      src ="/physical-health.png"
+      alt ="カラダへの効果"
+      listItem1 = "頭痛の改善"
+      listItem2 = "肩こり・首こりの改善"
+      listItem3 = "眼精疲労の改善"
+      listItem4 = "ドライアイの改善"
+      listItem5 = "代謝アップ"
+      listItem6 = "冷え性の改善"
+      />
+    </div>
+    <div class="mental fadein">
+      <EffectsByCategory
+      src="/mental-health.png"
+      alt="内面への効果"
+      listItem1 = "自律神経が整う"
+      listItem2 = "ホルモンバランスの改善"
+      listItem3 = "免疫力・自然治癒力の改善"
+      listItem4 = "不眠症の改善"
+      listItem5 = "疲労感の改善"
+      />
+    </div>
+    <div class="beauty fadein">
+      <EffectsByCategory
+      src="/beauty.png"
+      alt="美容への効果"
+      listItem1 = "老廃物デトックス"
+      listItem2 = "リフトアップ"
+      listItem3 = "アンチエイジング"
+      listItem4 = "育毛"
+      />
+    </div>
 </div>
 
-<div class="selling-point">
+<div class="selling-point fadein">
   <strong><span class="marker">当店のヘッドマッサージは</span><br>
     <span class="marker">頭の疲れだけではなく</span><br>
     <span class="marker">全身の疲労回復を目的とします</span></strong>
 </div>
 
-<div class="refresh-image">
+<div class="refresh-image fadein">
   <img src="/refreshing.jpg" alt="スッキリ！" width="900px" height="551px">
 </div>
 
-<div class="add-info">
+<div class="add-info fadein">
   <p><span class="bold">
     当店でおこなうヘッドマッサージは</span><br>セロトニン脳波測定の実験により<br><span class="secondary">
     脳内のセロトニンが活性化</span><br>されることが証明されました</p>
@@ -143,9 +145,16 @@ import EffectsByCategory from "./EffectsByCategory.astro";
     content: "・";
     margin-inline-start: -16px;
   }
+
+  /* 下向き三角形 */
   .triangle-image {
-    display: block;
-    margin: 0 auto 40px auto;
+    text-align: center;
+  }
+
+  .triangle-image img {
+    opacity: 0;
+    transform: translateY(-150px);
+    transition: 1s;
   }
 
 
@@ -166,6 +175,28 @@ import EffectsByCategory from "./EffectsByCategory.astro";
       display: block;
       height: 400px;
     }
+    .mental, .physical, .beauty{
+      position: absolute;
+    }
+    .physical {
+      top: 0;
+      left: 0;
+    }
+    .mental {
+      top: 105px;
+      left: 370px;
+    }
+    .beauty {
+      top: 240px;
+      left: 80px;
+    }
+  }
+
+  /* フェイドインアニメーション */
+  .fadein {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 2s;
   }
 
   /* selling point */
@@ -178,6 +209,7 @@ import EffectsByCategory from "./EffectsByCategory.astro";
     color: var(--textBlack);
     line-height: 200%;
   }
+
   .marker {
     background-image: linear-gradient(90deg, var(--positive),var(--positive));
     background-repeat: no-repeat;
@@ -225,3 +257,66 @@ import EffectsByCategory from "./EffectsByCategory.astro";
     font-size: 2rem;
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    class ScrollObserver {
+      constructor(els, cb, options) {
+        //監視対象のelementsを取得
+        this.els = document.querySelectorAll(els);
+        //オプションのデフォルト設定を定義
+        const defaultOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0,
+        };
+        this.cb = cb;
+        //デフォルト設定に、個別設定のオプションをマージする
+        this.options = Object.assign(defaultOptions, options);
+        //
+        this._init();
+      }
+      _init() {
+        const callback = (entries) => {
+          entries.forEach((entry) => {
+            //監視対象の要素が領域内に入った場合の処理
+            if (entry.isIntersecting) {
+              this.cb(entry.target, true); //true=isIntersectingがtrue
+              //処理後に監視を切る処理
+              observer.unobserve(entry.target);
+            }
+          });
+        };
+        const observer = new IntersectionObserver(callback.bind(this), this.options);
+        //対象の要素elを監視
+        this.els.forEach(el => observer.observe(el));
+      }
+    }
+
+    const triangle = function(el, isIntersecting) {
+      if(isIntersecting) {
+        const triangleImage =document.querySelector(".triangle-image img");
+        el.style.opacity = 1
+        el.style.transform = "none"
+      }
+    }
+    const triangleTrigger = new ScrollObserver(".triangle-image img", triangle , {
+      rootMargin: "0px 0px",
+      threshold: 1,
+    })
+
+
+    const fadein = function(el, isIntersecting) {
+      if(isIntersecting) {
+        el.style.opacity = 1;
+        el.style.transform = "none"
+      }
+    }
+    const fadeinTrigger = new ScrollObserver(".fadein", fadein , {
+      rootMargin: "-200px 0px",
+      threshold: 0.5,
+    })
+
+
+  });
+</script>
