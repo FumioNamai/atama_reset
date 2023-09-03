@@ -20,6 +20,8 @@ import Hamburger from "@components/Hamburger.astro";
       </div>
     </div>
   </div>
+
+  <div class="spacer"></div>
   <div class="large">
     <p>名古屋市 昭和高校横 ヘッドマッサージサロン<span>　頭ほぐし専門店 reset</span></p>
     <div class="wrapper">
@@ -39,6 +41,7 @@ import Hamburger from "@components/Hamburger.astro";
       </div>
     </div>
   </div>
+
 </header>
 
 
@@ -108,16 +111,21 @@ import Hamburger from "@components/Hamburger.astro";
   }
 
   @media screen and (768px <= width) {
+    .spacer {
+      display: block;
+      background-color: var(--bgPrimary);
+      width: 100%;
+    height: 130px;
+    }
     .small {
       display: none;
     }
     .large {
       display: block;
+      position: absolute;
+      top: 0;
       position: fixed;
       background-color: #f4f4f47a;
-    }
-
-    .large {
     width: 100%;
     height: 130px;
     z-index: 300;
