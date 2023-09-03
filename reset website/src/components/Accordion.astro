@@ -1,20 +1,21 @@
 ---
+// const {
+//   summary,
+//   answer,
+//   } = Astro.props
+
 
 ---
+<!--
+<details class="accordion">
+  <summary>{ summary }<span></span></summary>
+  <p>{ answer }</p>
+</details> -->
 
 <details class="accordion">
-
-  <summary>男性でも施術を受けられますか？</summary>
-
+  <summary>Q 当日予約はできますか？<span></span></summary>
   <p>
-    <span>老若男女、お子様も施術可能です。</span><br>
-    お客様の症状に合わせた内容をご提案、ご提供させていただきます。
-  </p>
-</details>
-<details class="accordion">
-  <summary>当日予約はできますか？</summary>
-  <p>
-    <span>前日までの完全ご予約制となっております。</span><br>
+    <span class="bold">前日までの完全ご予約制となっております。</span><br>
     当日のご予約も空き状況によりご案内可能です。<br>
     ご来店前にお電話にてご確認ください。<br>
     また、週末のご予約は前もって集中することもございます。<br>
@@ -24,57 +25,69 @@
 
 <style>
   .accordion {
-    /* display: flex; */
     max-width: 640px;
     width: 100%;
+    height: auto;
+    /* height: 60px; */
     border-bottom: 1px solid var(--gray-50);
-    /* justify-content: space-between; */
   }
 
-  /* .title {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-  } */
+  .accordion[open] {
+  }
 
-  /* summary::-webkit-details-marker {
+  summary::-webkit-details-marker {
   display: none;
-} */
+}
 
   summary {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
     padding: 24px 0;
-    color: var(--textBlack);
     font-size: 1.8rem;
     font-weight: bold;
     cursor: pointer;
   }
-
-  summary::before {
-    content: "Q";
-    margin-right: 8px;
+  summary>span {
+    color: var(--textBlack);
+    cursor: pointer;
+  }
+  summary>p {
+    text-align: left;
   }
 
-  summary::after {
+  summary>span {
+    display: block;
+    transform: translateY(-25%) rotate(45deg);
+    width: 8px;
+    height: 8px;
     margin-left: 10px;
     border-bottom: 2px solid var(--textBlack);
-    /* border-right: 2px solid var(--textBlack); */
+    border-right: 2px solid var(--textBlack);
     content: "";
-    transition: transform 1s;
+    transition: transform .5s;
   }
 
-  .accordion[open] summary::after {
-    transform: translateY(30%)  rotate(45degdeg);
+  .accordion[open] summary>span {
+    transform: rotate(225deg);
   }
 
   .accordion p {
     font-size: 1.6rem;
-    transform: translateY(-10px);
     padding-left: 22px;
     padding-bottom: 24px;
     line-height: 1.5;
     height: 0;
-    transition: transform 1s, height: 10s;
+    opacity: 0;
+    transition: opacity 2s;
+  }
+
+  .accordion[open] p {
+    transform: none;
+    height: auto;
+    opacity: 1;
+    transition: opacity 2s;
   }
 
   .accordion p::before {
@@ -85,9 +98,5 @@
     margin-right: 4px;
   }
 
-  .accordion[open] p {
-    transform: none;
-    height: auto;
-  }
 
 </style>

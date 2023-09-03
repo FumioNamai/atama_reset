@@ -1,0 +1,85 @@
+---
+
+---
+
+<div class="accordion2">
+  <div class="question">
+    <div class="wrapper">
+      <p>Q</p>
+      <p>
+        男性でも施術を受けられますか？
+      </p>
+    </div>
+    <span></span>
+  </div>
+  <div class="answer">
+    <p>A</p>
+    <p>老若男女、お子様も施術可能です。<br>
+      お客様の症状に合わせた内容をご提案、ご提供させていただきます。</p>
+  </div>
+</div>
+
+<style>
+  .accordion2 {
+    cursor: pointer;
+    border-bottom: 1px solid black;
+
+  }
+
+  .question {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+  .question.open  span {
+    transform: rotate(225deg);
+  }
+
+  span {
+    color: var(--textBlack);
+    cursor: pointer;
+    display: block;
+    transform: translateY(-25%) rotate(45deg);
+    width: 7px;
+    height: 7px;
+    margin-left: 10px;
+    border-bottom: 2px solid var(--textBlack);
+    border-right: 2px solid var(--textBlack);
+    content: "";
+    transition: transform .5s;
+  }
+
+  .answer {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    height: 0;
+    transition: height 2s;
+  }
+
+  .answer.open {
+    display: flex;
+    overflow: visible;
+    height: 150px;
+}
+</style>
+
+<script>
+  const accordion2 = document.querySelector(".accordion2");
+  const question = document.querySelector(".question");
+  const answer = document.querySelector(".answer");
+
+
+  accordion2.addEventListener ("click", function() {
+    accordion2.classList.toggle("open")
+    question.classList.toggle("open")
+    answer.classList.toggle("open")
+  })
+</script>
