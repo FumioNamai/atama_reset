@@ -27,8 +27,6 @@
   .accordion {
     max-width: 640px;
     width: 100%;
-    height: auto;
-    /* height: 60px; */
     border-bottom: 1px solid var(--gray-50);
   }
 
@@ -55,6 +53,9 @@
   }
   summary>p {
     text-align: left;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity 2s line-height 2s;
   }
 
   summary>span {
@@ -84,10 +85,9 @@
   }
 
   .accordion[open] p {
-    transform: none;
-    height: auto;
+    line-height: 1.5;
     opacity: 1;
-    transition: opacity 2s;
+    transition: opacity 2s line-height 2s;
   }
 
   .accordion p::before {

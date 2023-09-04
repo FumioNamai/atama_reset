@@ -1,4 +1,10 @@
 ---
+const {
+  question,
+  answer1,
+  answer2,
+} = Astro.props
+
 
 ---
 
@@ -6,16 +12,16 @@
   <div class="question">
     <div class="wrapper">
       <p>Q</p>
-      <p>
-        男性でも施術を受けられますか？
+      <p>{ question }
+
       </p>
     </div>
     <span></span>
   </div>
   <div class="answer">
     <p>A</p>
-    <p>老若男女、お子様も施術可能です。<br>
-      お客様の症状に合わせた内容をご提案、ご提供させていただきます。</p>
+    <p>{ answer1 }<br>{ answer2 }
+    </p>
   </div>
 </div>
 
@@ -23,7 +29,7 @@
   .accordion2 {
     cursor: pointer;
     border-bottom: 1px solid black;
-
+    padding-inline: 8px;
   }
 
   .question {
@@ -31,12 +37,18 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
 
+  .question p {
+    padding-inline-end: 8px;
+    font-weight: bold;
+    line-height: 300%;
   }
 
   .wrapper {
     display: flex;
     flex-direction: row;
+
   }
   .question.open  span {
     transform: rotate(225deg);
@@ -60,26 +72,32 @@
     display: flex;
     flex-direction: row;
     overflow: hidden;
-    height: 0;
-    transition: height 2s;
+    line-height: 0%;
+    opacity: 0;
+    transition: all .5s;
   }
 
   .answer.open {
-    display: flex;
-    overflow: visible;
-    height: 150px;
+    opacity: 1;
+    line-height: 300%;
+    transition: all .5s;
+}
+.answer p {
+  padding-inline-end: 8px;
 }
 </style>
 
 <script>
-  const accordion2 = document.querySelector(".accordion2");
-  const question = document.querySelector(".question");
+  // const accordion2 = document.querySelectorAll(".accordion2");
+  const question = document.querySelectorAll(".question");
   const answer = document.querySelector(".answer");
 
 
-  accordion2.addEventListener ("click", function() {
-    accordion2.classList.toggle("open")
+  question.forEach(question => {
+    question.addEventListener("click", function() {
+    // accordion2.classList.toggle("open")
     question.classList.toggle("open")
     answer.classList.toggle("open")
   })
+  });
 </script>

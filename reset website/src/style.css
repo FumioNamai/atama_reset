@@ -8,7 +8,7 @@
   --secondary: #66AFC3;
   --positive: #FFB6C1;
   --highlight: #E37B00;
-  --attention: #FF5B74;
+  --attention: #ff7b8f;
   --alert: #FF0000;
   --link: #0066FF;
   --bgPrimary:#F4F4F4; /*全ページのバックグラウンド*/
@@ -87,6 +87,9 @@ h1,h2,h3,p,ul,li {
 }
 .secondary {
   color: var(--secondary);
+}
+.attention {
+  color: var(--attention);
 }
 
 
