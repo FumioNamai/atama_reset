@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/layout.astro";
-import Accordion from '@components/Accordion.astro';
+import Accordion from "@components/Accordion.astro";
 import Accordion2 from "@components/Accordion2.astro";
 
 // const accordion2 = [
@@ -16,7 +16,6 @@ import Accordion2 from "@components/Accordion2.astro";
 // ]
 ---
 
-
 <Layout title="よくあるご質問">
   <main>
     <h3>よくあるご質問</h3>
@@ -24,19 +23,106 @@ import Accordion2 from "@components/Accordion2.astro";
       <img src="/Q&A.jpg" alt="" />
     </div>
 
-  <Accordion2 >
-    <span slot = "question">男性でも施術を受けられますか？</span>
-    <div slot = "answer" class="answer"><p>老若男女、お子様も施術可能です。<br>お客様の症状に合わせた内容をご提案、ご提供させていただきます。</p></div>
-  </Accordion2>
-  <Accordion2 >
-    <span slot = "question">当日予約はできますか？</span>
-    <div slot="answer" class="answer"><p><span class="bold">前日までの完全ご予約制</span>となっております。<br>
-      当日のご予約も空き状況によりご案内可能です。
-      ご来店前にお電話にてご確認ください。<br>
-      また、週末のご予約は前以て集中することもございます。
-    </p><p>
-      お早めのご予約をお勧め致します。</p></div>
-  </Accordion2>
+    <Accordion2>
+      <span slot="question">男性でも施術を受けられますか？</span>
+      <div slot="answer" class="answer">
+        <p>
+          <span class="bold"> 老若男女、お子様も施術可能</span>です。<br
+          />お客様の症状に合わせた内容をご提案、ご提供させていただきます。
+        </p>
+      </div>
+    </Accordion2>
+    <Accordion2>
+      <span slot="question">当日予約はできますか？</span>
+      <div slot="answer" class="answer">
+        <p>
+          <span class="bold">前日までの完全ご予約制</span>となっております。<br
+          />
+          当日のご予約も空き状況によりご案内可能です。 ご来店前にお電話にてご確認ください。<br
+          />
+          また、週末のご予約は前以て集中することもございます。
+        <br><br>お早めのご予約をお勧め致します。</p>
+      </div>
+    </Accordion2>
+    <Accordion2>
+      <span slot="question">２人同時に施術できますか？</span>
+      <div slot="answer" class="answer">
+        <p>
+          大変申し訳ございませんが、施術者が一人ですので、<span class="bold"
+            >お一人様ずつ</span
+          >の施術となります。
+          <br><br>
+          施術日が別であっても、<span class="bold"
+            >お連れ様でのご予約でお得な割引</span
+          >がございますので是非お申し付けください。
+        </p>
+      </div>
+    </Accordion2>
+    <Accordion2>
+      <span slot="question">ワックスをつけたままでもいいですか？</span>
+      <div slot="answer" class="answer">
+        <p>
+          ワックスがついた状態でも問題ございませんが、施術後は少しヘアスタイルも乱れてしまいます。
+          <br><br>
+          <span class="bold">
+            ハードワックスやハードスプレーは施術に影響します</span
+          >ので、ご遠慮いただきますようご協力お願いいたします。
+        </p>
+      </div>
+    </Accordion2>
+    <Accordion2>
+      <span slot="question">キャッシュレス対応してますか？</span>
+      <div slot="answer" class="answer">
+        <p>
+          大変申し訳ございませんが、<span class="bold"
+            >現金のみのお取り扱い</span
+          >となります。<br />
+          ご不便お掛けしますが宜しくお願いいたします。
+        </p>
+      </div>
+    </Accordion2>
+    <Accordion2>
+      <span slot="question">駐車場はありますか？</span>
+      <div slot="answer" class="answer">
+        <p>
+          治療院前に<span class="bold">３台分</span>ございます。<br />
+          <span class="bold">１３番、１５番、１６番</span>をご利用ください。
+        </p>
+      </div>
+    </Accordion2>
+    <Accordion2>
+      <span slot="question">ギフト券はありますか？</span>
+      <div slot="answer" class="answer">
+        <p>
+          各種ご用意しております。<br />
+          料金の明記はございませんので、大切な方への贈り物にいかがですか。<br />
+          <span class="bold">お支払いは現金のみ</span>となります。
+        </p>
+      </div>
+    </Accordion2>
+    <Accordion2>
+      <span slot="question">未成年も施術を受けられますか？</span>
+      <div slot="answer" class="answer">
+        <p>
+          未成年の方も施術を受けていただけます。<br />
+          是非お気軽にご相談ください。
+          <br><br>
+          施術の内容や注意事項をご説明しますので、保護者の方の送迎をお願いいたします。
+          <br><br>
+          施術を受けられるご本人・保護者の方・セラピストでカウンセリングを実施し、ご理解いただいた上で施術をおこないます。
+          <br><br>保護者の方に同意書のサインを頂戴します。
+          <br><br>また、未成年の方のお支払いは保護者の方にお願いします。
+          <br><br>学生割引がございますので、学生証をお忘れなく♪</p>
+      </div>
+    </Accordion2>
+    <Accordion2>
+      <span slot="question">「ヘッドスパと何が違うの？」</span>
+      <div slot="answer" class="answer">
+        <p>
+          詳しくは<a href="">こちら</a>
+        </p>
+      </div>
+    </Accordion2>
   </main>
 </Layout>
 
@@ -47,23 +133,31 @@ import Accordion2 from "@components/Accordion2.astro";
     justify-content: center;
     align-items: center;
     margin: 40px auto 100px auto;
-		padding-inline: 2rem;
+    padding-inline: 2rem;
     height: auto;
-		max-width: 640px;
+    max-width: 640px;
   }
 
-  .image img{
-		max-width: 100%;
+  h3 {
+    padding-bottom: 40px;
+  }
+
+  .image img {
+    max-width: 100%;
     width: auto;
   }
 
   .answer p {
     font-size: 1.6rem;
+    padding-inline-end: 8px;
+    padding-bottom: 16px;
   }
-/*
+
   .answer p:last-child {
-    padding-bottom: 0;
-  } */
+    padding-bottom: 0px;
+  }
 
-
+  .answer.is-open p {
+    padding-bottom: 0px;
+  }
 </style>
