@@ -55,6 +55,8 @@ Sass　パッケージをインストール　➡　保留
 - [ ] remとpxの使い分け方針検討と修正
 
 - [x] 768px-900pxでproblemsセクションの幅が合わない
+
+- [x] BottomNavをスクール時に表示させる（HeaderNavがスクールアウトしたとき）
 ___
 ##作業工程記録
 ###Figma 23.7.7~8.8
@@ -94,7 +96,8 @@ ___
 - accsessコンポーネント
   スライダー実装
 - EfficasyコンポーネントにintersectionObserverを実装
-
+- BottomNavをHeaderNavがスクロールアウトしたときに表示させる
+- Accordionコンポーネントを作り直し 9.5
 
 
 fadeinクラスのintersectionObseverアニメーションはEfficasy.astro内に定義
