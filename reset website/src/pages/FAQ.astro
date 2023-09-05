@@ -3,6 +3,17 @@ import Layout from "@layouts/layout.astro";
 import Accordion from '@components/Accordion.astro';
 import Accordion2 from "@components/Accordion2.astro";
 
+// const accordion2 = [
+//   {
+//     question:"男性でも施術を受けられますか？",
+//     answer:"<p>老若男女、お子様も施術可能です。お客様の症状に合わせた内容をご提案、ご提供させていただきます。</p>"
+
+//   },
+//   {
+//     question:"男性でも施術を受けられますか？",
+//     answer:"老若男女、お子様も施術可能です。<br>お客様の症状に合わせた内容をご提案、ご提供させていただきます。"
+//   }
+// ]
 ---
 
 
@@ -12,33 +23,20 @@ import Accordion2 from "@components/Accordion2.astro";
     <div class="image">
       <img src="/Q&A.jpg" alt="" />
     </div>
-    <!-- <Accordion    /> -->
-    <Accordion2
-    question = "男性でも施術を受けられますか？"
-    answer1 = "老若男女、お子様も施術可能です。"
-    answer2 = "お客様の症状に合わせた内容をご提案、ご提供させていただきます。"
-    />
-    <Accordion2
-    question = "男性でも施術を受けられますか？"
-    answer1 = "老若男女、お子様も施術可能です。"
-    answer2 = "お客様の症状に合わせた内容をご提案、ご提供させていただきます。"
-    />
-    <Accordion2
-    question = "男性でも施術を受けられますか？"
-    answer1 = "老若男女、お子様も施術可能です。"
-    answer2 = "お客様の症状に合わせた内容をご提案、ご提供させていただきます。"
-    />
-    <Accordion2
-    question = "男性でも施術を受けられますか？"
-    answer1 = "老若男女、お子様も施術可能です。"
-    answer2 = "お客様の症状に合わせた内容をご提案、ご提供させていただきます。"
-    />
-    <Accordion2
-    question = "男性でも施術を受けられますか？"
-    answer1 = "老若男女、お子様も施術可能です。"
-    answer2 = "お客様の症状に合わせた内容をご提案、ご提供させていただきます。"
-    />
 
+  <Accordion2 >
+    <span slot = "question">男性でも施術を受けられますか？</span>
+    <div slot = "answer" class="answer"><p>老若男女、お子様も施術可能です。<br>お客様の症状に合わせた内容をご提案、ご提供させていただきます。</p></div>
+  </Accordion2>
+  <Accordion2 >
+    <span slot = "question">当日予約はできますか？</span>
+    <div slot="answer" class="answer"><p><span class="bold">前日までの完全ご予約制</span>となっております。<br>
+      当日のご予約も空き状況によりご案内可能です。
+      ご来店前にお電話にてご確認ください。<br>
+      また、週末のご予約は前以て集中することもございます。
+    </p><p>
+      お早めのご予約をお勧め致します。</p></div>
+  </Accordion2>
   </main>
 </Layout>
 
@@ -58,6 +56,14 @@ import Accordion2 from "@components/Accordion2.astro";
 		max-width: 100%;
     width: auto;
   }
+
+  .answer p {
+    font-size: 1.6rem;
+  }
+/*
+  .answer p:last-child {
+    padding-bottom: 0;
+  } */
 
 
 </style>

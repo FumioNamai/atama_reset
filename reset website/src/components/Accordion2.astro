@@ -1,10 +1,4 @@
 ---
-const {
-  question,
-  answer1,
-  answer2,
-} = Astro.props
-
 
 ---
 
@@ -12,16 +6,16 @@ const {
   <div class="question">
     <div class="wrapper">
       <p>Q</p>
-      <p>{ question }
-
+      <p>
+        <slot name="question" />
       </p>
     </div>
     <span></span>
   </div>
   <div class="answer">
     <p>A</p>
-    <p>{ answer1 }<br>{ answer2 }
-    </p>
+      <slot name="answer" class="ans" />
+
   </div>
 </div>
 
@@ -30,6 +24,7 @@ const {
     cursor: pointer;
     border-bottom: 1px solid black;
     padding-inline: 8px;
+    width: 100%;
   }
 
   .question {
@@ -50,7 +45,7 @@ const {
     flex-direction: row;
 
   }
-  .question.open  span {
+  .question.is-open  span {
     transform: rotate(225deg);
   }
 
@@ -77,27 +72,30 @@ const {
     transition: all .5s;
   }
 
-  .answer.open {
+  .answer.is-open {
     opacity: 1;
-    line-height: 300%;
+    line-height: 250%;
     transition: all .5s;
 }
 .answer p {
   padding-inline-end: 8px;
+  font-size: 1.6rem;
 }
+
 </style>
 
 <script>
-  // const accordion2 = document.querySelectorAll(".accordion2");
-  const question = document.querySelectorAll(".question");
-  const answer = document.querySelector(".answer");
+const question = document.querySelectorAll(".question");
+
+function toggle () {
+  const answer = this.nextElementSibling;
+  this.classList.toggle("is-open")
+  answer.classList.toggle("is-open")
+}
+
+for(let i = 0; i < question.length; i++){
+  question[i].addEventListener("click", toggle)
+}
 
 
-  question.forEach(question => {
-    question.addEventListener("click", function() {
-    // accordion2.classList.toggle("open")
-    question.classList.toggle("open")
-    answer.classList.toggle("open")
-  })
-  });
 </script>
