@@ -1,19 +1,7 @@
 ---
 import Layout from "@layouts/layout.astro";
 import Accordion from "@components/Accordion.astro";
-import Accordion2 from "@components/Accordion2.astro";
 
-// const accordion2 = [
-//   {
-//     question:"男性でも施術を受けられますか？",
-//     answer:"<p>老若男女、お子様も施術可能です。お客様の症状に合わせた内容をご提案、ご提供させていただきます。</p>"
-
-//   },
-//   {
-//     question:"男性でも施術を受けられますか？",
-//     answer:"老若男女、お子様も施術可能です。<br>お客様の症状に合わせた内容をご提案、ご提供させていただきます。"
-//   }
-// ]
 ---
 
 <Layout title="よくあるご質問">
@@ -23,7 +11,7 @@ import Accordion2 from "@components/Accordion2.astro";
       <img src="/Q&A.jpg" alt="" />
     </div>
 
-    <Accordion2>
+    <Accordion>
       <span slot="question">男性でも施術を受けられますか？</span>
       <div slot="answer" class="answer">
         <p>
@@ -31,8 +19,8 @@ import Accordion2 from "@components/Accordion2.astro";
           />お客様の症状に合わせた内容をご提案、ご提供させていただきます。
         </p>
       </div>
-    </Accordion2>
-    <Accordion2>
+    </Accordion>
+    <Accordion>
       <span slot="question">当日予約はできますか？</span>
       <div slot="answer" class="answer">
         <p>
@@ -43,8 +31,8 @@ import Accordion2 from "@components/Accordion2.astro";
           また、週末のご予約は前以て集中することもございます。
         <br><br>お早めのご予約をお勧め致します。</p>
       </div>
-    </Accordion2>
-    <Accordion2>
+    </Accordion>
+    <Accordion>
       <span slot="question">２人同時に施術できますか？</span>
       <div slot="answer" class="answer">
         <p>
@@ -57,8 +45,8 @@ import Accordion2 from "@components/Accordion2.astro";
           >がございますので是非お申し付けください。
         </p>
       </div>
-    </Accordion2>
-    <Accordion2>
+    </Accordion>
+    <Accordion>
       <span slot="question">ワックスをつけたままでもいいですか？</span>
       <div slot="answer" class="answer">
         <p>
@@ -69,8 +57,8 @@ import Accordion2 from "@components/Accordion2.astro";
           >ので、ご遠慮いただきますようご協力お願いいたします。
         </p>
       </div>
-    </Accordion2>
-    <Accordion2>
+    </Accordion>
+    <Accordion>
       <span slot="question">キャッシュレス対応してますか？</span>
       <div slot="answer" class="answer">
         <p>
@@ -80,17 +68,17 @@ import Accordion2 from "@components/Accordion2.astro";
           ご不便お掛けしますが宜しくお願いいたします。
         </p>
       </div>
-    </Accordion2>
-    <Accordion2>
+    </Accordion>
+    <Accordion>
       <span slot="question">駐車場はありますか？</span>
       <div slot="answer" class="answer">
         <p>
           治療院前に<span class="bold highlight">３台分</span>ございます。<br />
-          <span class="bold">１３番、１５番、１６番</span>をご利用ください。
+          <span class="bold highlight">１３番、１５番、１６番</span>をご利用ください。
         </p>
       </div>
-    </Accordion2>
-    <Accordion2>
+    </Accordion>
+    <Accordion>
       <span slot="question">ギフト券はありますか？</span>
       <div slot="answer" class="answer">
         <p>
@@ -99,8 +87,8 @@ import Accordion2 from "@components/Accordion2.astro";
           <span class="bold highlight">お支払いは現金のみ</span>となります。
         </p>
       </div>
-    </Accordion2>
-    <Accordion2>
+    </Accordion>
+    <Accordion>
       <span slot="question">未成年も施術を受けられますか？</span>
       <div slot="answer" class="answer">
         <p>
@@ -114,15 +102,15 @@ import Accordion2 from "@components/Accordion2.astro";
           <br><br>また、未成年の方のお支払いは保護者の方にお願いします。
           <br><br>学生割引がございますので、学生証をお忘れなく♪</p>
       </div>
-    </Accordion2>
-    <Accordion2>
+    </Accordion>
+    <Accordion>
       <span slot="question">「ヘッドスパと何が違うの？」</span>
       <div slot="answer" class="answer">
         <p>
           詳しくは<a href="">こちら</a>
         </p>
       </div>
-    </Accordion2>
+    </Accordion>
   </main>
 </Layout>
 
@@ -149,15 +137,6 @@ import Accordion2 from "@components/Accordion2.astro";
 
   .answer p {
     font-size: 1.6rem;
-    padding-inline-end: 8px;
-    padding-bottom: 16px;
   }
 
-  .answer p:last-child {
-    padding-bottom: 0px;
-  }
-
-  .answer.is-open p {
-    padding-bottom: 0px;
-  }
 </style>

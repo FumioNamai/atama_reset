@@ -1,102 +1,102 @@
 ---
-// const {
-//   summary,
-//   answer,
-//   } = Astro.props
-
-
 ---
-<!--
-<details class="accordion">
-  <summary>{ summary }<span></span></summary>
-  <p>{ answer }</p>
-</details> -->
 
-<details class="accordion">
-  <summary>Q 当日予約はできますか？<span></span></summary>
-  <p>
-    <span class="bold">前日までの完全ご予約制となっております。</span><br>
-    当日のご予約も空き状況によりご案内可能です。<br>
-    ご来店前にお電話にてご確認ください。<br>
-    また、週末のご予約は前もって集中することもございます。<br>
-    お早めのご予約をお勧めいたします。
-  </p>
-</details>
+<div class="accordion">
+  <div class="question">
+    <div class="wrapper">
+      <h3>Q</h3>
+      <p>
+        <slot name="question" />
+      </p>
+    </div>
+    <span></span>
+  </div>
+  <div class="answer">
+    <h3>A</h3>
+    <slot name="answer" />
+  </div>
+</div>
 
 <style>
   .accordion {
-    max-width: 640px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--gray-25);
+    padding-inline: 8px;
     width: 100%;
-    border-bottom: 1px solid var(--gray-50);
   }
 
-  .accordion[open] {
-  }
-
-  summary::-webkit-details-marker {
-  display: none;
-}
-
-  summary {
+  .question {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
-    position: relative;
-    padding: 24px 0;
-    font-size: 1.8rem;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  summary>span {
-    color: var(--textBlack);
-    cursor: pointer;
-  }
-  summary>p {
-    text-align: left;
-    line-height: 0;
-    opacity: 0;
-    transition: opacity 2s line-height 2s;
+    justify-content: space-between;
   }
 
-  summary>span {
-    display: block;
-    transform: translateY(-25%) rotate(45deg);
-    width: 8px;
-    height: 8px;
-    margin-left: 10px;
-    border-bottom: 2px solid var(--textBlack);
-    border-right: 2px solid var(--textBlack);
-    content: "";
-    transition: transform .5s;
+  .question p {
+    padding: 16px 8px 16px 0px;
+    line-height: 150%;
   }
 
-  .accordion[open] summary>span {
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: first baseline;
+  }
+
+  h3 {
+    font-weight: normal;
+    padding-right: 8px;
+  }
+  .question.is-open span {
     transform: rotate(225deg);
   }
 
-  .accordion p {
-    font-size: 1.6rem;
-    padding-left: 22px;
-    padding-bottom: 24px;
-    line-height: 1.5;
-    height: 0;
+  span {
+    color: var(--textBlack);
+    cursor: pointer;
+    display: block;
+    transform: translateY(-25%) rotate(45deg);
+    width: 7px;
+    height: 7px;
+    margin-left: 10px;
+    border-bottom: 1px solid var(--textBlack);
+    border-right: 1px solid var(--textBlack);
+    content: "";
+    transition: transform 0.5s;
+  }
+
+  .answer {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    line-height: 0%;
     opacity: 0;
-    transition: opacity 2s;
+    padding: 0;
+    transition: all 0.5s;
   }
 
-  .accordion[open] p {
-    line-height: 1.5;
+  .answer.is-open {
     opacity: 1;
-    transition: opacity 2s line-height 2s;
+    line-height: 250%;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    transition: all 0.5s;
   }
-
-  .accordion p::before {
-    content: "A";
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-left: -21px;
-    margin-right: 4px;
+  .answer p {
+    padding-bottom: 16px;
   }
-
-
 </style>
+
+<script>
+  const question = document.querySelectorAll(".question");
+
+  function toggle() {
+    const answer = this.nextElementSibling;
+    this.classList.toggle("is-open");
+    answer.classList.toggle("is-open");
+  }
+
+  for (let i = 0; i < question.length; i++) {
+    question[i].addEventListener("click", toggle);
+  }
+</script>

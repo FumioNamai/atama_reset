@@ -1,0 +1,96 @@
+---
+import Layout from "@layouts/layout.astro";
+---
+
+<Layout>
+  <h2>施術メニュー & 料金</h2>
+
+  <h3>頭ほぐし<span>（ドライヘッドマッサージ）</span></h3>
+  <img src="" alt="">
+  <p class="desc">当店の頭ほぐしは整体法を取り入れた施術です。自律神経を整える神経伝達物質の活性化が実現されることが実証されました。</p>
+  <div class="course_wrapper">
+  <div class="course">
+    <p>頭スッキリ！『脳疲労』解消</p>
+    <div class="time-price">
+      <p>60分<span>コース</span></p>
+      <p>7,000<span>円(税込)</span></p>
+    </div>
+  </div>
+  <div class="course">
+    <p>お客様の症状に合わせた施術を</p>
+    <div class="time-price">
+      <p>75分<span>コース</span></p>
+      <p>8,500<span>円(税込)</span></p>
+    </div>
+  </div>
+  <div class="course">
+    <p>お客様の症状に合わせた施術を</p>
+    <div class="time-price">
+      <p>75分<span>コース</span></p>
+      <p>8,500<span>円(税込)</span></p>
+    </div>
+  </div>
+</div>
+
+</Layout>
+
+<style>
+  h2 {
+    text-align: center;
+    padding-block: 64px;
+  }
+
+  h3 {
+    margin-left: 16px;
+    border-left: 5px solid var(--positive);
+    padding-left: 16px;
+  }
+
+  h3 > span {
+      font-size: 1.4rem;
+    }
+
+  .desc {
+    font-size: 1.6rem;
+    padding: 16px;
+  }
+
+  .course_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .course {
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 280px;
+    padding-block: 8px;
+    padding-inline: 24px;
+    background-color:rgba(102, 175, 195, 0.30);
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .course p {
+    text-align: center;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  .course > p{
+    font-size: 1.6rem;
+  }
+
+
+  .time-price {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .time-price p {
+    font-size: 2rem;
+  }
+
+  .time-price span {
+    font-size: 1.2rem;
+  }
+
+</style>
