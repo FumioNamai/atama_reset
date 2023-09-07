@@ -4,45 +4,62 @@ import Layout from "@layouts/layout.astro";
 
 <Layout>
   <section class="menu-price">
-  <h2>施術メニュー & 料金</h2>
+    <h2>施術メニュー & 料金</h2>
 
-  <h3>頭ほぐし<span>（ドライヘッドマッサージ）</span></h3>
-  <img src="" alt="">
-  <p class="desc">当店の頭ほぐしは整体法を取り入れた施術です。自律神経を整える神経伝達物質の活性化が実現されることが実証されました。</p>
-  <div class="course_wrapper">
-  <div class="course">
-    <p>頭スッキリ！『脳疲労』解消</p>
-    <div class="time-price">
-      <p>60分<span>コース</span></p>
-      <p>7,000<span>円(税込)</span></p>
+    <h3>頭ほぐし<span>（ドライヘッドマッサージ）</span></h3>
+    <img src="" alt="" />
+    <p class="desc">
+      当店の頭ほぐしは整体法を取り入れた施術です。自律神経を整える神経伝達物質の活性化が実現されることが実証されました。
+    </p>
+    <div class="course_wrapper">
+      <div class="course">
+        <p>頭スッキリ！『脳疲労』解消</p>
+        <div class="time-price">
+          <p>60分<span>コース</span></p>
+          <p>7,000<span>円(税込)</span></p>
+        </div>
+      </div>
+      <div class="course">
+        <p>お客様の症状に合わせた施術を</p>
+        <div class="time-price">
+          <p>75分<span>コース</span></p>
+          <p>8,500<span>円(税込)</span></p>
+        </div>
+      </div>
+      <div class="course">
+        <p>深い眠りと共に究極のリラックスを</p>
+        <div class="time-price">
+          <p>90分<span>コース</span></p>
+          <p>10,000<span>円(税込)</span></p>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="course">
-    <p>お客様の症状に合わせた施術を</p>
-    <div class="time-price">
-      <p>75分<span>コース</span></p>
-      <p>8,500<span>円(税込)</span></p>
+
+    <div class="wrapper">
+      <div class="first_time">
+        <p>初回割引</p>
+        <p class="notes">初めてのお客様にご利用いただけます</p>
+      </div>
+      <div class="course_discount">
+        <p class="time">90分<span>コース</span></p>
+        <p class="strikethrough"><span><s>10,000円</s></span></p>
+        <p class="d-price">7,000<span>円(税込)</span></p>
+      </div>
+
+      <div class="course_discount">
+        <p class="time">105分<span>コース</span></p>
+        <p class="strikethrough"><span><s>11,500円</s></span></p>
+        <p class="d-price">8,000<span>円(税込)</span></p>
+      </div>
+
+      <div class="course_discount">
+        <p class="time">120分<span>コース</span></p>
+        <p class="strikethrough"><span><s>12,000円</s></span></p>
+        <p class="d-price">9,000<span>円(税込)</span></p>
+      </div>
+
     </div>
-  </div>
-  <div class="course">
-    <p>お客様の症状に合わせた施術を</p>
-    <div class="time-price">
-      <p>75分<span>コース</span></p>
-      <p>8,500<span>円(税込)</span></p>
-    </div>
-  </div>
-</div>
-  <p>初回割引</p>
-  <p>初めてのお客様にご利用いただけます</p>
-<div>
-
-  <div class="discount">
-
-  </div>
-
-</div>
-</section>
-
+  </section>
 </Layout>
 
 <style>
@@ -62,8 +79,8 @@ import Layout from "@layouts/layout.astro";
   }
 
   h3 > span {
-      font-size: 1.4rem;
-    }
+    font-size: 1.4rem;
+  }
 
   .desc {
     font-size: 1.6rem;
@@ -81,23 +98,23 @@ import Layout from "@layouts/layout.astro";
     margin: 0 auto;
     width: 280px;
     padding-block: 8px;
-    padding-inline: 24px;
-    background-color:rgba(102, 175, 195, 0.30);
-    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    padding-inline: 10px;
+    background-color: rgba(102, 175, 195, 0.3);
+    /* box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.25); */
   }
 
   .course p {
     text-align: center;
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: "Noto Sans JP", sans-serif;
   }
-  .course > p{
+  .course > p {
     font-size: 1.6rem;
   }
 
-
   .time-price {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 46px;
   }
 
   .time-price p {
@@ -108,4 +125,66 @@ import Layout from "@layouts/layout.astro";
     font-size: 1.2rem;
   }
 
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 300px;
+    margin: 0 auto;
+  }
+  .wrapper p {
+    font-family: "Noto Sans JP", sans-serif;
+  }
+
+  .first_time {
+    display: flex;
+    flex-direction: row;
+    align-items: last baseline;
+    gap: 12px;
+  }
+
+  .first_time > p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--attention);
+  }
+
+  .first_time .notes {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: var(--textBlack);
+  }
+
+  .course_discount {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .course_discount p {
+    font-size: 2rem;
+  }
+  .time {
+    display: inline-block;
+    text-align: right;
+    width: 90px;
+  }
+
+  .course_discount span {
+    font-size: 1.2rem;
+  }
+
+  .strikethrough {
+    padding-left: 16px;
+    margin-right: -16px;
+  }
+  .d-price {
+    color: var(--attention);
+    font-weight: bold;
+  }
+
+  .d-price span {
+    color: var(--textBlack);
+    font-weight: normal;
+  }
 </style>
