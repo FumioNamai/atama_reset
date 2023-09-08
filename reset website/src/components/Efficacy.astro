@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import refreshing from "../assets/refreshing.jpg"
 import EffectsByCategory from "./EffectsByCategory.astro";
 ---
 
@@ -6,7 +8,8 @@ import EffectsByCategory from "./EffectsByCategory.astro";
   <div class="effect fadein">
     <h3>ヘッドマッサージによって期待される効果</h3>
     <div class="effect-flexbox">
-      <div class="effect-image"></div>
+      <div class="effect-image">
+      </div>
       <ul>
         <li>凝り固まった頭をほぐし、<span class="attention">血液やリンパの流れを改善</span></li>
         <li><span class="attention">脳への血流を活性化</span></li>
@@ -71,7 +74,8 @@ import EffectsByCategory from "./EffectsByCategory.astro";
 </div>
 
 <div class="refresh-image fadein">
-  <img src="/refreshing.jpg" alt="スッキリ！" width="900px" height="551px">
+  <Image src={refreshing} alt="スッキリ！">
+    <!-- width="900px" height="551px" -->
 </div>
 
 <div class="add-info fadein">
