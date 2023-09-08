@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import QA from "../assets/Q&A.jpg"
 import Layout from "@layouts/layout.astro";
 import Accordion from "@components/Accordion.astro";
 
@@ -8,7 +10,7 @@ import Accordion from "@components/Accordion.astro";
   <main>
     <h3>よくあるご質問</h3>
     <div class="image">
-      <img src="/Q&A.jpg" alt="" />
+      <Image src= { QA } alt="Q&A" />
     </div>
 
     <Accordion>
@@ -132,7 +134,8 @@ import Accordion from "@components/Accordion.astro";
 
   .image img {
     max-width: 100%;
-    width: auto;
+    height: auto;
+    object-fit: contain;
   }
 
   .answer p {

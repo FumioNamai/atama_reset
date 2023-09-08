@@ -1,4 +1,10 @@
 ---
+import { Image } from "astro:assets";
+import clinic_image_1 from "../assets/clinic_image_1.jpg"
+import clinic_image_2 from "../assets/clinic_image_2.jpg"
+import clinic_image_3 from "../assets/clinic_image_3.jpg"
+import clinic_image_4 from "../assets/clinic_image_4.jpg"
+
 ---
 
 <section class="access" id="access">
@@ -46,26 +52,16 @@
       </div>
       <div class="slider-group fadein">
         <div class="clinic-image">
-          <img src="/clinic_image_1.jpg" alt="外観" width="400" height="auto" />
+          <Image src= { clinic_image_1 } alt="外観"/>
         </div>
         <div class="clinic-image">
-          <img
-            src="/clinic_image_2.jpg"
-            alt="内観1"
-            width="400"
-            height="auto"
-          />
+          <Image src= { clinic_image_2 } alt="内観1"/>
         </div>
         <div class="clinic-image">
-          <img
-            src="/clinic_image_3.jpg"
-            alt="内観2"
-            width="400"
-            height="auto"
-          />
+          <Image src= { clinic_image_3 } alt="内観2"/>
         </div>
         <div class="clinic-image">
-          <img src="/clinic_image_4.jpg" alt="個室" width="400" height="auto" />
+          <Image src= { clinic_image_4 }  alt="個室"/>
         </div>
       </div>
     </div>
@@ -193,6 +189,7 @@
 
   .clinic-image img {
     width: 100%;
+    height: auto;
   }
 
   @media screen and (900px <= width) {

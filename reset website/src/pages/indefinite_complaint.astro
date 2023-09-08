@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import stiff_neck from "../assets/stiff_neck.jpg"
 import Layout from "@layouts/layout.astro";
 ---
 
@@ -6,7 +8,7 @@ import Layout from "@layouts/layout.astro";
   <main>
     <h3>～不定愁訴<span>（ふていしゅうそ）</span>とは～</h3>
     <div class="image">
-      <img src="/stiff_neck.jpg" alt="" />
+      <Image src= { stiff_neck } alt="肩こり" />
     </div>
     <article>
       <p>
@@ -45,7 +47,8 @@ import Layout from "@layouts/layout.astro";
 
   .image img{
 		max-width: 100%;
-    width: auto;
+    height: auto;
+    object-fit: contain;
   }
 
   article {
