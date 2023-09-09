@@ -1,0 +1,168 @@
+---
+import { Image } from "astro:assets";
+import brain from "../assets/brain.webp";
+import Ellipse from "@components/Ellipse.astro"
+---
+
+<section class="sleep">
+  <h2 class="title">施術中はどうぞお休みください</h2>
+  <p>
+    <span class="small">その理由は</span>『脳脊髄液と睡眠』<span class="small"
+      >の関係性</span
+    >
+  </p>
+  <Image src={brain} alt="" />
+  <div class="article">
+    <h3>脳脊髄液とは...</h3>
+    <p>脳から滲み出る、脳と脊髄を覆う液体です。</p>
+    <p>～役割～</p>
+    <ul>
+      <li>脳と脊髄を外部の衝撃からまもっています</li>
+      <li>
+        脳と脊髄に栄養を与え、老廃物を運び、細胞の修復と新陳代謝をおこないます
+      </li>
+      <li>ホルモンを運ぶ役割をし、身体の機能のバランスを保ちます</li>
+    </ul>
+    <p>
+      このような役割を果たす「脳脊髄液」の流れが滞ると、<br
+      />栄養が不足するだけでなく老廃物も滞り蓄積され、身体にさまざまな不調を誘発します
+    </p>
+    <p>
+      脳は睡眠中に約60%に収縮する（元の40%の大きさになる）と言われています。
+    </p>
+    <p>
+      脳が収縮し、頭蓋骨との間にできた隙間で脳脊髄液の流れが4~10倍になるとされています。
+    </p>
+    <p>流れが良くなることにより、自然治癒力が高まります。</p>
+    <p>自らが持つ自然治癒力が高まると、睡眠中の疲労回復力も高まります。</p>
+    <p>よって、<span class="bold">施術中にお休みいただくことで、</span></p>
+    <p>
+      <span class="bold"
+        >脳脊髄液の流れを改善+マッサージによる血行促進により、<br
+        />自然治癒力や免疫力の向上、身体の不調の改善へと繋がるのです。</span
+      >
+    </p>
+    <p>
+      また、頭ほぐしにより自律神経を整え、質の良い睡眠を取り戻すことで普段の睡眠から健康な体を保つことに繋がります。
+    </p>
+  </div>
+    <Ellipse top= "480px" left= "0px" size= "320px"/>
+    <Ellipse top= "680px" left= "250px" size= "180px"/>
+    <Ellipse top= "660px" left= "400px" size= "125px"/>
+    <Ellipse top= "920px" left= "690px" size= "180px"/>
+    <Ellipse top= "1030px" left= "160px" size= "100px"/>
+    <Ellipse top= "1080px" left= "300px" size= "200px"/>
+    <Ellipse top= "1330px" left= "20px" size= "150px"/>
+    <Ellipse top= "1380px" left= "250px" size= "80px"/>
+    <Ellipse top= "1410px" left= "250px" size= "240px"/>
+    <Ellipse top= "2130px" left= "300px" size= "120px"/>
+</section>
+
+<style>
+  section {
+    text-align: center;
+    margin: 0 auto;
+    padding: 80px 16px 80px 16px;
+    position: relative;
+    letter-spacing: 2.7px;
+    overflow: hidden;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 16px;
+  }
+
+  .title::before,
+  .title::after {
+    display: inline-block;
+    content: "";
+    width: 24px;
+    height: 1px;
+    background-color: var(--textBlack);
+  }
+
+  .title::before {
+    margin-right: 6px;
+  }
+
+  .title::after {
+    margin-left: 6px;
+  }
+
+  .sleep > p {
+    padding-bottom: 16px;
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+
+  .small {
+    font-size: 1.4rem;
+    font-weight: normal;
+  }
+
+  img {
+    width: 245px;
+    height: auto;
+    opacity: 0.7;
+  }
+  .article {
+    text-align: left;
+    /* width: auto; */
+    /* max-width: 900px; */
+    /* margin: 0 auto; */
+  }
+
+  @media screen and (768px <= width) {
+    section {
+      box-sizing: border-box;
+      padding: 0 40px 80px 40px ;
+      max-width: 900px;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+    }
+
+    .sleep > p {
+      font-size: 2rem;
+    }
+
+    .small {
+      font-size: 1.6rem;
+    }
+  }
+
+  h3 {
+    padding-block: 16px;
+  }
+
+  ul {
+    padding-left: 16px;
+    padding-bottom: 24px;
+  }
+
+  li {
+    line-height: 175%;
+    font-size: 1.8rem;
+    padding-bottom: 16px;
+    list-style: none;
+  }
+
+  li::before {
+    content: "・";
+    margin-left: -16px;
+  }
+
+  p {
+    line-height: 175%;
+    padding-bottom: 16px;
+  }
+
+</style>

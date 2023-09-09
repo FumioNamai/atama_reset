@@ -3,6 +3,7 @@ import Layout from "@layouts/layout.astro";
 import PriceTag from "@components/PriceTag.astro";
 import DiscountPriceTag from "@components/DiscountPriceTag.astro";
 import DiscountOuter from "@components/DiscountOuter.astro";
+import Sleep from "@components/Sleep.astro"
 
 import { Image } from "astro:assets";
 import menuHead from "../assets/menu-head.webp";
@@ -180,14 +181,21 @@ import menuAll from "../assets/menu-all.webp";
         </div>
       </div>
     </div>
-
   </section>
+
+  <Sleep />
 </Layout>
 
 <style>
   .menu-price {
-    max-width: 900px;
+    max-width: 480px;
     margin: 0 auto;
+  }
+
+  @media screen and ( 768px <= width) {
+    .menu-price {
+      max-width: 900px;
+    }
   }
   h2 {
     text-align: center;
@@ -236,11 +244,13 @@ import menuAll from "../assets/menu-all.webp";
     gap: 24px;
     flex-basis: 50%;
   }
+
   .course_outer {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
+
   .small {
     font-size: 1.2rem;
   }

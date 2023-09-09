@@ -169,7 +169,7 @@
     background-image: url(../assets/features-img1.webp);
     opacity: 0.6;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center right;
     background-size: cover;
     min-height: 240px;
     box-shadow: none;
@@ -194,7 +194,7 @@
     box-shadow: none;
   }
 
-  @media screen and (width < 900px) {
+  @media screen and (width < 896px) {
     .features {
       margin-inline: 16px;
     }
@@ -205,6 +205,14 @@
     }
     .grid_item {
       margin-bottom: 24px;
+    }
+
+    .img1 {
+      height: 350px;
+      background-position: bottom right;
+    }
+    .img2 {
+      height: 350px;
     }
   }
 
