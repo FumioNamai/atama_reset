@@ -1,0 +1,76 @@
+---
+import DiscountPriceTag from "./DiscountPriceTag.astro";
+---
+
+<div class="discount_outer">
+  <div class="first_time">
+    <p>初回割引</p>
+    <p class="notes">初めてのお客様にご利用いただけます</p>
+  </div>
+  <DiscountPriceTag />
+</div>
+
+<style>
+  .discount_outer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 300px;
+    margin: 0 auto;
+  }
+  .discount_outer p {
+    font-family: "Noto Sans JP", sans-serif;
+  }
+
+  .first_time {
+    display: flex;
+    flex-direction: row;
+    align-items: last baseline;
+    gap: 12px;
+  }
+
+  .first_time > p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--attention);
+  }
+
+  .first_time .notes {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: var(--textBlack);
+  }
+
+  .course_discount {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .course_discount p {
+    font-size: 2rem;
+  }
+  .time {
+    display: inline-block;
+    text-align: right;
+    width: 90px;
+  }
+
+  .course_discount span {
+    font-size: 1.2rem;
+  }
+
+  .strikethrough {
+    padding-left: 16px;
+    margin-right: -16px;
+  }
+  .d-price {
+    color: var(--attention);
+    font-weight: bold;
+  }
+
+  .d-price span {
+    color: var(--textBlack);
+    font-weight: normal;
+  }
+</style>

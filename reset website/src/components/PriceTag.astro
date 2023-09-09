@@ -1,0 +1,46 @@
+---
+const { courseTitle , time, price } = Astro.props
+---
+
+<div class="course">
+  <p>{ courseTitle }</p>
+  <div class="time-price">
+    <p>{ time }分<span>コース</span></p>
+    <p>{ price }<span>円(税込)</span></p>
+  </div>
+</div>
+
+<style>
+
+  .course {
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 280px;
+    padding-block: 8px;
+    padding-inline: 10px;
+    background-color: rgba(102, 175, 195, 0.3);
+    /* box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.25); */
+  }
+
+  .course p {
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+  }
+  .course > p {
+    font-size: 1.6rem;
+  }
+
+  .time-price {
+    display: flex;
+    justify-content: center;
+    gap: 46px;
+  }
+
+  .time-price p {
+    font-size: 2rem;
+  }
+
+  .time-price span {
+    font-size: 1.2rem;
+  }
+</style>

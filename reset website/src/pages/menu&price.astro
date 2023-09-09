@@ -1,69 +1,186 @@
 ---
 import Layout from "@layouts/layout.astro";
+import PriceTag from "@components/PriceTag.astro";
+import DiscountPriceTag from "@components/DiscountPriceTag.astro";
+import DiscountOuter from "@components/DiscountOuter.astro";
+
+import { Image } from "astro:assets";
+import menuHead from "../assets/menu-head.webp";
+import menuIntestine from "../assets/menu-intestine.webp";
+import menuCalf from "../assets/menu-calf.webp";
+import menuAll from "../assets/menu-all.webp";
 ---
 
 <Layout>
   <section class="menu-price">
     <h2>施術メニュー & 料金</h2>
-
-    <h3>頭ほぐし<span>（ドライヘッドマッサージ）</span></h3>
+    <h3 class="h3_borderLeft">
+      頭ほぐし<span>（ドライヘッドマッサージ）</span>
+    </h3>
     <div class="flex">
       <div class="introduction">
-        <img src="" alt="" />
+        <Image src={menuHead} alt="" />
         <p class="desc">
           当店の頭ほぐしは整体法を取り入れた施術です。自律神経を整える神経伝達物質の活性化が実現されることが実証されました。
         </p>
       </div>
       <div class="price_list">
         <div class="course_outer">
-          <div class="course">
-            <p>頭スッキリ！『脳疲労』解消</p>
-            <div class="time-price">
-              <p>60分<span>コース</span></p>
-              <p>7,000<span>円(税込)</span></p>
-            </div>
-          </div>
-          <div class="course">
-            <p>お客様の症状に合わせた施術を</p>
-            <div class="time-price">
-              <p>75分<span>コース</span></p>
-              <p>8,500<span>円(税込)</span></p>
-            </div>
-          </div>
-          <div class="course">
-            <p>深い眠りと共に究極のリラックスを</p>
-            <div class="time-price">
-              <p>90分<span>コース</span></p>
-              <p>10,000<span>円(税込)</span></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="discount_outer">
-          <div class="first_time">
-            <p>初回割引</p>
-            <p class="notes">初めてのお客様にご利用いただけます</p>
-          </div>
-          <div class="course_discount">
-            <p class="time">90分<span>コース</span></p>
-            <p class="strikethrough"><span><s>10,000円</s></span></p>
-            <p class="d-price">7,000<span>円(税込)</span></p>
-          </div>
-
-          <div class="course_discount">
-            <p class="time">105分<span>コース</span></p>
-            <p class="strikethrough"><span><s>11,500円</s></span></p>
-            <p class="d-price">8,000<span>円(税込)</span></p>
-          </div>
-
-          <div class="course_discount">
-            <p class="time">120分<span>コース</span></p>
-            <p class="strikethrough"><span><s>12,000円</s></span></p>
-            <p class="d-price">9,000<span>円(税込)</span></p>
-          </div>
+          <PriceTag
+            courseTitle="頭スッキリ！『脳疲労』解消"
+            time="60"
+            price="7,000"
+          />
+          <PriceTag
+            courseTitle="お客様の症状に合わせた施術を"
+            time="75"
+            price="8,500"
+          />
+          <PriceTag
+            courseTitle="深い眠りと共に究極のリラックスを"
+            time="90"
+            price="10,000"
+          />
+          <DiscountOuter>
+            <DiscountPriceTag
+              time="60"
+              originalPrice="7,000"
+              discountPrice="5,000"
+            />
+            <DiscountPriceTag
+              time="75"
+              originalPrice="8,500"
+              discountPrice="6,000"
+            />
+            <DiscountPriceTag
+              time="90"
+              originalPrice="10,000"
+              discountPrice="7,000"
+            />
+          </DiscountOuter>
         </div>
       </div>
     </div>
+
+    <div class="options">
+      <h3>相乗効果オプションメニュー</h3>
+      <p>頭ほぐしと組み合わせることで、<br />より効果を感じていただけます。</p>
+    </div>
+
+    <h3 class="h3_borderLeft">+ 腸セラピー</h3>
+    <div class="flex">
+      <div class="introduction">
+        <Image src={menuIntestine} alt="" />
+        <p class="desc">
+          全身の血流を良くし、体内に溜まった毒素を排出したり、内臓機能の低下の改善を目指します。<br
+          />
+          自律神経を整え、お腹の不調や冷え性、むくみ、疲労感の改善、免疫力の向上などを目的とします。<br
+          />
+          <span class="small"
+            >※洋服の上から施術します。オイル等は使いません。</span
+          >
+        </p>
+      </div>
+      <div class="price_list">
+        <div class="course_outer">
+          <PriceTag time="90" price="10,000" />
+          <PriceTag time="105" price="11,500" />
+          <PriceTag time="120" price="13,000" />
+          <DiscountOuter>
+            <DiscountPriceTag
+              time="90"
+              originalPrice="10,000"
+              discountPrice="7,000"
+            />
+            <DiscountPriceTag
+              time="105"
+              originalPrice="11,500"
+              discountPrice="8,000"
+            />
+            <DiscountPriceTag
+              time="120"
+              originalPrice="13,000"
+              discountPrice="9,000"
+            />
+          </DiscountOuter>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="h3_borderLeft">+ ふくらはぎほぐし</h3>
+    <div class="flex">
+      <div class="introduction">
+        <Image src={menuCalf} alt="" />
+        <p class="desc">
+          ふくらはぎをやわらかくすることで全身の筋膜を緩め、身体のコリ改善や血行促進を目指します。<br
+          />
+          血液循環をスムーズにすることで、余分な水分や老廃物を排出し、冷えやむくみの解消を目指します。<br
+          />
+          <span class="small"
+            >※洋服の上から施術します。オイル等は使いません。</span
+          >
+        </p>
+      </div>
+      <div class="price_list">
+        <div class="course_outer">
+          <PriceTag time="90" price="10,000" />
+          <PriceTag time="105" price="11,500" />
+          <PriceTag time="120" price="13,000" />
+          <DiscountOuter>
+            <DiscountPriceTag
+              time="90"
+              originalPrice="10,000"
+              discountPrice="7,000"
+            />
+            <DiscountPriceTag
+              time="105"
+              originalPrice="11,500"
+              discountPrice="8,000"
+            />
+            <DiscountPriceTag
+              time="120"
+              originalPrice="13,000"
+              discountPrice="9,000"
+            />
+          </DiscountOuter>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="h3_borderLeft">全部コース</h3>
+    <div class="flex">
+      <div class="introduction">
+        <Image src={menuAll} alt="" />
+        <p class="desc">
+          腸セラピー → ふくらはぎほぐし → 頭ほぐし<br
+          />
+          の全ての施術をおこなうことで、全身の不定愁訴の改善をめざします。<br
+          />
+          <span class="small"
+            >※洋服の上から施術します。オイル等は使いません。</span
+          >
+        </p>
+      </div>
+      <div class="price_list">
+        <div class="course_outer">
+          <PriceTag time="105" price="11,500" />
+          <PriceTag time="120" price="13,000" />
+          <DiscountOuter>
+            <DiscountPriceTag
+              time="105"
+              originalPrice="11,500"
+              discountPrice="8,000"
+            />
+            <DiscountPriceTag
+              time="120"
+              originalPrice="13,000"
+              discountPrice="9,000"
+            />
+          </DiscountOuter>
+        </div>
+      </div>
+    </div>
+
   </section>
 </Layout>
 
@@ -76,27 +193,28 @@ import Layout from "@layouts/layout.astro";
     text-align: center;
     padding-block: 64px;
   }
-
-  h3 {
+  .h3_borderLeft {
+    margin-bottom: 12px;
     margin-left: 16px;
     border-left: 5px solid var(--positive);
     padding-left: 16px;
   }
 
-  h3 > span {
+  .h3_borderLeft > span {
     font-size: 1.4rem;
   }
-
 
   .flex {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 32px;
+    margin-bottom: 64px;
   }
 
-  @media screen and ( 768px <= width) {
+  @media screen and (768px <= width) {
     .flex {
+      padding-inline: 48px;
       flex-direction: row;
     }
   }
@@ -104,6 +222,7 @@ import Layout from "@layouts/layout.astro";
   .introduction {
     width: 375px;
     margin: 0 auto;
+    flex-basis: 50%;
   }
 
   .desc {
@@ -115,105 +234,28 @@ import Layout from "@layouts/layout.astro";
     display: flex;
     flex-direction: column;
     gap: 24px;
+    flex-basis: 50%;
   }
   .course_outer {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
-
-  .course {
-    box-sizing: border-box;
-    margin: 0 auto;
-    width: 280px;
-    padding-block: 8px;
-    padding-inline: 10px;
-    background-color: rgba(102, 175, 195, 0.3);
-    /* box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.25); */
+  .small {
+    font-size: 1.2rem;
   }
 
-  .course p {
+  .options {
     text-align: center;
-    font-family: "Noto Sans JP", sans-serif;
+    padding-block: 40px;
   }
-  .course > p {
+
+  .options h3 {
+    font-size: 2.4rem;
+    margin-bottom: 8px;
+  }
+
+  .options p {
     font-size: 1.6rem;
-  }
-
-  .time-price {
-    display: flex;
-    justify-content: center;
-    gap: 46px;
-  }
-
-  .time-price p {
-    font-size: 2rem;
-  }
-
-  .time-price span {
-    font-size: 1.2rem;
-  }
-
-  .discount_outer {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 300px;
-    margin: 0 auto;
-  }
-  .discount_outer p {
-    font-family: "Noto Sans JP", sans-serif;
-  }
-
-  .first_time {
-    display: flex;
-    flex-direction: row;
-    align-items: last baseline;
-    gap: 12px;
-  }
-
-  .first_time > p {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--attention);
-  }
-
-  .first_time .notes {
-    font-size: 1.2rem;
-    font-weight: normal;
-    color: var(--textBlack);
-  }
-
-  .course_discount {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-
-  .course_discount p {
-    font-size: 2rem;
-  }
-  .time {
-    display: inline-block;
-    text-align: right;
-    width: 90px;
-  }
-
-  .course_discount span {
-    font-size: 1.2rem;
-  }
-
-  .strikethrough {
-    padding-left: 16px;
-    margin-right: -16px;
-  }
-  .d-price {
-    color: var(--attention);
-    font-weight: bold;
-  }
-
-  .d-price span {
-    color: var(--textBlack);
-    font-weight: normal;
   }
 </style>

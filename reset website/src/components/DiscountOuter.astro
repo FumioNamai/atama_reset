@@ -1,0 +1,43 @@
+---
+
+---
+
+<div class="discount_outer">
+  <div class="first_time">
+    <p>初回割引</p>
+    <p class="notes">初めてのお客様にご利用いただけます</p>
+  </div>
+  <slot />
+</div>
+
+<style>
+  .discount_outer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 300px;
+    margin: 0 auto;
+  }
+  .discount_outer p {
+    font-family: "Noto Sans JP", sans-serif;
+  }
+
+  .first_time {
+    display: flex;
+    flex-direction: row;
+    align-items: last baseline;
+    gap: 12px;
+  }
+
+  .first_time > p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--attention);
+  }
+
+  .first_time .notes {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: var(--textBlack);
+  }
+</style>
