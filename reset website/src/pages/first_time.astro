@@ -1,5 +1,7 @@
 ---
 import Layout from "@layouts/layout.astro";
+import Ellipse from "@components/Ellipse.astro";
+import { Image } from "astro:assets";
 ---
 
 <Layout title="初めてのお客様へ">
@@ -35,22 +37,63 @@ import Layout from "@layouts/layout.astro";
         </p>
         <div class="example">
           <p>症状例</p>
-              <p><span class="md">・眠気</span>
-                <span class="md">・喉の渇き</span>
-                <span class="md">・だるさ</span>
-                <span class="md">・関節痛</span>
-                <span class="md">・ほてり</span>
-                <span class="md">・筋肉痛</span>
-                <span class="md">・下痢</span>
-                <span class="md">・めまい</span>
-                <span class="md">・便秘</span>
-                <span class="md">・発汗</span>
-                <span class="lg">・尿の色が濃くなる</span>
-                <p class="etc"><span class="sm">...など</span></p>
-              </p>
+          <p>
+            <span class="md">・眠気</span>
+            <span class="md">・喉の渇き</span>
+            <span class="md">・だるさ</span>
+            <span class="md">・関節痛</span>
+            <span class="md">・ほてり</span>
+            <span class="md">・筋肉痛</span>
+            <span class="md">・下痢</span>
+            <span class="md">・めまい</span>
+            <span class="md">・便秘</span>
+            <span class="md">・発汗</span>
+            <span class="lg">・尿の色が濃くなる</span>
+            <p class="etc"><span class="sm">...など</span></p>
+          </p>
         </div>
-        <p>※効果的に老廃物を排出するためにも、施術後はこまめな水分補給をおこなってください。</p>
+        <p>
+          ※効果的に老廃物を排出するためにも、施術後はこまめな水分補給をおこなってください。
+        </p>
         <p>⇒お帰りの際に、ミネラルウォーターをお渡ししております。</p>
+      </div>
+
+      <Ellipse top="0px" left="0px" size="320px" />
+      <Ellipse top="200px" left="250px" size="180px" />
+      <Ellipse top="180px" left="400px" size="125px" />
+      <Ellipse top="440px" left="690px" size="180px" />
+      <Ellipse top="550px" left="160px" size="100px" />
+      <Ellipse top="600px" left="300px" size="200px" />
+      <Ellipse top="700px" left="20px" size="150px" />
+    </section>
+
+    <section class="taboo">
+      <div class="wrapper">
+        <h3>施術の禁忌</h3>
+        <p>
+          下記の事項に該当するお客様につきましては、大変申し訳ございませんが、施術をお断りさせていただいております。
+        </p>
+        <ul>
+          <li>激しい頭痛の最中</li>
+          <li>発熱している</li>
+          <li>気分が悪い</li>
+          <li>飲酒をしている</li>
+          <li>食事直後</li>
+          <li>妊娠中（可能性がある）</li>
+          <li>頭に傷・腫れ・血管の病気がある</li>
+          <li>手術直後（美容整形を含む）</li>
+          <li>皮膚疾患・伝染病がある</li>
+          <li>血圧を下げる薬を服用している</li>
+        </ul>
+        <p>
+          ※腸セラピーの施術は、食後2時間後より可能です。（お飲み物の制限はございません）
+        </p>
+        <div class="bordered">
+          <p>当店の施術行為は治療を目的とした医療行為ではありません。</p>
+          <p>
+            独自の技術によるリラクゼーションを目的としておりますので、ご留意ください。
+          </p>
+        </div>
       </div>
     </section>
   </main>
@@ -60,6 +103,8 @@ import Layout from "@layouts/layout.astro";
   main {
     margin-top: 40px;
   }
+
+  /* section notice */
 
   h2 {
     text-align: center;
@@ -74,12 +119,14 @@ import Layout from "@layouts/layout.astro";
     padding-bottom: 16px;
   }
 
-  section {
+  .notice {
+    position: relative;
     max-width: 900px;
     margin: 0 auto;
   }
 
-  .pressure, .reaction {
+  .pressure,
+  .reaction {
     max-width: 900px;
     width: auto;
     margin-bottom: 40px;
@@ -88,7 +135,6 @@ import Layout from "@layouts/layout.astro";
 
   .example {
     width: 300px;
-    /* width: 600px; */
     margin-left: 8px;
     margin-bottom: 16px;
     padding: 16px 0px 16px 24px;
@@ -125,8 +171,8 @@ import Layout from "@layouts/layout.astro";
       width: 450px;
     }
     .etc {
-    margin-left: 350px;
-  }
+      margin-left: 350px;
+    }
   }
 
   @media screen and (768px<= width) {
@@ -134,7 +180,51 @@ import Layout from "@layouts/layout.astro";
       width: 600px;
     }
     .etc {
-    margin-left: 500px;
+      margin-left: 500px;
+    }
   }
+
+  /* section taboo */
+  .taboo {
+    padding: 24px 32px;
+    background-image: url(/src/assets/taboo.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--textWhite);
+  }
+  .taboo h3 {
+    text-align: center;
+  }
+
+  .taboo p,
+  li {
+    font-size: 1.6rem;
+    line-height: 175%;
+    letter-spacing: 2.4px;
+  }
+
+  .bordered {
+    margin: auto -12px;
+    padding: 8px;
+    border: 1px solid var(--alert);
+    text-decoration: underline;
+  }
+
+  .bordered > p {
+    letter-spacing: 0px;
+    padding-bottom: 0;
+  }
+
+  @media screen and (900px <= width) {
+    .taboo {
+      display: flex;
+      flex-direction: column;
+      /* align-items: center; */
+      /* padding-inline: 20%; */
+    }
+    .wrapper {
+      margin: 0 auto;
+      max-width: 900px;
+    }
   }
 </style>

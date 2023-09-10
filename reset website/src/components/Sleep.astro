@@ -64,7 +64,6 @@ import Ellipse from "@components/Ellipse.astro"
     margin: 0 auto;
     padding: 0px 16px 80px 16px;
     position: relative;
-    /* letter-spacing: 1px; */
     overflow: hidden;
   }
 
@@ -83,7 +82,7 @@ import Ellipse from "@components/Ellipse.astro"
   .title::after {
     display: inline-block;
     content: "";
-    width: 24px;
+    width: 16px;
     height: 1px;
     background-color: var(--textBlack);
   }
@@ -114,9 +113,6 @@ import Ellipse from "@components/Ellipse.astro"
   }
   .article {
     text-align: left;
-    /* width: auto; */
-    /* max-width: 900px; */
-    /* margin: 0 auto; */
   }
 
   @media screen and (768px <= width) {
@@ -137,6 +133,20 @@ import Ellipse from "@components/Ellipse.astro"
     .small {
       font-size: 1.6rem;
     }
+
+    .title::before,
+    .title::after {
+    width: 40px;
+  }
+
+  .title::before {
+    margin-right: 24px;
+  }
+
+  .title::after {
+    margin-left: 24px;
+  }
+
   }
 
   h3 {
