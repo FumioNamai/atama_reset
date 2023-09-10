@@ -1,0 +1,124 @@
+---
+import { Image } from "astro:assets";
+import doorOpen from "../assets/door-open.svg"
+import writing from "../assets/writing.svg"
+import question from "../assets/question.svg"
+import wear from "../assets/wear.svg"
+import sleeping from "../assets/sleeping.svg"
+import smile from "../assets/smile.svg"
+
+
+---
+
+<section class="steps">
+  <div class="wrapper">
+  <h2 class="borderBottom">施術の流れ</h2>
+  <div class="step">
+  <h3><Image src={doorOpen} alt="" class="doorOpen"/>ご来店</h3>
+  <p></p>
+  </div>
+
+  <div class="step">
+    <h3><Image src={writing} alt=""/>カウンセリングシートのご記入</h3>
+    <p>初めてのお客様にはカウンセリングシートのご記入をお願い致します。</p>
+    <!-- <Image /> -->
+  </div>
+
+  <div class="step">
+    <h3><Image src={question} alt=""/>カウンセリング</h3>
+    <p>
+      ご記入いただいたシートをもとにお客様のお身体の状態を確認させていただきます。
+    </p>
+    <p>当日のお客様の状態に合わせた施術内容をご提案させていただきます。</p>
+    <p>
+      ※シートのご記入とカウンセリングの時間を含め、<br
+      />当日は『コース時間+15分程度』<br />のお時間を頂戴しております。
+    </p>
+  </div>
+
+  <div class="step">
+    <h3><Image src={wear} alt=""/>ご準備</h3>
+    <p>
+      ネックレス・ピアス・ヘアアクセサリー・時計・ベルトは取り外しをお願いしております。
+    </p>
+    <p>
+      ご希望のお客様には着替えていただき、ゆったりと施術を受けていただきます。<br
+      />お気に入りのリラックス着をお持ちください。
+    </p>
+  </div>
+
+  <div class="step">
+    <h3><Image src={sleeping} alt=""/>施術スタート</h3>
+    <p>全身の流れを整えてから、デコルテ・頭・首・お顔を施術をおこないます。</p>
+    <p>
+      力加減などご相談しながら、お客様の症状に合わせた内容で施術をおこないます。
+    </p>
+    <p>
+      完全プライベート空間のゆったりとした時間の中で、日頃のお疲れを癒してくださいませ。
+    </p>
+    <!-- <Image /> -->
+  </div>
+
+  <div class="step">
+    <h3><Image src={smile} alt=""/>終了</h3>
+    <p>施術後には髪の毛やお化粧を整えたり、お着替えをしてお過ごしください。</p>
+    <p>
+      へアブラシや綿棒などはご用意しておりますが、化粧品のご用意はございません。
+    </p>
+    <p>老廃物の流れを良くするために、こまめな水分補給をお勧めします。</p>
+    <p>
+      お急ぎのお客様のためにも、ミネラルウォーターをご用意しております。お持ち帰りいただき、こまめな水分補給をおこなってください。
+    </p>
+  </div>
+</div>
+</section>
+
+<style>
+  .steps {
+
+    margin-top: 64px;
+  }
+  .step {
+    margin-left: 28px;
+    padding-left: 12px;
+    line-height: 275%;
+    letter-spacing: 2.7px;
+    border-left: 1px solid var(--textBlack);
+    /* opacity: 0; */
+  }
+
+  .wrapper {
+    max-width: 490px;
+  }
+  p {
+    padding-bottom: 18px;
+  }
+
+  h2 {
+    display: inline-block;
+    margin-left: 16px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid var(--positive);
+  }
+
+  h3 {
+    display: inline-block;
+    font-size: 2rem;
+    margin-left: -25px;
+    padding-block: 4px;
+    background-color: var(--bgPrimary);
+  }
+
+  img {
+    display: inline-block;
+    margin-bottom: -5px;
+    margin-right: 8px;
+  }
+
+  .doorOpen {
+    margin-bottom: -2px;
+  }
+
+
+
+</style>

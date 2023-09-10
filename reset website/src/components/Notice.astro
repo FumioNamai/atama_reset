@@ -1,0 +1,144 @@
+---
+import Ellipse from "@components/Ellipse.astro";
+---
+<h2>初めてのお客様へ</h2>
+<section class="notice">
+  <div class="pressure">
+    <h3>頭は強く押せません</h3>
+    <p>
+      頭の筋肉は非常に薄く、強く刺激することで大切な神経を痛める危険性もあります。
+    </p>
+    <p>力加減はこちらで調整しますので、セラピストにお任せください。</p>
+    <p>一方で、首や肩は僧帽筋という筋肉に覆われております。</p>
+    <p>
+      お客様の症状やお好みに合わせた力加減が可能です。
+      お気軽にお申し付けください。
+    </p>
+  </div>
+  <div class="reaction">
+    <h3>「好転反応」について</h3>
+    <p>
+      老廃物が排出されることにより、まれに一時的に身体に変化が出ることがございます。
+    </p>
+    <p>
+      慢性的に疲労していた筋肉がほぐれることで、大量の老廃物が血液中に流れることが原因と考えられています。
+    </p>
+    <p>
+      このように症状が良い方へ転ずるときに起こる一時的な不調のことを「好転反応」と言います。
+    </p>
+    <p>好転反応の症状例としては、以下のようなものがあります。</p>
+    <p>
+      症状が表れる場合もありますが、1~2日で治りますので、ご安心ください。
+    </p>
+    <div class="example">
+      <p>症状例</p>
+      <p>
+        <span class="md">・眠気</span>
+        <span class="md">・喉の渇き</span>
+        <span class="md">・だるさ</span>
+        <span class="md">・関節痛</span>
+        <span class="md">・ほてり</span>
+        <span class="md">・筋肉痛</span>
+        <span class="md">・下痢</span>
+        <span class="md">・めまい</span>
+        <span class="md">・便秘</span>
+        <span class="md">・発汗</span>
+        <span class="lg">・尿の色が濃くなる</span>
+        <p class="etc"><span class="sm">...など</span></p>
+      </p>
+    </div>
+    <p>
+      ※効果的に老廃物を排出するためにも、施術後はこまめな水分補給をおこなってください。
+    </p>
+    <p>⇒お帰りの際に、ミネラルウォーターをお渡ししております。</p>
+  </div>
+
+  <Ellipse top="0px" left="0px" size="320px" />
+  <Ellipse top="200px" left="250px" size="180px" />
+  <Ellipse top="180px" left="400px" size="125px" />
+  <Ellipse top="440px" left="690px" size="180px" />
+  <Ellipse top="550px" left="160px" size="100px" />
+  <Ellipse top="600px" left="300px" size="200px" />
+  <Ellipse top="700px" left="20px" size="150px" />
+</section>
+
+<style>
+  h2 {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  h3 {
+    margin-bottom: 16px;
+  }
+
+  p {
+    padding-bottom: 16px;
+  }
+
+  .notice {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .pressure,
+  .reaction {
+    max-width: 900px;
+    width: auto;
+    margin-bottom: 40px;
+    padding-inline: 16px;
+  }
+
+  .example {
+    width: 300px;
+    margin-left: 8px;
+    margin-bottom: 16px;
+    padding: 16px 0px 16px 24px;
+    border: 1px solid var(--textBlack);
+  }
+
+  .example > p {
+    padding-bottom: 0;
+  }
+
+  .example span {
+    display: inline-block;
+    font-size: 1.6rem;
+  }
+
+  .sm {
+    width: 100px;
+  }
+
+  .md {
+    width: 150px;
+  }
+
+  .lg {
+    width: 300px;
+  }
+
+  .etc {
+    margin-left: 200px;
+  }
+
+  @media screen and (480px<= width) {
+    .example {
+      width: 450px;
+    }
+    .etc {
+      margin-left: 350px;
+    }
+  }
+
+  @media screen and (768px<= width) {
+    .example {
+      width: 600px;
+    }
+    .etc {
+      margin-left: 500px;
+    }
+  }
+
+</style>

@@ -1,0 +1,83 @@
+---
+
+---
+<section class="taboo">
+  <div class="wrapper">
+    <h3>施術の禁忌</h3>
+    <p>
+      下記の事項に該当するお客様につきましては、大変申し訳ございませんが、施術をお断りさせていただいております。
+    </p>
+    <ul>
+      <li>激しい頭痛の最中</li>
+      <li>発熱している</li>
+      <li>気分が悪い</li>
+      <li>飲酒をしている</li>
+      <li>食事直後</li>
+      <li>妊娠中（可能性がある）</li>
+      <li>頭に傷・腫れ・血管の病気がある</li>
+      <li>手術直後（美容整形を含む）</li>
+      <li>皮膚疾患・伝染病がある</li>
+      <li>血圧を下げる薬を服用している</li>
+    </ul>
+    <p>
+      ※腸セラピーの施術は、食後2時間後より可能です。（お飲み物の制限はございません）
+    </p>
+    <div class="bordered">
+      <p>当店の施術行為は治療を目的とした医療行為ではありません。</p>
+      <p>
+        独自の技術によるリラクゼーションを目的としておりますので、ご留意ください。
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  h3 {
+    margin-bottom: 16px;
+  }
+
+  p {
+    padding-bottom: 16px;
+  }
+
+  .taboo {
+    padding: 24px 32px;
+    background-image: url(/src/assets/taboo.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--textWhite);
+  }
+  .taboo h3 {
+    text-align: center;
+  }
+
+  .taboo p,
+  li {
+    font-size: 1.6rem;
+    line-height: 175%;
+    letter-spacing: 2.4px;
+  }
+
+  .bordered {
+    margin: auto -12px;
+    padding: 8px;
+    border: 1px solid var(--alert);
+    text-decoration: underline;
+  }
+
+  .bordered > p {
+    letter-spacing: 0px;
+    padding-bottom: 0;
+  }
+
+  @media screen and (900px <= width) {
+    .taboo {
+      display: flex;
+      flex-direction: column;
+    }
+    .wrapper {
+      margin: 0 auto;
+      max-width: 900px;
+    }
+  }
+</style>
