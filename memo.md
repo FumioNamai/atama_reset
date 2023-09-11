@@ -98,6 +98,11 @@ ___
 - EfficasyコンポーネントにintersectionObserverを実装
 - BottomNavをHeaderNavがスクロールアウトしたときに表示させる
 - Accordionコンポーネントを作り直し 9.5
+-
+-
+-
+-
+
 
 
 fadeinクラスのintersectionObseverアニメーションはEfficasy.astro内に定義

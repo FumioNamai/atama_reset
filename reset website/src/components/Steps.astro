@@ -70,16 +70,18 @@ import smile from "../assets/smile.svg"
     <p>
       お急ぎのお客様のためにも、ミネラルウォーターをご用意しております。お持ち帰りいただき、こまめな水分補給をおこなってください。
     </p>
+    <span class="terminal">●</span>
   </div>
 </div>
 </section>
 
 <style>
   .steps {
-    margin-top: 64px;
-    margin-bottom: 64px;
+    margin: 64px auto;
+    max-width: 900px;
   }
   .step {
+
     margin-left: 28px;
     padding-left: 12px;
     line-height: 275%;
@@ -87,6 +89,7 @@ import smile from "../assets/smile.svg"
     border-left: 1px solid var(--textBlack);
     transition: all 2s;
     opacity: 0;
+    position: relative;
   }
 
   /* .step.is-open {
@@ -127,6 +130,12 @@ import smile from "../assets/smile.svg"
     margin-bottom: -2px;
   }
 
+  .terminal {
+    position: absolute;
+    top: 97%;
+    left: -5.5px;
+
+  }
 </style>
 
 
@@ -175,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     };
     const fadeinTrigger = new ScrollObserver(".step", fadein, {
-      rootMargin: "-200px 0px",
+      rootMargin: "-100px 0px",
       threshold: 1,
     });
   });
