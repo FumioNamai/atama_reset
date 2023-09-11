@@ -19,7 +19,7 @@
       <li>皮膚疾患・伝染病がある</li>
       <li>血圧を下げる薬を服用している</li>
     </ul>
-    <p>
+    <p class="postscript">
       ※腸セラピーの施術は、食後2時間後より可能です。（お飲み物の制限はございません）
     </p>
     <div class="bordered">
@@ -33,39 +33,60 @@
 
 <style>
   h3 {
+    font-size: 2rem;
     margin-bottom: 16px;
   }
 
   p {
-    padding-bottom: 16px;
+    padding-bottom: 8px;
   }
 
   .taboo {
-    padding: 24px 32px;
+    padding: 24px 24px;
     background-image: url(/src/assets/taboo.webp);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position-x: 20%;
     color: var(--textWhite);
   }
   .taboo h3 {
     text-align: center;
   }
 
-  .taboo p,
-  li {
-    font-size: 1.6rem;
-    line-height: 175%;
-    letter-spacing: 2.4px;
+  ul {
+    padding-left: 0;
+    padding-bottom: 8px;
   }
 
+  .taboo p,
+  li {
+    list-style: none;
+    font-size: 1.6rem;
+    line-height: 150%;
+    letter-spacing: 2.4px;
+  }
+  li::before {
+    content: "・";
+  }
+
+  .wrapper {
+    max-width: 535px;
+  }
+
+  .wrapper .postscript {
+    font-size: 1.4rem;
+    letter-spacing: 0px;
+  }
   .bordered {
     margin: auto -12px;
-    padding: 8px;
+    padding: 4px 8px;
     border: 1px solid var(--alert);
     text-decoration: underline;
+    max-width: 535px;
   }
 
   .bordered > p {
+    font-size: 1.4rem;
     letter-spacing: 0px;
     padding-bottom: 0;
   }
@@ -77,7 +98,6 @@
     }
     .wrapper {
       margin: 0 auto;
-      max-width: 900px;
     }
   }
 </style>
