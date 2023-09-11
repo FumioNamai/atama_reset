@@ -85,7 +85,7 @@ import smile from "../assets/smile.svg"
     margin-left: 28px;
     padding-left: 12px;
     line-height: 275%;
-    letter-spacing: 2.7px;
+    letter-spacing: 2px;
     border-left: 1px solid var(--textBlack);
     transition: all 2s;
     opacity: 0;
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     };
     const fadeinTrigger = new ScrollObserver(".step", fadein, {
-      rootMargin: "-100px 0px",
+      rootMargin: "0px 0px",
       threshold: 1,
     });
   });
