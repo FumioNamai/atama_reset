@@ -24,7 +24,7 @@ import refreshing2 from "../assets/refreshing2.webp";
       <div class="step_line"></div>
     </div>
 
-    <div class="step">
+    <div class="step test">
       <h3>
         <Image src={writing} alt="" class="icon" />カウンセリングシートのご記入
       </h3>
@@ -119,14 +119,14 @@ import refreshing2 from "../assets/refreshing2.webp";
           <Image src={refreshing2} alt="" />
         </div>
       </div>
-        <span class="terminal">●</span>
-        <div class="step_line"></div>
+      <span class="terminal">●</span>
+      <div class="step_line"></div>
     </div>
   </div>
 </section>
 
 <style>
-    .wrapper {
+  .wrapper {
     max-width: 490px;
   }
   .steps {
@@ -142,15 +142,29 @@ import refreshing2 from "../assets/refreshing2.webp";
   @media screen and (768px <= width) {
     .flex {
       flex-direction: row;
+      justify-content: space-between;
+      /* gap: 24px; */
     }
 
-  .wrapper {
-    max-width: 900px;
-  }
+    .wrapper {
+      max-width: 900px;
+    }
+    .text {
+      /* box-sizing: border-box; */
+      width: 420px;
+      min-width: 420px;
+
+      padding-right: 12px;
+    }
+    .step.test {
+      height: 110px;
+    }
   }
 
   .image {
+    margin: 0 auto 18px auto;
     text-align: center;
+    width: 320px;
   }
 
   .step {
@@ -162,6 +176,7 @@ import refreshing2 from "../assets/refreshing2.webp";
     opacity: 0;
     position: relative;
   }
+
   .step_line {
     position: absolute;
     display: block;
@@ -173,8 +188,6 @@ import refreshing2 from "../assets/refreshing2.webp";
     height: 0%;
     transition: height 5s;
   }
-
-
 
   p {
     padding-bottom: 18px;
@@ -271,7 +284,7 @@ import refreshing2 from "../assets/refreshing2.webp";
     };
     const fadeinTrigger = new ScrollObserver(".step", fadein, {
       rootMargin: "0px 0px",
-      threshold: .5,
+      threshold: 0.5,
     });
   });
 </script>
