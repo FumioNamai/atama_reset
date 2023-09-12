@@ -11,7 +11,7 @@ import head from "../assets/head.webp";
 import refreshing2 from "../assets/refreshing2.webp";
 ---
 
-<section class="steps">
+<section class="steps" id="steps">
   <div class="wrapper">
     <h2 class="borderBottom">施術の流れ</h2>
 
@@ -273,8 +273,10 @@ import refreshing2 from "../assets/refreshing2.webp";
       }
     };
     const stretchTrigger = new ScrollObserver(".step_line", stretch, {
-      rootMargin: "-300px 0px",
-      threshold: 1,
+      rootMargin: "0px 0px",
+      // rootMargin: "-300px 0px",
+      threshold: 0.5,
+      // threshold: 1,
     });
 
     const fadein = function (el, isIntersecting) {
