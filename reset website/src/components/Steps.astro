@@ -58,7 +58,6 @@ import refreshing2 from "../assets/refreshing2.webp";
             />当日は『コース時間+15分程度』<br />のお時間を頂戴しております。
           </p>
         </div>
-
       </div>
       <div class="step_line"></div>
     </div>
@@ -105,7 +104,6 @@ import refreshing2 from "../assets/refreshing2.webp";
       <h3><Image src={smile} alt="" class="icon" />終了</h3>
       <div class="flex">
         <div class="text">
-
           <p>
             施術後には髪の毛やお化粧を整えたり、お着替えをしてお過ごしください。
           </p>
@@ -273,7 +271,7 @@ import refreshing2 from "../assets/refreshing2.webp";
     };
     const fadeinTrigger = new ScrollObserver(".step", fadein, {
       rootMargin: "0px 0px",
-      threshold: 1,
+      threshold: .5,
     });
   });
 </script>
