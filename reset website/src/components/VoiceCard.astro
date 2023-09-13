@@ -1,0 +1,18 @@
+---
+const {
+  category,
+  text
+} = Astro.props
+
+---
+
+<div class="voice_card">
+  <!-- <h3>～ 20代 男性 ～</h3>
+  <p>PC作業の仕事をしていて、頭も首も目も疲れている。<br>顔を施術してもらったのは初めてで、気持ち良かった。<br>頭も顔も軽くなった。<br>セルフケアなどいっぱい相談に乗ってもらった。</p> -->
+    <h3>
+      <slot name="category" />
+    </h3>
+  <div>
+    <slot name="text" />
+  </div>
+</div>

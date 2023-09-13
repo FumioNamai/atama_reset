@@ -1,6 +1,7 @@
 ---
 import Hamburger from "@components/Hamburger.astro";
-
+import { Image } from "astro:assets";
+import logo2 from "../assets/logo2.png"
 ---
 
 <header>
@@ -11,7 +12,7 @@ import Hamburger from "@components/Hamburger.astro";
         <Hamburger />
         <div class="logo">
           <a href="/">
-            <img src="logo2.png" alt="ロゴ" width="75px" height="44.2px" />
+            <Image src={logo2} alt="ロゴ"/>
           </a>
         </div>
       </div>
@@ -77,6 +78,7 @@ import Hamburger from "@components/Hamburger.astro";
 
   .small .logo img {
     width: 75px;
+    height: 44.2px;
     filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
   }
 

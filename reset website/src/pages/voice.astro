@@ -1,0 +1,36 @@
+---
+import Layout from "@layouts/layout.astro";
+
+import { Image } from "astro:assets";
+import thanks2 from "../assets/thanks2.jpg"
+
+import VoiceCard from "@components/VoiceCard.astro"
+---
+
+<Layout title="お客様の声">
+  <main>
+    <section class="voice">
+
+      <h2>お客様の声</h2>
+      <p>お客様より頂戴いたしましたお声より、<br>いくつかご紹介させていただきます。<br><span class="small">（メールより抜粋あり）</span></p>
+      <Image src={thanks2} alt="" />
+      <div class="flex">
+        <VoiceCard>
+          <div slot="category">
+            ～ 20代 男性 ～
+          </div>
+          <div slot="text">
+            <p>PC作業の仕事をしていて、頭も首も目も疲れている。<br>顔を施術してもらったのは初めてで、気持ち良かった。<br>頭も顔も軽くなった。<br>セルフケアなどいっぱい相談に乗ってもらった。</p>
+          </div>
+        </VoiceCard>
+      </div>
+
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin-top: 40px;
+  }
+</style>

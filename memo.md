@@ -101,7 +101,9 @@ ___
 -
 -
 -
--
+-first_timeページ
+　intersectionObserver　縦のラインを伸ばす
+-voiceページ
 
 
 
