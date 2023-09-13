@@ -7,8 +7,6 @@ const {
 ---
 
 <div class="voice_card">
-  <!-- <h3>～ 20代 男性 ～</h3>
-  <p>PC作業の仕事をしていて、頭も首も目も疲れている。<br>顔を施術してもらったのは初めてで、気持ち良かった。<br>頭も顔も軽くなった。<br>セルフケアなどいっぱい相談に乗ってもらった。</p> -->
     <h3>
       <slot name="category" />
     </h3>
@@ -16,3 +14,39 @@ const {
     <slot name="text" />
   </div>
 </div>
+
+<style>
+  .voice_card {
+    box-sizing: border-box;
+    width: auto;
+    border: 1px solid #ECECEC ;
+    border-radius: 8px;
+    background-color: #FAFAFA;
+    padding: 1.6rem;
+    margin: 1rem auto;
+    box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.20);
+    max-width: 435px;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.6rem;
+  }
+
+  @media screen and ( 768px <= width ) {
+    .voice_card {
+      width: 46%;
+    }
+    .voice_card:nth-child(2n+1){
+      margin: 1rem auto 1rem 2.4rem ;
+    }
+    .voice_card:nth-child(2n){
+      margin: 1rem 2.4rem 1rem auto ;
+    }
+    .voice_card:not(:first-child) {
+      margin-top: -7%;
+    }
+
+  }
+
+</style>

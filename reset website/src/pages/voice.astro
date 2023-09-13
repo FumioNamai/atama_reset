@@ -10,21 +10,140 @@ import VoiceCard from "@components/VoiceCard.astro"
 <Layout title="お客様の声">
   <main>
     <section class="voice">
-
-      <h2>お客様の声</h2>
-      <p>お客様より頂戴いたしましたお声より、<br>いくつかご紹介させていただきます。<br><span class="small">（メールより抜粋あり）</span></p>
-      <Image src={thanks2} alt="" />
-      <div class="flex">
+      <div class="top">
+        <h2>お客様の声</h2>
+        <p>お客様より頂戴いたしましたお声より、<br>
+          いくつかご紹介させていただきます。<br>
+          <span class="small">（メールより抜粋あり）</span>
+        </p>
+      </div>
+        <div class="image">
+          <Image src={thanks2} alt="" />
+        </div>
+      <div class="cards">
         <VoiceCard>
           <div slot="category">
             ～ 20代 男性 ～
           </div>
           <div slot="text">
-            <p>PC作業の仕事をしていて、頭も首も目も疲れている。<br>顔を施術してもらったのは初めてで、気持ち良かった。<br>頭も顔も軽くなった。<br>セルフケアなどいっぱい相談に乗ってもらった。</p>
+            <p>PC作業の仕事をしていて、頭も首も目も疲れている。<br>
+              顔を施術してもらったのは初めてで、気持ち良かった。<br>
+              頭も顔も軽くなった。<br>
+              セルフケアなどいっぱい相談に乗ってもらった。</p>
+          </div>
+        </VoiceCard>
+        <VoiceCard>
+          <div slot="category">
+            ～ 30代 男性 ～
+          </div>
+          <div slot="text">
+            <p>仕事のストレスからか寝つきが悪く、<br>
+              疲れが抜けなかったり、肩こりや首が痛い日が続いていた。<br>
+              頭皮のマッサージが始まると、<br>
+              脳に溜まっていた悪いものがサーッと消えていくのを感じ、<br>
+              程なくして眠ってしまった。<br>
+              その晩は久しぶりにグッスリ眠れた。</p>
+          </div>
+        </VoiceCard>
+        <VoiceCard>
+          <div slot="category">
+            ～ 30代 女性 ～
+          </div>
+          <div slot="text">
+            <p>頭ほぐし60分、あっという間でした。<br>
+              心地良くて、眠りの世界に導かれるといった感じです。<br>
+              “体の芯からリラックスできた”という感覚になりました。</p>
+          </div>
+        </VoiceCard>
+        <VoiceCard>
+          <div slot="category">
+            ～ 40代 女性 ～
+          </div>
+          <div slot="text">
+            <p>偏頭痛持ちで、肩こりもひどいので来店しました。<br>
+              施術した次の日は、軽い頭痛(日常生活にはまったく支障のない程度)があり、
+              <br>「これが好転反応か！」って感じでしたが、<br>
+              翌日には頭がスカッと晴れて、軽くなり、スッキリしました。</p>
+          </div>
+        </VoiceCard>
+        <VoiceCard>
+          <div slot="category">
+            ～ 40代 男性 ～
+          </div>
+          <div slot="text">
+            <p>普段は仕事から帰ると疲れて何もやる気になれない。<br>
+              体中に溜まった疲れを落としにresetさんに来る。<br>
+              施術が始まるとまさしく「寝落ち」してしまい、体の中の疲労もストレスも悪いもの全部落としてスッキリする。</p>
+          </div>
+        </VoiceCard>
+        <VoiceCard>
+          <div slot="category">
+            ～ 50代 女性 ～
+          </div>
+          <div slot="text">
+            <p>白髪が目立つので毎月美容院で白髪染めをしますが、<br>
+              こちらに来るようになってから白髪が前ほど気にならなくなり、<br>
+              もう２ヶ月美容院に行っていません。</p>
+          </div>
+        </VoiceCard>
+        <VoiceCard>
+          <div slot="category">
+            ～ 50代 男性 ～
+          </div>
+          <div slot="text">
+            <p>更年期障害からか、めまい・動悸に襲われることが増え、<br>
+              それによるストレスや不安も付きまとう毎日だった。<br>
+              すがるような気持ちでこちらに駆け込んだ。<br>
+              最初の１ヶ月を詰めて来店し、<br>
+              症状が落ち着いた今は定期的なメンテナンスとして伺っている。<br>
+              ここが無ければどうなっていただろうかと…<br>
+              reset に救っていただいた。</p>
+          </div>
+        </VoiceCard>
+        <VoiceCard>
+          <div slot="category">
+            ～ 60代 女性 ～
+          </div>
+          <div slot="text">
+            <p>「神の手」の優しいタッチの施術で深い眠りにつくので、<br>
+              自分のいびきで目が覚めることもあります(笑)<br>
+              いつも予約日を指折り数えて待っているので、<br>
+              楽しみにしてた施術はあっという間に感じます。<br>
+              今日からまた次を楽しみに過ごします。</p>
+            </div>
+          </VoiceCard>
+          <VoiceCard>
+            <div slot="category">
+              ～ 60代 男性 ～
+            </div>
+            <div slot="text">
+              <p>施術した夜ぐっすり眠れた。<br>
+                翌朝はスッキリ目が覚めた。<br>
+                施術翌日に首と肩に軽く好転反応が出た。<br>
+                腰痛が嘘のように消えた。<br>
+                体が軽くなった。</p>
+            </div>
+          </VoiceCard>
+        <VoiceCard>
+          <div slot="category">
+            ～ 70代 女性 ～
+          </div>
+          <div slot="text">
+            <p>こちらに来るようになってから疲れ知らずになった。<br>
+              食欲が無い日が無くなった。<br>
+              よく食べ、よく寝て、毎日元気に過ごせている。</p>
+          </div>
+        </VoiceCard>
+        <VoiceCard>
+          <div slot="category">
+            ～ 80代 女性 ～
+          </div>
+          <div slot="text">
+            <p>気持ち良くて幸せ。<br>
+              すぐまた来たい。。</p>
           </div>
         </VoiceCard>
       </div>
-
     </section>
   </main>
 </Layout>
@@ -33,4 +152,45 @@ import VoiceCard from "@components/VoiceCard.astro"
   main {
     margin-top: 40px;
   }
+
+  p {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    margin-block: 6.4rem;
+  }
+  .top {
+    text-align: center;
+  }
+
+  .voice {
+    padding-inline: 1.6rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .image {
+    width: 343px;
+    height: auto;
+    margin: 1.6rem auto;
+  }
+
+  @media screen and (768px <= width) {
+    .image {
+      margin-block: 4rem 8rem;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+
+  /* .category {
+    padding-bottom: 1.6rem;
+  } */
+
+
 </style>
