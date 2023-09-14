@@ -1,0 +1,185 @@
+---
+import Layout from "@layouts/layout.astro";
+import { Image } from "astro:assets";
+import intestine from "../assets/intestine.webp"
+import PriceTag from "@components/PriceTag.astro";
+import DiscountOuter from "@components/DiscountOuter.astro";
+import DiscountPriceTag from "@components/DiscountPriceTag.astro";
+---
+
+<Layout title="腸セラピー">
+  <main>
+    <section class="intestinal_therapy">
+    <h2>腸セラピー</h2>
+    <div class="image">
+      <Image src={intestine} alt=""/>
+    </div>
+    <article>
+      <div class="explanation">
+      <p>
+        当店の腸セラピーは<br />
+        服の上からおこなう施術です。<br />
+        オイル等は使いません。
+      </p>
+      <p>
+        老若男女どなた様でも施術を受けていただけます。<br /><span class="bold"
+          >食後２時間後から施術可能です。</span
+        ><br />お飲み物の制限はございません。
+      </p>
+      <p>〜腸セラピーとは〜</p>
+      <p>
+        ◎胃や腸を活性化する健康法で、<br />体内に溜まった毒素を排出する<br
+        /><span class="bold">デトックス効果</span>があります。
+      </p>
+      <p>
+        ◎<span class="bold"
+          >自律神経を整える<br />神経伝達物質「セロトニン」の<br
+          />90～95％が腸で</span
+        >作られています。
+      </p>
+      <p>
+        腸を活性化することで<span class="bold">自律神経を整えて</span>いきます。
+      </p>
+      <p>
+        ◎<span class="bold">免疫力の70％が腸に集中</span>しており、<br
+        />腸内環境を整えることが<span class="bold">免疫力の向上</span
+        >に繋がります。
+      </p>
+      <p>
+        免疫力が向上すると<br /><span class="bold">アレルギー症状の改善</span
+        >や<br /><span class="bold">感染症にかかりにくくなる</span>こと<br
+        />などが期待されます
+      </p>
+      <p>
+        ◎<span class="bold">腸は良質な血液を作り、</span><br
+        />免疫細胞に必要な栄養と酸素を届けます。
+      </p>
+      <p>
+        よって、<br />腸の働きが悪いと血液がドロドロになり<br
+        />様々な病気の原因になったり<br />冷え性やむくみも引き起こします。
+      </p>
+    </div>
+      <div class="cause">
+        <p>＜腸の働きが悪くなる原因＞</p>
+        <ul>
+          <li>睡眠不足</li>
+          <li>運動不足</li>
+          <li>ストレス</li>
+          <li>偏った食事</li>
+          <li>飲酒</li>
+          <li>たばこ</li>
+          <li>過度なダイエット</li>
+          <li>食べ過ぎ</li>
+          <li>加齢</li>
+          <li>便意の我慢</li>
+        </ul>
+        <p>･･･など</p>
+      </div>
+      <div class="effect">
+        <p>＜腸セラピーの効果＞</p>
+        <ul>
+          <li>血液やリンパ液の流れを良くする</li>
+          <li>自律神経を整える</li>
+          <li>冷え性の改善</li>
+          <li>便秘や下痢の改善</li>
+          <li>腰痛の改善</li>
+          <li>アレルギーの改善</li>
+          <li>自然治癒力の向上</li>
+          <li>肥満の解消</li>
+          <li>むくみの改善</li>
+          <li>だるさ・慢性疲労の改善</li>
+        </ul>
+        <p>…などが期待されます。</p>
+      </div>
+    </article>
+
+    <aside>
+      <h3 class="h3_borderLeft">+ 腸セラピー</h3>
+      <div class="flex">
+        <div class="price_list">
+          <div class="course_outer">
+            <PriceTag time="90" price="10,000" />
+            <PriceTag time="105" price="11,500" />
+            <PriceTag time="120" price="13,000" />
+            <DiscountOuter>
+              <DiscountPriceTag
+                time="90"
+                originalPrice="10,000"
+                discountPrice="7,000"
+              />
+              <DiscountPriceTag
+                time="105"
+                originalPrice="11,500"
+                discountPrice="8,000"
+              />
+              <DiscountPriceTag
+                time="120"
+                originalPrice="13,000"
+                discountPrice="9,000"
+              />
+            </DiscountOuter>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin-top: 40px;
+  }
+
+  .intestinal_therapy {
+    margin-block: 6.4rem;
+    padding-inline: 1.6rem;
+
+  }
+
+  h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .image {
+    margin-bottom: 1.6rem;
+  }
+
+  img {
+    /* width: 100%; */
+    /* height: auto; */
+  }
+  .explanation p {
+    padding-bottom: 2rem;
+  }
+
+  .cause {
+    margin-bottom: 1.8rem;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    font-size: 1.8rem;
+  }
+  .cause li::before {
+    content: "◆";
+  }
+  .effect li::before {
+    content: "◎";
+  }
+
+  aside {
+    display: none;
+  }
+
+  @media screen and (769px <= width) {
+    aside {
+      display: block;
+    }
+  }
+</style>
