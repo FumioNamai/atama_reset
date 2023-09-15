@@ -91,6 +91,9 @@ h1,h2,h3,p,ul,li {
 .attention {
   color: var(--attention);
 }
-
+.h3_borderLeft {
+  border-left: 5px solid var(--positive);
+  padding-left: 1.6rem;
+}
 
 /* スペーシング */
