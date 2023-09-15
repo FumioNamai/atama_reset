@@ -1,104 +1,95 @@
 ---
 import Layout from "@layouts/layout.astro";
 import { Image } from "astro:assets";
-import intestine from "../assets/intestine.webp";
+import calf from "../assets/calf.webp";
 import PriceTag from "@components/PriceTag.astro";
 import DiscountOuter from "@components/DiscountOuter.astro";
 import DiscountPriceTag from "@components/DiscountPriceTag.astro";
 ---
 
-<Layout title="腸セラピー">
+<Layout title="ふくらはぎほぐし">
   <main>
-    <section class="intestinal_therapy">
+    <section class="carf_loosening">
       <div class="container">
-        <h2>腸セラピー</h2>
+        <h2>ふくらはぎほぐし</h2>
         <div class="image">
-          <Image src={intestine} alt="" />
+          <Image src={calf} alt="" />
         </div>
         <article>
           <div class="explanation">
-            <p>
-              当店の腸セラピーは<br />
-              服の上からおこなう施術です。<br />
-              オイル等は使いません。
+            <h3>
+              <span class="bold"> ～ふくらはぎほぐしの効果～</span>
+            </h3>
+
+            <h4>
+              ➀コリの解消
+            </h4>
+              <p>
+              身体は一つの大きな筋膜で包まれています<br />
+              （筋膜…個々の筋肉を包み込む膜）
             </p>
             <p>
-              老若男女どなた様でも施術を受けていただけます。<br /><span
-                class="bold">食後２時間後から施術可能です。</span
-              ><br />お飲み物の制限はございません。
+              「頭ほぐし」や「ふくらはぎほぐし」で筋膜が緩むことにより、全身の筋膜の緩みに繋がります。
             </p>
-            <p>〜腸セラピーとは〜</p>
-            <p>
-              ◎胃や腸を活性化する健康法で、<br />体内に溜まった毒素を排出する<br
-              /><span class="bold">デトックス効果</span>があります。
+            <p>全身の筋膜が柔らかくなると全身のコリも緩和されます。</p>
+            <p>頭やふくらはぎをほぐして腰痛が改善される事例もあります。</p>
+
+            <h4>
+              ➁血流改善
+            </h4>
+              <p>
+              全身の筋膜が柔らかくなり<br />コリが緩和されると、<br
+              />血流が改善されます。
             </p>
-            <p>
-              ◎<span class="bold"
-                >自律神経を整える<br />神経伝達物質「セロトニン」の<br
-                />90～95%が腸で</span
-              >作られています。
-            </p>
-            <p>
-              腸を活性化することで<span class="bold">自律神経を整えて</span
-              >いきます。
-            </p>
-            <p>
-              ◎<span class="bold">免疫力の70%が腸に集中</span>しており、<br
-              />腸内環境を整えることが<span class="bold">免疫力の向上</span
-              >に繋がります。
+
+            <h4>
+              ➂冷え・むくみの解消
+            </h4>
+              <p>「ふくらはぎは第２の心臓」<br />
+              ふくらはぎの筋肉は、<br />重力で下に溜まった血液を心臓に戻す<br
+              />ポンプの役割をしています。
             </p>
             <p>
-              免疫力が向上すると<br /><span class="bold"
-                >アレルギー症状の改善</span
-              >や<br /><span class="bold">感染症にかかりにくくなる</span>こと<br
-              />などが期待されます
+              ふくらはぎの筋肉を柔らかくすることで、<br
+              />ポンプ機能をスムーズにおこない、<br />血行促進し、<br
+              />不要な水分や老廃物を排出してくれます。<br
+              />そうすることで冷えやむくみが解消されます。
             </p>
-            <p>
-              ◎<span class="bold">腸は良質な血液を作り、</span><br
-              />免疫細胞に必要な栄養と酸素を届けます。
+
+            <h4>
+              ➃姿勢が良くなる
+            </h4>
+              <p>全身の筋膜が緩むと姿勢も良くなり、<br
+              />深い呼吸ができるようになります。
             </p>
-            <p>
-              よって、<br />腸の働きが悪いと血液がドロドロになり<br
-              />様々な病気の原因になったり<br />冷え性やむくみも引き起こします。
+
+            <h4>
+              ➄リラックス効果
+            </h4>
+              <p>
+              呼吸が深くなることで、<br
+              />全身の血流改善やリラックス効果が期待できます。<br
+              />また、深い呼吸には自律神経を整える効果もあります。
             </p>
-          </div>
-          <div class="cause">
-            <p>＜腸の働きが悪くなる原因＞</p>
-            <ul>
-              <li>睡眠不足</li>
-              <li>運動不足</li>
-              <li>ストレス</li>
-              <li>偏った食事</li>
-              <li>飲酒</li>
-              <li>たばこ</li>
-              <li>過度なダイエット</li>
-              <li>食べ過ぎ</li>
-              <li>加齢</li>
-              <li>便意の我慢</li>
-            </ul>
-            <p>･･･など</p>
-          </div>
-          <div class="effect">
-            <p>＜腸セラピーの効果＞</p>
-            <ul>
-              <li>血液やリンパ液の流れを良くする</li>
-              <li>自律神経を整える</li>
-              <li>冷え性の改善</li>
-              <li>便秘や下痢の改善</li>
-              <li>腰痛の改善</li>
-              <li>アレルギーの改善</li>
-              <li>自然治癒力の向上</li>
-              <li>肥満の解消</li>
-              <li>むくみの改善</li>
-              <li>だるさ・慢性疲労の改善</li>
-            </ul>
-            <p>…などが期待されます。</p>
+
+            <h4>
+              ➅代謝アップ
+            </h4>
+            <p>硬いふくらはぎは血行不良が起こり、<br
+              />身体の巡りも悪くなります。<br />体内の循環が悪くなると<br
+              />栄養やエネルギーが全身に行き渡らなくなり、代謝が落ちることも…
+              <p>血流改善が改善されることで代謝アップに繋がります。</p>
+              <p>◎ふくらはぎほぐしは以下の症状に効果的です。</p>
+              <p>
+                冷え性、むくみ、腰痛、不眠、頻尿などの尿トラブル、婦人科系症状など
+              </p>
+            </p>
           </div>
         </article>
       </div>
       <aside>
-        <h3>腸セラピーを含むコース</h3>
-        <h3 class="h3_borderLeft">+ 腸セラピー</h3>
+        <h3>ふくらはぎほぐしを含むコース</h3>
+        <h3 class="h3_borderLeft">+ ふくらはぎほぐし</h3>
         <div class="flex">
           <div class="price_list">
             <div class="course_outer">
@@ -169,12 +160,25 @@ import DiscountPriceTag from "@components/DiscountPriceTag.astro";
     margin-bottom: 1.6rem;
   }
 
+  h3 {
+    text-align: left;
+  }
+
+  h4 {
+    font-size: 1.8rem;
+    margin-bottom: .8rem;
+  }
+
   .image {
     margin-bottom: 1.6rem;
   }
 
+  img {
+    /* width: 100%; */
+    /* height: auto; */
+  }
   .explanation p {
-    padding-bottom: 2rem;
+    padding-bottom: 1.2rem;
   }
 
   .cause {
@@ -205,6 +209,7 @@ import DiscountPriceTag from "@components/DiscountPriceTag.astro";
       display: flex;
       flex-direction: row;
       justify-content: center;
+
     }
 
     .container {
@@ -225,7 +230,6 @@ import DiscountPriceTag from "@components/DiscountPriceTag.astro";
       opacity: 0.8;
       margin-inline-end: 2.4rem;
     }
-
     .flex {
       display: flex;
       flex-direction: column;
@@ -243,11 +247,10 @@ import DiscountPriceTag from "@components/DiscountPriceTag.astro";
       gap: 1.6rem;
     }
 
-    h3 {
+    aside > h3 {
       font-size: 2rem;
-      text-align: center;
+      text-align: left;
     }
-
     .h3_borderLeft {
       text-align: left;
     }
