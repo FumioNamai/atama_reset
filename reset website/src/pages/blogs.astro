@@ -3,11 +3,9 @@ import Layout from "@layouts/layout.astro";
 
 // microCMSを呼び出す
 import { getBlogs } from "src/library/microcms";
-const response = await getBlogs({fields: ["id","title","category"]});
+const response = await getBlogs({fields: ["id","title,category"]});
+// console.log(response);
 
-// console.log(response.contents.map((content) => (
-//           {content.category}
-//         )));
 
 ---
 
@@ -17,7 +15,7 @@ const response = await getBlogs({fields: ["id","title","category"]});
       {
         response.contents.map((content) => (
           <li>
-            <a href={content.id}>{content.title}</a>
+            <a href={content.id}>{content.title} </a>
           </li>
         ))
       }

@@ -20,45 +20,30 @@ const blog = await getBlogDetail(blogId as string);
 
 const articles = blog.article;
 
-console.log(articles);
-
-
-
-// let {
-//   html,
-//   images,
-//   text,
-// } = Astro.props;
-
-// articles.forEach((article) => {
-//   if (article.fieldId === "rich_editor") {
-//     html = article.rich_editor;
-//   } else if (article.fieldId === "image") {
-//     images = Object.values(article.image);
-//     console.log(images);
-
-//   } else {
-//     text = article.text;
-//   }
-// });
 ---
 
 <Layout>
   <main>
     <h1 class="title">{blog.title}</h1>
     <p class="publishedAt">{blog.publishedAt}</p>
+    <img src={blog.eyecatch.url} alt="">
     <p>{blog.category.id}</p>
-    <!-- <div class="post" set:html={blog.article[0].rich_editor}></div> -->
     <div>
-      <!-- <p>{text}</p>
-      <div class="post" set:html={html} />
-      <p>{text}</p>
-      <img
-        src={images.url}
-        alt=""
-        height={images.height}
-        width={images.width}
-      /> -->
+        {
+          articles.map((article) => {
+            switch(article.fieldId) {
+              case "rich_editor":
+                return <div set:html={article.rich_editor}></div>
+              case "image":
+                return <img src={article.image.url} alt="" height={article.image.height} width={article.image.width}/>
+              case "text":
+                return <p>{article.text}</p>
+              default:
+                break;
+            }
+          })
+
+        }
     </div>
   </main>
 </Layout>

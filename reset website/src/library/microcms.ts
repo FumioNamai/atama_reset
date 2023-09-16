@@ -9,14 +9,16 @@ const client = createClient({
 export type Blog = {
   id: string;
   title: string;
-  category: object;
+  category: {
+    id: string;
+    name: string;
+  };
   publishedAt: string;
   eyecatch: {
     url: string;
     height: number;
     width: number;
   };
-  // article: string;
   article: {
     image:  {
       url: string;
