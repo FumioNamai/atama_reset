@@ -11,13 +11,24 @@ import Layout from "@layouts/layout.astro";
       <Image src= { stiff_neck } alt="肩こり" />
     </div>
     <article>
-      <p>
-        ・頭が重い(痛い)<br />・首や肩がこる<br />・イライラする<br
-        />・疲労感が取れない<br />・寝つきが悪い<br />・何度も目が覚める<br
-        />・なんとなく体調が悪い<br />・体がダルい<br />・足がむくむ<br
-        />・手足が冷える<br />・のぼせる<br />・便秘や下痢を繰り返す<br
-        />・息切れや動悸がする<br />・めまい<br />・生理不順
-      </p>
+      <ul>
+        <li>頭が重い(痛い)</li>
+        <li>首や肩がこる</li>
+        <li>イライラする</li>
+        <li>疲労感が取れない</li>
+        <li>寝つきが悪い</li>
+        <li>何度も目が覚める</li>
+        <li>なんとなく体調が悪い</li>
+        <li>体がダルい</li>
+        <li>足がむくむ</li>
+        <li>手足が冷える</li>
+        <li>のぼせる</li>
+        <li>便秘や下痢を繰り返す</li>
+        <li>息切れや動悸がする</li>
+        <li>めまい</li>
+        <li>生理不順</li>
+      </ul>
+
       <p>
         などといった、<br />自覚症状の訴えがあるものの、<br
         />検査をしても原因となる病気は見つからない状態のこと。
@@ -41,14 +52,36 @@ import Layout from "@layouts/layout.astro";
 		max-width: 640px;
   }
 
+  h3 {
+    margin-block-end: 4rem;
+  }
+
   span {
     font-size: 1.4rem;
   }
 
+  ul {
+    padding: 0;
+    margin-block-end: 2.4rem;
+  }
+
+  li {
+    font-size: 1.8rem;
+    list-style: none;
+  }
+
+  li::before {
+    content: "・";
+  }
+
+  p {
+    margin-block-end: 1.8rem;
+  }
   .image img{
 		max-width: 100%;
     height: auto;
     object-fit: contain;
+    margin-block-end: 4rem;
   }
 
   article {

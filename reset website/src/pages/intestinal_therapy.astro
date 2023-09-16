@@ -27,7 +27,8 @@ import DiscountPriceTag from "@components/DiscountPriceTag.astro";
                 class="bold">食後２時間後から施術可能です。</span
               ><br />お飲み物の制限はございません。
             </p>
-            <p>〜腸セラピーとは〜</p>
+            <p></p>
+            <h4>〜腸セラピーとは〜</h4>
             <p>
               ◎胃や腸を活性化する健康法で、<br />体内に溜まった毒素を排出する<br
               /><span class="bold">デトックス効果</span>があります。
@@ -63,7 +64,7 @@ import DiscountPriceTag from "@components/DiscountPriceTag.astro";
             </p>
           </div>
           <div class="cause">
-            <p>＜腸の働きが悪くなる原因＞</p>
+            <h4>＜腸の働きが悪くなる原因＞</h4>
             <ul>
               <li>睡眠不足</li>
               <li>運動不足</li>
@@ -79,7 +80,7 @@ import DiscountPriceTag from "@components/DiscountPriceTag.astro";
             <p>･･･など</p>
           </div>
           <div class="effect">
-            <p>＜腸セラピーの効果＞</p>
+            <h4>＜腸セラピーの効果＞</h4>
             <ul>
               <li>血液やリンパ液の流れを良くする</li>
               <li>自律神経を整える</li>
@@ -169,12 +170,21 @@ import DiscountPriceTag from "@components/DiscountPriceTag.astro";
     margin-bottom: 1.6rem;
   }
 
+  h4 {
+    font-size: 1.8rem;
+    margin-bottom: .8rem;
+  }
+
   .image {
     margin-bottom: 1.6rem;
   }
 
+  article p {
+    line-height: 2;
+  }
+
   .explanation p {
-    padding-bottom: 2rem;
+    padding-bottom: 1.2rem;
   }
 
   .cause {
@@ -219,10 +229,9 @@ import DiscountPriceTag from "@components/DiscountPriceTag.astro";
       height: fit-content;
       display: flex;
       flex-direction: column;
-      /* align-items: center; */
       gap: 1.6rem;
       border: 1px solid var(--gray-25);
-      opacity: 0.8;
+      opacity: 0.7;
       margin-inline-end: 2.4rem;
     }
 
