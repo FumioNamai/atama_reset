@@ -79,17 +79,26 @@ h1,h2,h3,p,ul,li {
 .bold {
   font-weight: bold;
 }
+.primary {
+  color: var(--primary);
+}
+.secondary {
+  color: var(--secondary);
+}
 .highlight {
   color: var(--highlight);
 }
 .positive {
   color: var(--positive);
 }
-.secondary {
-  color: var(--secondary);
-}
 .attention {
   color: var(--attention);
+}
+.alert {
+  color: var(--alert);
+}
+.link {
+  color: var(--link);
 }
 .h3_borderLeft {
   border-left: 5px solid var(--positive);

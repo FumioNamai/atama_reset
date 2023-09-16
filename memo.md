@@ -101,10 +101,16 @@ ___
 -
 -
 -
--first_timeページ
+-初めてのお客様へ ページ
 　intersectionObserver　縦のラインを伸ばす
--voiceページ
+-お客様の声 ページ
 
+-腸セラピー ページ
+-ふくらはぎほぐし ページ
+
+
+-blogページ
+ microCMS接続設定
 
 
 fadeinクラスのintersectionObseverアニメーションはEfficasy.astro内に定義
