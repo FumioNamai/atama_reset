@@ -111,6 +111,9 @@ ___
 
 -blogページ
  microCMS接続設定
+ データの取得
+ お知らせorブログで条件分岐
+
 
 
 fadeinクラスのintersectionObseverアニメーションはEfficasy.astro内に定義

@@ -13,20 +13,20 @@ export type Blog = {
     id: string;
     name: string;
   };
-  publishedAt: string;
-  eyecatch: {
+  publishedAt?: string;
+  eyecatch?: {
     url: string;
     height: number;
     width: number;
   };
   article: {
-    image:  {
+    image?:  {
       url: string;
       height: number;
       width: number;
     },
-    text: string,
-    rich_editor: string,
+    text?: string,
+    rich_editor?: string,
   };
 };
   // 何のための記述か不明
