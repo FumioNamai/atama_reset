@@ -13,19 +13,14 @@ export type Blog = {
     id: string;
     name: string;
   };
-  publishedAt?: string;
-  eyecatch?: {
-    url: string;
-    height: number;
-    width: number;
-  };
+  publishedAt: string;
   article: {
-    image?:  {
+    image:  {
       url: string;
       height: number;
       width: number;
     },
-    text?: string,
+    text: string,
     rich_editor?: string,
   };
 };
