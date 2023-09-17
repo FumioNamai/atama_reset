@@ -1,5 +1,9 @@
 ---
 import Layout from "@layouts/layout.astro";
+import { Image }  from "astro:assets";
+import clinic_image3 from "../assets/clinic_image_3.jpg"
+import clinic_image4 from "../assets/clinic_image_4.jpg"
+
 ---
 
 <Layout title="ごあいさつ">
@@ -61,10 +65,10 @@ import Layout from "@layouts/layout.astro";
   </div>
   <div class="clinic-image-outer">
     <div class="clinic-image">
-      <img src="/clinic_image_3.jpg" alt="" width="533px" height="400px">
+      <Image src={ clinic_image3 } alt="" >
     </div>
     <div class="clinic-image">
-      <img src="/clinic_image_4.jpg" alt="" width="533px" height="400px">
+      <Image src={ clinic_image4 } alt="" >
     </div>
   </div>
 </section>

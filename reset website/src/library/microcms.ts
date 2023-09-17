@@ -9,10 +9,6 @@ const client = createClient({
 export type Blog = {
   id: string;
   title: string;
-  category: {
-    id: string;
-    name: string;
-  };
   publishedAt: string;
   article: {
     image:  {
@@ -21,7 +17,7 @@ export type Blog = {
       width: number;
     },
     text: string,
-    rich_editor?: string,
+    rich_editor: string,
   };
 };
   // 何のための記述か不明
