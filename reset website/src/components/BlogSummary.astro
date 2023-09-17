@@ -1,32 +1,19 @@
 ---
-import Layout from "@layouts/layout.astro";
-import BlogSummary from "@components/BlogSummary.astro"
-
-// microCMSを呼び出す
-import { getBlogs, getAllPosts } from "src/library/microcms";
-const response = await getBlogs({fields: ["id","title"]});
-const posts = await getAllPosts()
-
+const { src, date, title, summary } = Astro.props;
 ---
 
-<Layout title="ブログ一覧">
-  <main>
-    {
-      posts.map((post) => (
-        <BlogSummary
-          src={post.eyecatch.url}
-          date={post.publishedAt}
-          title={post.title}
-          summary={post.summary}
-        />
-      ))
-    }
-
-  </main>
-</Layout>
+<div class="container">
+  <a href="" class="flex">
+    <img src={src} alt="" />
+    <div class="wrapper">
+      <p class="date">{date}</p>
+      <h2>{title}</h2>
+      <p class="summary">{summary}</p>
+    </div>
+  </a>
+</div>
 
 <style>
-
   img {
     width: 120px;
     height: 100%;
@@ -34,10 +21,7 @@ const posts = await getAllPosts()
   }
   a {
     text-decoration: none;
-
   }
-
-  /* コンテナ */
   .container {
     width: 320px;
   }
@@ -73,6 +57,6 @@ const posts = await getAllPosts()
     position: absolute;
     left: 0;
     bottom: 0;
-    background: linear-gradient(to top, #f0f0f0e0,#f0f0f000);
+    background: linear-gradient(to top, #f0f0f0e0, #f0f0f000);
   }
 </style>

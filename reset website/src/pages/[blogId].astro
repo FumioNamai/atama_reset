@@ -1,13 +1,12 @@
 ---
 import Layout from "@layouts/layout.astro";
 import { getBlogs, getBlogDetail } from "../library/microcms";
-import { Image } from "astro:assets";
 
 export const prerender = true;
 // 詳細記事ページの全パスを取得
 export async function getStaticPaths() {
   const response = await getBlogs({ fields: ["id"] });
-  console.log(response);
+
   return response.contents.map((content) => ({
     params: {
       blogId: content.id,
@@ -20,11 +19,13 @@ export async function getStaticPaths() {
 const { blogId } = Astro.params;
 const blog = await getBlogDetail(blogId as string);
 
+
 const articles = blog.article;
 
+// 日付の表示を変更
 let pubDate
 if (blog.publishedAt) {
-pubDate = new Date(blog.publishedAt).toLocaleDateString().split("/").join(".")
+pubDate = new Date(blog.publishedAt).toLocaleDateString("ja-JP").split("/").join(".")
 }
 
 ---
@@ -34,6 +35,7 @@ pubDate = new Date(blog.publishedAt).toLocaleDateString().split("/").join(".")
     <div class="container">
     <p class="publishedAt">{ pubDate }</p>
     <h2 class="title">{blog.title}</h2>
+    <div class="image"><img src={blog.eyecatch.url} alt="" height={blog.eyecatch.height} width={blog.eyecatch.width}/></div>
     <article>
         {
           articles.map((article) => {
@@ -66,7 +68,9 @@ pubDate = new Date(blog.publishedAt).toLocaleDateString().split("/").join(".")
   }
   .publishedAt {
     font-size: 1.4rem;
+    padding: 0;
   }
+
   .title {
     padding-block: 1.6rem;
   }

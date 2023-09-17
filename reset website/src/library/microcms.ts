@@ -7,25 +7,31 @@ const client = createClient({
 
 //  型定義
 export type Blog = {
-  id: string;
-  title: string;
-  publishedAt: string;
+  id: string,
+  title: string,
+  publishedAt: string,
+  eyecatch: {
+    url: string,
+    height: number,
+    width: number,
+  },
+  summary: string,
   article: {
     image:  {
-      url: string;
-      height: number;
-      width: number;
+      url: string,
+      height: number,
+      width: number,
     },
     text: string,
     rich_editor: string,
-  };
+  },
 };
   // 何のための記述か不明
 export type BlogResponse = {
-  totalCount: number;
-  offset: number;
-  limit: number;
-  contents: Blog[];
+  totalCount: number,
+  offset: number,
+  limit: number,
+  contents: Blog[],
 }
 
 // APIの呼び出し
@@ -43,3 +49,21 @@ export const getBlogDetail = async (
     queries,
   });
 };
+
+
+export async function getAllPosts( limit = 10) {
+  try {
+    const posts = await client.get({
+      endpoint: "blogs",
+      queries: {
+        fields: 'id,title,publishedAt,summary,eyecatch',
+        orders: '-publishedAt',
+        limit: limit,
+      },
+    })
+    return posts.contents
+  } catch {
+    console.log(err);
+
+  }
+}
