@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png"
 ---
 
 <footer>
@@ -6,7 +8,7 @@
     <p class="name">頭ほぐし専門店 reset</p>
     <div class="content">
       <a href="/">
-        <img src="logo.png" alt="ロゴ" width="90px" height="90px" />
+        <Image src={logo} alt="ロゴ" />
       </a>
       <div class="detail">
           <p>営業時間｜12時～21時［不定休］</p>

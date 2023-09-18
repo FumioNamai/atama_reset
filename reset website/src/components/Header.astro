@@ -1,6 +1,7 @@
 ---
 import Hamburger from "@components/Hamburger.astro";
 import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
 import logo2 from "../assets/logo2.png"
 ---
 
@@ -30,7 +31,7 @@ import logo2 from "../assets/logo2.png"
       <div class="left">
         <div class="logo">
           <a href="/">
-            <img src="logo.png" alt="ロゴ" width="90px" height="90px"/>
+            <Image src={ logo } alt="ロゴ" />
           </a>
         </div>
       </div>

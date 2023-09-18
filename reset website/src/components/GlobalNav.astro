@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png"
 import HamburgerClose from "./HamburgerClose.astro";
 const nav = [
   {
@@ -86,7 +88,7 @@ const nav = [
       <HamburgerClose />
       <div class="logo">
         <a href="/" class="globalNav-logo"
-          ><img src="/logo.png" alt="ロゴ" width="90px" height="90px" /></a
+          ><Image src={logo} alt="ロゴ" width="90px" height="90px" /></a
         >
       </div>
     </nav>
