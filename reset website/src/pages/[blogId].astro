@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/layout.astro";
 import { getBlogs, getBlogDetail } from "../library/microcms";
+import BlogSummary from "@components/BlogSummary.astro";
 
 export const prerender = true;
 // 詳細記事ページの全パスを取得
@@ -28,6 +29,11 @@ if (blog.publishedAt) {
 pubDate = new Date(blog.publishedAt).toLocaleDateString("ja-JP").split("/").join(".")
 }
 
+// aside microCMSを呼び出す
+import {getAllPosts } from "src/library/microcms";
+// const response = await getBlogs({fields: ["id","title"]});
+const posts = await getAllPosts()
+
 ---
 
 <Layout>
@@ -54,7 +60,17 @@ pubDate = new Date(blog.publishedAt).toLocaleDateString("ja-JP").split("/").join
     </article>
   </div>
   <aside>
-    ブログ一覧
+    {
+      posts.map((post) => (
+        <BlogSummary
+        id = {post.id}
+        src={post.eyecatch.url}
+        date={post.publishedAt}
+        title={post.title}
+        summary={post.summary}
+    />
+    ))
+  }
   </aside>
   </main>
 </Layout>

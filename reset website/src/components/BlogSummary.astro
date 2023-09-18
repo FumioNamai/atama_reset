@@ -1,10 +1,14 @@
 ---
-const { src, date, title, summary } = Astro.props;
+let { id, src, date, title, summary } = Astro.props;
+date = new Date(date).toLocaleDateString("ja-JP").split("/").join(".")
+
 ---
 
 <div class="container">
-  <a href="" class="flex">
-    <img src={src} alt="" />
+  <a href=`/${id}` class="flex">
+    <div class="image">
+      <img src={src} alt="" />
+    </div>
     <div class="wrapper">
       <p class="date">{date}</p>
       <h2>{title}</h2>
@@ -15,22 +19,30 @@ const { src, date, title, summary } = Astro.props;
 
 <style>
   img {
-    width: 120px;
-    height: 100%;
-    padding-inline: 8px;
+    width: 100%;
+    height: auto;
+  }
+  .image {
+    width: 220px;
   }
   a {
     text-decoration: none;
   }
   .container {
-    width: 320px;
+    /* width: 280px; */
+    container-type: inline-size;
+    resize: horizontal;
+    overflow: auto;
+    display: flex;
   }
 
   .flex {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    gap: .8rem;
   }
+
   .container h2 {
     font-size: 1.4rem;
   }
@@ -38,18 +50,23 @@ const { src, date, title, summary } = Astro.props;
     padding: 0;
     font-size: 1.2rem;
   }
-
   .date {
     font-size: 1rem;
   }
   .wrapper {
     color: var(--textBlack);
+    position: relative;
+    height: 100px;
+    overflow: hidden;
   }
   .summary {
     color: var(--textBlack);
-    position: relative;
+    overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   }
-  .summary::after {
+  .wrapper::after {
     content: "";
     display: block;
     width: 100%;
@@ -59,4 +76,41 @@ const { src, date, title, summary } = Astro.props;
     bottom: 0;
     background: linear-gradient(to top, #f0f0f0e0, #f0f0f000);
   }
+
+  @container (220px <= width) {
+    .flex {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .image {
+      width: auto;
+      /* width: 120px; */
+      flex: 1 1 auto;
+    }
+    .wrapper {
+      flex: 1 1 auto;
+      /* width: 200px; */
+    }
+  }
+
+
+  @container (350px <= width) {
+  .container h2 {
+    font-size: 2rem;
+  }
+  .container p {
+    font-size: 1.6rem;
+  }
+  .date {
+    font-size: 1.2rem;
+  }
+  }
+
+  @container (460px <= width) {
+    .summary {
+      line-height: 1.75;
+    -webkit-line-clamp: 3;
+  }
+  }
+
 </style>

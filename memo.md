@@ -118,3 +118,30 @@ ___
 
 fadeinクラスのintersectionObseverアニメーションはEfficasy.astro内に定義
 fadeinImgクラスのintersectionObseverアニメーションはFeatures.astro内に定義
+
+
+
+propsで渡したい値
+img {
+    width: 100px;
+    padding-inline: 8px;
+  }
+
+  .container {
+    width: 280px;
+  }
+
+  .flex {
+    flex-direction: row; / column;
+    justify-content: space-between; / center;
+  }
+
+  .container h2 {
+    font-size: 1.4rem;
+  }
+  .container p {
+    font-size: 1.2rem;
+  }
+  .date {
+    font-size: 1rem;
+  }

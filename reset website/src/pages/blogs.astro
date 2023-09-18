@@ -11,68 +11,39 @@ const posts = await getAllPosts()
 
 <Layout title="ブログ一覧">
   <main>
-    {
-      posts.map((post) => (
-        <BlogSummary
-          src={post.eyecatch.url}
-          date={post.publishedAt}
-          title={post.title}
-          summary={post.summary}
+    <section class="blogs">
+      <h2>ブログ</h2>
+      <div class="container">
+        {
+          posts.map((post) => (
+            <BlogSummary
+            id = {post.id}
+            src={post.eyecatch.url}
+            date={post.publishedAt}
+            title={post.title}
+            summary={post.summary}
         />
-      ))
-    }
-
+        ))
+      }
+      </div>
+    </section>
   </main>
 </Layout>
 
 <style>
-
-  img {
-    width: 120px;
-    height: 100%;
-    padding-inline: 8px;
-  }
-  a {
-    text-decoration: none;
+  section {
+    max-width: 900px;
 
   }
 
-  /* コンテナ */
+  h2 {
+    text-align: center;
+  }
+
   .container {
-    width: 320px;
-  }
-
-  .flex {
+    margin-block: 4rem;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .container h2 {
-    font-size: 1.4rem;
-  }
-  .container p {
-    padding: 0;
-    font-size: 1.2rem;
-  }
-
-  .date {
-    font-size: 1rem;
-  }
-  .wrapper {
-    color: var(--textBlack);
-  }
-  .summary {
-    color: var(--textBlack);
-    position: relative;
-  }
-  .summary::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 80%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background: linear-gradient(to top, #f0f0f0e0,#f0f0f000);
+    flex-direction: column;
+    gap: 2.4rem;
   }
 </style>
