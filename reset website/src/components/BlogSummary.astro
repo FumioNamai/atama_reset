@@ -1,7 +1,6 @@
 ---
 let { id, src, date, title, summary } = Astro.props;
-date = new Date(date).toLocaleDateString("ja-JP").split("/").join(".")
-
+date = new Date(date).toLocaleDateString("ja-JP").split("/").join(".");
 ---
 
 <div class="container">
@@ -23,24 +22,26 @@ date = new Date(date).toLocaleDateString("ja-JP").split("/").join(".")
     height: auto;
   }
   .image {
-    width: 220px;
+    width: 219px;
+    height: 146px;
   }
   a {
     text-decoration: none;
   }
   .container {
-    /* width: 280px; */
     container-type: inline-size;
-    resize: horizontal;
-    overflow: auto;
     display: flex;
+    max-width: 848px;
+    /* コンテナクエリデバッグ用設定 */
+    /* resize: horizontal;
+    overflow: auto; */
   }
 
   .flex {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: .8rem;
+    gap: 0.8rem;
   }
 
   .container h2 {
@@ -56,61 +57,76 @@ date = new Date(date).toLocaleDateString("ja-JP").split("/").join(".")
   .wrapper {
     color: var(--textBlack);
     position: relative;
-    height: 100px;
+    /* height: auto; */
     overflow: hidden;
   }
   .summary {
     color: var(--textBlack);
     overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
   .wrapper::after {
     content: "";
     display: block;
     width: 100%;
-    height: 80%;
+    height: 90%;
     position: absolute;
     left: 0;
     bottom: 0;
-    background: linear-gradient(to top, #f0f0f0e0, #f0f0f000);
+    background: linear-gradient(to top, #f4f4f4, #f4f4f400);
   }
 
   @container (220px <= width) {
     .flex {
+      padding-inline: 2.4rem;
       flex-direction: row;
       justify-content: space-between;
+      gap: 5%;
     }
     .image {
-      width: auto;
-      /* width: 120px; */
-      flex: 1 1 auto;
+      width: fit-content;
+      min-width: 120px;
+      height: auto;
+      aspect-ratio: 3 / 2;
+      width: 35%;
     }
     .wrapper {
-      flex: 1 1 auto;
-      /* width: 200px; */
+      width: 65%;
     }
-  }
-
-
-  @container (350px <= width) {
-  .container h2 {
-    font-size: 2rem;
-  }
-  .container p {
-    font-size: 1.6rem;
-  }
-  .date {
-    font-size: 1.2rem;
-  }
+    .summary {
+      -webkit-line-clamp: 2;
+    }
   }
 
   @container (460px <= width) {
     .summary {
+      letter-spacing: 2px;
       line-height: 1.75;
-    -webkit-line-clamp: 3;
-  }
+      -webkit-line-clamp: 3;
+    }
+    .container h2 {
+      font-size: 1.8rem;
+    }
+    .container p {
+      font-size: 1.4rem;
+    }
+    .date {
+      font-size: 1.2rem;
+    }
   }
 
+  @container (640px <= width) {
+    .container h2 {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+    }
+    .container p {
+      font-size: 1.6rem;
+    }
+    .date {
+      font-size: 1.4rem;
+    }
+  }
 </style>
