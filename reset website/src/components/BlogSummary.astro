@@ -1,6 +1,6 @@
 ---
 let { id, src, date, title, summary } = Astro.props;
-date = new Date(date).toLocaleDateString("ja-JP").split("/").join(".");
+date = new Date(date).toLocaleDateString().split("/").join(".");
 ---
 
 <div class="container">

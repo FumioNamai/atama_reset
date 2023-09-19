@@ -101,47 +101,22 @@ ___
 -
 -
 -
--初めてのお客様へ ページ
+- 初めてのお客様へ ページ
 　intersectionObserver　縦のラインを伸ばす
--お客様の声 ページ
+- お客様の声 ページ
 
--腸セラピー ページ
--ふくらはぎほぐし ページ
+- 腸セラピー ページ
+- ふくらはぎほぐし ページ
 
 
--blogページ
+- blogページ
  microCMS接続設定
  データの取得
- お知らせorブログで条件分岐
+ お知らせorブログで条件分岐→複雑になりそうなので、microCMS側で分けた
+ コンテナクエリを使ってコンテナサイズでブログサマリーを変形させた
 
+課題　ブログ一覧ページはmicroCMSの記事更新をするだけで反映されるが、個別記事は404が出てしまう。
 
 
 fadeinクラスのintersectionObseverアニメーションはEfficasy.astro内に定義
 fadeinImgクラスのintersectionObseverアニメーションはFeatures.astro内に定義
-
-
-
-propsで渡したい値
-img {
-    width: 100px;
-    padding-inline: 8px;
-  }
-
-  .container {
-    width: 280px;
-  }
-
-  .flex {
-    flex-direction: row; / column;
-    justify-content: space-between; / center;
-  }
-
-  .container h2 {
-    font-size: 1.4rem;
-  }
-  .container p {
-    font-size: 1.2rem;
-  }
-  .date {
-    font-size: 1rem;
-  }
