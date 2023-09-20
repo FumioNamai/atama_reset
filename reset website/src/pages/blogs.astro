@@ -4,8 +4,10 @@ import BlogSummary from "@components/BlogSummary.astro";
 
 // microCMSを呼び出す
 import { getBlogs, getAllPosts } from "src/library/microcms";
-const response = await getBlogs({ fields: ["id", "title"] });
+// const response = await getBlogs({ fields: ["slug", "title"] });
 const posts = await getAllPosts();
+
+
 ---
 
 <Layout title="ブログ一覧">
@@ -16,7 +18,7 @@ const posts = await getAllPosts();
         {
           posts.map((post) => (
             <BlogSummary
-              id={post.id}
+              slug={post.slug}
               src={post.eyecatch.url}
               date={post.publishedAt}
               title={post.title}

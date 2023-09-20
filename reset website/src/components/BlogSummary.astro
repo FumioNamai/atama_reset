@@ -1,10 +1,10 @@
 ---
-let { id, src, date, title, summary } = Astro.props;
+let { slug, src, date, title, summary } = Astro.props;
 date = new Date(date).toLocaleDateString().split("/").join(".");
 ---
 
 <div class="container">
-  <a href=`/${id}` class="flex">
+  <a href=`/blog/${slug}` class="flex">
     <div class="image">
       <img src={src} alt="" />
     </div>
@@ -87,7 +87,7 @@ date = new Date(date).toLocaleDateString().split("/").join(".");
     }
     .image {
       width: fit-content;
-      min-width: 120px;
+      min-width: 100px;
       height: auto;
       aspect-ratio: 3 / 2;
       width: 35%;

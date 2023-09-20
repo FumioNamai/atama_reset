@@ -9,6 +9,7 @@ const client = createClient({
 export type Blog = {
   id: string,
   title: string,
+  slug: string,
   publishedAt: string,
   eyecatch: {
     url: string,
@@ -26,7 +27,6 @@ export type Blog = {
     rich_editor: string,
   },
 };
-  // 何のための記述か不明
 export type BlogResponse = {
   totalCount: number,
   offset: number,
@@ -39,6 +39,23 @@ export const getBlogs = async (queries?: MicroCMSQueries) => {
   return await client.get<BlogResponse>({ endpoint: "blogs", queries })
 };
 
+export async function getAllPosts( limit = 10) {
+  try {
+    const posts = await client.get({
+      endpoint: "blogs",
+      queries: {
+        fields: 'id,title,slug,publishedAt,summary,eyecatch',
+        orders: '-publishedAt',
+        limit: limit,
+      },
+    })
+    return posts.contents
+  } catch {
+    console.log(err);
+  }
+}
+
+
 export const getBlogDetail = async (
   contentId: string,
   queries?: MicroCMSQueries
@@ -49,21 +66,3 @@ export const getBlogDetail = async (
     queries,
   });
 };
-
-
-export async function getAllPosts( limit = 10) {
-  try {
-    const posts = await client.get({
-      endpoint: "blogs",
-      queries: {
-        fields: 'id,title,publishedAt,summary,eyecatch',
-        orders: '-publishedAt',
-        limit: limit,
-      },
-    })
-    return posts.contents
-  } catch {
-    console.log(err);
-
-  }
-}

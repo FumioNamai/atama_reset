@@ -1,39 +1,53 @@
 ---
 import Layout from "@layouts/layout.astro";
-import { getBlogs, getBlogDetail } from "../library/microcms";
+import { getBlogs, getBlogDetail, getAllPosts } from "../../library/microcms";
 import BlogSummary from "@components/BlogSummary.astro";
 
 export const prerender = true;
 // 詳細記事ページの全パスを取得
 export async function getStaticPaths() {
-  const response = await getBlogs({ fields: ["id"] });
-
-  return response.contents.map((content) => ({
+  const response = await getBlogs({fields:["id"]["slug"]});
+// { fields: ["slug"]["publishedAt"]
+    return response.contents.map((content) => ({
     params: {
       blogId: content.id,
+      slug: content.slug,
+      publishedAt:content.publishedAt,
     },
+    props: {content},
   }));
 }
 
 // 記事の詳細情報を取得
-const { blogId } = Astro.params;
-const blog = await getBlogDetail(blogId as string);
 
-const articles = blog.article;
+// const {
+  // blogId,
+  // slug,
+  // publishedAt,
+// } = Astro.params;
+const {content} = Astro.props
+
+// console.log(content);
+
+// const blog = await getBlogDetail(blogId as string);
+// const blog = await getBlogDetail(slug as string)
+// const blog = await getBlogDetail(blogId)
+const articles = content.article;
+
+// const contents = blog.contents
+
 
 // 日付の表示を変更
 let pubDate;
-if (blog.publishedAt) {
-  pubDate = new Date(blog.publishedAt)
+if (content.publishedAt) {
+  pubDate = new Date(content.publishedAt)
     .toLocaleDateString("ja-JP")
     .split("/")
     .join(".");
 }
-
-// aside microCMSを呼び出す
-import { getAllPosts } from "src/library/microcms";
+// aside用 microCMSを呼び出す
 // const response = await getBlogs({fields: ["id","title"]});
-const posts = await getAllPosts();
+const posts = await getAllPosts(5);
 ---
 
 <Layout>
@@ -41,13 +55,13 @@ const posts = await getAllPosts();
     <section class="blog">
       <div class="container">
         <p class="publishedAt">{pubDate}</p>
-        <h2 class="title">{blog.title}</h2>
+        <h2 class="title">{content.title}</h2>
         <div class="image">
           <img
-            src={blog.eyecatch.url}
+            src={content.eyecatch.url}
             alt=""
-            height={blog.eyecatch.height}
-            width={blog.eyecatch.width}
+            height={content.eyecatch.height}
+            width={content.eyecatch.width}
           />
         </div>
         <article>
@@ -78,10 +92,11 @@ const posts = await getAllPosts();
       </div>
       <aside>
         <div class="blog-list">
+          <h3>最近の投稿</h3>
           {
             posts.map((post) => (
               <BlogSummary
-                id={post.id}
+                slug={post.slug}
                 src={post.eyecatch.url}
                 date={post.publishedAt}
                 title={post.title}
@@ -133,7 +148,11 @@ const posts = await getAllPosts();
     aside {
       display: block;
       /* margin-top: 40px; */
-      min-width: 350px;
+      min-width: 300px;
+    }
+    h3 {
+      padding-inline-start: 2.4rem;
+      font-size: 2rem;
     }
     .blog-list {
       display: flex;

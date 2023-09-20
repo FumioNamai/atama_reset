@@ -1,4 +1,4 @@
-import { articles } from "./[blogId].astro";
+import { articles } from "./blog/[slug].astro";
 
 articles.forEach((article) => {
 if (article.fieldId === "rich_editor") {
