@@ -12,7 +12,6 @@ width = article.image.width;
 }
 else {
 text = [article.text];
-console.log(text[1]);
 
 }
 });

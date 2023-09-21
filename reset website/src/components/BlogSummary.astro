@@ -1,10 +1,10 @@
 ---
-let { slug, src, date, title, summary } = Astro.props;
-date = new Date(date).toLocaleDateString().split("/").join(".");
+let { id,slug, src, date, title, summary } = Astro.props;
+date = new Date(date).toLocaleDateString("ja-JP").split("/").join(".");
 ---
 
 <div class="container">
-  <a href=`/blog/${slug}` class="flex">
+  <a href=`/blog/${slug}-${id}` class="flex">
     <div class="image">
       <img src={src} alt="" />
     </div>

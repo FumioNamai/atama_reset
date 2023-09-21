@@ -18,6 +18,7 @@ const posts = await getAllPosts();
         {
           posts.map((post) => (
             <BlogSummary
+              id={post.id}
               slug={post.slug}
               src={post.eyecatch.url}
               date={post.publishedAt}
