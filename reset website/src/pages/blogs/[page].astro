@@ -1,0 +1,103 @@
+---
+import type { GetStaticPathsOptions } from "astro";
+import Layout from "@layouts/layout.astro";
+import BlogSummary from "@components/BlogSummary.astro";
+// microCMSを呼び出す
+import { getBlogs, getAllPosts } from "../../../src/library/microcms";
+// const response = await getBlogs({ fields: ["slug", "title"] });
+
+export const prerender = true;
+export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {
+  const blogs = await getBlogs({ limit: 100 });
+  return paginate(blogs.contents, { pageSize: 3 });
+};
+const { page } = Astro.props;
+
+const posts = await getAllPosts();
+---
+
+<Layout title="ブログ一覧">
+  <main>
+    <section class="blogs">
+      <h2>ブログ</h2>
+      <div class="container">
+        {
+          page.data.map((page) => (
+            <BlogSummary
+              id={page.id}
+              slug={page.slug}
+              src={page.eyecatch.url}
+              date={page.publishedAt}
+              title={page.title}
+              summary={page.summary}
+            />
+          ))
+        }
+      </div>
+
+      <nav class="pagination">
+        <ul>
+          { page.url.prev ? (
+              <li>
+                <a href={page.url.prev}>前へ</a>
+              </li>
+              ) : (
+                <li></li>
+              )
+              }
+            <li>{page.currentPage}/{page.lastPage}</li>
+          {
+            page.url.next ? (
+              <li>
+                <a href={page.url.next}>次へ</a>
+              </li>
+            ) : (
+              <li></li>
+            )
+          }
+        </ul>
+      </nav>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  section {
+    max-width: 900px;
+    margin: 4rem auto;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  .container {
+    margin-block: 8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .pagination {
+    max-width: 300px;
+    margin-inline: auto;
+  }
+  .pagination ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+  }
+  .pagination li {
+    text-align: center;
+    padding: 0;
+    display: inline-block;
+    width: 36rem;
+    text-decoration: none;
+  }
+  .pagination p {
+    text-align: center;
+  }
+
+</style>

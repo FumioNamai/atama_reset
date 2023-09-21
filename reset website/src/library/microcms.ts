@@ -36,7 +36,11 @@ export type BlogResponse = {
 
 // APIの呼び出し
 export const getBlogs = async (queries?: MicroCMSQueries) => {
-  return await client.get<BlogResponse>({ endpoint: "blogs", queries })
+  return await client.get<BlogResponse>({
+    endpoint: "blogs",
+    queries:{
+      orders: '-publishedAt',
+    }})
 };
 
 export async function getAllPosts( limit = 10) {

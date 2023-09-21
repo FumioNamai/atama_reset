@@ -2,6 +2,7 @@
 import Layout from "@layouts/layout.astro";
 import { getBlogs, getAllPosts } from "../../library/microcms";
 import BlogSummary from "@components/BlogSummary.astro";
+import Paginate from "@components/Paginate.astro"
 
 export const prerender = true;
 // 詳細記事ページの全パスを取得
@@ -93,7 +94,8 @@ const posts = await getAllPosts(5);
         </div>
       </aside>
     </section>
-    <button><a href="/blogs">一覧に戻る</a></button>
+    <!-- <Paginate /> -->
+    <a href="/blogs/1">一覧に戻る</a>
   </main>
 </Layout>
 
@@ -124,8 +126,9 @@ const posts = await getAllPosts(5);
   aside {
     display: none;
   }
-  button {
+  main a {
     padding: 0.8rem;
+    text-align:center;
   }
 
   @media screen and (768px <= width) {
