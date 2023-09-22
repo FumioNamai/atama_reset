@@ -75,6 +75,9 @@ const posts = await getAllPosts(5);
             })
           }
         </article>
+        <div class="back">
+          <a href="/blogs/1">一覧に戻る</a>
+        </div>
       </div>
       <aside>
         <div class="blog-list">
@@ -93,9 +96,9 @@ const posts = await getAllPosts(5);
           }
         </div>
       </aside>
+
     </section>
-    <!-- <Paginate /> -->
-    <a href="/blogs/1">一覧に戻る</a>
+
   </main>
 </Layout>
 
@@ -130,6 +133,15 @@ const posts = await getAllPosts(5);
     padding: 0.8rem;
     text-align:center;
   }
+  .back {
+    text-align: center;
+  }
+  .back a {
+    border: 1px solid var(--textBlack);
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: var(--textBlack);
+  }
 
   @media screen and (768px <= width) {
     section {
@@ -159,7 +171,7 @@ const posts = await getAllPosts(5);
 </style>
 <style is:global>
   .setHtml p {
-    line-height: 6rem;
-    padding-bottom: 8rem;
+    line-height: 3rem;
+    padding-bottom: 4rem;
   }
 </style>

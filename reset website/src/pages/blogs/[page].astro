@@ -5,15 +5,13 @@ import BlogSummary from "@components/BlogSummary.astro";
 // microCMSを呼び出す
 import { getBlogs, getAllPosts } from "../../../src/library/microcms";
 
-// const response = await getBlogs({ fields: ["slug", "title"] });
-
 export const prerender = true;
 export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {
   const blogs = await getBlogs({ limit: 100 });
+  // pageSize = 一覧に表示する記事の数
   return paginate(blogs.contents, { pageSize: 2 });
 };
 const { page } = Astro.props;
-console.log(page);
 
 const posts = await getAllPosts();
 ---
@@ -42,8 +40,9 @@ const posts = await getAllPosts();
           <!-- 前Pが存在する場合、前へリンクを表示 -->
           {
             page.url.prev ? (
-              <li class="arrow">
-                <a href={page.url.prev}  >前へ</a>
+              <li class="forward"></li>
+              <li>
+                <a href={page.url.prev}>前へ</a>
               </li>
             ) : (
               <li />
@@ -53,10 +52,10 @@ const posts = await getAllPosts();
           <!--前々頁が存在する場合は 先頭の頁と...を表示-->
           {
             page.currentPage > 2 ? (
-                <li>
-                  <a href="/blogs/1">1</a>
-                </li>
-                <li>...</li>
+              <li>
+                <a href="/blogs/1">1</a>
+              </li>
+              <li>...</li>
             ) : (
               <li />
             )
@@ -88,30 +87,14 @@ const posts = await getAllPosts();
           }
 
           <!--次々頁が存在する場合は 最後の頁と...を表示-->
-          <!-- {
-            page.currentPage < page.lastPage ? (
-            <li>...</li>
-            <li>
-              <a href={page.url.next}>
-                {page.lastPage}
-              </a>
-            </li>
-          ):(
-            <li />
-          )
-          } -->
-
           {
-            ( page.currentPage +1 < page.lastPage ) ? (
-              <li>...</li>
-              <li>
-              <a href={page.lastPage}>
-                  {page.lastPage}
-                  </a>
-                  </li>
-                  ) : (
-              <li>
+            page.currentPage + 1 < page.lastPage ? (
+              <li class="pNumber">...</li>
+              <li class="pNumber">
+                <a href={page.lastPage}>{page.lastPage}</a>
               </li>
+            ) : (
+              <li />
             )
           }
 
@@ -121,6 +104,7 @@ const posts = await getAllPosts();
               <li>
                 <a href={page.url.next}>次へ</a>
               </li>
+              <li class="next"></li>
             ) : (
               <li />
             )
@@ -149,46 +133,66 @@ const posts = await getAllPosts();
   }
 
   .pagination {
-    max-width: 300px;
     margin-inline: auto;
   }
   .pagination ul {
+    padding: 0;
     list-style: none;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding: 0;
+    justify-content: center;
   }
   .pagination li {
     text-align: center;
-    padding: .7rem 0;
+    padding: 0.3rem .4rem;
     display: inline-block;
-    width: 3.6rem;
+    width: 3.2rem;
   }
 
   .pagination a {
-    /* text-align: center; */
+    cursor: pointer;
+    display: inline-block;
+    width: 3.2rem;
     text-decoration: none;
     color: var(--textBlack);
-    /* width: 100px; */
+  }
+  .pagination a:hover {
+    color: var(--attention);
   }
   .currentPage {
+    box-sizing: border-box;
     color: var(--attention);
     border: 2px solid var(--attention);
-    border-radius: .8rem;
+    border-radius: 0.8rem;
     font-weight: bold;
+    margin-top: -2px;
   }
 
-  .arrow {
-    width: 100px;
+  .forward {
+    transform: translateX(40%);
   }
-  /* .arrow::before{
-    content:"";
+
+  .next {
+    transform: translateX(-40%);
+  }
+
+  .forward::before {
+    content: "";
     display: inline-block;
-    transform: translateY(100%) rotate(135deg);
+    transform: translateY(0%) rotate(135deg);
     width: 8px;
     height: 8px;
     border-bottom: 2px solid var(--attention);
     border-right: 2px solid var(--attention);
-  } */
+  }
+
+  .next::after {
+    content: "";
+    display: inline-block;
+    transform: translateY(0%) rotate(315deg);
+    width: 8px;
+    height: 8px;
+    border-bottom: 2px solid var(--attention);
+    border-right: 2px solid var(--attention);
+  }
 </style>
