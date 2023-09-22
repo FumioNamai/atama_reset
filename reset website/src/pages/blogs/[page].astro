@@ -4,14 +4,16 @@ import Layout from "@layouts/layout.astro";
 import BlogSummary from "@components/BlogSummary.astro";
 // microCMSを呼び出す
 import { getBlogs, getAllPosts } from "../../../src/library/microcms";
+
 // const response = await getBlogs({ fields: ["slug", "title"] });
 
 export const prerender = true;
 export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {
   const blogs = await getBlogs({ limit: 100 });
-  return paginate(blogs.contents, { pageSize: 3 });
+  return paginate(blogs.contents, { pageSize: 2 });
 };
 const { page } = Astro.props;
+console.log(page);
 
 const posts = await getAllPosts();
 ---
@@ -37,22 +39,90 @@ const posts = await getAllPosts();
 
       <nav class="pagination">
         <ul>
-          { page.url.prev ? (
-              <li>
-                <a href={page.url.prev}>前へ</a>
+          <!-- 前Pが存在する場合、前へリンクを表示 -->
+          {
+            page.url.prev ? (
+              <li class="arrow">
+                <a href={page.url.prev}  >前へ</a>
               </li>
-              ) : (
-                <li></li>
-              )
-              }
-            <li>{page.currentPage}/{page.lastPage}</li>
+            ) : (
+              <li />
+            )
+          }
+
+          <!--前々頁が存在する場合は 先頭の頁と...を表示-->
+          {
+            page.currentPage > 2 ? (
+                <li>
+                  <a href="/blogs/1">1</a>
+                </li>
+                <li>...</li>
+            ) : (
+              <li />
+            )
+          }
+
+          <!-- 前頁が存在する場合、前頁Noを表示 -->
+          {
+            page.url.prev ? (
+              <li>
+                <a href={page.url.prev}>{page.currentPage - 1}</a>
+              </li>
+            ) : (
+              <li />
+            )
+          }
+
+          <!-- 現在の頁 -->
+          <li class="currentPage">{page.currentPage}</li>
+
+          <!-- 次頁が存在する場合、次頁Noを表示 -->
+          {
+            page.url.next ? (
+              <li>
+                <a href={page.url.next}>{page.currentPage + 1}</a>
+              </li>
+            ) : (
+              <li />
+            )
+          }
+
+          <!--次々頁が存在する場合は 最後の頁と...を表示-->
+          <!-- {
+            page.currentPage < page.lastPage ? (
+            <li>...</li>
+            <li>
+              <a href={page.url.next}>
+                {page.lastPage}
+              </a>
+            </li>
+          ):(
+            <li />
+          )
+          } -->
+
+          {
+            ( page.currentPage +1 < page.lastPage ) ? (
+              <li>...</li>
+              <li>
+              <a href={page.lastPage}>
+                  {page.lastPage}
+                  </a>
+                  </li>
+                  ) : (
+              <li>
+              </li>
+            )
+          }
+
+          <!-- 次頁が存在する場合、次へリンクを表示 -->
           {
             page.url.next ? (
               <li>
                 <a href={page.url.next}>次へ</a>
               </li>
             ) : (
-              <li></li>
+              <li />
             )
           }
         </ul>
@@ -91,13 +161,34 @@ const posts = await getAllPosts();
   }
   .pagination li {
     text-align: center;
-    padding: 0;
+    padding: .7rem 0;
     display: inline-block;
-    width: 36rem;
-    text-decoration: none;
-  }
-  .pagination p {
-    text-align: center;
+    width: 3.6rem;
   }
 
+  .pagination a {
+    /* text-align: center; */
+    text-decoration: none;
+    color: var(--textBlack);
+    /* width: 100px; */
+  }
+  .currentPage {
+    color: var(--attention);
+    border: 2px solid var(--attention);
+    border-radius: .8rem;
+    font-weight: bold;
+  }
+
+  .arrow {
+    width: 100px;
+  }
+  /* .arrow::before{
+    content:"";
+    display: inline-block;
+    transform: translateY(100%) rotate(135deg);
+    width: 8px;
+    height: 8px;
+    border-bottom: 2px solid var(--attention);
+    border-right: 2px solid var(--attention);
+  } */
 </style>
