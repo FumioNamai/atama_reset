@@ -55,7 +55,7 @@ const posts = await getAllPosts(5);
             articles.map((article) => {
               switch (article.fieldId) {
                 case "rich_editor":
-                  return <div set:html={article.rich_editor} />;
+                  return <div class="setHtml" set:html={article.rich_editor} />;
                 case "image":
                   return (
                     <div class="image">
@@ -155,5 +155,11 @@ const posts = await getAllPosts(5);
       position: sticky;
       top: 200px;
     }
+  }
+</style>
+<style is:global>
+  .setHtml p {
+    line-height: 6rem;
+    padding-bottom: 8rem;
   }
 </style>
