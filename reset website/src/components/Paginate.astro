@@ -1,10 +1,149 @@
 ---
-import type { GetStaticPaths } from "astro";
+const { prev, next, currentPage,lastPage,prevTitle, nextTite } = Astro.props;
 
-export const getStaticPaths = ({ paginate } => {
-
-  return [];
-}) satisfies GetStaticPaths;(params:type) {
-
-}
 ---
+
+<nav class="pagination">
+  <ul>
+    <!-- 前Pが存在する場合、前へリンクを表示 -->
+    {
+      prev ? (
+        <li class="forward"></li>
+        <li>
+          <a href={prev}>前へ</a>
+        </li>
+      ) : (
+        <li />
+      )
+    }
+
+    <!--前々頁が存在する場合は 先頭の頁と...を表示-->
+    {
+      currentPage > 2 ? (
+        <li>
+          <a href="/blogs/1">1</a>
+        </li>
+        <li>...</li>
+      ) : (
+        <li />
+      )
+    }
+
+    <!-- 前頁が存在する場合、前頁Noを表示 -->
+    {
+      prev ? (
+        <li>
+          <a href={prev}>{currentPage - 1}</a>
+        </li>
+      ) : (
+        <li />
+      )
+    }
+
+    <!-- 現在の頁 -->
+    <li class="currentPage">{currentPage}</li>
+
+    <!-- 次頁が存在する場合、次頁Noを表示 -->
+    {
+      next ? (
+        <li>
+          <a href={next}>{currentPage + 1}</a>
+        </li>
+      ) : (
+        <li />
+      )
+    }
+
+    <!--次々頁が存在する場合は 最後の頁と...を表示-->
+    {
+      currentPage + 1 < lastPage ? (
+        <li class="pNumber">...</li>
+        <li class="pNumber">
+          <a href={lastPage}>{lastPage}</a>
+        </li>
+      ) : (
+        <li />
+      )
+    }
+
+    <!-- 次頁が存在する場合、次へリンクを表示 -->
+    {
+      next ? (
+        <li>
+          <a href={next}>次へ</a>
+        </li>
+        <li class="next"></li>
+      ) : (
+        <li />
+      )
+    }
+  </ul>
+</nav>
+
+<style>
+  .pagination {
+    margin-inline: auto;
+  }
+
+  .pagination ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .pagination li {
+    text-align: center;
+    padding: 0.3rem .4rem;
+    display: inline-block;
+    width: 3.2rem;
+  }
+
+  .pagination a {
+    cursor: pointer;
+    display: inline-block;
+    width: 3.2rem;
+    text-decoration: none;
+    color: var(--textBlack);
+  }
+  .pagination a:hover {
+    color: var(--attention);
+  }
+  .currentPage {
+    box-sizing: border-box;
+    color: var(--attention);
+    border: 2px solid var(--attention);
+    border-radius: 0.8rem;
+    font-weight: bold;
+    margin-top: -2px;
+  }
+
+  .forward {
+    transform: translateX(45%);
+  }
+
+  .next {
+    transform: translateX(-45%);
+  }
+
+  .forward::before {
+    content: "";
+    display: inline-block;
+    transform: translateY(-10%) rotate(135deg);
+    width: 8px;
+    height: 8px;
+    border-bottom: 2px solid var(--attention);
+    border-right: 2px solid var(--attention);
+  }
+
+  .next::after {
+    content: "";
+    display: inline-block;
+    transform: translateY(-10%) rotate(315deg);
+    width: 8px;
+    height: 8px;
+    border-bottom: 2px solid var(--attention);
+    border-right: 2px solid var(--attention);
+  }
+</style>

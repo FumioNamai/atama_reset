@@ -4,12 +4,14 @@ import Layout from "@layouts/layout.astro";
 import BlogSummary from "@components/BlogSummary.astro";
 // microCMSを呼び出す
 import { getBlogs, getAllPosts } from "../../../src/library/microcms";
+import Paginate from "@components/Paginate.astro";
+
 
 export const prerender = true;
 export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {
   const blogs = await getBlogs({ limit: 100 });
   // pageSize = 一覧に表示する記事の数
-  return paginate(blogs.contents, { pageSize: 2 });
+  return paginate(blogs.contents, { pageSize: 1 });
 };
 const { page } = Astro.props;
 
@@ -34,83 +36,12 @@ const posts = await getAllPosts();
           ))
         }
       </div>
-
-      <nav class="pagination">
-        <ul>
-          <!-- 前Pが存在する場合、前へリンクを表示 -->
-          {
-            page.url.prev ? (
-              <li class="forward"></li>
-              <li>
-                <a href={page.url.prev}>前へ</a>
-              </li>
-            ) : (
-              <li />
-            )
-          }
-
-          <!--前々頁が存在する場合は 先頭の頁と...を表示-->
-          {
-            page.currentPage > 2 ? (
-              <li>
-                <a href="/blogs/1">1</a>
-              </li>
-              <li>...</li>
-            ) : (
-              <li />
-            )
-          }
-
-          <!-- 前頁が存在する場合、前頁Noを表示 -->
-          {
-            page.url.prev ? (
-              <li>
-                <a href={page.url.prev}>{page.currentPage - 1}</a>
-              </li>
-            ) : (
-              <li />
-            )
-          }
-
-          <!-- 現在の頁 -->
-          <li class="currentPage">{page.currentPage}</li>
-
-          <!-- 次頁が存在する場合、次頁Noを表示 -->
-          {
-            page.url.next ? (
-              <li>
-                <a href={page.url.next}>{page.currentPage + 1}</a>
-              </li>
-            ) : (
-              <li />
-            )
-          }
-
-          <!--次々頁が存在する場合は 最後の頁と...を表示-->
-          {
-            page.currentPage + 1 < page.lastPage ? (
-              <li class="pNumber">...</li>
-              <li class="pNumber">
-                <a href={page.lastPage}>{page.lastPage}</a>
-              </li>
-            ) : (
-              <li />
-            )
-          }
-
-          <!-- 次頁が存在する場合、次へリンクを表示 -->
-          {
-            page.url.next ? (
-              <li>
-                <a href={page.url.next}>次へ</a>
-              </li>
-              <li class="next"></li>
-            ) : (
-              <li />
-            )
-          }
-        </ul>
-      </nav>
+      <Paginate
+      prev={page.url.prev}
+      currentPage={page.currentPage}
+      next={page.url.next}
+      lastPage={page.lastPage}
+      />
     </section>
   </main>
 </Layout>
@@ -132,67 +63,5 @@ const posts = await getAllPosts();
     gap: 4rem;
   }
 
-  .pagination {
-    margin-inline: auto;
-  }
-  .pagination ul {
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-  .pagination li {
-    text-align: center;
-    padding: 0.3rem .4rem;
-    display: inline-block;
-    width: 3.2rem;
-  }
 
-  .pagination a {
-    cursor: pointer;
-    display: inline-block;
-    width: 3.2rem;
-    text-decoration: none;
-    color: var(--textBlack);
-  }
-  .pagination a:hover {
-    color: var(--attention);
-  }
-  .currentPage {
-    box-sizing: border-box;
-    color: var(--attention);
-    border: 2px solid var(--attention);
-    border-radius: 0.8rem;
-    font-weight: bold;
-    margin-top: -2px;
-  }
-
-  .forward {
-    transform: translateX(40%);
-  }
-
-  .next {
-    transform: translateX(-40%);
-  }
-
-  .forward::before {
-    content: "";
-    display: inline-block;
-    transform: translateY(0%) rotate(135deg);
-    width: 8px;
-    height: 8px;
-    border-bottom: 2px solid var(--attention);
-    border-right: 2px solid var(--attention);
-  }
-
-  .next::after {
-    content: "";
-    display: inline-block;
-    transform: translateY(0%) rotate(315deg);
-    width: 8px;
-    height: 8px;
-    border-bottom: 2px solid var(--attention);
-    border-right: 2px solid var(--attention);
-  }
 </style>

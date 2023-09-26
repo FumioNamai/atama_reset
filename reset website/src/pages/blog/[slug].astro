@@ -1,27 +1,30 @@
 ---
+import type { GetStaticPathsOptions } from "astro";
 import Layout from "@layouts/layout.astro";
-import { getBlogs, getAllPosts } from "../../library/microcms";
+import { getBlogs, getAllPosts, getAllSlugs } from "../../library/microcms";
 import BlogSummary from "@components/BlogSummary.astro";
-import Paginate from "@components/Paginate.astro"
 
 export const prerender = true;
 // 詳細記事ページの全パスを取得
-export async function getStaticPaths() {
-  const response = await getBlogs({fields:["id"]["slug"]});
-    return response.contents.map((content) => ({
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const blogs = await getBlogs({ fields: ["id"]["slug"]});
+  return blogs.contents.map((content) => ({
     params: {
       // []内に入れる変数を指定
-      // blogId: content.id,
-      slug: content.slug + "-" + content.id ,
-      // publishedAt:content.publishedAt,
+      slug: content.slug + "-" + content.id,
+      // page: content.slug,
     },
-    props: {content},
+    props: { content },
+    pageSize: 3,
   }));
 }
-// const {slug, publishedAt} = Astro.params
 
 // 記事の詳細情報を取得
-const {content} = Astro.props
+const { content } = Astro.props;
+console.log(content);
+
+
 const articles = content.article;
 
 // 日付の表示を変更
@@ -34,6 +37,7 @@ if (content.publishedAt) {
 }
 // aside用 microCMSを呼び出す
 const posts = await getAllPosts(5);
+
 ---
 
 <Layout>
@@ -75,9 +79,8 @@ const posts = await getAllPosts(5);
             })
           }
         </article>
-        <div class="back">
-          <a href="/blogs/1">一覧に戻る</a>
-        </div>
+        <!-- <div>{content.url.prev}</div> -->
+
       </div>
       <aside>
         <div class="blog-list">
@@ -96,19 +99,19 @@ const posts = await getAllPosts(5);
           }
         </div>
       </aside>
-
     </section>
-
   </main>
 </Layout>
 
 <style>
   .container {
     margin: 0 auto;
+    height: auto;
     max-width: 640px;
     padding-inline: 1.6rem;
     padding-block: 4rem;
   }
+
   .publishedAt {
     font-size: 1.4rem;
     padding: 0;
@@ -117,28 +120,34 @@ const posts = await getAllPosts(5);
   .title {
     padding-block: 1.6rem;
   }
-  article {
-  }
+
   .image {
     margin-block: 1.6rem;
   }
+
   img {
     width: 100%;
     height: auto;
   }
+
   aside {
     display: none;
   }
+
   main a {
     padding: 0.8rem;
-    text-align:center;
+    text-align: center;
   }
+
   .back {
     text-align: center;
   }
+
   .back a {
+    margin-block: 4rem;
     border: 1px solid var(--textBlack);
-    font-size: 1.8rem;
+    padding: 1.2rem;
+    font-size: 1.6rem;
     text-decoration: none;
     color: var(--textBlack);
   }
@@ -152,7 +161,6 @@ const posts = await getAllPosts(5);
     }
     aside {
       display: block;
-      /* margin-top: 40px; */
       min-width: 300px;
     }
     h3 {
@@ -162,13 +170,14 @@ const posts = await getAllPosts(5);
     .blog-list {
       display: flex;
       flex-direction: column;
-      /* padding-block: 4rem; */
       gap: 2.4rem;
       position: sticky;
       top: 200px;
     }
   }
 </style>
+
+<!-- ブログ記事内に適用するCSS -->
 <style is:global>
   .setHtml p {
     line-height: 3rem;

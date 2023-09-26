@@ -70,3 +70,18 @@ export const getBlogDetail = async (
     queries,
   });
 };
+
+export async function getAllSlugs(limit:10) {
+  try {
+    const slugs = await client.get({
+      endpoint: 'blogs',
+      queries: { fields: 'title,slug', orders:'-publishDate', limit:limit},
+    })
+    console.log(slugs);
+    return slugs.contents
+  } catch (err) {
+    console.log('getAllSlugs');
+    console.log(err);
+  }
+  console.log(slugs)
+}
