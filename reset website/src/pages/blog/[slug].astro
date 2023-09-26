@@ -1,13 +1,14 @@
 ---
-import type { GetStaticPathsOptions } from "astro";
 import Layout from "@layouts/layout.astro";
-import { getBlogs, getAllPosts, getAllSlugs } from "../../library/microcms";
+import { getBlogs, getAllPosts} from "../../library/microcms";
 import BlogSummary from "@components/BlogSummary.astro";
+import Paginate from "@components/Paginate.astro"
+import { getCollection } from 'astro:content'
 
 export const prerender = true;
 // 詳細記事ページの全パスを取得
 
-export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+export async function getStaticPaths({}) {
   const blogs = await getBlogs({ fields: ["id"]["slug"]});
   return blogs.contents.map((content) => ({
     params: {
@@ -16,16 +17,25 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
       // page: content.slug,
     },
     props: { content },
-    pageSize: 3,
   }));
+//   const blogPosts = await getCollection('blog')
+//   return blogPosts.map((post) => {
+//     return{
+//       params: {
+//         slug: content.slug + "-" + content.id
+//       },
+//       props: { post: post}
+//     }
+// })
 }
+const { post } = Astro.props;
 
 // 記事の詳細情報を取得
 const { content } = Astro.props;
-console.log(content);
 
 
 const articles = content.article;
+console.log(content);
 
 // 日付の表示を変更
 let pubDate;
@@ -79,8 +89,10 @@ const posts = await getAllPosts(5);
             })
           }
         </article>
-        <!-- <div>{content.url.prev}</div> -->
-
+        <!-- <Paginate /> -->
+        <div class="back">
+          <a href="/blogs/1">一覧に戻る</a>
+        </div>
       </div>
       <aside>
         <div class="blog-list">

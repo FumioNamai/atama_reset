@@ -8,12 +8,14 @@ import Paginate from "@components/Paginate.astro";
 
 
 export const prerender = true;
+
 export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {
   const blogs = await getBlogs({ limit: 100 });
   // pageSize = 一覧に表示する記事の数
   return paginate(blogs.contents, { pageSize: 1 });
 };
 const { page } = Astro.props;
+// console.log(page);
 
 const posts = await getAllPosts();
 ---
