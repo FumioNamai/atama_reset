@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/layout.astro";
 
+
 ---
 
 <Layout>
@@ -151,9 +152,22 @@ import Layout from "@layouts/layout.astro";
 </style>
 
 <script>
+  import { getBlogDetail } from "../library/microcms";
+
   const params = new URLSearchParams(window.location.search);
   const contentId = params.get("contentId");
   const draftKey = params.get("draftKey")
 
-console.log(contentId,draftKey);
+  if (contentId && draftKey) {
+    getBlogDetail(contentId, {draftKey}).then((data) => {
+      const titleEl = document.querySelector(".title");
+      const publishedAtEl = document.querySelector(".publishedAt");
+      const postEl = document.querySelector(".post");
+
+      titleEl && (titleEl.textContent = data.title);
+      publishedAtEl.textContent = data.publishedAt ?? data.createdAt;
+
+      postEl && (postEl.innerHTML = data.content)
+    })
+  }
 </script>

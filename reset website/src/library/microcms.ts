@@ -1,8 +1,8 @@
 // SDK利用準備
 import { createClient, MicroCMSQueries } from "microcms-js-sdk";
 const client = createClient({
-  serviceDomain: import.meta.env.MICROCMS_SERVICE_DOMAIN,
-  apiKey: import.meta.env.MICROCMS_API_KEY,
+  serviceDomain: import.meta.env.PUBLIC_MICROCMS_SERVICE_DOMAIN,
+  apiKey: import.meta.env.PUBLIC_MICROCMS_API_KEY,
 });
 
 //  型定義
@@ -59,7 +59,6 @@ export async function getAllPosts( limit = 10) {
   }
 }
 
-
 export const getBlogDetail = async (
   contentId: string,
   queries?: MicroCMSQueries
@@ -77,11 +76,9 @@ export async function getAllSlugs(limit:10) {
       endpoint: 'blogs',
       queries: { fields: 'title,slug', orders:'-publishDate', limit:limit},
     })
-    console.log(slugs);
     return slugs.contents
   } catch (err) {
     console.log('getAllSlugs');
     console.log(err);
   }
-  console.log(slugs)
 }
