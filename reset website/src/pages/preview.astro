@@ -1,57 +1,5 @@
 ---
 import Layout from "@layouts/layout.astro";
-import { getBlogs, getAllPosts} from "../../library/microcms";
-import BlogSummary from "@components/BlogSummary.astro";
-// import Paginate from "@components/Paginate.astro"
-// import { getCollection } from 'astro:content'
-
-export const prerender = true;
-// 詳細記事ページの全パスを取得
-
-export async function getStaticPaths({}) {
-  const blogs = await getBlogs({ fields: ["id"]["slug"]});
-  return blogs.contents.map((content) => ({
-    params: {
-      // []内に入れる変数を指定
-      slug: content.slug + "-" + content.id,
-      // page: content.slug,
-    },
-    props: { content },
-  }));
-
-  // ブログ詳細ページにページネーションを実装するために、getCollection()からデータを取得を試みたが断念。
-//   const blogPosts = await getCollection('blog')
-//   return blogPosts.map((post) => {
-//     const {slug} = post;
-//     const currentPage = blogPosts.findIndex((post) => post.slug === slug )
-//     return{
-//       params: {
-//         slug: content.slug + "-" + content.id
-//       },
-//       props: { post}
-//     }
-// })
-}
-// const { post } = Astro.props;
-
-// 記事の詳細情報を取得
-// const { post,content } = Astro.props;
-const { content } = Astro.props;
-
-
-const articles = content.article;
-// console.log(content);
-
-// 日付の表示を変更
-let pubDate;
-if (content.publishedAt) {
-  pubDate = new Date(content.publishedAt)
-    .toLocaleDateString("ja-JP")
-    .split("/")
-    .join(".");
-}
-// aside用 microCMSを呼び出す
-const posts = await getAllPosts(5);
 
 ---
 
@@ -59,18 +7,18 @@ const posts = await getAllPosts(5);
   <main>
     <section class="blog">
       <div class="container">
-        <p class="publishedAt">{pubDate}</p>
-        <h2 class="title">{content.title}</h2>
+        <!-- <p class="publishedAt">{pubDate}</p> -->
+        <!-- <h2 class="title">{content.title}</h2> -->
         <div class="image">
-          <img
+          <!-- <img
             src={content.eyecatch.url}
             alt=""
             height={content.eyecatch.height}
             width={content.eyecatch.width}
-          />
+          /> -->
         </div>
         <article>
-          {
+          <!-- {
             articles.map((article) => {
               switch (article.fieldId) {
                 case "rich_editor":
@@ -92,7 +40,7 @@ const posts = await getAllPosts(5);
                   break;
               }
             })
-          }
+          } -->
         </article>
         <!-- <Paginate /> -->
         <div class="back">
@@ -102,18 +50,18 @@ const posts = await getAllPosts(5);
       <aside>
         <div class="blog-list">
           <h3>最近の投稿</h3>
-          {
+          <!-- {
             posts.map((post) => (
-              <BlogSummary
-                id={post.id}
-                slug={post.slug}
-                src={post.eyecatch.url}
-                date={post.publishedAt}
-                title={post.title}
-                summary={post.summary}
-              />
+            <BlogSummary
+            id={post.id}
+            slug={post.slug}
+            src={post.eyecatch.url}
+            date={post.publishedAt}
+            title={post.title}
+            summary={post.summary}
+            />
             ))
-          }
+          } -->
         </div>
       </aside>
     </section>
@@ -201,3 +149,11 @@ const posts = await getAllPosts(5);
     padding-bottom: 4rem;
   }
 </style>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const contentId = params.get("contentId");
+  const draftKey = params.get("draftKey")
+
+console.log(contentId,draftKey);
+</script>
