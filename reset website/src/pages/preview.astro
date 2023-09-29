@@ -165,8 +165,7 @@ import Layout from "@layouts/layout.astro";
       const postEl = document.querySelector(".post");
 
       titleEl && (titleEl.textContent = data.title);
-      publishedAtEl.textContent = data.publishedAt ?? data.createdAt;
-
+      publishedAtEl && (publishedAtEl.textContent = data.publishedAt ?? data.createdAt);
       postEl && (postEl.innerHTML = data.content)
     })
   }
