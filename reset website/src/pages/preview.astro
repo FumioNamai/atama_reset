@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/layout.astro";
-
+import BlogPreview from "../components/BlogPreview.jsx"
 
 ---
 
@@ -8,42 +8,7 @@ import Layout from "@layouts/layout.astro";
   <main>
     <section class="blog">
       <div class="container">
-        <!-- <p class="publishedAt">{pubDate}</p> -->
-        <!-- <h2 class="title">{content.title}</h2> -->
-        <div class="image">
-          <!-- <img
-            src={content.eyecatch.url}
-            alt=""
-            height={content.eyecatch.height}
-            width={content.eyecatch.width}
-          /> -->
-        </div>
-        <article>
-          <!-- {
-            articles.map((article) => {
-              switch (article.fieldId) {
-                case "rich_editor":
-                  return <div class="setHtml" set:html={article.rich_editor} />;
-                case "image":
-                  return (
-                    <div class="image">
-                      <img
-                        src={article.image.url}
-                        alt=""
-                        height={article.image.height}
-                        width={article.image.width}
-                      />
-                    </div>
-                  );
-                case "text":
-                  return <p>{article.text}</p>;
-                default:
-                  break;
-              }
-            })
-          } -->
-        </article>
-        <!-- <Paginate /> -->
+        <BlogPreview client:only="preact"/>
         <div class="back">
           <a href="/blogs/1">一覧に戻る</a>
         </div>
@@ -144,14 +109,14 @@ import Layout from "@layouts/layout.astro";
 </style>
 
 <!-- ブログ記事内に適用するCSS -->
-<style is:global>
+<!-- <style is:global>
   .setHtml p {
     line-height: 3rem;
     padding-bottom: 4rem;
   }
-</style>
+</style> -->
 
-<script>
+<!-- <script>
   import { getBlogDetail } from "../library/microcms";
 
   const params = new URLSearchParams(window.location.search);
@@ -160,13 +125,15 @@ import Layout from "@layouts/layout.astro";
 
   if (contentId && draftKey) {
     getBlogDetail(contentId, {draftKey}).then((data) => {
+      console.log(data);
       const titleEl = document.querySelector(".title");
       const publishedAtEl = document.querySelector(".publishedAt");
-      const postEl = document.querySelector(".post");
-
+      // const postEl = document.querySelector(".post");
+      const eyecatchEl = document.querySelector(".eyecatch")
       titleEl && (titleEl.textContent = data.title);
       publishedAtEl && (publishedAtEl.textContent = data.publishedAt ?? data.createdAt);
-      postEl && (postEl.innerHTML = data.content)
+      // imgEl && (imgEl.textContent = data.img)
+      // postEl && (postEl.innerHTML = data.article)
     })
   }
-</script>
+</script> -->

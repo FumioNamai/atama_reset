@@ -1,0 +1,75 @@
+.container {
+  margin: 0 auto;
+  height: auto;
+  max-width: 640px;
+  padding-inline: 1.6rem;
+  padding-block: 4rem;
+}
+
+.publishedAt {
+  font-size: 1.4rem;
+  padding: 0;
+}
+
+.title {
+  padding-block: 1.6rem;
+}
+
+.image {
+  margin-block: 1.6rem;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+aside {
+  display: none;
+}
+
+main a {
+  padding: 0.8rem;
+  text-align: center;
+}
+
+.back {
+  text-align: center;
+}
+
+.back a {
+  margin-block: 4rem;
+  border: 1px solid var(--textBlack);
+  padding: 1.2rem;
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: var(--textBlack);
+}
+.setHtml p {
+  line-height: 3rem;
+  padding-bottom: 4rem;
+}
+
+@media screen and (768px <= width) {
+  section {
+    display: flex;
+    flex-direction: row;
+    max-width: 900px;
+    margin: 4rem auto;
+  }
+  aside {
+    display: block;
+    min-width: 300px;
+  }
+  h3 {
+    padding-inline-start: 2.4rem;
+    font-size: 2rem;
+  }
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    position: sticky;
+    top: 200px;
+  }
+}

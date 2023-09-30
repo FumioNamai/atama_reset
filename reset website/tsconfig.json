@@ -6,6 +6,8 @@
       "@components/*":["src/components/*"],
       "@layouts/*":["src/layouts/*"],
     },
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
     // "strictNullChecks": true,
     // "allowJs": true,
   }
