@@ -23,14 +23,13 @@ const BlogPreview = () => {
   if (error) return <div>エラーが発生しました</div>;
   if (isLoading) return <div>読み込み中...</div>;
 
-    const img = {
-      width: "100%",
-      height: "auto",
-    }
+  const img = {
+    width: "100%",
+    height: "auto",
+  }
 
   return (
     <>
-        <div className={styles.container}>
         <p className={styles.publishedAt}>
           {pubDate}
         </p>
@@ -38,8 +37,8 @@ const BlogPreview = () => {
         <div className={styles.setHtml} dangerouslySetInnerHTML={{ __html: data?.article.rich_editor ?? "" }} />
         <div className={styles.image}>
           <img
-          style = {img}
-          className={styles.blogImg}
+            style={img}
+            className={styles.blogImg}
             src={data.eyecatch.url}
             alt=""
             height={data.eyecatch.height}
@@ -57,7 +56,7 @@ const BlogPreview = () => {
                   return (
                     <div className={styles.image}>
                       <img
-                      style = {img}
+                        style={img}
                         className={styles.blogImg}
                         src={article?.image.url}
                         alt=""
@@ -74,12 +73,7 @@ const BlogPreview = () => {
             })
           }
         </article>
-        <div className={styles.back}>
-          <a href="/blogs/1">一覧に戻る</a>
-        </div>
-      </div>
-
-    </>
+</>
   )
 }
 

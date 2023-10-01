@@ -2,6 +2,8 @@
 import Layout from "@layouts/layout.astro";
 import { getBlogs, getAllPosts } from "../../library/microcms";
 import BlogSummary from "@components/BlogSummary.astro";
+
+import ButtonBasic from "@components/ButtonBasic.astro";
 // import Paginate from "@components/Paginate.astro"
 // import { getCollection } from 'astro:content'
 
@@ -79,9 +81,11 @@ const posts = await getAllPosts(5);
           }
         </article>
         <!-- <Paginate /> -->
-        <div class="back">
-          <a href="/blogs/1">一覧に戻る</a>
-        </div>
+        <ButtonBasic
+          href = {"/blogs/1"},
+          text = {"一覧に戻る"}
+        />
+        </a>
       </div>
       <aside>
         <div class="blog-list">
@@ -138,24 +142,6 @@ const posts = await getAllPosts(5);
   main a {
     padding: 0.8rem;
     text-align: center;
-  }
-
-  .back {
-    text-align: center;
-  }
-
-  .back a {
-    margin-block: 4rem;
-    border: 1px solid var(--textBlack);
-    padding: 1.2rem;
-    font-size: 1.6rem;
-    text-decoration: none;
-    color: var(--textBlack);
-  }
-  .back a:hover {
-    border: 1px solid var(--textWhite);
-    color: var(--textWhite);
-    background-color: var(--textGray);
   }
 
   @media screen and (768px <= width) {

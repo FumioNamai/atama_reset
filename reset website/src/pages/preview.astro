@@ -1,14 +1,20 @@
 ---
 import Layout from "@layouts/layout.astro";
-import BlogPreview from "../components/BlogPreview.jsx"
-
+import BlogPreview from "../components/BlogPreview.jsx";
+import ButtonBasic from "@components/ButtonBasic.astro"
 ---
 
 <Layout>
   <main>
     <section class="blog">
-        <BlogPreview client:only="preact"/>
+      <div class="container">
+        <BlogPreview client:only="preact" />
         <!-- client:only　でサーバーサイドでレンダリングしない設定 -->
+        <ButtonBasic
+          href = {"/blogs/1"},
+          text = {"一覧に戻る"}
+        />
+      </div>
       <aside>
         <div class="blog-list">
           <h3>最近の投稿</h3>
@@ -29,3 +35,13 @@ import BlogPreview from "../components/BlogPreview.jsx"
     </section>
   </main>
 </Layout>
+
+<style>
+  .container {
+    margin: 0 auto;
+    height: auto;
+    max-width: 640px;
+    padding-inline: 1.6rem;
+    padding-block: 4rem;
+  }
+</style>

@@ -1,10 +1,4 @@
-.container {
-  margin: 0 auto;
-  height: auto;
-  max-width: 640px;
-  padding-inline: 1.6rem;
-  padding-block: 4rem;
-}
+
 
 .publishedAt {
   font-size: 1.4rem;
@@ -30,26 +24,6 @@ main a {
   padding: 0.8rem;
   text-align: center;
 
-}
-
-
-.back {
-  text-align: center;
-}
-
-.back a {
-  margin-block: 4rem;
-  border: 1px solid var(--textBlack);
-  padding: 1.2rem;
-  font-size: 1.6rem;
-  text-decoration: none;
-  color: var(--textBlack);
-}
-
-.back a:hover {
-  border: 1px solid var(--textWhite);
-  color: var(--textWhite);
-  background-color: var(--textGray);
 }
 
 .setHtml p {
