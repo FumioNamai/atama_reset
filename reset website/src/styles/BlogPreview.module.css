@@ -19,10 +19,8 @@
   margin-block: 1.6rem;
 }
 
-img {
-  width: 100%;
-  height: auto;
-}
+/* img{width: 100%;height: auto;}　はスコープを効かせるため、InlineStylesで記述 */
+
 
 aside {
   display: none;
@@ -31,7 +29,9 @@ aside {
 main a {
   padding: 0.8rem;
   text-align: center;
+
 }
+
 
 .back {
   text-align: center;
@@ -45,10 +45,12 @@ main a {
   text-decoration: none;
   color: var(--textBlack);
 }
+
 .setHtml p {
   line-height: 3rem;
   padding-bottom: 4rem;
 }
+
 
 @media screen and (768px <= width) {
   section {

@@ -15,66 +15,69 @@ const BlogPreview = () => {
     ([, contentId, draftKey]) => getBlogDetail(contentId, { draftKey })
   )
 
+  const pubDate = new Date(data?.publishedAt)
+    .toLocaleDateString("ja-JP")
+    .split("/")
+    .join(".");
+
   if (error) return <div>エラーが発生しました</div>;
   if (isLoading) return <div>読み込み中...</div>;
 
-  console.log(data.article);
+    const img = {
+      width: "100%",
+      height: "auto",
+    }
+
   return (
     <>
-      <section className={styles.blog}>
         <div className={styles.container}>
-          <p className={styles.publishedAt}>
-            {data.publishedAt}
-          </p>
-          <h2 className={styles.title}>{data.title}</h2>
-          <div className={styles.setHtml} dangerouslySetInnerHTML={{ __html: data?.article.rich_editor ?? "" }} />
-          <div className={styles.image}>
-            <img
-              src={data.eyecatch.url}
-              alt=""
-              height={data.eyecatch.height}
-              width={data.eyecatch.width}
-            />
-          </div>
-          <p>{data.article.text}</p>;
+        <p className={styles.publishedAt}>
+          {pubDate}
+        </p>
+        <h2 className={styles.title}>{data.title}</h2>
+        <div className={styles.setHtml} dangerouslySetInnerHTML={{ __html: data?.article.rich_editor ?? "" }} />
+        <div className={styles.image}>
+          <img
+          style = {img}
+          className={styles.blogImg}
+            src={data.eyecatch.url}
+            alt=""
+            height={data.eyecatch.height}
+            width={data.eyecatch.width}
+          />
         </div>
 
         <article>
-          <div className={data.image}>
-            {/* <img
-              src={data?.article.image.url}
-              alt=""
-              height={data?.article.image.height}
-              width={data?.article.image.width}
-            /> */}
-          </div>
-        </article>
-        {/* <article>
           {
-            data.articles.map((article) => {
+            data.article.map((article) => {
               switch (article.fieldId) {
                 case "rich_editor":
-                  return <div className="setHtml" set:html={data.article.rich_editor} />;
+                  return <div className={styles.setHtml} dangerouslySetInnerHTML={{ __html: article?.rich_editor ?? "" }} />;
                 case "image":
                   return (
-                    <div className="image">
+                    <div className={styles.image}>
                       <img
-                        src={data.article.image.url}
+                      style = {img}
+                        className={styles.blogImg}
+                        src={article?.image.url}
                         alt=""
-                        height={data.article.image.height}
-                        width={data.article.image.width}
+                        height={article?.image.height}
+                        width={article?.image.width}
                       />
                     </div>
                   );
                 case "text":
-                  return <p>{data.article.text}</p>;
+                  return <p>{article?.text}</p>;
                 default:
                   break;
               }
             })
           }
-        </article> */}
-      </section>
+        </article>
+        <div className={styles.back}>
+          <a href="/blogs/1">一覧に戻る</a>
+        </div>
+      </div>
 
     </>
   )
