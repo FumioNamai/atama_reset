@@ -1,14 +1,17 @@
 ---
-const {href, text} = Astro.props
+const {url, text} = Astro.props
 ---
 
-<a href={href}>
-  <button>
+<!-- urlはpropsに{"location.href='/'"}を記述する -->
+  <button onclick={url}>
     {text}
   </button>
-</a>
 
 <style>
+  a{
+    text-decoration: none;
+
+  }
     button {
     display: block;
     margin: 0 auto;
@@ -18,9 +21,6 @@ const {href, text} = Astro.props
     padding: 1.2rem;
     border: 1px solid var(--textBlack);
     font-size: 1.6rem;
-  }
-  a{
-    text-decoration: none;
   }
   button:hover {
     border: 1px solid var(--textGray);

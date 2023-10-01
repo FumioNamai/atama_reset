@@ -11,7 +11,7 @@ import ButtonBasic from "@components/ButtonBasic.astro"
         <BlogPreview client:only="preact" />
         <!-- client:only　でサーバーサイドでレンダリングしない設定 -->
         <ButtonBasic
-          href = {"/blogs/1"},
+          url = {"location.href='/blogs/1'"},
           text = {"一覧に戻る"}
         />
       </div>
