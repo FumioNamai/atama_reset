@@ -1,133 +1,73 @@
 ---
-let { id,slug, src, date, title, summary } = Astro.props;
-date = new Date(date).toLocaleDateString("ja-JP").split("/").join(".");
+import type { GetStaticPathsOptions } from "astro";
+
+import BlogList from "@components/BlogList.astro";
+
+import { getBlogs, getAllPosts } from "../../src/library/microcms";
+// import Paginate from "@components/Paginate.astro";
+
+export const prerender = true;
+
+export const posts = await getAllPosts(4);
+
 ---
 
-<div class="container">
-  <a href=`/blog/${slug}-${id}` class="flex">
-    <div class="image">
-      <img src={src} alt="" />
-    </div>
-    <div class="wrapper">
-      <p class="date">{date}</p>
-      <h2>{title}</h2>
-      <p class="summary">{summary}</p>
-    </div>
-  </a>
-</div>
+<section class="blogs">
+  <h2>ブログ</h2>
+  <div class="sliderWrap">
+  <div class="container">
+    {
+      posts.map((post) => (
+        <BlogList
+          id={post.id}
+          slug={post.slug}
+          src={post.eyecatch.url}
+          date={post.publishedAt}
+          title={post.title}
+          summary={post.summary}
+        />
+      ))
+    }
+  </div>
+  <div>
+</section>
 
 <style>
-  img {
-    width: 100%;
-    height: auto;
+    section {
+    /* max-width: 900px; */
+    margin: 4rem auto;
   }
-  .image {
-    width: 219px;
-    height: 146px;
+
+  h2 {
+    text-align: center;
   }
-  a {
-    text-decoration: none;
+
+  .sliderWrap {
+    /* box-sizing: border-box; */
+    /* position: relative; */
+    /* width: 100%; */
+    /* height: auto; */
+    /* display: flex; */
+    /* flex-wrap: nowrap; */
+    overflow: hidden;
+    overflow-x: auto;
+    /* gap: 16px; */
+    scroll-snap-type: x mandatory;
+    /* padding-inline: 64px; */
+  }
+
+  .BlogList {
+    display: flex;
   }
   .container {
-    container-type: inline-size;
+    margin-block: 4rem;
+    /* flex: 0 0 auto; */
     display: flex;
-    max-width: 848px;
-    /* コンテナクエリデバッグ用設定 */
-    /* resize: horizontal;
-    overflow: auto; */
-  }
-
-  .flex {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.8rem;
-  }
-
-  .container h2 {
-    font-size: 1.4rem;
-  }
-  .container p {
-    padding: 0;
-    font-size: 1.2rem;
-  }
-  .date {
-    font-size: 1rem;
-  }
-  .wrapper {
-    margin-top: -4px;
-    color: var(--textBlack);
-    position: relative;
-    /* height: auto; */
-    overflow: hidden;
-  }
-  .summary {
-    color: var(--textBlack);
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-  }
-  .wrapper::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 90%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background: linear-gradient(to top, #f4f4f4, #f4f4f400);
-  }
-
-  @container (220px <= width) {
-    .flex {
-      padding-inline: 2.4rem;
-      flex-direction: row;
-      justify-content: space-between;
-      gap: 5%;
-    }
-    .image {
-      width: fit-content;
-      min-width: 100px;
-      height: auto;
-      aspect-ratio: 3 / 2;
-      width: 35%;
-    }
-    .wrapper {
-      width: 65%;
-    }
-    .summary {
-      -webkit-line-clamp: 2;
-    }
-  }
-
-  @container (460px <= width) {
-    .summary {
-      letter-spacing: 2px;
-      line-height: 1.75;
-      -webkit-line-clamp: 3;
-    }
-    .container h2 {
-      font-size: 1.8rem;
-    }
-    .container p {
-      font-size: 1.4rem;
-    }
-    .date {
-      font-size: 1.2rem;
-    }
-  }
-
-  @container (640px <= width) {
-    .container h2 {
-      font-size: 2rem;
-      margin-bottom: 0.8rem;
-    }
-    .container p {
-      font-size: 1.6rem;
-    }
-    .date {
-      font-size: 1.4rem;
-    }
+    justify-content:space-evenly;
+    align-items: start;
+    width: 1160px;
+    height: 300px;
+    margin-left: -220px;
+    scroll-snap-align: center;
   }
 </style>

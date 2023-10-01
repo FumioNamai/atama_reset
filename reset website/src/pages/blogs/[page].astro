@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPathsOptions } from "astro";
 import Layout from "@layouts/layout.astro";
-import BlogSummary from "@components/BlogSummary.astro";
+import BlogList from "@components/BlogList.astro";
 // microCMSを呼び出す
 import { getBlogs, getAllPosts } from "../../../src/library/microcms";
 import Paginate from "@components/Paginate.astro";
@@ -27,7 +27,7 @@ const posts = await getAllPosts();
       <div class="container">
         {
           page.data.map((page) => (
-            <BlogSummary
+            <BlogList
               id={page.id}
               slug={page.slug}
               src={page.eyecatch.url}

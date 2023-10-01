@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/layout.astro";
 import { getBlogs, getAllPosts } from "../../library/microcms";
-import BlogSummary from "@components/BlogSummary.astro";
+import BlogList from "@components/BlogList.astro";
 
 import ButtonBasic from "@components/ButtonBasic.astro";
 // import Paginate from "@components/Paginate.astro"
@@ -92,7 +92,7 @@ const posts = await getAllPosts(5);
           <h3>最近の投稿</h3>
           {
             posts.map((post) => (
-              <BlogSummary
+              <BlogList
                 id={post.id}
                 slug={post.slug}
                 src={post.eyecatch.url}

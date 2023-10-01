@@ -1,0 +1,133 @@
+---
+let { id,slug, src, date, title, summary } = Astro.props;
+date = new Date(date).toLocaleDateString("ja-JP").split("/").join(".");
+---
+
+<div class="container">
+  <a href=`/blog/${slug}-${id}` class="flex">
+    <div class="image">
+      <img src={src} alt="" />
+    </div>
+    <div class="wrapper">
+      <p class="date">{date}</p>
+      <h2>{title}</h2>
+      <p class="summary">{summary}</p>
+    </div>
+  </a>
+</div>
+
+<style>
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .image {
+    width: 219px;
+    height: 146px;
+  }
+  a {
+    text-decoration: none;
+  }
+  .container {
+    container-type: inline-size;
+    display: flex;
+    max-width: 848px;
+    /* コンテナクエリデバッグ用設定 */
+    /* resize: horizontal;
+    overflow: auto; */
+  }
+
+  .flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .container h2 {
+    font-size: 1.4rem;
+  }
+  .container p {
+    padding: 0;
+    font-size: 1.2rem;
+  }
+  .date {
+    font-size: 1rem;
+  }
+  .wrapper {
+    margin-top: -4px;
+    color: var(--textBlack);
+    position: relative;
+    /* height: auto; */
+    overflow: hidden;
+  }
+  .summary {
+    color: var(--textBlack);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .wrapper::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(to top, #f4f4f4, #f4f4f400);
+  }
+
+  @container (220px <= width) {
+    .flex {
+      padding-inline: 2.4rem;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 5%;
+    }
+    .image {
+      width: fit-content;
+      min-width: 100px;
+      height: auto;
+      aspect-ratio: 3 / 2;
+      width: 35%;
+    }
+    .wrapper {
+      width: 65%;
+    }
+    .summary {
+      -webkit-line-clamp: 2;
+    }
+  }
+
+  @container (460px <= width) {
+    .summary {
+      letter-spacing: 2px;
+      line-height: 1.75;
+      -webkit-line-clamp: 3;
+    }
+    .container h2 {
+      font-size: 1.8rem;
+    }
+    .container p {
+      font-size: 1.4rem;
+    }
+    .date {
+      font-size: 1.2rem;
+    }
+  }
+
+  @container (640px <= width) {
+    .container h2 {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+    }
+    .container p {
+      font-size: 1.6rem;
+    }
+    .date {
+      font-size: 1.4rem;
+    }
+  }
+</style>
