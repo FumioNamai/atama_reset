@@ -15,9 +15,9 @@ export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {
   return paginate(blogs.contents, { pageSize: 1 });
 };
 const { page } = Astro.props;
-// console.log(page);
 
 const posts = await getAllPosts();
+
 ---
 
 <Layout title="ブログ一覧">

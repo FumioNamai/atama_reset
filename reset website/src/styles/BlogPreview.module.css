@@ -46,6 +46,12 @@ main a {
   color: var(--textBlack);
 }
 
+.back a:hover {
+  border: 1px solid var(--textWhite);
+  color: var(--textWhite);
+  background-color: var(--textGray);
+}
+
 .setHtml p {
   line-height: 3rem;
   padding-bottom: 4rem;

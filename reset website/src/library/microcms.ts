@@ -35,15 +35,16 @@ export type BlogResponse = {
   offset: number,
   limit: number,
   contents: Blog[],
+  draftKey: string,
 }
 
 // APIの呼び出し
 export const getBlogs = async (queries?: MicroCMSQueries) => {
-  return await client.get<BlogResponse>({
-    endpoint: "blogs",
-    queries:{
-      orders: '-publishedAt',
-    }})
+    return await client.get<BlogResponse>({
+      endpoint: "blogs",
+      queries:{
+        orders: '-publishedAt',
+      }})
 };
 
 export async function getAllPosts( limit = 10) {
@@ -51,7 +52,6 @@ export async function getAllPosts( limit = 10) {
     const posts = await client.get({
       endpoint: "blogs",
       queries: {
-        fields: 'id,title,slug,publishedAt,summary,eyecatch',
         orders: '-publishedAt',
         limit: limit,
       },
@@ -61,6 +61,7 @@ export async function getAllPosts( limit = 10) {
     console.log(err);
   }
 }
+// fields: 'id,title,slug,publishedAt,summary,eyecatch',
 
 export const getBlogDetail = async (
   contentId: string,
