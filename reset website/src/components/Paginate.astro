@@ -1,30 +1,32 @@
 ---
-const { prev, next, currentPage,lastPage,prevTitle, nextTite } = Astro.props;
+const { prev, next, currentPage,lastPage} = Astro.props;
 
 ---
 
 <nav class="pagination">
-  <ul>
-    <!-- 前Pが存在する場合、前へリンクを表示 -->
-    {
-      prev ? (
-        <li class="forward"></li>
-        <li>
-          <a href={prev}>前へ</a>
-        </li>
-      ) : (
-        <li />
-      )
-    }
+  <!-- 前Pが存在する場合、前へリンクを表示 -->
+  {
+    prev ? (
+      <a href={prev}>
+        <div class="forward arrow">
+          前へ
+          </div>
+          </a>
+          ) : (
+          <div class="forward" />
+            )
+          }
 
+<ul>
     <!--前々頁が存在する場合は 先頭の頁と...を表示-->
     {
       currentPage > 2 ? (
         <li>
           <a href="/blogs/1">1</a>
         </li>
-        <li>...</li>
+        <li class="dot">...</li>
       ) : (
+        <li />
         <li />
       )
     }
@@ -57,32 +59,36 @@ const { prev, next, currentPage,lastPage,prevTitle, nextTite } = Astro.props;
     <!--次々頁が存在する場合は 最後の頁と...を表示-->
     {
       currentPage + 1 < lastPage ? (
-        <li class="pNumber">...</li>
+        <li  class="dot">...</li>
         <li class="pNumber">
           <a href={lastPage}>{lastPage}</a>
         </li>
       ) : (
         <li />
+        <li />
       )
     }
 
     <!-- 次頁が存在する場合、次へリンクを表示 -->
+    </ul>
     {
       next ? (
-        <li>
-          <a href={next}>次へ</a>
-        </li>
-        <li class="next"></li>
+        <a href={next}>
+        <div class="next arrow">
+          次へ
+        </div>
+      </a>
       ) : (
-        <li />
+        <div class="next" />
       )
     }
-  </ul>
 </nav>
 
 <style>
   .pagination {
-    margin-inline: auto;
+    display: flex;
+    justify-content: space-evenly;
+    padding-inline: 1.6rem;
   }
 
   .pagination ul {
@@ -97,16 +103,28 @@ const { prev, next, currentPage,lastPage,prevTitle, nextTite } = Astro.props;
     text-align: center;
     /* padding: 0.3rem .4rem; */
     display: inline-block;
-    width: 3.2rem;
+    width: 3rem;
   }
 
-  .pagination a {
+  .pagination .forward,
+  .pagination .next {
+    padding-inline: .8rem;
+    width: 4.6rem;
+    font-size: 1.6rem;
+  }
+
+  a {
     cursor: pointer;
     display: inline-block;
-    width: 3.2rem;
     text-decoration: none;
     color: var(--textBlack);
   }
+
+  ul {
+    /* width: 210px; */
+    text-align: center;
+  }
+
   .pagination a:hover {
     color: var(--attention);
   }
@@ -120,15 +138,10 @@ const { prev, next, currentPage,lastPage,prevTitle, nextTite } = Astro.props;
     padding-block: 2px;
   }
 
-  .forward {
-    transform: translateX(25%);
+  .dot {
+    color: var(--textGray);
   }
-
-  .next {
-    transform: translateX(-25%);
-  }
-
-  .forward::before {
+  .forward.arrow::before {
     content: "";
     display: inline-block;
     transform: translateY(-10%) rotate(135deg);
@@ -138,7 +151,7 @@ const { prev, next, currentPage,lastPage,prevTitle, nextTite } = Astro.props;
     border-right: 2px solid var(--attention);
   }
 
-  .next::after {
+  .next.arrow::after {
     content: "";
     display: inline-block;
     transform: translateY(-10%) rotate(315deg);
