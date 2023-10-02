@@ -22,12 +22,13 @@ date = new Date(date).toLocaleDateString("ja-JP").split("/").join(".");
     height: auto;
   }
   .image {
-    width: 219px;
-    height: 146px;
+    width: 300px;
+    height: 200px;
     overflow: hidden;
   }
   a {
     text-decoration: none;
+    scroll-snap-align: center;
   }
   .container {
     container-type: inline-size;
@@ -59,7 +60,6 @@ date = new Date(date).toLocaleDateString("ja-JP").split("/").join(".");
     margin-top: -4px;
     color: var(--textBlack);
     position: relative;
-    /* height: auto; */
     overflow: hidden;
   }
   .summary {
@@ -80,7 +80,7 @@ date = new Date(date).toLocaleDateString("ja-JP").split("/").join(".");
     background: linear-gradient(to top, #f4f4f4, #f4f4f400);
   }
 
-  @container (220px <= width) {
+  @container (300px < width) {
     .flex {
       padding-inline: 2.4rem;
       flex-direction: row;
