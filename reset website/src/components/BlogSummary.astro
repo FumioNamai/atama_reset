@@ -31,8 +31,13 @@ const posts = await getAllPosts(4);
 </section>
 
 <style>
-    section {
+  section {
     margin: 4rem auto;
+  }
+  .blogs {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 2s;
   }
 
   h2 {
@@ -59,3 +64,55 @@ const posts = await getAllPosts(4);
     /* scroll-snap-align: center;はBlogList.astroのaタグに設定 */
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    class ScrollObserver {
+      constructor(els, cb, options) {
+        //監視対象のelementsを取得
+        this.els = document.querySelectorAll(els);
+        //オプションのデフォルト設定を定義
+        const defaultOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0,
+        };
+        this.cb = cb;
+        //デフォルト設定に、個別設定のオプションをマージする
+        this.options = Object.assign(defaultOptions, options);
+        //
+        this._init();
+      }
+      _init() {
+        const callback = (entries) => {
+          entries.forEach((entry) => {
+            //監視対象の要素が領域内に入った場合の処理
+            if (entry.isIntersecting) {
+              this.cb(entry.target, true); //true=isIntersectingがtrue
+              //処理後に監視を切る処理
+              observer.unobserve(entry.target);
+            }
+          });
+        };
+        const observer = new IntersectionObserver(
+          callback.bind(this),
+          this.options
+        );
+        //対象の要素elを監視
+        this.els.forEach((el) => observer.observe(el));
+      }
+    }
+
+    const fadein = function (el, isIntersecting) {
+      if (isIntersecting) {
+        el.style.opacity = 1;
+        el.style.transform = "none";
+      }
+    };
+    const fadeinTrigger = new ScrollObserver(".blogs", fadein, {
+      rootMargin: "-200px 0px",
+      threshold: 0,
+    });
+  });
+
+</script>
