@@ -202,12 +202,12 @@ import clinic_image_4 from "../assets/clinic_image_4.jpg";
   }
 
 
-  .splide {
+  /* .splide {
     margin-inline: auto;
     width: 300px;
     height: 225px;
     overflow: hidden;
-  }
+  } */
   .splide__slide img {
     width: 100%;
     height: auto;
@@ -216,11 +216,11 @@ import clinic_image_4 from "../assets/clinic_image_4.jpg";
     width: 100%;
     height: auto;
   } */
-
+/*
   .splide__slide {
     width: 100%;
     height: auto;
-  }
+  } */
   @media screen and (900px <= width) {
     .access-flex-wrap {
       flex-direction: row;
@@ -249,7 +249,6 @@ import clinic_image_4 from "../assets/clinic_image_4.jpg";
       margin-inline: 0;
       width: 400px;
       height: 300px;
-
     }
   }
 
@@ -258,11 +257,24 @@ import clinic_image_4 from "../assets/clinic_image_4.jpg";
 <script>
   import Splide from "@splidejs/splide";
   import "@splidejs/splide/css";
-  document.addEventListener("DOMContentLoaded", function () {
-    let splide = new Splide(".splide", {
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   let splide = new Splide(".splide", {
+  //     type: "loop",
+  //     perPage: 1,
+  //   });
+  //   splide.mount();
+  // });
+
+  let splide = new Splide(".splide", {
       type: "loop",
       perPage: 1,
+      width: "400px",
+      height: "300px",
+      speed: 1000,
+      rewind: false,
+      rewindSpeed: 1,
+      gap: "1.6rem",
+    autoplay: true,
     });
     splide.mount();
-  });
 </script>
