@@ -1,9 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import clinic_image_1 from "../assets/clinic_image_1.jpg";
-import clinic_image_2 from "../assets/clinic_image_2.jpg";
-import clinic_image_3 from "../assets/clinic_image_3.jpg";
-import clinic_image_4 from "../assets/clinic_image_4.jpg";
+import clinic_image_1 from "../assets/clinic_image_1.webp";
+import clinic_image_2 from "../assets/clinic_image_2.webp";
+import clinic_image_3 from "../assets/clinic_image_3.webp";
+import clinic_image_4 from "../assets/clinic_image_4.webp";
 ---
 
 <section class="access" id="access">
@@ -201,6 +201,10 @@ import clinic_image_4 from "../assets/clinic_image_4.jpg";
     transition: 2s;
   }
 
+  .splide {
+    margin-inline: auto;
+    /* padding-inline: 1.6rem; */
+  }
 
   /* .splide {
     margin-inline: auto;
@@ -247,8 +251,9 @@ import clinic_image_4 from "../assets/clinic_image_4.jpg";
 
     .splide {
       margin-inline: 0;
-      width: 400px;
-      height: 300px;
+      /* padding: 0; */
+      /* width: 400px;
+      height: 300px; */
     }
   }
 
@@ -257,6 +262,7 @@ import clinic_image_4 from "../assets/clinic_image_4.jpg";
 <script>
   import Splide from "@splidejs/splide";
   import "@splidejs/splide/css";
+import { fade } from "astro:transitions";
   // document.addEventListener("DOMContentLoaded", function () {
   //   let splide = new Splide(".splide", {
   //     type: "loop",
@@ -265,16 +271,30 @@ import clinic_image_4 from "../assets/clinic_image_4.jpg";
   //   splide.mount();
   // });
 
-  let splide = new Splide(".splide", {
-      type: "loop",
+  const options =  {
+      type: "fade",
       perPage: 1,
-      width: "400px",
-      height: "300px",
-      speed: 1000,
-      rewind: false,
-      rewindSpeed: 1,
+      lazyLoad: "nearby",
+      preloadPages: 1,
+      // speed: 1000,
+      rewind: true,
+      // rewindSpeed: 1,
       gap: "1.6rem",
-    autoplay: true,
-    });
+      // autoplay: true,
+      padding:  { left: '1.6rem', right: '1.6rem' },
+      width: "432px",
+      height: "auto",
+      // 900px以上の設定
+      mediaQuery: "min",
+      breakpoints: {
+        900: {
+          padding: "0",
+          width: "400px",
+          height: "300px",
+        }
+      }
+    }
+
+  let splide = new Splide(".splide", options);
     splide.mount();
 </script>
