@@ -4,30 +4,37 @@ import type { GetStaticPathsOptions } from "astro";
 import BlogList from "@components/BlogList.astro";
 
 import { getBlogs, getAllPosts } from "../../src/library/microcms";
+import ButtonBasic from "./ButtonBasic.astro";
 
 const posts = await getAllPosts(4);
 
 ---
 
 <section class="blogs">
-  <h2>ブログ</h2>
-  <div class="sliderWrap">
-  <div class="container">
-    {
-      posts.map((post) => (
-        <BlogList
-          id={post.id}
-          slug={post.slug}
-          src={post.eyecatch.url}
-          date={post.publishedAt}
-          title={post.title}
-          summary={post.summary}
-          class="bloglist"
-        />
-      ))
-    }
+  <h2>最近のブログ</h2>
+  <div class="splide" role="group" aria-label="最近のブログ" id="blogSlider">
+    <div class="sliderWrap splide__track">
+      <div class="container splide__list">
+        {
+          posts.map((post) => (
+            <BlogList
+              id={post.id}
+              slug={post.slug}
+              src={post.eyecatch.url}
+              date={post.publishedAt}
+              title={post.title}
+              summary={post.summary}
+              // class="bloglist splide2__slide"
+            />
+          ))
+        }
+      </div>
+    </div>
   </div>
-</div>
+  <ButtonBasic
+  url = {"location.href='/blogs/1'"},
+  text = {"一覧を見る"}
+  />
 </section>
 
 <style>
@@ -45,38 +52,43 @@ const posts = await getAllPosts(4);
     text-align: center;
   }
 
-  .sliderWrap {
-    overflow-y: hidden;
-    max-width:900px;
-    scroll-snap-type: x mandatory;
+  .splide {
     margin-inline: auto;
+    max-width: 1260px;
+    margin-bottom: 2.4rem;
+  }
+  .sliderWrap {
+    /* scroll-snap-type: x mandatory; */
+    overflow-y: hidden;
+    margin-inline: auto;
+
   }
 
-  .sliderWrap::-webkit-scrollbar {
+  /* .sliderWrap::-webkit-scrollbar {
     height: 8px;
-    /* width: 1000px; */
   }
 
   .sliderWrap::-webkit-scrollbar-track {
-    /* background-color: gray; */
     border-radius: 2px;
   }
+
   .sliderWrap::-webkit-scrollbar-thumb {
     background-color: var(--bgBottomNav);
     border-radius: 4px;
-  }
+  } */
 
   .container {
-    margin-block-start: 4rem;
-    display: flex;
-    justify-content:space-evenly;
-    align-items: start;
-    width: 1600px;
-    height: 300px;
-    margin-left: -300px;
-    scroll-snap-align: center;
-    /* scroll-snap-align: center;はBlogList.astroのaタグに設定 */
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: space-evenly; */
+    /* margin-block-start: 4rem; */
+    /* align-items: start; */
+    /* width: 1260px; */
+    /* height: 300px; */
+    /* margin-left: -300px; */
+    /* scroll-snap-align: center; */
   }
+  /* scroll-snap-align: center;はBlogList.astroのaタグに設定 */
 </style>
 
 <script>
@@ -128,5 +140,43 @@ const posts = await getAllPosts(4);
       threshold: 0,
     });
   });
+
+  import Splide from "@splidejs/splide";
+  import "@splidejs/splide/css";
+
+  const options = {
+    type: "slide",
+    // perPage: 1,
+    fixedWidth:"300px",
+    height: "340px",
+    gap: "20px",
+    padding:  { left: '4rem', right: '4rem' },
+    focus    : 'center',
+    trimSpace: false,
+    mediaQuery: "min",
+    breakpoints: {
+      600: {
+        // perPage: 2,
+        // width:"700px",
+      },
+      1000: {
+        // pagination: false,
+        // perPage: 3,
+        // width:"1000px",
+      },
+      1260: {
+        focus    : false,
+        trimSpace: true,
+        arrows: false,
+        padding: 0,
+        // perPage: 4,
+        // width:"1360px",
+        // destroy: true,
+      }
+    }
+  }
+
+  let blogSlider = new Splide("#blogSlider", options);
+  blogSlider.mount();
 
 </script>

@@ -3,7 +3,7 @@ let { id,slug, src, date, title, summary } = Astro.props;
 date = new Date(date).toLocaleDateString("ja-JP").split("/").join(".");
 ---
 
-<div class="container">
+<div class="container bloglist splide__slide" >
   <a href=`/blog/${slug}-${id}` class="flex">
     <div class="image">
       <img src={src} alt="" />
@@ -15,6 +15,7 @@ date = new Date(date).toLocaleDateString("ja-JP").split("/").join(".");
     </div>
   </a>
 </div>
+
 
 <style>
   img {
@@ -132,3 +133,7 @@ date = new Date(date).toLocaleDateString("ja-JP").split("/").join(".");
     }
   }
 </style>
+
+<script>
+  import "@splidejs/splide/css";
+</script>

@@ -52,7 +52,7 @@ import clinic_image_4 from "../assets/clinic_image_4.webp";
           />お過ごしくださいませ。
         </p>
       </div>
-      <div class="splide" role="group" aria-label="Splideの基本的なHTML">
+      <div class="splide" role="group" aria-label="Splideの基本的なHTML" id="imageSlider">
         <div class="splide__track">
           <ul class="slider-group fadein splide__list">
             <li class="splide__slide">
@@ -262,11 +262,8 @@ import clinic_image_4 from "../assets/clinic_image_4.webp";
 <script>
   import Splide from "@splidejs/splide";
   import "@splidejs/splide/css";
-import { fade } from "astro:transitions";
   // document.addEventListener("DOMContentLoaded", function () {
   //   let splide = new Splide(".splide", {
-  //     type: "loop",
-  //     perPage: 1,
   //   });
   //   splide.mount();
   // });
@@ -274,27 +271,28 @@ import { fade } from "astro:transitions";
   const options =  {
       type: "fade",
       perPage: 1,
-      lazyLoad: "nearby",
+      lazyLoad: "sequential",
       preloadPages: 1,
-      // speed: 1000,
+      speed: 5000,
       rewind: true,
-      // rewindSpeed: 1,
+      // rewindSpeed: 1000,
       gap: "1.6rem",
-      // autoplay: true,
-      padding:  { left: '1.6rem', right: '1.6rem' },
+      autoplay: true,
+      interval: 3000,
+      // padding:  { left: '1.6rem', right: '1.6rem' },
       width: "432px",
       height: "auto",
       // 900px以上の設定
       mediaQuery: "min",
       breakpoints: {
         900: {
-          padding: "0",
+          // padding: "0",
           width: "400px",
           height: "300px",
         }
       }
     }
 
-  let splide = new Splide(".splide", options);
-    splide.mount();
+  let imageSlider = new Splide("#imageSlider", options);
+  imageSlider.mount();
 </script>
