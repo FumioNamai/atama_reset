@@ -1,72 +1,82 @@
 ---
-import BlogList from "@components/BlogList.astro";
-
-import { getAllPosts } from "../../src/library/microcms";
-import ButtonBasic from "./ButtonBasic.astro";
-
-const posts = await getAllPosts(4);
 
 ---
 
-<section class="blogs">
-  <h2>最近のブログ</h2>
-  <div class="splide" role="group" aria-label="最近のブログ" id="blogSlider">
-    <div class="sliderWrap splide__track">
-      <div class="container splide__list">
-        {
-          posts.map((post) => (
-            <BlogList
-              id={post.id}
-              slug={post.slug}
-              src={post.eyecatch.url}
-              date={post.publishedAt}
-              title={post.title}
-              summary={post.summary}
-            />
-          ))
-        }
-      </div>
-    </div>
+<section class="news">
+  <h2>お知らせ</h2>
+
+  <div class="news-title">
+    <!-- <p class="publishedAT">2021.11.21</p> -->
+    <a href="">
+      <p>～お詫びとお願い～</p>
+      <span></span>
+    </a>
   </div>
-  <ButtonBasic
-  url = {"location.href='/blogs/1'"},
-  text = {"もっと見る"}
-  />
+  <div class="news-title">
+    <p class="publishedAT">2021.11.21</p>
+    <a href="">
+      <p>ギフトカードのお取り扱いについて</p>
+      <span></span>
+    </a>
+  </div>
 </section>
 
 <style>
-  section {
-    margin: 4rem auto;
+  p {
+    padding-block: 0.8rem;
   }
-  .blogs {
+  .news {
     opacity: 0;
     transform: translateY(20px);
     transition: 2s;
-    padding-block-end: 4rem;
+    margin-block: 2.4rem;
+    padding: 2.4rem 1.6rem;
   }
-
   h2 {
     text-align: center;
-  }
-
-  .splide {
-    margin-inline: auto;
-    max-width: 1260px;
     margin-bottom: 2.4rem;
   }
-  .sliderWrap {
-    overflow-y: hidden;
+  .news-title {
     margin-inline: auto;
+    max-width: 400px;
+    border-bottom: 1px solid var(--textBlack);
+    margin-bottom: 1.6rem;
   }
 
-  .splide__arrows {
-    height: 4em;
-    width: 4em;
+  .publishedAT {
+    padding-block: 0.4rem;
+    margin-left: 1.2rem;
+    font-size: 1.4rem;
   }
 
+  a {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--textBlack);
+    line-height: 1;
+    margin-left: 1.2rem;
+  }
+
+  span {
+    color: var(--textBlack);
+    cursor: pointer;
+    display: block;
+    transform: rotate(-45deg);
+    width: 7px;
+    height: 7px;
+    margin-right: 1.2rem;
+    border-bottom: 1px solid var(--textBlack);
+    border-right: 1px solid var(--textBlack);
+    content: "";
+    transition: transform 0.5s;
+  }
 </style>
 
 <script>
+
   document.addEventListener("DOMContentLoaded", function () {
     class ScrollObserver {
       constructor(els, cb, options) {
@@ -110,35 +120,9 @@ const posts = await getAllPosts(4);
         el.style.transform = "none";
       }
     };
-    const fadeinTrigger = new ScrollObserver(".blogs", fadein, {
-      rootMargin: "-200px 0px",
+    const fadeinTrigger = new ScrollObserver(".news", fadein, {
+      rootMargin: "-100px 0px",
       threshold: 0,
     });
   });
-
-  import Splide from "@splidejs/splide";
-
-  // Splideのオプション設定
-  const options = {
-    type: "slide",
-    fixedWidth:"300px",
-    height: "340px",
-    gap: "20px",
-    padding:  { left: '4rem', right: '4rem' },
-    focus    : 'center',
-    trimSpace: false,
-    mediaQuery: "min",
-    breakpoints: {
-      1260: {
-        focus    : false,
-        trimSpace: true,
-        arrows: false,
-        padding: 0,
-      }
-    },
-  }
-
-  let blogSlider = new Splide("#blogSlider", options);
-  blogSlider.mount();
-
 </script>
