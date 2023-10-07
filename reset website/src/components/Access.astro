@@ -171,6 +171,7 @@ import clinic_image_4 from "../assets/clinic_image_4.webp";
     flex-direction: column; /* PCではrowに */
     justify-content: center;
     gap: 24px;
+    /* height: 700px; */
   }
 
   .fadein {
@@ -181,8 +182,9 @@ import clinic_image_4 from "../assets/clinic_image_4.webp";
 
   .splide {
     margin-inline: auto;
-    width: 432px;
-    height: 324px;
+    width: 343px;
+    height: auto;
+    padding-bottom: 40px;
   }
 
   .splide__slide img {
@@ -240,8 +242,10 @@ import clinic_image_4 from "../assets/clinic_image_4.webp";
       gap: "1.6rem",
       autoplay: true,
       interval: 3000,
-      width: "432px",
+      width: "auto",
       height: "auto",
+      // padding: { bottom: 24} ,
+      // padding: "24px",
     }
 
   let imageSlider = new Splide("#imageSlider", options);
