@@ -52,7 +52,7 @@ import clinic_image_4 from "../assets/clinic_image_4.webp";
           />お過ごしくださいませ。
         </p>
       </div>
-      <div class="splide" role="group" aria-label="Splideの基本的なHTML" id="imageSlider">
+      <div class="splide" role="group" aria-label="治療院の画像" id="imageSlider">
         <div class="splide__track">
           <ul class="slider-group fadein splide__list">
             <li class="splide__slide">
@@ -103,7 +103,6 @@ import clinic_image_4 from "../assets/clinic_image_4.webp";
     justify-content: center;
     gap: 24px;
     margin-top: 64px;
-    /* margin-bottom: 64px; */
   }
 
   .map {
@@ -163,7 +162,6 @@ import clinic_image_4 from "../assets/clinic_image_4.webp";
 
   .clinic-text p {
     font-size: 1.6rem;
-    /* padding: 0.8rem 0; */
     text-align: center;
     line-height: 250%;
   }
@@ -175,26 +173,6 @@ import clinic_image_4 from "../assets/clinic_image_4.webp";
     gap: 24px;
   }
 
-  /* .slider-group {
-    box-sizing: border-box;
-    position: relative;
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-y: hidden;
-    gap: 16px;
-    scroll-snap-type: x mandatory;
-    padding-inline: 64px;
-  } */
-
-  /* .clinic-image {
-    flex: 0 0 auto;
-    width: 300px;
-    height: 225px;
-    scroll-snap-align: center;
-  } */
-
   .fadein {
     opacity: 0;
     transform: translateY(20px);
@@ -203,28 +181,20 @@ import clinic_image_4 from "../assets/clinic_image_4.webp";
 
   .splide {
     margin-inline: auto;
-    /* padding-inline: 1.6rem; */
+    width: 432px;
+    height: 324px;
   }
 
-  /* .splide {
-    margin-inline: auto;
-    width: 300px;
-    height: 225px;
-    overflow: hidden;
-  } */
   .splide__slide img {
     width: 100%;
     height: auto;
   }
-  /* .clinic-image img {
-    width: 100%;
-    height: auto;
+
+  /* .splide__arrow {
+    height: 4em;
+    width: 4em;
   } */
-/*
-  .splide__slide {
-    width: 100%;
-    height: auto;
-  } */
+
   @media screen and (900px <= width) {
     .access-flex-wrap {
       flex-direction: row;
@@ -251,9 +221,6 @@ import clinic_image_4 from "../assets/clinic_image_4.webp";
 
     .splide {
       margin-inline: 0;
-      /* padding: 0; */
-      /* width: 400px;
-      height: 300px; */
     }
   }
 
@@ -261,13 +228,8 @@ import clinic_image_4 from "../assets/clinic_image_4.webp";
 
 <script>
   import Splide from "@splidejs/splide";
-  import "@splidejs/splide/css";
-  // document.addEventListener("DOMContentLoaded", function () {
-  //   let splide = new Splide(".splide", {
-  //   });
-  //   splide.mount();
-  // });
 
+  // Splideのオプション設定
   const options =  {
       type: "fade",
       perPage: 1,
@@ -275,22 +237,11 @@ import clinic_image_4 from "../assets/clinic_image_4.webp";
       preloadPages: 1,
       speed: 5000,
       rewind: true,
-      // rewindSpeed: 1000,
       gap: "1.6rem",
       autoplay: true,
       interval: 3000,
-      // padding:  { left: '1.6rem', right: '1.6rem' },
       width: "432px",
       height: "auto",
-      // 900px以上の設定
-      mediaQuery: "min",
-      breakpoints: {
-        900: {
-          // padding: "0",
-          width: "400px",
-          height: "300px",
-        }
-      }
     }
 
   let imageSlider = new Splide("#imageSlider", options);

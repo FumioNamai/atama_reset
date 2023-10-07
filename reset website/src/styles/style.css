@@ -1,6 +1,7 @@
 
 @import '@fontsource/noto-serif-jp';
 @import '@fontsource/noto-sans-jp';
+@import '../../dist/css/splide.min.css';
 
 /* 基本色 */
 :root {
