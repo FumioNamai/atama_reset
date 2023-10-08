@@ -30,7 +30,7 @@ const data = posts.contents.map((content) => ({
     </a>
     ))
   }
-  <div class="linkButton">
+  <div class="moreButton">
   <a href="/news" class="more">もっと見る</a>
   <span />
   </div>
@@ -48,12 +48,15 @@ const data = posts.contents.map((content) => ({
     color: var(--textBlack);
   }
 
-  .more {
-    font-size: 1.6rem;
-
+  a:hover{
+    color: var(--textGray);
   }
 
-  .linkButton {
+  .more {
+    font-size: 1.6rem;
+  }
+
+  .moreButton {
     margin-inline: auto 0;
     display: flex;
     flex-direction: row;
@@ -61,12 +64,16 @@ const data = posts.contents.map((content) => ({
     align-items: center;
     width: 110px;
     line-height: 1.5;
+    padding-right: 5px;
+    transition: all .5s;
   }
 
+  .moreButton:hover {
+    padding-right: 0px;
+  }
   .container {
     max-width: 400px;
     margin-inline: auto;
-
   }
 
   .news {
@@ -81,11 +88,16 @@ const data = posts.contents.map((content) => ({
     text-align: center;
     margin-bottom: 2.4rem;
   }
+
   .news-header {
-    /* margin-inline: auto; */
-    /* max-width: 400px; */
     border-bottom: 1px solid var(--textBlack);
     margin-bottom: 1.6rem;
+    transition: all .5s;
+    padding-right: 5px;
+  }
+
+  .news-header:hover {
+    padding-right: 0;
   }
 
   .publishedAT {
@@ -104,17 +116,16 @@ const data = posts.contents.map((content) => ({
   }
 
   span {
+    content: "";
     color: var(--textBlack);
     cursor: pointer;
     display: block;
-    transform: rotate(-45deg);
+    transform:rotate(-45deg);
     width: 7px;
     height: 7px;
     margin-right: 1.2rem;
     border-bottom: 1px solid var(--textBlack);
     border-right: 1px solid var(--textBlack);
-    content: "";
-    transition: transform 0.5s;
   }
 </style>
 

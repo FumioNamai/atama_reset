@@ -1,5 +1,4 @@
 import { createClient } from "microcms-js-sdk";
-import type { MicroCMSQueries } from "microcms-js-sdk";
 
 const client = createClient({
   serviceDomain: import.meta.env.PUBLIC_MICROCMS_SERVICE_DOMAIN,
@@ -28,17 +27,7 @@ export type NewsResponse = {
   limit:number,
 }
 
-// export const getNews = async (queries?: MicroCMSQueries) => {
-//   return await client.get<NewsResponse>({
-//     endpoint: "news",
-//     queries: {
-//       orders: "-createdAt",
-//     }
-//   })
-// }
-
 export async function getNews({limit}) {
-  // try{
     const posts = await client.get({
       endpoint: "news",
       queries: {
@@ -47,7 +36,4 @@ export async function getNews({limit}) {
       }
     })
     return posts
-  // }catch (err) {
-  //   console.log(err);
-  // }
-}
+  }
