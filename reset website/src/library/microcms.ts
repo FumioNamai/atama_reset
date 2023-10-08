@@ -48,7 +48,6 @@ export const getBlogs = async (queries?: MicroCMSQueries) => {
 };
 
 export async function getAllPosts( limit = 10) {
-  try {
     const posts = await client.get({
       endpoint: "blogs",
       queries: {
@@ -57,9 +56,6 @@ export async function getAllPosts( limit = 10) {
       },
     })
     return posts.contents
-  } catch {
-    console.log(err);
-  }
 }
 // fields: 'id,title,slug,publishedAt,summary,eyecatch',
 
@@ -75,14 +71,9 @@ export const getBlogDetail = async (
 };
 
 export async function getAllSlugs(limit:10) {
-  try {
     const slugs = await client.get({
       endpoint: 'blogs',
       queries: { fields: 'title,slug', orders:'-publishDate', limit:limit},
     })
     return slugs.contents
-  } catch (err) {
-    console.log('getAllSlugs');
-    console.log(err);
-  }
 }

@@ -1,0 +1,53 @@
+import { createClient } from "microcms-js-sdk";
+import type { MicroCMSQueries } from "microcms-js-sdk";
+
+const client = createClient({
+  serviceDomain: import.meta.env.PUBLIC_MICROCMS_SERVICE_DOMAIN,
+  apiKey: import.meta.env.PUBLIC_MICROCMS_API_KEY,
+});
+
+export type News = {
+  id: string,
+  title: string,
+  createdAt: string,
+  publishedAt: string,
+  article: {
+    image:  {
+      url: string,
+      height: number,
+      width: number,
+    },
+    text: string,
+    rich_editor: string,
+  },
+}
+
+export type NewsResponse = {
+  totalCount: number,
+  offset: number,
+  limit:number,
+}
+
+// export const getNews = async (queries?: MicroCMSQueries) => {
+//   return await client.get<NewsResponse>({
+//     endpoint: "news",
+//     queries: {
+//       orders: "-createdAt",
+//     }
+//   })
+// }
+
+export async function getNews({limit}) {
+  // try{
+    const posts = await client.get({
+      endpoint: "news",
+      queries: {
+        orders: "-createdAt",
+        limit: limit,
+      }
+    })
+    return posts
+  // }catch (err) {
+  //   console.log(err);
+  // }
+}
