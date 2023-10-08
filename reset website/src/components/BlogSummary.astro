@@ -66,6 +66,8 @@ const posts = await getAllPosts(4);
 
 </style>
 
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     class ScrollObserver {
@@ -117,7 +119,7 @@ const posts = await getAllPosts(4);
   });
 
   import "../../src/splide.min.js";
-  import "../styles/splide.min.css";
+  // import "../styles/splide.min.css";
   // Splideのオプション設定
   const options = {
     type: "slide",
