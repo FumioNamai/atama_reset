@@ -40,45 +40,34 @@ const problems = [
     </div>
   </div>
 
-
-  <div class="cause">
-    <p class="text-1 fadeinText">「眠い」「疲れた」「飽きた」</p>
-    <p class="text-2 fadeinText">それは<span class="bold large">『 脳疲労 』</span>のサイン</p>
-    <div class="cause-image yawning"></div>
-    <p class="text-3 fadeinText">脳の疲労が脳を「酸化」させ</p>
-    <div class="icon fadeinText"></div>
-    <p class="text-4 fadeinText">脳が誤作動を起こし</p>
-    <div class="icon fadeinText"></div>
-    <p class="text-5 fadeinText">疲れていない体が疲労感を感じる</p>
-    <p class="text-6 fadeinText">自律神経の乱れを引き起こし<br>体のあらゆる部分に不調が出ます</p>
-  </div>
-
-  <p class="otherwise fadeinText">もしくは･･･</p>
-
-  <div class="cause">
-    <!-- <p class="text-1 fadeinText">「眠い」「疲れた」「飽きた」</p> -->
-    <p class="text-1 fadeinText">その不調<span class="bold">『 首 』</span>が原因かも？</p>
-    <div class="cause-image stiff_neck"></div>
-    <p class="text-2 fadeinText bold">首の後ろには<br>” 副交感神経センター ” があり</p>
-    <p class="text-3 fadeinText">首に不具合がおこると</p>
-    <div class="icon fadeinText"></div>
-    <p class="text-4 fadeinText">副交感神経の働きが阻害され、自律神経が乱れ</p>
-    <div class="icon fadeinText"></div>
-    <p class="text-5 fadeinText">全身にさまざまな不調を誘発</p>
-    <p class="text-6 fadeinText">「ストレスが原因」とされてきた症状も、<br>実は首のこりが原因であることが多いと判ってきました。</p>
-    <p class="text-7 fadeinText highlight">原因不明の体の不調のほとんどが<br>自律神経の乱れによるものです</p>
-  </div>
-
   <div class="suggestion">
     <div class="suggestion-image"></div>
     <div class="text-wrapper">
-      <p class="primary">
-        疲れた頭や体を<br />究極の癒しで ” reset ” しませんか
+      <p>
+        あなたのお悩み<br />「脳疲労」による<br /><span class="highlight"
+          >自律神経のしわざ</span
+        >かも･･･
+      </p>
+      <p>
+        疲れた頭や体を<br />究極の癒しで<span class="primary">リセット</span
+        >しませんか
       </p>
     </div>
   </div>
   </div>
 
+  <div class="cause">
+      <p class="text-1 fadeinText">「眠い」「疲れた」「飽きた」</p>
+      <p class="text-2 fadeinText">それは<span class="bold">『 脳疲労 』</span>のサイン</p>
+      <div class="cause-image"></div>
+      <p class="text-3 fadeinText">脳の疲労が脳を「酸化」させ</p>
+      <div class="icon fadeinText"></div>
+      <p class="text-4 fadeinText">脳が誤作動を起こし</p>
+      <div class="icon fadeinText"></div>
+      <p class="text-5 fadeinText">疲れていない体が疲労感を感じる</p>
+      <p class="text-6 fadeinText">自律神経の乱れを引き起こし<br>体のあらゆる部分に不調が出ます</p>
+      <p class="text-7 fadeinText highlight">原因不明の体の不調のほとんどが<br>自律神経の乱れによるものです</p>
+  </div>
 </section>
 
 <style>
@@ -95,9 +84,6 @@ const problems = [
   h2 {
     font-weight: normal;
     text-align: center;
-  }
-  p {
-    padding-block: 1.6rem;
   }
   .wrapper {
     position: relative;
@@ -186,32 +172,40 @@ const problems = [
 
   .suggestion {
     position: relative;
-    max-width: 640px;
-    height: 432px;
-    padding: 1.6rem;
+    max-width: 482px;
+    max-height: 622px;
+    padding: 16px;
     margin: 0 auto;
     transform: translateY();
   }
 
   .suggestion-image {
-    position: absolute;
-    right: 0;
-    width: 380px;
-    height: 432px;
-    background-image: url(../assets/refreshing2.webp);
+    width: auto;
+    max-width: 482px;
+    min-width: 343px;
+    background-image: url(../assets/stiffneck1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 20% 40%;
     border-radius: 16px;
+    /* aspect-ratio: 482 / 412; */
     filter: blur(1px);
     transform: translateY(20px);
     transition: 2s;
     opacity: 0;
   }
+  .suggestion-image::before {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-top: 85.48%;
+  }
   .text-wrapper {
     position: absolute;
-    top: 7%;
-    left: 0%;
+    top: 10%;
+    left: 8%;
+    width: 328px;
+    height: 291px;
     opacity: 0;
     transform: translateY(20px);
     transition: 3s;
@@ -233,6 +227,45 @@ const problems = [
     font-weight: bold;
   }
 
+  @media screen and (900px <= width) {
+    .grid-container {
+      width: 900px;
+      height: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .problems {
+      width: 512px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .suggestion {
+      width: 512px;
+      z-index: 10;
+      position: absolute;
+      top: 45%;
+      left: 45%;
+    }
+
+    /* 表示が崩れてしまうため不採用 */
+    /* .grid-container {
+      margin: 0 auto;
+      display: grid;
+      width: 900px;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: repeat(3,240px);
+    }
+    .problems {
+      grid-column: 1 / 5;
+      grid-row: 1 / 3;
+    }
+    .suggestion {
+      grid-column: 4 / 8;
+      grid-row: 2 / 4;
+    } */
+  }
+
   .cause {
     text-align: center;
     max-width: 1024px;
@@ -242,6 +275,7 @@ const problems = [
 
   .cause-image {
     max-width: 1024px;
+    background-image: url(../assets/yawning.webp);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 75%;
@@ -250,15 +284,12 @@ const problems = [
     opacity: 0;
     transition: 2s;
   }
-
-  .yawning {
-    background-image: url(../assets/yawning.webp);
-  }
-
-  .stiff_neck {
-    background-image: url(../assets/stiff_neck.webp);
-    background-position: center;
-  }
+  /* .cause-image::before {
+    contain: "";
+    display: block;
+    width: 100%;
+    padding-top: 34%;
+  } */
 
   .cause p {
     letter-spacing: 3px;
@@ -267,10 +298,10 @@ const problems = [
   .fadeinText {
     opacity: 0;
     transition: 2s;
-    filter:drop-shadow(1px 2px 8px rgba(0, 0, 0, 0.371))
+    filter:drop-shadow(1px 2px 8px rgba(0, 0, 0, 0.5))
   }
 
-  .fadeinText.highlight {
+  .fadeinText:last-child {
     filter:drop-shadow(1px 2px 8px rgb(246, 187, 98, 0.6));
     letter-spacing: 3px;
   }
@@ -279,20 +310,15 @@ const problems = [
     font-size: 2rem;
     font-weight: bold;
   }
-  .cause .text-1,
-  .cause .text-2 {
-    padding-block-start: 0;
-  }
 
   .text-2 {
     font-size: 1.8rem;
+    margin-bottom: 1.6rem;
   }
 
   .bold {
-    font-weight: bold;
-  }
-  .large {
     font-size: 2.4rem;
+    font-weight: bold;
   }
 
   .icon {
@@ -303,17 +329,22 @@ const problems = [
     background-repeat: no-repeat;
     background-size: contain;
   }
-
+  .text-3 {
+    margin-block: 1.6rem ;
+  }
+  .text-4 {
+    margin-block: 1.6rem;
+  }
+  .text-5 {
+    margin-block-start: 1.6rem;
+    margin-block-end: 4rem;
+  }
+  .text-6 {
+    margin-block-end: 4rem;
+  }
   .text-7 {
     font-size: 2rem;
     font-weight: bold;
-  }
-
-  .otherwise {
-    text-align: center;
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: bold;
-    font-size: 2.2rem;
   }
 
 </style>
@@ -398,7 +429,7 @@ const problems = [
         el.style.opacity = 0.6;
       }
     };
-    const causeImage = new ScrollObserver(".cause-image", causeImg, {
+    const causImage = new ScrollObserver(".cause-image", causeImg, {
       threshold: 1,
     });
 
