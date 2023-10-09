@@ -61,7 +61,7 @@ const problems = [
     <p class="text-3 fadeinText bold">首の後ろには<br>” 副交感神経センター ” があり</p>
     <p class="text-4 fadeinText">首に不具合がおこると</p>
     <div class="icon fadeinText"></div>
-    <p class="text-5 fadeinText">副交感神経の働きが阻害され、自律神経が乱れ</p>
+    <p class="text-5 fadeinText">副交感神経の働きが阻害され<br>自律神経が乱れ</p>
     <div class="icon fadeinText"></div>
     <p class="text-6 fadeinText">全身にさまざまな不調を誘発</p>
     <p class="text-7 fadeinText">「ストレスが原因」とされてきた症状も、<br>実は首のこりが原因であることが多いと判ってきました。</p>
@@ -81,6 +81,9 @@ const problems = [
 </section>
 
 <style>
+  section {
+    margin-bottom: 80px;
+  }
   .problems {
     display: flex;
     justify-content: center;
@@ -185,7 +188,7 @@ const problems = [
 
   .suggestion {
     position: relative;
-    max-width: 640px;
+    max-width: 480px;
     height: 432px;
     padding: 1.6rem;
     margin: 0 auto;
@@ -200,7 +203,7 @@ const problems = [
     background-image: url(../assets/refreshing2.webp);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 20% 40%;
+    background-position: 20%;
     border-radius: 16px;
     filter: blur(1px);
     transform: translateY(20px);
@@ -217,9 +220,16 @@ const problems = [
   }
 
   .suggestion p {
-    font-size: 2.4rem;
+    font-size: 2rem;
     line-height: 175%;
-    padding-inline-start: 16px;
+    padding-inline-start: 1.6rem;
+  }
+
+  @media screen and (500px <= width) {
+    .suggestion p {
+    font-size: 2.4rem;
+  }
+
   }
 
   .highlight {
@@ -229,6 +239,7 @@ const problems = [
   .primary {
     color: var(--primary);
     font-weight: bold;
+    padding-block: 0 1.6rem;
   }
 
   .cause {
@@ -303,6 +314,7 @@ const problems = [
   }
 
   .text-8 {
+    margin-block: 1.6rem;
     font-size: 2rem;
     font-weight: bold;
   }
