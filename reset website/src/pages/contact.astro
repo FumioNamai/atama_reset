@@ -45,15 +45,13 @@ const EMAIL_TEMPLATE_ID = import.meta.env.PUBLIC_EMAIL_TEMPLATE_ID;
 class AstroContact extends HTMLElement {
   constructor() {
     super();
-
-    const PUBLIC_KEY = this.dataset.public_key
-    const EMAIL_SERVICE_ID = this.dataset.email_service_id
-    const EMAIL_TEMPLATE_ID = this.dataset.email_template_id
+    const PUBLIC_KEY = this.dataset.public_key;
+    const EMAIL_SERVICE_ID = this.dataset.email_service_id;
+    const EMAIL_TEMPLATE_ID = this.dataset.email_template_id;
       (function() {
           // https://dashboard.emailjs.com/admin/account
           emailjs.init(PUBLIC_KEY);
       })();
-
       window.onload = function () {
         document.getElementById("contact-form")
           .addEventListener("submit", function (event) {
