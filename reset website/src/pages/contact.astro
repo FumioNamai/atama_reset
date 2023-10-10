@@ -15,17 +15,44 @@ const EMAIL_TEMPLATE_ID = import.meta.env.PUBLIC_EMAIL_TEMPLATE_ID;
       data-EMAIL_TEMPLATE_ID = {EMAIL_TEMPLATE_ID}
     >
     <section class ="contact">
+      <h2>ご予約・お問い合わせ</h2>
+      <div class="intro">
+        <p>当店は<span class="bold">完全ご予約制</span>でございます</p>
+        <p><span class="bold">前日までに、</span>ご希望の日時とコースをお知らせください。</p>
+        <p>初めてのお客様は、「<a href="/first_time">初めてのお客様へ</a>」「<a href="/first_time#taboo">施術の禁忌</a>」を必ずお読みください。</p>
+      </div>
+      <div class="fromWeb">
+        <h3>WEBからのご予約・お問い合わせ</h3>
+        <form id="contact-form">
+          <input type="hidden" name="contact_number">
 
-      <form id="contact-form">
-        <input type="hidden" name="contact_number">
-        <label>Name</label>
-        <input type="text" name="user_name">
-        <label>Email</label>
-        <input type="email" name="user_email">
-        <label>Message</label>
-        <textarea name="message"></textarea>
-        <input type="submit" value="Send">
-      </form>
+          <div>
+            <label>Name</label><input type="text" name="user_name">
+          </div>
+          <div>
+          <label>Email</label><input type="email" name="user_email">
+          </div>
+          <div>
+          <label>Message</label>
+          <textarea name="message"></textarea>
+        </div>
+          <input type="submit" value="Send">
+        </form>
+
+      </div>
+
+      <div class="fromMail">
+        <h3>メールでのご予約・お問い合わせ</h3>
+        <a href="mailto:atama.reset@gmail.com">atama.reset@gmail.com</a>
+      </div>
+
+      <div class="fromPhone">
+        <h3>お電話でのご予約・お問い合わせ</h3>
+        <a href="tel:080-9271-7855">080-9271-7855</a>
+      </div>
+
+
+
 
     </section>
     </astro-contact>
