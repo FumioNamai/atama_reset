@@ -41,7 +41,7 @@ const EMAIL_TEMPLATE_ID_INQUIRY = import.meta.env
                 type="radio"
                 value="ご予約"
                 name="type"
-                onclick="formSwitch()"
+                onclick="formSwitch();"
               />ご予約</label
             >
             <label for=""
@@ -49,16 +49,17 @@ const EMAIL_TEMPLATE_ID_INQUIRY = import.meta.env
                 type="radio"
                 value="お問い合わせ"
                 name="type"
-                onclick="formSwitch()"
+                onclick="formSwitch();"
               />お問い合わせ</label
             >
           </div>
 
+          <!-- 予約フォーム -->
           <form id="contact-form" class="contact-form">
             <input type="hidden" name="contact_number" />
             <div>
               <label class="bold">お名前</label><br />
-                            <input type="text" name="user_name" required />
+              <input type="text" name="user_name" required />
             </div>
 
             <div>
@@ -128,7 +129,7 @@ const EMAIL_TEMPLATE_ID_INQUIRY = import.meta.env
                     <option value="20:00~">20:00~</option>
                   </select>
                 </label>
-
+                <br />
                 <label class="bold">ご希望のメニュー</label>
                 <div class="menuList">
                   <div class="">
@@ -313,6 +314,7 @@ const EMAIL_TEMPLATE_ID_INQUIRY = import.meta.env
             </div>
           </form>
 
+          <!-- 問い合わせフォーム -->
           <form id="inquiry-form" class="inquiry-form">
             <input type="hidden" name="inquiry_number" />
 
@@ -397,7 +399,7 @@ const EMAIL_TEMPLATE_ID_INQUIRY = import.meta.env
             <input type="submit" value="Send" />
           </form>
         </div>
-      </section>
+
 
       <div class="fromMail">
         <h3>メールでのご予約・お問い合わせ</h3>
@@ -423,6 +425,7 @@ const EMAIL_TEMPLATE_ID_INQUIRY = import.meta.env
           当日のご予約状況によっては、ご希望に添えない場合もございますので、ご了承ください。
         </p>
       </div>
+    </section>
     </astro-contact>
   </main>
 </Layout>
@@ -456,6 +459,11 @@ const EMAIL_TEMPLATE_ID_INQUIRY = import.meta.env
     /* font-size: 160%; */
   }
   .intro {
+    margin-bottom: 4rem;
+  }
+  .fromWeb,
+  .fromMail,
+  .fromPhone {
     margin-bottom: 4rem;
   }
 
