@@ -3,152 +3,401 @@ import Layout from "@layouts/layout.astro";
 
 const PUBLIC_KEY = import.meta.env.PUBLIC_KEY;
 const EMAIL_SERVICE_ID = import.meta.env.PUBLIC_EMAIL_SERVICE_ID;
-const EMAIL_TEMPLATE_ID = import.meta.env.PUBLIC_EMAIL_TEMPLATE_ID;
-
+const EMAIL_TEMPLATE_ID_CONTACT = import.meta.env
+  .PUBLIC_EMAIL_TEMPLATE_ID_CONTACT;
+const EMAIL_TEMPLATE_ID_INQUIRY = import.meta.env
+  .PUBLIC_EMAIL_TEMPLATE_ID_INQUIRY;
 ---
 
 <Layout title="ご予約・お問い合わせ">
   <main>
     <astro-contact
-      data-PUBLIC_KEY = {PUBLIC_KEY}
-      data-EMAIL_SERVICE_ID = {EMAIL_SERVICE_ID}
-      data-EMAIL_TEMPLATE_ID = {EMAIL_TEMPLATE_ID}
+      data-PUBLIC_KEY={PUBLIC_KEY}
+      data-EMAIL_SERVICE_ID={EMAIL_SERVICE_ID}
+      data-EMAIL_TEMPLATE_ID_CONTACT={EMAIL_TEMPLATE_ID_CONTACT}
+      data-EMAIL_TEMPLATE_ID_INQUIRY={EMAIL_TEMPLATE_ID_INQUIRY}
     >
-    <section class ="contact">
-      <h2>ご予約・お問い合わせ</h2>
-      <div class="intro">
-        <p>当店は<span class="bold">完全ご予約制</span>でございます。</p>
-        <p><span class="bold">前日までに、</span>ご希望の日時とコースをお知らせください。</p>
-        <p>初めてのお客様は、「<a href="/first_time">初めてのお客様へ</a>」「<a href="/first_time#taboo">施術の禁忌</a>」を必ずお読みください。</p>
-      </div>
+      <section class="contact">
+        <h2>ご予約・お問い合わせ</h2>
+        <div class="intro">
+          <p>当店は<span class="bold">完全ご予約制</span>でございます。</p>
+          <p>
+            <span class="bold">前日までに、</span
+            >ご希望の日時とコースをお知らせください。
+          </p>
+          <p>
+            初めてのお客様は、「<a href="/first_time">初めてのお客様へ</a>」「<a
+              href="/first_time#taboo">施術の禁忌</a
+            >」を必ずお読みください。
+          </p>
+        </div>
 
-      <div class="fromWeb">
-        <h3>WEBからのご予約・お問い合わせ</h3>
-        <form id="contact-form">
-          <input type="hidden" name="contact_number">
-
+        <div class="fromWeb">
+          <h3>WEBからのご予約・お問い合わせ</h3>
           <div>
-            <label class="bold">お名前</label><br>
-            <input type="text" name="user_name" required>
+            <label class="bold">種別</label><br />
+            <label for=""
+              ><input
+                type="radio"
+                value="ご予約"
+                name="type"
+                onclick="formSwitch()"
+              />ご予約</label
+            >
+            <label for=""
+              ><input
+                type="radio"
+                value="お問い合わせ"
+                name="type"
+                onclick="formSwitch()"
+              />お問い合わせ</label
+            >
           </div>
 
-          <div>
-            <label class="bold">性別</label><br>
-            <label><input type="radio" value="男性" name="gender" required>男性</label>
-            <label><input type="radio" value="女性" name="gender">女性</label>
-          </div>
-
-          <div>
-          <label class="bold">メールアドレス<br><input type="email" name="user_email" placeholder="atama@example.com" required></label>
-          </div>
-
-          <div>
-            <label class="bold">電話番号<br><input type="tel" name="tel" placeholder="090-1234-5678" required></label>
-          </div>
-
-          <div>
-            <label class="bold">種別</label><br>
-            <label for=""><input type="radio" value="ご予約" name="type" required>ご予約</label>
-            <label for=""><input type="radio" value="お問い合わせ" name="type" >お問い合わせ</label>
-          </div>
-
-          <div class="booking">
-            <h4>予約フォーム</h4>
+          <form id="contact-form" class="contact-form">
+            <input type="hidden" name="contact_number" />
             <div>
-              <label class="bold">希望日<br><input type="date" value="希望日" required></label><br>
-              <label class="bold">希望時間<br>
-              <select name="time" value="希望時間" required>
-                <option value="13:00~">13:00~</option>
-                <option value="13:30~">13:30~</option>
-                <option value="14:00~">14:00~</option>
-                <option value="14:30~">14:30~</option>
-                <option value="15:00~">15:00~</option>
-                <option value="15:30~">15:30~</option>
-                <option value="16:00~">16:00~</option>
-                <option value="16:30~">16:30~</option>
-                <option value="17:00~">17:00~</option>
-                <option value="17:30~">17:30~</option>
-                <option value="18:00~">18:00~</option>
-                <option value="18:30~">18:30~</option>
-                <option value="19:00~">19:00~</option>
-                <option value="19:30~">19:30~</option>
-                <option value="20:00~">20:00~</option>
-              </select>
+              <label class="bold">お名前</label><br />
+                            <input type="text" name="user_name" required />
             </div>
 
-            <label class="bold">ご希望のメニュー</label>
-            <div class="menuList">
-              <div class="">
-                <p class="bold">頭ほぐし</p>
-                <label for=""><input type="radio" name="menu" value="頭ほぐし60分" required>60分</label>
-                <label for=""><input type="radio" name="menu" value="頭ほぐし75分">75分</label>
-                <label for=""><input type="radio" name="menu" value="頭ほぐし90分">90分</label>
-              </div>
-              <div class="">
-                <p class="bold">頭ほぐし+腸セラピー</p>
-                <label for=""><input type="radio" name="menu" value="+腸セラピー90分" >90分</label>
-                <label for=""><input type="radio" name="menu" value="+腸セラピー105分" >105分</label>
-                <label for=""><input type="radio" name="menu" value="+腸セラピー120分" >120分</label>
-              </div>
-              <div class="">
-                <p class="bold">頭ほぐし+ふくらはぎほぐし</p>
-                <label for=""><input type="radio" name="menu" value="+ふくらはぎほぐし90分" >90分</label>
-                <label for=""><input type="radio" name="menu" value="+ふくらはぎほぐし105分" >105分</label>
-                <label for=""><input type="radio" name="menu" value="+ふくらはぎほぐし120分" >120分</label>
-              </div>
-              <div class="">
-                <p class="bold">全部コース</p>
-                <label for=""><input type="radio" name="menu" value="全部コース90分" >90分</label>
-                <label for=""><input type="radio" name="menu" value="全部コース105分" >105分</label>
-                <label for=""><input type="radio" name="menu" value="全部コース120分" >120分</label>
-              </div>
-
-              <div class="times">
-                <label class="bold">ご来店は</label><br>
-                <input type="radio" name="times" value="初めて" required><label for="">初めて</label>
-                <input type="radio" name="times" value="初めて"><label for="">2回目以降</label>
-              </div>
-
-              <div class="">
-                <label class="bold">当店を知ったきっかけ</label><br>
-                <input type="radio" name="reason" value="ホームページ" required><label for="">ホームページ</label><br>
-                <input type="radio" name="reason" value="チラシ"><label for="">チラシ</label><br>
-                <input type="radio" name="reason" value="エキテン"><label for="">エキテン</label><br>
-                <input type="radio" name="reason" value="SNS"><label for="">SNS</label><br>
-                <input type="radio" name="reason" value="紹介"><label for="">紹介</label><br>
-                <input type="radio" name="reason" value="その他"><label for="">その他</label>
-              </div>
-
-              <div>
-                <label class="bold">ご要望等</label><br>
-                <textarea name="message" rows="5"></textarea>
-              </div>
-
-              <div class="confirm">
-                <p>ページ下部に記載の注意事項を必ずご確認ください。</p>
-                <p>注意事項を確認した</p><input type="checkbox" name="confirm" id="" required>
-                <p><a href="">プライバシーポリシー</a>が適用されます。</p>
-              </div>
-              <div>
-                <h4>注意事項</h4>
-                <ul>
-                  <li>初めてのお客様は、「<a href="/first_time">初めてのお客様へ</a>」をお読みください。</li>
-                  <li>「<a href="/first_time#taboo">施術の禁忌</a>」を必ずお読みください。</li>
-                  <li>2営業日を過ぎましても連絡がない場合、お手数ではございますが、<a href="tel:080-9271-7855">080-9271-7855</a>までご連絡ください。</li>
-
-                </ul>
-              </div>
+            <div>
+              <label class="bold">性別</label><br />
+              <label
+                ><input
+                  type="radio"
+                  value="男性"
+                  name="gender"
+                  required
+                />男性</label
+              >
+              <label
+                ><input type="radio" value="女性" name="gender" />女性</label
+              >
             </div>
-          </div>
-          <button>入力確認画面へ</button>
-          <!-- 入力確認画面へ をクリックすると、モーダルで入力内容を表示させ、そこに送信ボタンを配置 -->
-          <div></div>
 
+            <div>
+              <label class="bold"
+                >メールアドレス<br /><input
+                  type="email"
+                  name="user_email"
+                  placeholder="atama@example.com"
+                  required
+                /></label
+              >
+            </div>
 
-          <input type="submit" value="Send">
-        </form>
+            <div>
+              <label class="bold"
+                >電話番号<br /><input
+                  type="tel"
+                  name="tel"
+                  placeholder="090-1234-5678"
+                  required
+                /></label
+              >
+            </div>
 
-      </div>
+            <div class="booking">
+              <h4>予約フォーム</h4>
+              <div>
+                <label class="bold"
+                  >希望日<br /><input
+                    type="date"
+                    value="希望日"
+                    required
+                  /></label
+                ><br />
+                <label class="bold"
+                  >希望時間<br />
+                  <select name="time" value="希望時間" required>
+                    <option value="13:00~">13:00~</option>
+                    <option value="13:30~">13:30~</option>
+                    <option value="14:00~">14:00~</option>
+                    <option value="14:30~">14:30~</option>
+                    <option value="15:00~">15:00~</option>
+                    <option value="15:30~">15:30~</option>
+                    <option value="16:00~">16:00~</option>
+                    <option value="16:30~">16:30~</option>
+                    <option value="17:00~">17:00~</option>
+                    <option value="17:30~">17:30~</option>
+                    <option value="18:00~">18:00~</option>
+                    <option value="18:30~">18:30~</option>
+                    <option value="19:00~">19:00~</option>
+                    <option value="19:30~">19:30~</option>
+                    <option value="20:00~">20:00~</option>
+                  </select>
+                </label>
+
+                <label class="bold">ご希望のメニュー</label>
+                <div class="menuList">
+                  <div class="">
+                    <p class="bold">頭ほぐし</p>
+                    <label for=""
+                      ><input
+                        type="radio"
+                        name="menu"
+                        value="頭ほぐし60分"
+                        required
+                      />60分</label
+                    >
+                    <label for=""
+                      ><input
+                        type="radio"
+                        name="menu"
+                        value="頭ほぐし75分"
+                      />75分</label
+                    >
+                    <label for=""
+                      ><input
+                        type="radio"
+                        name="menu"
+                        value="頭ほぐし90分"
+                      />90分</label
+                    >
+                  </div>
+                  <div class="">
+                    <p class="bold">頭ほぐし+腸セラピー</p>
+                    <label for=""
+                      ><input
+                        type="radio"
+                        name="menu"
+                        value="+腸セラピー90分"
+                      />90分</label
+                    >
+                    <label for=""
+                      ><input
+                        type="radio"
+                        name="menu"
+                        value="+腸セラピー105分"
+                      />105分</label
+                    >
+                    <label for=""
+                      ><input
+                        type="radio"
+                        name="menu"
+                        value="+腸セラピー120分"
+                      />120分</label
+                    >
+                  </div>
+                  <div class="">
+                    <p class="bold">頭ほぐし+ふくらはぎほぐし</p>
+                    <label for=""
+                      ><input
+                        type="radio"
+                        name="menu"
+                        value="+ふくらはぎほぐし90分"
+                      />90分</label
+                    >
+                    <label for=""
+                      ><input
+                        type="radio"
+                        name="menu"
+                        value="+ふくらはぎほぐし105分"
+                      />105分</label
+                    >
+                    <label for=""
+                      ><input
+                        type="radio"
+                        name="menu"
+                        value="+ふくらはぎほぐし120分"
+                      />120分</label
+                    >
+                  </div>
+                  <div class="">
+                    <p class="bold">全部コース</p>
+                    <label for=""
+                      ><input
+                        type="radio"
+                        name="menu"
+                        value="全部コース90分"
+                      />90分</label
+                    >
+                    <label for=""
+                      ><input
+                        type="radio"
+                        name="menu"
+                        value="全部コース105分"
+                      />105分</label
+                    >
+                    <label for=""
+                      ><input
+                        type="radio"
+                        name="menu"
+                        value="全部コース120分"
+                      />120分</label
+                    >
+                  </div>
+
+                  <div class="times">
+                    <label class="bold">ご来店は</label><br />
+                    <input
+                      type="radio"
+                      name="times"
+                      value="初めて"
+                      required
+                    /><label for="">初めて</label>
+                    <input type="radio" name="times" value="初めて" /><label
+                      for="">2回目以降</label
+                    >
+                  </div>
+
+                  <div class="">
+                    <label class="bold"
+                      >当店を知ったきっかけ<small>(複数選択可)</small></label
+                    ><br />
+                    <input
+                      type="checkbox"
+                      name="reason"
+                      value="ホームページ"
+                    /><label for="">ホームページ</label><br />
+                    <input type="checkbox" name="reason" value="チラシ" /><label
+                      for="">チラシ</label
+                    ><br />
+                    <input
+                      type="checkbox"
+                      name="reason"
+                      value="エキテン"
+                    /><label for="">エキテン</label><br />
+                    <input type="checkbox" name="reason" value="SNS" /><label
+                      for="">SNS</label
+                    ><br />
+                    <input type="checkbox" name="reason" value="紹介" /><label
+                      for="">紹介</label
+                    ><br />
+                    <input type="checkbox" name="reason" value="その他" /><label
+                      for="">その他</label
+                    >
+                  </div>
+
+                  <div>
+                    <label class="bold">ご要望等</label><br />
+                    <textarea name="message" rows="5"></textarea>
+                  </div>
+
+                  <div class="confirm">
+                    <p>ページ下部に記載の注意事項を必ずご確認ください。</p>
+                    <p>注意事項を確認した</p><input
+                      type="checkbox"
+                      name="confirm"
+                      id=""
+                      required
+                    />
+                    <p><a href="">プライバシーポリシー</a>が適用されます。</p>
+                  </div>
+                  <div>
+                    <h4>注意事項</h4>
+                    <ul>
+                      <li>
+                        初めてのお客様は、「<a href="/first_time"
+                          >初めてのお客様へ</a
+                        >」をお読みください。
+                      </li>
+                      <li>
+                        「<a href="/first_time#taboo">施術の禁忌</a
+                        >」を必ずお読みください。
+                      </li>
+                      <li>
+                        2営業日を過ぎましても連絡がない場合、お手数ではございますが、<a
+                          href="tel:080-9271-7855">080-9271-7855</a
+                        >までご連絡ください。
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <button>入力確認画面へ</button>
+              <!-- 入力確認画面へ をクリックすると、モーダルで入力内容を表示させ、そこに送信ボタンを配置 -->
+              <div></div>
+              <input type="submit" value="Send" />
+            </div>
+          </form>
+
+          <form id="inquiry-form" class="inquiry-form">
+            <input type="hidden" name="inquiry_number" />
+
+            <div>
+              <label class="bold">お名前</label><br />
+              <input type="text" name="user_name" required />
+            </div>
+
+            <div>
+              <label class="bold">性別</label><br />
+              <label
+                ><input
+                  type="radio"
+                  value="男性"
+                  name="gender"
+                  required
+                />男性</label
+              >
+              <label
+                ><input type="radio" value="女性" name="gender" />女性</label
+              >
+            </div>
+
+            <div>
+              <label class="bold"
+                >メールアドレス<br /><input
+                  type="email"
+                  name="user_email"
+                  placeholder="atama@example.com"
+                  required
+                /></label
+              >
+            </div>
+
+            <div>
+              <label class="bold"
+                >電話番号<br /><input
+                  type="tel"
+                  name="tel"
+                  placeholder="090-1234-5678"
+                  required
+                /></label
+              >
+            </div>
+
+            <div>
+              <label class="bold">ご要望等</label><br />
+              <textarea name="message" rows="5" required></textarea>
+            </div>
+
+            <div class="confirm">
+              <p>ページ下部に記載の注意事項を必ずご確認ください。</p>
+              <p>注意事項を確認した</p><input
+                type="checkbox"
+                name="confirm"
+                id=""
+                required
+              />
+              <p><a href="">プライバシーポリシー</a>が適用されます。</p>
+            </div>
+            <div>
+              <h4>注意事項</h4>
+              <ul>
+                <li>
+                  初めてのお客様は、「<a href="/first_time">初めてのお客様へ</a
+                  >」をお読みください。
+                </li>
+                <li>
+                  「<a href="/first_time#taboo">施術の禁忌</a
+                  >」を必ずお読みください。
+                </li>
+                <li>
+                  2営業日を過ぎましても連絡がない場合、お手数ではございますが、<a
+                    href="tel:080-9271-7855">080-9271-7855</a
+                  >までご連絡ください。
+                </li>
+              </ul>
+            </div>
+            <button>入力確認画面へ</button>
+            <!-- 入力確認画面へ をクリックすると、モーダルで入力内容を表示させ、そこに送信ボタンを配置 -->
+            <div></div>
+            <input type="submit" value="Send" />
+          </form>
+        </div>
+      </section>
 
       <div class="fromMail">
         <h3>メールでのご予約・お問い合わせ</h3>
@@ -162,12 +411,18 @@ const EMAIL_TEMPLATE_ID = import.meta.env.PUBLIC_EMAIL_TEMPLATE_ID;
 
       <div class="notice">
         <p class="bold">施術中はお電話に出ることができません。</p>
-        <p><span class="bold">番号通知の上、</span>留守番電話にお名前とメッセージを残していただきますよう、お願いします。</p>
+        <p>
+          <span class="bold">番号通知の上、</span
+          >留守番電話にお名前とメッセージを残していただきますよう、お願いします。
+        </p>
         <p>後ほど、こちらから折り返しご連絡させていただきます。</p>
-        <p>当日にコースをお選びいただくことも可能ですが、当店はご予約優先となっております。</p>
-        <p>当日のご予約状況によっては、ご希望に添えない場合もございますので、ご了承ください。</p>
+        <p>
+          当日にコースをお選びいただくことも可能ですが、当店はご予約優先となっております。
+        </p>
+        <p>
+          当日のご予約状況によっては、ご希望に添えない場合もございますので、ご了承ください。
+        </p>
       </div>
-    </section>
     </astro-contact>
   </main>
 </Layout>
@@ -194,8 +449,10 @@ const EMAIL_TEMPLATE_ID = import.meta.env.PUBLIC_EMAIL_TEMPLATE_ID;
     /* font-size: 1.6rem; */
   }
 
-  label, input, textarea {
-    font-family: 'Noto Serif JP', serif;
+  label,
+  input,
+  textarea {
+    font-family: "Noto Serif JP", serif;
     /* font-size: 160%; */
   }
   .intro {
@@ -205,14 +462,23 @@ const EMAIL_TEMPLATE_ID = import.meta.env.PUBLIC_EMAIL_TEMPLATE_ID;
   .fromMail a,
   .fromPhone a {
     font-size: 1.8rem;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: bold;
   }
 
+  .contact-form {
+    display: none;
+  }
+
+  .inquiry-form {
+    display: none;
+  }
 </style>
 
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+></script>
 
 <script type="text/javascript">
 class AstroContact extends HTMLElement {
@@ -220,29 +486,69 @@ class AstroContact extends HTMLElement {
     super();
     const PUBLIC_KEY = this.dataset.public_key;
     const EMAIL_SERVICE_ID = this.dataset.email_service_id;
-    const EMAIL_TEMPLATE_ID = this.dataset.email_template_id;
-      (function() {
-          // https://dashboard.emailjs.com/admin/account
-          emailjs.init(PUBLIC_KEY);
-      })();
-      window.onload = function () {
-        document.getElementById("contact-form")
-          .addEventListener("submit", function (event) {
-            event.preventDefault();
-            // generate a five digit number for the contact_number variable
-            this.contact_number.value = (Math.random() * 100000) | 0;
-            // these IDs from the previous steps
-            emailjs.sendForm(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, this).then(
+    const EMAIL_TEMPLATE_ID_CONTACT = this.dataset.email_template_id_contact;
+    const EMAIL_TEMPLATE_ID_INQUIRY = this.dataset.email_template_id_inquiry;
+    (function () {
+      // https://dashboard.emailjs.com/admin/account
+      emailjs.init(PUBLIC_KEY);
+    })();
+
+    window.onload = function () {
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          // generate a five digit number for the contact_number variable
+          this.contact_number.value = (Math.random() * 100000) | 0;
+          // these IDs from the previous steps
+          emailjs
+            .sendForm(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID_CONTACT, this)
+            .then(
               function () {
-                console.log("SUCCESS!");
+                console.log("ご予約メールを送信しました");
               },
               function (error) {
-                console.log("FAILED...", error);
+                console.log("ご予約メールの送信に失敗しました", error);
               }
             );
-          });
-      };
+        });
+
+      document
+        .getElementById("inquiry-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          // generate a five digit number for the contact_number variable
+          this.inquiry_number.value = (Math.random() * 100000) | 0;
+          // these IDs from the previous steps
+          emailjs
+            .sendForm(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID_INQUIRY, this)
+            .then(
+              function () {
+                console.log("お問い合わせメールを送信しました");
+              },
+              function (error) {
+                console.log("お問い合わせメールの送信に失敗しました", error);
+              }
+            );
+        });
+    };
   }
 }
-customElements.define('astro-contact', AstroContact);
+
+//種別選択で表示するフォームを切り替える
+function formSwitch() {
+  const type = document.getElementsByName("type");
+  const contactForm = document.querySelector(".contact-form")
+  const inquiryForm = document.querySelector(".inquiry-form")
+  if (type[0].checked) {
+    contactForm.style.display = "block"
+    inquiryForm.style.display = "none"
+  } else if (type[1].checked) {
+    contactForm.style.display = "none"
+    inquiryForm.style.display = "block"
+  }
+}
+window.addEventListener("load", formSwitch());
+
+customElements.define("astro-contact", AstroContact);
 </script>
