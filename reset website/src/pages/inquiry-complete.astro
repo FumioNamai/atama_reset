@@ -1,0 +1,52 @@
+---
+import Layout from "@layouts/layout.astro";
+
+---
+
+<Layout title="お問い合わせ送信完了">
+  <main>
+    <section>
+    <h2>お問い合わせいただき<br>ありがとうございます！</h2>
+    <article>
+    <p>お問い合わせメールが送信されました。<br>
+      確認のため、お客様宛に自動返信メールをお送りしております。</p>
+    <p class="bold">お問い合わせの内容ををこちらで確認後、メールでご返信いたします。</p>
+    <p>もし、2営業日を過ぎても連絡がない場合は、正しく受信できなかった可能性がありますので、恐れ入りますが下記のメールアドレス、もしくはお電話にて再度のご連絡をお願いいたします。</p>
+    </article>
+    <div class="fromMail">
+      <h3>メールでのご予約・お問い合わせ</h3>
+      <a href="mailto:atama.reset@gmail.com">atama.reset@gmail.com</a>
+    </div>
+
+    <div class="fromPhone">
+      <h3>お電話でのご予約・お問い合わせ</h3>
+      <a href="tel:080-9271-7855">080-9271-7855</a>
+    </div>
+
+</section>
+  </main>
+</Layout>
+
+<style>
+  section {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+    padding-block: 40px;
+    padding-inline: 1.6rem;
+  }
+
+  h2 {
+    margin-bottom: 4rem;
+  }
+  article {
+    text-align: left;
+  }
+
+  p {
+    line-height: 150%;
+    /* letter-spacing: 2.7px; */
+    padding-bottom: 2.4rem;
+  }
+
+</style>

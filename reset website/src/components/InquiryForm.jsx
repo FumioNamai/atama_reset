@@ -12,8 +12,8 @@ export default function InquiryForm() {
   const [gender, setGender] = useState("")
   const [email, setEmail] = useState("")
   const [tel, setTel] = useState("")
-  const [message,setMessage] = useState("")
-  const [isConfirmed,setIsConfirmed] = useState(false)
+  const [message, setMessage] = useState("")
+  const [isConfirmed, setIsConfirmed] = useState(false)
   const [showModal, setShowModal] = useState(false);
 
   const handleGenderChange = (e) => {
@@ -37,42 +37,48 @@ export default function InquiryForm() {
         tel: tel,
         message: message,
       }
-      send(serviceID,templateIDInquiry, templateParams,publicKey).then(() => {
-        window.alert("お問い合わせを送信しました。");
+      send(serviceID, templateIDInquiry, templateParams, publicKey).then(() => {
+        window.location.href = "/inquiry-complete";
         setUserName("");
         setGender("");
         setEmail("");
         setTel("");
         setMessage("");
       })
-      } else {
-        console.log('キーがありません');
-  }
+    } else {
+      console.log('キーがありません');
+    }
   }
 
-  const ShowModal = () => {
+  const ShowModal = (e) => {
+    e.preventDefault();
     setShowModal(true)
   }
 
-  const closeModal = () => {
+  const closeModal = (e) => {
+    e.preventDefault();
     setShowModal(false)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     sendMail();
+    closeModal();
   }
 
   const disableConfirm = userName === "" || gender === null || email === "" | tel === "" | message === "" | isConfirmed === false;
-  console.log(gender);
 
   return (
     <>
       {/* 問い合わせフォーム */}
       <form id="inquiry-form" className="inquiry-form">
         <input type="hidden" name="inquiry_number" />
-        <div>
-          <label className="bold">お名前</label><br />
+
+        <h4>お問い合わせフォーム</h4>
+
+        <div className="inputWrapper">
+          <label className="bold">お名前</label><span className="alert">&nbsp;*</span>
+          <br />
           <input
             type="text"
             name="user_name"
@@ -81,77 +87,87 @@ export default function InquiryForm() {
             required />
         </div>
 
-        <div>
-          <label className="bold">性別</label><br />
-          <label>
-            <input
-              type="radio"
-              value="男性"
-              name="gender"
-              checked={setGender === "男性"}
-              onClick={handleGenderChange}
-              required />
-            男性</label>
-          <label>
-            <input
-              type="radio"
-              value="女性"
-              name="gender"
-              checked={setGender === "女性"}
-              onClick={handleGenderChange}
-              required />
-            女性
-          </label>
-        </div>
+        <div className="inputWrapper">
+          <label className="bold">性別</label><span className="alert">&nbsp;*</span>
+          <br />
 
-        <div>
-          <label className="bold">
-            メールアドレス<br /><input
-              type="email"
-              name="user_email"
-              placeholder="atama@example.com"
-              value={email}
-              onChange={(e)=> setEmail(e.target.value)}
-              required
-            />
+          <div className="gender">
+            <label className="radio">
+              <input
+                className="radio-input"
+                type="radio"
+                value="男性"
+                name="gender"
+                checked={gender === "男性"}
+                onClick={handleGenderChange}
+                required /><span className="radio-text">男性</span></label>
+            <label className="radio">
+              <input
+                className="radio-input"
+                type="radio"
+                value="女性"
+                name="gender"
+                checked={gender === "女性"}
+                onClick={handleGenderChange}
+                required /><span className="radio-text">女性</span>
             </label>
+          </div>
         </div>
 
-        <div>
+        <div className="inputWrapper">
           <label className="bold">
-            電話番号<br />
+            メールアドレス</label><span className="alert">&nbsp;*</span>
+          <br /><input
+            type="email"
+            name="user_email"
+            placeholder="atama@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+
+        </div>
+
+        <div className="inputWrapper">
+          <label className="bold">
+            電話番号</label><span className="alert">&nbsp;*</span>
+          <br />
           <input
-              type="tel"
-              name="tel"
-              placeholder="090-1234-5678"
-              value={tel}
-              onChange={(e)=> setTel(e.target.value)}
-              required/>
-              </label>
+            type="tel"
+            name="tel"
+            placeholder="090-1234-5678"
+            value={tel}
+            onChange={(e) => setTel(e.target.value)}
+            required />
         </div>
 
         <div>
-          <label className="bold">お問い合わせ内容</label><br />
+          <label className="bold">お問い合わせ内容</label><span className="alert">&nbsp;*</span>
+          <br />
           <textarea
-          name="message"
-          rows="5"
-          value={message}
-          onChange={(e)=> setMessage(e.target.value)}
-          required>
+            name="message"
+            rows="5"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            required>
           </textarea>
         </div>
 
 
         <div className="confirm">
           <p>ページ下部に記載の注意事項を必ずご確認ください。</p>
-          <p>注意事項を確認した</p>
-          <input
-            type="checkbox"
-            name="confirm"
-            checked={isConfirmed}
-            onChange={()=> setIsConfirmed(prevState => !prevState)}
-            required
-          />
+          <div className="notes"><p>注意事項を確認した</p>
+            <label className="checkbox-wrap">
+              <input
+                type="checkbox"
+                name="confirm"
+                checked={isConfirmed}
+                onChange={() => setIsConfirmed(prevState => !prevState)}
+                required
+              />
+              <span className="checkmark"></span>
+            </label>
+          </div>
           <p><a href="">プライバシーポリシー</a>が適用されます。</p>
         </div>
 
@@ -173,23 +189,38 @@ export default function InquiryForm() {
             </li>
           </ul>
         </div>
-        {/* 入力確認画面へ をクリックすると、モーダルで入力内容を表示させ、そこに送信ボタンを配置 */}
         <div></div>
-        <button type="confirm" onClick={ShowModal} disabled={disableConfirm}>入力確認</button>
+        <button type="confirm" onClick={ShowModal} disabled={disableConfirm}>入力確認画面へ</button>
 
+        {/* モーダルウィンドウ */}
         {showModal ? (
-        <div id="overlay">
-        <div id="modalContent" className="modal">
-          <p>お名前：{userName}</p>
-          <p>性別：{gender}</p>
-          <p>メールアドレス：{email}</p>
-          <p>電話番号：{tel}</p>
-          <p>お問い合わせ内容：<br/>{message}</p>
+          <div id="overlay">
+            <div className="modal">
+              <h3>以下の内容で送信してよろしいですか？</h3>
+              <div className="inputDetails">
+                <h4>お名前</h4>
+                <p>{userName}</p>
+                <h4>性別</h4>
+                <p>{gender}</p>
+                <h4>メールアドレス</h4>
+                <p>{email}</p>
+                <h4>電話番号</h4>
+                <p>{tel}</p>
+                <h4>お問い合わせ内容</h4>
+                <p>{message}</p>
+              </div>
 
-          <button type="submit" onClick={handleSubmit}>送信</button>
-          <button onClick={closeModal}>入力画面に戻る</button>
-        </div>
-        </div>
+              <div className="modalButtons">
+                <div>
+                  <button type="submit" onClick={handleSubmit}>送信する</button>
+                </div>
+                <div>
+                  <button onClick={closeModal}>入力画面に戻る</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
         ) : (
           <></>
         )}

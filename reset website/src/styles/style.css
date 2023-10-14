@@ -102,6 +102,7 @@ h1,h2,h3,p,ul,li {
 }
 .alert {
   color: var(--alert);
+  font-size: 1.4rem;
 }
 .link {
   color: var(--link);
@@ -117,11 +118,129 @@ p {
 }
 
 /* 予約・問い合わせフォーム */
+form {
+  margin-block: 4rem;
+}
+
 label {
   font-size: 1.8rem;
 }
 
+.inquiry-form h4 {
+  font-size: 2rem;
+}
 
+input,
+textarea {
+  box-sizing: border-box;
+  margin-top: 4px;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  padding: 4px 8px;
+  border: 2px solid var(--textGray);
+}
+
+textarea {
+  min-width: 343px;
+  padding: 8px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.notes {
+  display: flex;
+  align-items: start;
+}
+
+.gender {
+  display: flex;
+  gap: 2.4rem;
+}
+
+/* チェックボックスカスタマイズ */
+.checkbox-wrap {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 2rem;
+  user-select: none;
+  margin-left: 8px;
+  margin-top: 4px;
+}
+.checkbox-wrap input {
+  display: none;
+}
+.checkbox-wrap .checkmark {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border: 2px solid var(--textGray);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: #fff;
+}
+.checkbox-wrap .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: -6px;
+  left: 5px;
+  width: 8px;
+  height: 16px;
+  border: 2px solid var(--highlight);
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+.checkbox-wrap input:checked + .checkmark {
+  background-color: #fff;
+}
+.checkbox-wrap input:checked + .checkmark:after {
+  display: block;
+}
+
+/* ラジオボタンカスタマイズ */
+.radio-input {
+  display: none;
+  position: absolute;
+
+}
+.radio-text {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.radio-text::before {
+  content:"";
+  display: block;
+  border-radius: 50%;
+  border: 2px solid var(--textGray);
+  width: 14px;
+  height: 14px;
+  background-color: #fff;
+}
+.radio-text::after {
+  content:"";
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  /* width: 10px; */
+  /* height: 10px; */
+}
+.radio-input:checked+.radio-text::after {
+  content:"";
+  left: 3px;
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+  background-color: var(--highlight);
+}
+
+
+/* 入力確認モーダル */
 #overlay {
   position: fixed;
   top: 0;
@@ -135,10 +254,32 @@ label {
 }
 
 .modal{
-  height: 500px;
+  width: 80%;
+  height: 80%;
   background-color: #fff;
+  padding: 2.4rem;
 }
 
+.modal h3 {
+  font-size: 2rem;
+}
+
+.inputDetails {
+  margin-block: 4rem;
+}
 .modal p {
+  padding-block: 0 2rem;
   white-space: pre-wrap;
+}
+.modal h4 {
+  margin-block: 0;
+}
+.modalButtons {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.inputWrapper {
+  margin-block: 1.6rem;
 }
