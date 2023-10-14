@@ -1,22 +1,24 @@
 ---
 import Layout from "@layouts/layout.astro";
+import Button from "@components/Button.jsx";
+import InquiryForm from "@components/InquiryForm.jsx";
 
-const PUBLIC_KEY = import.meta.env.PUBLIC_KEY;
-const EMAIL_SERVICE_ID = import.meta.env.PUBLIC_EMAIL_SERVICE_ID;
-const EMAIL_TEMPLATE_ID_CONTACT = import.meta.env
-  .PUBLIC_EMAIL_TEMPLATE_ID_CONTACT;
-const EMAIL_TEMPLATE_ID_INQUIRY = import.meta.env
-  .PUBLIC_EMAIL_TEMPLATE_ID_INQUIRY;
+// const PUBLIC_KEY = import.meta.env.PUBLIC_KEY;
+// const EMAIL_SERVICE_ID = import.meta.env.PUBLIC_EMAIL_SERVICE_ID;
+// const EMAIL_TEMPLATE_ID_CONTACT = import.meta.env
+//   .PUBLIC_EMAIL_TEMPLATE_ID_CONTACT;
+// const EMAIL_TEMPLATE_ID_INQUIRY = import.meta.env
+//   .PUBLIC_EMAIL_TEMPLATE_ID_INQUIRY;
 ---
 
 <Layout title="ご予約・お問い合わせ">
   <main>
-    <astro-contact
+    <!-- <astro-contact
       data-PUBLIC_KEY={PUBLIC_KEY}
       data-EMAIL_SERVICE_ID={EMAIL_SERVICE_ID}
       data-EMAIL_TEMPLATE_ID_CONTACT={EMAIL_TEMPLATE_ID_CONTACT}
       data-EMAIL_TEMPLATE_ID_INQUIRY={EMAIL_TEMPLATE_ID_INQUIRY}
-    >
+    > -->
       <section class="contact">
         <h2>ご予約・お問い合わせ</h2>
         <div class="intro">
@@ -31,6 +33,8 @@ const EMAIL_TEMPLATE_ID_INQUIRY = import.meta.env
             >」を必ずお読みください。
           </p>
         </div>
+
+        <!-- <Button  client:load /> -->
 
         <div class="fromWeb">
           <h3>WEBからのご予約・お問い合わせ</h3>
@@ -55,7 +59,7 @@ const EMAIL_TEMPLATE_ID_INQUIRY = import.meta.env
           </div>
 
           <!-- 予約フォーム -->
-          <form id="contact-form" class="contact-form">
+          <!-- <form id="contact-form" class="contact-form">
             <input type="hidden" name="contact_number" />
             <div>
               <label class="bold">お名前</label><br />
@@ -308,14 +312,14 @@ const EMAIL_TEMPLATE_ID_INQUIRY = import.meta.env
                 </div>
               </div>
               <button>入力確認画面へ</button>
-              <!-- 入力確認画面へ をクリックすると、モーダルで入力内容を表示させ、そこに送信ボタンを配置 -->
+              入力確認画面へ をクリックすると、モーダルで入力内容を表示させ、そこに送信ボタンを配置
               <div></div>
               <input type="submit" value="Send" />
             </div>
-          </form>
-
+          </form> -->
+          <InquiryForm  client:load/>
           <!-- 問い合わせフォーム -->
-          <form id="inquiry-form" class="inquiry-form">
+          <!-- <form id="inquiry-form" class="inquiry-form">
             <input type="hidden" name="inquiry_number" />
 
             <div>
@@ -393,11 +397,11 @@ const EMAIL_TEMPLATE_ID_INQUIRY = import.meta.env
                 </li>
               </ul>
             </div>
-            <button>入力確認画面へ</button>
-            <!-- 入力確認画面へ をクリックすると、モーダルで入力内容を表示させ、そこに送信ボタンを配置 -->
+            </div>
+            入力確認画面へ をクリックすると、モーダルで入力内容を表示させ、そこに送信ボタンを配置
             <div></div>
             <input type="submit" value="Send" />
-          </form>
+          </form> -->
         </div>
 
 
@@ -481,6 +485,31 @@ const EMAIL_TEMPLATE_ID_INQUIRY = import.meta.env
   .inquiry-form {
     display: none;
   }
+
+/* 入力確認画面（モーダル） */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: var(--bgSecondary);
+  margin: 2.4rem;
+}
+
+.modal-body {
+  background-color: cadetblue;
+  width: 100%;
+  height: 100%;
+}
+
 </style>
 
 <script
@@ -488,7 +517,7 @@ const EMAIL_TEMPLATE_ID_INQUIRY = import.meta.env
   src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
 ></script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 class AstroContact extends HTMLElement {
   constructor() {
     super();
@@ -496,10 +525,13 @@ class AstroContact extends HTMLElement {
     const EMAIL_SERVICE_ID = this.dataset.email_service_id;
     const EMAIL_TEMPLATE_ID_CONTACT = this.dataset.email_template_id_contact;
     const EMAIL_TEMPLATE_ID_INQUIRY = this.dataset.email_template_id_inquiry;
-    (function () {
+
+    (
+      function () {
       // https://dashboard.emailjs.com/admin/account
       emailjs.init(PUBLIC_KEY);
-    })();
+    }
+    )();
 
     window.onload = function () {
       document
@@ -559,4 +591,21 @@ function formSwitch() {
 window.addEventListener("load", formSwitch());
 
 customElements.define("astro-contact", AstroContact);
-</script>
+
+// 入力確認画面（モーダル）
+const buttonOpen = document.getElementById('modalOpen');
+const modal = document.getElementById('easyModal');
+
+buttonOpen.addEventListener('click', modalOpen);
+function modalOpen() {
+  modal.style.display = 'block';
+}
+
+addEventListener('click', outsideClose);
+function outsideClose(e){
+  if(e.target == modal) {
+    modal.style.display = 'none';
+  }
+}
+
+</script> -->

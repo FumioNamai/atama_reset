@@ -15,6 +15,7 @@
     "@fontsource/noto-sans-jp": "^5.0.8",
     "@fontsource/noto-serif-jp": "^5.0.7",
     "astro": "^3.0.9",
+    "emailjs-com": "^3.2.0",
     "microcms-js-sdk": "^2.6.1",
     "ress": "^5.0.2",
     "swr": "^2.2.4"
