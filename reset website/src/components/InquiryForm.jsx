@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { init, send } from "emailjs-com";
+import styles from "./InquiryForm.module.css"
 
 const publicKey = import.meta.env.PUBLIC_KEY;
 const serviceID = import.meta.env.PUBLIC_EMAIL_SERVICE_ID;
@@ -12,7 +13,8 @@ export default function InquiryForm() {
   const [email, setEmail] = useState("")
   const [tel, setTel] = useState("")
   const [message,setMessage] = useState("")
-  const [isConfirmed,setIsConfirmed] = useState("")
+  const [isConfirmed,setIsConfirmed] = useState(false)
+  const [showModal, setShowModal] = useState(false);
 
   const handleGenderChange = (e) => {
     setGender(e.target.value)
@@ -22,14 +24,12 @@ export default function InquiryForm() {
 
   //メール送信処理
   const sendMail = () => {
-
     if (
       publicKey !== undefined &&
       serviceID !== undefined &&
       templateIDInquiry !== undefined
     ) {
       init(publicKey);
-
       const templateParams = {
         user_name: userName,
         gender: gender,
@@ -50,14 +50,21 @@ export default function InquiryForm() {
   }
   }
 
+  const ShowModal = () => {
+    setShowModal(true)
+  }
+
+  const closeModal = () => {
+    setShowModal(false)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     sendMail();
   }
 
-  const disableSend = userName === "" || gender === "" || email === "" | tel === "" | message === "" | isConfirmed === false;
-
+  const disableConfirm = userName === "" || gender === null || email === "" | tel === "" | message === "" | isConfirmed === false;
+  console.log(gender);
 
   return (
     <>
@@ -72,7 +79,6 @@ export default function InquiryForm() {
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
             required />
-          <p>{userName}</p>
         </div>
 
         <div>
@@ -83,7 +89,7 @@ export default function InquiryForm() {
               value="男性"
               name="gender"
               checked={setGender === "男性"}
-              onChange={handleGenderChange}
+              onClick={handleGenderChange}
               required />
             男性</label>
           <label>
@@ -92,7 +98,7 @@ export default function InquiryForm() {
               value="女性"
               name="gender"
               checked={setGender === "女性"}
-              onChange={handleGenderChange}
+              onClick={handleGenderChange}
               required />
             女性
           </label>
@@ -125,7 +131,7 @@ export default function InquiryForm() {
         </div>
 
         <div>
-          <label className="bold">ご要望等</label><br />
+          <label className="bold">お問い合わせ内容</label><br />
           <textarea
           name="message"
           rows="5"
@@ -134,6 +140,7 @@ export default function InquiryForm() {
           required>
           </textarea>
         </div>
+
 
         <div className="confirm">
           <p>ページ下部に記載の注意事項を必ずご確認ください。</p>
@@ -168,7 +175,24 @@ export default function InquiryForm() {
         </div>
         {/* 入力確認画面へ をクリックすると、モーダルで入力内容を表示させ、そこに送信ボタンを配置 */}
         <div></div>
-        <button type="submit" onClick={handleSubmit} disabled={disableSend}>送信</button>
+        <button type="confirm" onClick={ShowModal} disabled={disableConfirm}>入力確認</button>
+
+        {showModal ? (
+        <div id="overlay">
+        <div id="modalContent" className="modal">
+          <p>お名前：{userName}</p>
+          <p>性別：{gender}</p>
+          <p>メールアドレス：{email}</p>
+          <p>電話番号：{tel}</p>
+          <p>お問い合わせ内容：<br/>{message}</p>
+
+          <button type="submit" onClick={handleSubmit}>送信</button>
+          <button onClick={closeModal}>入力画面に戻る</button>
+        </div>
+        </div>
+        ) : (
+          <></>
+        )}
       </form >
     </>
   )
