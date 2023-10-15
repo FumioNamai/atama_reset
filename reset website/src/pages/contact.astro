@@ -25,7 +25,7 @@ import InquiryForm from "@components/InquiryForm.jsx";
 
         <!-- <Button  client:load /> -->
 
-        <div class="fromWeb">
+        <div class="byWeb">
           <h3>WEBからのご予約・お問い合わせ</h3>
           <p class="alert">「*」は必須項目です</p>
 
@@ -312,12 +312,12 @@ import InquiryForm from "@components/InquiryForm.jsx";
         </div>
 
 
-      <div class="fromMail">
+      <div class="byMail">
         <h3>メールでのご予約・お問い合わせ</h3>
         <a href="mailto:atama.reset@gmail.com">atama.reset@gmail.com</a>
       </div>
 
-      <div class="fromPhone">
+      <div class="byPhone">
         <h3>お電話でのご予約・お問い合わせ</h3>
         <a href="tel:080-9271-7855">080-9271-7855</a>
       </div>
@@ -356,6 +356,10 @@ import InquiryForm from "@components/InquiryForm.jsx";
     margin-bottom: 6.4rem;
   }
 
+  h3 {
+    font-size: 2rem;
+  }
+
   .radio-text{
     padding-top: 4px;
   }
@@ -376,14 +380,14 @@ import InquiryForm from "@components/InquiryForm.jsx";
   .intro {
     margin-bottom: 4rem;
   }
-  .fromWeb,
-  .fromMail,
-  .fromPhone {
+  .byWeb,
+  .byMail,
+  .byPhone {
     margin-bottom: 4rem;
   }
 
-  .fromMail a,
-  .fromPhone a {
+  .byMail a,
+  .byPhone a {
     font-size: 1.8rem;
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
