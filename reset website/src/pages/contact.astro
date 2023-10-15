@@ -2,6 +2,7 @@
 import Layout from "@layouts/layout.astro";
 import Button from "@components/Button.jsx";
 import InquiryForm from "@components/InquiryForm.jsx";
+import ContactAddress from "@components/ContactAddress.astro";
 
 ---
 
@@ -311,17 +312,7 @@ import InquiryForm from "@components/InquiryForm.jsx";
           <InquiryForm  client:load/>
         </div>
 
-
-      <div class="byMail">
-        <h3>メールでのご予約・お問い合わせ</h3>
-        <a href="mailto:atama.reset@gmail.com">atama.reset@gmail.com</a>
-      </div>
-
-      <div class="byPhone">
-        <h3>お電話でのご予約・お問い合わせ</h3>
-        <a href="tel:080-9271-7855">080-9271-7855</a>
-      </div>
-
+        <ContactAddress />
       <div class="notice">
         <p class="bold">施術中はお電話に出ることができません。</p>
         <p>

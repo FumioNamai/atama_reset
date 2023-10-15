@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { init, send } from "emailjs-com";
-import styles from "./InquiryForm.module.css";
 
 const publicKey = import.meta.env.PUBLIC_KEY;
 const serviceID = import.meta.env.PUBLIC_EMAIL_SERVICE_ID;
@@ -174,14 +173,6 @@ export default function InquiryForm() {
         <div className="notice">
           <h4 >注意事項</h4>
           <ul>
-            <li>
-              ・初めてのお客様は、「<a href="/first_time">初めてのお客様へ</a
-              >」をお読みください。
-            </li>
-            <li>
-              ・「<a href="/first_time#taboo">施術の禁忌</a
-              >」を必ずお読みください。
-            </li>
             <li>
               ・2営業日を過ぎましても連絡がない場合、お手数ではございますが、<a
                 href="tel:080-9271-7855">080-9271-7855</a

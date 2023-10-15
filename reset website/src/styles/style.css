@@ -237,6 +237,10 @@ textarea {
   display: block;
 }
 
+.notice>h4 {
+  text-align: center;
+}
+
 /* ラジオボタンカスタマイズ */
 .radio-input {
   display: none;
