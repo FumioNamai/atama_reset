@@ -9,6 +9,7 @@ import InquiryForm from "@components/InquiryForm.jsx";
   <main>
       <section class="contact">
         <h2>ご予約・お問い合わせ</h2>
+
         <div class="intro">
           <p>当店は<span class="bold">完全ご予約制</span>でございます。</p>
           <p>
@@ -27,8 +28,8 @@ import InquiryForm from "@components/InquiryForm.jsx";
         <div class="fromWeb">
           <h3>WEBからのご予約・お問い合わせ</h3>
           <p class="alert">「*」は必須項目です</p>
-          <div>
 
+          <div class="category">
             <label class="bold">種別</label><br />
             <label class="radio"
               ><input
@@ -353,6 +354,10 @@ import InquiryForm from "@components/InquiryForm.jsx";
   h2 {
     text-align: center;
     margin-bottom: 6.4rem;
+  }
+
+  .radio-text{
+    padding-top: 4px;
   }
 
   label {

@@ -112,14 +112,25 @@ h1,h2,h3,p,ul,li {
   padding-left: 1.6rem;
 }
 
+.borderLeft {
+  border-left: 5px solid var(--positive);
+  padding-left: 1.6rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
 /* スペーシング */
 p {
   padding-block-end: 1.6rem;
 }
 
+
 /* 予約・問い合わせフォーム */
 form {
-  margin-block: 4rem;
+  margin-block: 6.4rem;
 }
 
 label {
@@ -128,6 +139,11 @@ label {
 
 .inquiry-form h4 {
   font-size: 2rem;
+}
+
+input {
+  min-width: 250px;
+  width: 50%;
 }
 
 input,
@@ -142,19 +158,41 @@ textarea {
 
 textarea {
   min-width: 343px;
+  width: 100%;
   padding: 8px;
+  margin-bottom: 4rem;
   font-family: 'Noto Sans JP', sans-serif;
 }
 
-.notes {
+.flex {
   display: flex;
   align-items: start;
+  justify-content: center;
 }
 
 .gender {
   display: flex;
   gap: 2.4rem;
 }
+
+.confirm {
+  text-align: center;
+
+}
+.confirm p {
+  padding-bottom: 8px;
+}
+
+
+.inquiry-form h4 {
+  margin-block: 2.4rem .4rem;
+
+}
+.notice h4 {
+  margin-block: 2.4rem .4rem;
+}
+
+
 
 /* チェックボックスカスタマイズ */
 .checkbox-wrap {
@@ -230,7 +268,7 @@ textarea {
 }
 .radio-input:checked+.radio-text::after {
   content:"";
-  left: 3px;
+  left: 3.5px;
   position: absolute;
   display: block;
   border-radius: 50%;

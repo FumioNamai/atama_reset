@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { init, send } from "emailjs-com";
-import styles from "./InquiryForm.module.css"
+import styles from "./InquiryForm.module.css";
 
 const publicKey = import.meta.env.PUBLIC_KEY;
 const serviceID = import.meta.env.PUBLIC_EMAIL_SERVICE_ID;
@@ -74,7 +74,7 @@ export default function InquiryForm() {
       <form id="inquiry-form" className="inquiry-form">
         <input type="hidden" name="inquiry_number" />
 
-        <h4>お問い合わせフォーム</h4>
+        <h4 className="borderLeft">お問い合わせフォーム</h4>
 
         <div className="inputWrapper">
           <label className="bold">お名前</label><span className="alert">&nbsp;*</span>
@@ -156,7 +156,7 @@ export default function InquiryForm() {
 
         <div className="confirm">
           <p>ページ下部に記載の注意事項を必ずご確認ください。</p>
-          <div className="notes"><p>注意事項を確認した</p>
+          <div className="flex"><p>注意事項を確認した</p><span className="alert">&nbsp;*</span>
             <label className="checkbox-wrap">
               <input
                 type="checkbox"
@@ -171,19 +171,19 @@ export default function InquiryForm() {
           <p><a href="">プライバシーポリシー</a>が適用されます。</p>
         </div>
 
-        <div>
-          <h4>注意事項</h4>
+        <div className="notice">
+          <h4 >注意事項</h4>
           <ul>
             <li>
-              初めてのお客様は、「<a href="/first_time">初めてのお客様へ</a
+              ・初めてのお客様は、「<a href="/first_time">初めてのお客様へ</a
               >」をお読みください。
             </li>
             <li>
-              「<a href="/first_time#taboo">施術の禁忌</a
+              ・「<a href="/first_time#taboo">施術の禁忌</a
               >」を必ずお読みください。
             </li>
             <li>
-              2営業日を過ぎましても連絡がない場合、お手数ではございますが、<a
+              ・2営業日を過ぎましても連絡がない場合、お手数ではございますが、<a
                 href="tel:080-9271-7855">080-9271-7855</a
               >までご連絡ください。
             </li>
