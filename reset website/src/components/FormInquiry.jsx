@@ -15,6 +15,9 @@ export default function InquiryForm() {
   const [isConfirmed, setIsConfirmed] = useState(false)
   const [showModal, setShowModal] = useState(false);
 
+
+  const GENDER = ["男性", "女性"];
+
   const handleGenderChange = (e) => {
     setGender(e.target.value)
   }
@@ -37,7 +40,7 @@ export default function InquiryForm() {
         message: message,
       }
       send(serviceID, templateIDInquiry, templateParams, publicKey).then(() => {
-        window.location.href = "/inquiry-complete";
+        window.location.href = "/sent-inquiry";
         setUserName("");
         setGender("");
         setEmail("");
@@ -65,7 +68,8 @@ export default function InquiryForm() {
     closeModal();
   }
 
-  const disableConfirm = userName === "" || gender === null || email === "" | tel === "" | message === "" | isConfirmed === false;
+  // 以下の項目全てに入力されたときに入力確認画面がアクティブになる
+  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || message === "" || isConfirmed === false;
 
   return (
     <>
@@ -89,27 +93,22 @@ export default function InquiryForm() {
         <div className="inputWrapper">
           <label className="bold">性別</label><span className="alert">&nbsp;*</span>
           <br />
-
           <div className="gender">
-            <label className="radio">
-              <input
-                className="radio-input"
-                type="radio"
-                value="男性"
-                name="gender"
-                checked={gender === "男性"}
-                onClick={handleGenderChange}
-                required /><span className="radio-text">男性</span></label>
-            <label className="radio">
-              <input
-                className="radio-input"
-                type="radio"
-                value="女性"
-                name="gender"
-                checked={gender === "女性"}
-                onClick={handleGenderChange}
-                required /><span className="radio-text">女性</span>
-            </label>
+            {GENDER.map((value) => {
+              return (
+                <label key={value} className="radio">
+                  <input
+                    className="radio-input"
+                    type="radio"
+                    value={value}
+                    checked={gender === value}
+                    onChange={handleGenderChange}
+                    required
+                  />
+                  <span className="radio-text">{value}</span>
+                </label>
+              )
+            })}
           </div>
         </div>
 
@@ -156,6 +155,7 @@ export default function InquiryForm() {
         <div className="confirm">
           <p>ページ下部に記載の注意事項を必ずご確認ください。</p>
           <div className="flex"><p>注意事項を確認した</p><span className="alert">&nbsp;*</span>
+
             <label className="checkbox-wrap">
               <input
                 type="checkbox"

@@ -1,7 +1,8 @@
 ---
 import Layout from "@layouts/layout.astro";
 import Button from "@components/Button.jsx";
-import InquiryForm from "@components/InquiryForm.jsx";
+import FormReservation from "@components/FormReservation.jsx";
+import FormInquiry from "@components/FormInquiry.jsx";
 import ContactAddress from "@components/ContactAddress.astro";
 
 ---
@@ -309,7 +310,8 @@ import ContactAddress from "@components/ContactAddress.astro";
               <input type="submit" value="Send" />
             </div>
           </form> -->
-          <InquiryForm  client:load/>
+          <FormReservation client:load/>
+          <FormInquiry  client:load/>
         </div>
 
         <ContactAddress />
@@ -516,3 +518,4 @@ function outsideClose(e){
 }
 
 </script> -->
+@components/FormInquiry.jsx
