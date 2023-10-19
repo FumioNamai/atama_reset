@@ -12,7 +12,7 @@ export default function InquiryForm() {
   const [email, setEmail] = useState("")
   const [tel, setTel] = useState("")
   const [date, setDate] = useState("")
-  const [duration, setDuration] = useState("")
+  const [time, setTime] = useState("")
   // 要修正
   const [message, setMessage] = useState("")
   const [isConfirmed, setIsConfirmed] = useState(false)
@@ -253,7 +253,7 @@ export default function InquiryForm() {
           <select
             name="time"
             value="希望時間"
-            onChange={(e) => setDuration(e.target.value)}
+            onChange={(e) => setTime(e.target.value)}
             required>
             {TIME_OPTIONS.map((time) => {
               return (
