@@ -12,37 +12,95 @@ export default function InquiryForm() {
   const [email, setEmail] = useState("")
   const [tel, setTel] = useState("")
   const [date, setDate] = useState("")
-  const [time, setTime] = useState("")
-  const [menu, setMenu] = useState("")
+  const [duration, setDuration] = useState("")
   // 要修正
   const [message, setMessage] = useState("")
   const [isConfirmed, setIsConfirmed] = useState(false)
   const [showModal, setShowModal] = useState(false);
 
-    const [reasons, setReasons] = useState([
-      { label: "ホームページ", checked: false},
-      { label: "エキテン", checked: false},
-      { label: "SNS", checked: false},
-      { label: "紹介", checked: false},
-      { label: "その他", checked: false},
-    ])
-
+  // 性別選択
   const handleGenderChange = (e) => {
     setGender(e.target.value)
   }
 
-  const handleMenuChange = (e) => {
-    console.log(e.target.value);
-    setMenu(e.target.value)
+  // 希望時間
+  const TIME_OPTIONS = [
+    "13:00 ~",
+    "13:30 ~",
+    "14:00 ~",
+    "14:30 ~",
+    "15:00 ~",
+    "15:30 ~",
+    "16:00 ~",
+    "16:30 ~",
+    "17:00 ~",
+    "17:30 ~",
+    "18:00 ~",
+    "18:30 ~",
+    "19:00 ~",
+    "19:30 ~",
+    "20:00 ~",
+  ]
+
+  // メニュー選択
+  const [order, setOrder] = useState("")
+
+  // メニューリスト
+  const MENUS = [
+    {
+      category: "頭ほぐし",
+      course: [
+        { content: "頭ほぐし60分", duration: "60分", checked: false },
+        { content: "頭ほぐし75分", duration: "75分", checked: false },
+        { content: "頭ほぐし90分", duration: "90分", checked: false }
+      ]
+    },
+    {
+      category: "頭ほぐし + 腸セラピー",
+      course: [
+        { content: "頭ほぐし + 腸セラピー90分", duration: "90分", checked: false },
+        { content: "頭ほぐし + 腸セラピー105分", duration: "105分", checked: false },
+        { content: "頭ほぐし + 腸セラピー120分", duration: "120分", checked: false }
+      ]
+    },
+    {
+      category: "頭ほぐし + ふくらはぎほぐし",
+      course: [
+        { content: "頭ほぐし + ふくらはぎほぐし90分", duration: "90分", checked: false },
+        { content: "頭ほぐし + ふくらはぎほぐし105分", duration: "105分", checked: false },
+        { content: "頭ほぐし + ふくらはぎほぐし120分", duration: "120分", checked: false }
+      ]
+    },
+    {
+      category: "全部コース",
+      course: [
+        { content: "全部コース90分", duration: "90分", checked: false },
+        { content: "全部コース105分", duration: "105分", checked: false },
+        { content: "全部コース120分", duration: "120分", checked: false },
+      ],
+    }
+  ]
+
+  const handleOrderChange = (e) => {
+    setOrder(e.target.value)
   }
+
+
+  //きっかけ
+  const [reasons, setReasons] = useState([
+    { label: "ホームページ", checked: false },
+    { label: "エキテン", checked: false },
+    { label: "SNS", checked: false },
+    { label: "紹介", checked: false },
+    { label: "その他", checked: false },
+  ])
 
   const handleReasonChange = (e) => {
     const newReasons = reasons.map(reason => {
-      const newReason = { ...reason}
-      if(newReason.label === e.target.value) {
+      const newReason = { ...reason }
+      if (newReason.label === e.target.value) {
         newReason.checked = !reason.checked
       }
-
       return newReason;
     })
     setReasons(newReasons);
@@ -102,9 +160,10 @@ export default function InquiryForm() {
   }
 
 
+
   // 要修正
   // 以下の項目全てに入力されたときに入力確認画面がアクティブになる
-  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || date === "" || menu === "" || isConfirmed === false;
+  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || date === "" || time === "" || order === "" || isConfirmed === false;
 
   return (
     <>
@@ -194,154 +253,76 @@ export default function InquiryForm() {
           <select
             name="time"
             value="希望時間"
-            onChange={(e) => setTime(e.target.value)}
+            onChange={(e) => setDuration(e.target.value)}
             required>
-            <option value="13:00~">13:00~</option>
-            <option value="13:30~">13:30~</option>
-            <option value="14:00~">14:00~</option>
-            <option value="14:30~">14:30~</option>
-            <option value="15:00~">15:00~</option>
-            <option value="15:30~">15:30~</option>
-            <option value="16:00~">16:00~</option>
-            <option value="16:30~">16:30~</option>
-            <option value="17:00~">17:00~</option>
-            <option value="17:30~">17:30~</option>
-            <option value="18:00~">18:00~</option>
-            <option value="18:30~">18:30~</option>
-            <option value="19:00~">19:00~</option>
-            <option value="19:30~">19:30~</option>
-            <option value="20:00~">20:00~</option>
+            {TIME_OPTIONS.map((time) => {
+              return (
+                <option key={time}>{time}</option>
+              )
+            })
+            }
           </select>
         </div>
-
         <div className="inputWrapper">
           <label className="bold">ご希望のメニュー</label><span className="alert">&nbsp;*</span>
+
           <div className="menuList">
             <div className="">
-              <p className="bold">頭ほぐし</p>
+              {MENUS.map((menu) => {
+                return (
+                  <>
+                    <p key={menu.category}>{menu.category}</p>
+                    {menu.course.map((course) => {
+                      return (
+                        <label key={course.content} className="radio">
+                          <input
+                            className="radio-input"
+                            type="radio"
+                            value={course.content}
+                            name="menu"
+                            checked={order === course.content }
+                            onChange={handleOrderChange}
+                            required />
+                          <span className="radio-text">{course.duration}</span>
+                        </label>
+                      )
+                    })}
+                  </>
 
-              <label htmlFor="menu" className="radio"
-              ><input
-                  className="radio-input"
-                  type="radio"
-                  value="60分"
-                  name="menu"
-                  checked={menu === "60分"}
-                  onChange={handleMenuChange}
-                  required/>
-                  <span className="radio-text">60分</span>
-              </label>
 
-              <label htmlFor="" className="radio"
-              ><input
-                  className="radio-input"
-                  type="radio"
-                  name="menu"
-                  value="頭ほぐし75分"
-                  checked={menu === "頭ほぐし75分"}
-                  onChange={handleMenuChange}
-                /><span className="radio-text">75分</span></label
-              >
-              <label htmlFor="" className="radio"
-              ><input
-                  className="radio-input"
-                  type="radio"
-                  name="menu"
-                  checked={menu === "頭ほぐし90分"}
-                  value="頭ほぐし90分"
-                  onChange={handleMenuChange}
-
-                /><span className="radio-text">90分</span></label
-              >
-            </div>
-            <div className="">
-              <p className="bold">頭ほぐし+腸セラピー</p>
-              <label htmlFor="" className="radio"
-              ><input
-                  className="radio-input"
-                  type="radio"
-                  name="menu"
-                  value="+腸セラピー90分"
-                /><span className="radio-text">90分</span></label
-              >
-              <label htmlFor="" className="radio"
-              ><input
-                  className="radio-input"
-                  type="radio"
-                  name="menu"
-                  value="+腸セラピー105分"
-                /><span className="radio-text">105分</span></label
-              >
-              <label htmlFor="" className="radio"
-              ><input
-                  className="radio-input"
-                  type="radio"
-                  name="menu"
-                  value="+腸セラピー120分"
-                /><span className="radio-text">120分</span></label
-              >
-            </div>
-            <div className="">
-              <p className="bold">頭ほぐし+ふくらはぎほぐし</p>
-              <label htmlFor="" className="radio"
-              ><input
-                  className="radio-input"
-                  type="radio"
-                  name="menu"
-                  value="+ふくらはぎほぐし90分"
-                /><span className="radio-text">90分</span></label
-              >
-              <label htmlFor="" className="radio"
-              ><input
-                  className="radio-input"
-                  type="radio"
-                  name="menu"
-                  value="+ふくらはぎほぐし105分"
-                /><span className="radio-text">105分</span></label
-              >
-              <label htmlFor="" className="radio"
-              ><input
-                  className="radio-input"
-                  type="radio"
-                  name="menu"
-                  value="+ふくらはぎほぐし120分"
-                /><span className="radio-text">120分</span></label
-              >
-            </div>
-            <div className="">
-              <p className="bold">全部コース</p>
-              <label htmlFor="" className="radio"
-              ><input
-                  className="radio-input"
-                  type="radio"
-                  name="menu"
-                  value="全部コース90分"
-                /><span className="radio-text">90分</span></label
-              >
-              <label htmlFor="" className="radio"
-              ><input
-                  className="radio-input"
-                  type="radio"
-                  name="menu"
-                  value="全部コース105分"
-                /><span className="radio-text">105分</span></label
-              >
-              <label htmlFor="" className="radio"
-              ><input
-                  className="radio-input"
-                  type="radio"
-                  name="menu"
-                  value="全部コース120分"
-                /><span className="radio-text">120分</span></label
-              >
+                )
+              })
+              }
             </div>
           </div>
         </div>
+        {/*
+        <>
+
+                    {value.menuList.map((list) => {
+                      console.log(list)
+                      return (
+                        <label key={list.value} className="radio">
+                        <input
+                          className="radio-input"
+                          type="radio"
+                          value={list.value}
+                          name="menu"
+                          checked={ treatments === `${list.value}`}
+                          onChange={handleMenuChange}
+                          required />
+                        <span className="radio-text">{list.label}</span>
+                      </label>
+                      )
+                    })}
+                  </> */}
+
+
 
         <div className="times inputWrapper">
           <label className="bold">ご来店は</label><br />
           <input
-          className="radio-input"
+            className="radio-input"
             type="radio"
             name="times"
             value="初めて"
@@ -351,7 +332,7 @@ export default function InquiryForm() {
             <span className="radio-text">初めて</span>
           </label>
           <input
-          className="radio-input" type="radio" name="times" value="2回目以降" />
+            className="radio-input" type="radio" name="times" value="2回目以降" />
           <label
             htmlFor="" className="radio"><span className="radio-text">2回目以降</span>
           </label>
@@ -364,19 +345,19 @@ export default function InquiryForm() {
           {reasons.map((reason) => {
             return (
               <label className="checkbox-wrap" key={reason.label}>
-              <input
-                type="checkbox"
-                name="reason"
-                value={reason.label}
-                checked={reason.checked}
-                onChange={handleReasonChange}
+                <input
+                  type="checkbox"
+                  name="reason"
+                  value={reason.label}
+                  checked={reason.checked}
+                  onChange={handleReasonChange}
                 />
-              <span className="checkmark"></span>
-              <label className="checkmark-text">{reason.label}</label>
+                <span className="checkmark"></span>
+                <label className="checkmark-text">{reason.label}</label>
               </label>
             )
           })}
-          </div>
+        </div>
 
         <div className="inputWrapper">
           <label className="bold">ご要望等</label>
