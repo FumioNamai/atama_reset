@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/layout.astro";
-import Button from "@components/Button.jsx";
+// import Button from "@components/Button.jsx";
 import FormReservation from "@components/FormReservation.jsx";
 import FormInquiry from "@components/FormInquiry.jsx";
 import ContactAddress from "@components/ContactAddress.astro";
@@ -33,12 +33,14 @@ import ContactAddress from "@components/ContactAddress.astro";
 
           <div class="category">
             <label class="bold">種別</label><br />
+            <div class="flex">
             <label class="radio"
               ><input
                 class="radio-input"
                 type="radio"
                 value="ご予約"
                 name="type"
+                onclick = formSwitch()
               /><span class="radio-text">ご予約</span></label
             >
             <label class="radio"
@@ -47,11 +49,14 @@ import ContactAddress from "@components/ContactAddress.astro";
                 type="radio"
                 value="お問い合わせ"
                 name="type"
+                onclick = formSwitch()
               /><span class="radio-text">お問い合わせ</span></label
             >
           </div>
+            <p>（選択すると入力フォームが開きます）</p>
+          </div>
 
-          <!-- 予約フォーム -->
+          <!-- 予約フォーム JSでの実装-->
           <!-- <form id="contact-form" class="contact-form">
             <input type="hidden" name="contact_number" />
             <div>
@@ -310,8 +315,13 @@ import ContactAddress from "@components/ContactAddress.astro";
               <input type="submit" value="Send" />
             </div>
           </form> -->
+
+          <div class="contact-form">
           <FormReservation client:load/>
+        </div>
+        <div class="inquiry-form">
           <FormInquiry  client:load/>
+        </div>
         </div>
 
         <ContactAddress />
@@ -386,6 +396,10 @@ import ContactAddress from "@components/ContactAddress.astro";
     font-weight: bold;
   }
 
+  .category .flex {
+    justify-content: left;
+    gap: 3.2rem;
+  }
   .contact-form {
     display: none;
   }
@@ -426,69 +440,73 @@ import ContactAddress from "@components/ContactAddress.astro";
   src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
 ></script>
 
-<!-- <script type="text/javascript">
-class AstroContact extends HTMLElement {
-  constructor() {
-    super();
-    const PUBLIC_KEY = this.dataset.public_key;
-    const EMAIL_SERVICE_ID = this.dataset.email_service_id;
-    const EMAIL_TEMPLATE_ID_CONTACT = this.dataset.email_template_id_contact;
-    const EMAIL_TEMPLATE_ID_INQUIRY = this.dataset.email_template_id_inquiry;
+<script type="text/javascript">
+// class AstroContact extends HTMLElement {
+//   constructor() {
+//     super();
+//     const PUBLIC_KEY = this.dataset.public_key;
+//     const EMAIL_SERVICE_ID = this.dataset.email_service_id;
+//     const EMAIL_TEMPLATE_ID_CONTACT = this.dataset.email_template_id_contact;
+//     const EMAIL_TEMPLATE_ID_INQUIRY = this.dataset.email_template_id_inquiry;
 
-    (
-      function () {
-      // https://dashboard.emailjs.com/admin/account
-      emailjs.init(PUBLIC_KEY);
-    }
-    )();
 
-    window.onload = function () {
-      document
-        .getElementById("contact-form")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
-          // generate a five digit number for the contact_number variable
-          this.contact_number.value = (Math.random() * 100000) | 0;
-          // these IDs from the previous steps
-          emailjs
-            .sendForm(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID_CONTACT, this)
-            .then(
-              function () {
-                console.log("ご予約メールを送信しました");
-              },
-              function (error) {
-                console.log("ご予約メールの送信に失敗しました", error);
-              }
-            );
-        });
+//     (
+//       function () {
+//       // https://dashboard.emailjs.com/admin/account
+//       emailjs.init(PUBLIC_KEY);
+//     }
+//     )();
 
-      document
-        .getElementById("inquiry-form")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
-          // generate a five digit number for the contact_number variable
-          this.inquiry_number.value = (Math.random() * 100000) | 0;
-          // these IDs from the previous steps
-          emailjs
-            .sendForm(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID_INQUIRY, this)
-            .then(
-              function () {
-                console.log("お問い合わせメールを送信しました");
-              },
-              function (error) {
-                console.log("お問い合わせメールの送信に失敗しました", error);
-              }
-            );
-        });
-    };
-  }
-}
+//     window.onload = function () {
+//       document
+//         .getElementById("contact-form")
+//         .addEventListener("submit", function (event) {
+//           event.preventDefault();
+//           // generate a five digit number for the contact_number variable
+//           this.contact_number.value = (Math.random() * 100000) | 0;
+//           // these IDs from the previous steps
+//           emailjs
+//             .sendForm(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID_CONTACT, this)
+//             .then(
+//               function () {
+//                 console.log("ご予約メールを送信しました");
+//               },
+//               function (error) {
+//                 console.log("ご予約メールの送信に失敗しました", error);
+//               }
+//             );
+//         });
+
+//       document
+//         .getElementById("inquiry-form")
+//         .addEventListener("submit", function (event) {
+//           event.preventDefault();
+//           // generate a five digit number for the contact_number variable
+//           this.inquiry_number.value = (Math.random() * 100000) | 0;
+//           // these IDs from the previous steps
+//           emailjs
+//             .sendForm(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID_INQUIRY, this)
+//             .then(
+//               function () {
+//                 console.log("お問い合わせメールを送信しました");
+//               },
+//               function (error) {
+//                 console.log("お問い合わせメールの送信に失敗しました", error);
+//               }
+//             );
+//         });
+//     };
+//   }
+// }
 
 //種別選択で表示するフォームを切り替える
+const type = document.getElementsByName("type");
+
+console.log(type);
 function formSwitch() {
-  const type = document.getElementsByName("type");
   const contactForm = document.querySelector(".contact-form")
   const inquiryForm = document.querySelector(".inquiry-form")
+
   if (type[0].checked) {
     contactForm.style.display = "block"
     inquiryForm.style.display = "none"
@@ -497,25 +515,24 @@ function formSwitch() {
     inquiryForm.style.display = "block"
   }
 }
-window.addEventListener("load", formSwitch());
 
-customElements.define("astro-contact", AstroContact);
+
+// customElements.define("astro-contact", AstroContact);
 
 // 入力確認画面（モーダル）
-const buttonOpen = document.getElementById('modalOpen');
-const modal = document.getElementById('easyModal');
+// const buttonOpen = document.getElementById('modalOpen');
+// const modal = document.getElementById('easyModal');
 
-buttonOpen.addEventListener('click', modalOpen);
-function modalOpen() {
-  modal.style.display = 'block';
-}
+// buttonOpen.addEventListener('click', modalOpen);
+// function modalOpen() {
+//   modal.style.display = 'block';
+// }
 
-addEventListener('click', outsideClose);
-function outsideClose(e){
-  if(e.target == modal) {
-    modal.style.display = 'none';
-  }
-}
+// addEventListener('click', outsideClose);
+// function outsideClose(e){
+//   if(e.target == modal) {
+//     modal.style.display = 'none';
+//   }
+// }
 
-</script> -->
-@components/FormInquiry.jsx
+</script>

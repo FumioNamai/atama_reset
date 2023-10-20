@@ -13,10 +13,12 @@ export default function InquiryForm() {
   const [tel, setTel] = useState("")
   const [date, setDate] = useState("")
   const [time, setTime] = useState("")
+  const [visits, setVisits] = useState("")
   // 要修正
   const [message, setMessage] = useState("")
   const [isConfirmed, setIsConfirmed] = useState(false)
   const [showModal, setShowModal] = useState(false);
+
 
   // 性別選択
   const handleGenderChange = (e) => {
@@ -41,6 +43,11 @@ export default function InquiryForm() {
     "19:30 ~",
     "20:00 ~",
   ]
+
+  //来店回数
+  const handleVisitsChange = (e) => {
+    setVisits(e.target.value)
+  }
 
   // メニュー選択
   const [order, setOrder] = useState("")
@@ -122,7 +129,7 @@ export default function InquiryForm() {
         tel: tel,
         date: date,
         time: time,
-        menu: menu,
+        order: order,
         // 要修正
         message: message,
       }
@@ -134,7 +141,7 @@ export default function InquiryForm() {
         setTel("");
         setDate("");
         setTime("");
-        setMenu("");
+        setOrder("");
         // 要修正
         setMessage("");
       })
@@ -163,7 +170,7 @@ export default function InquiryForm() {
 
   // 要修正
   // 以下の項目全てに入力されたときに入力確認画面がアクティブになる
-  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || date === "" || time === "" || order === "" || isConfirmed === false;
+  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || date === "" || time === "" || order === "" || visits === "" || isConfirmed === false;
 
   return (
     <>
@@ -242,7 +249,7 @@ export default function InquiryForm() {
           <label className="bold"
           >希望日</label><span className="alert">&nbsp;*</span><br /><input
             type="date"
-            value="希望日"
+            value={date}
             onChange={(e) => setDate(e.target.value)}
             required
           />
@@ -252,7 +259,7 @@ export default function InquiryForm() {
           >希望時間</label><span className="alert">&nbsp;*</span><br />
           <select
             name="time"
-            value="希望時間"
+            value={time}
             onChange={(e) => setTime(e.target.value)}
             required>
             {TIME_OPTIONS.map((time) => {
@@ -271,7 +278,8 @@ export default function InquiryForm() {
               {MENUS.map((menu) => {
                 return (
                   <>
-                    <p key={menu.category}>{menu.category}</p>
+                    <p key={menu.category} className="categoryName">{menu.category}</p>
+                    <div className="flex">
                     {menu.course.map((course) => {
                       return (
                         <label key={course.content} className="radio">
@@ -280,72 +288,61 @@ export default function InquiryForm() {
                             type="radio"
                             value={course.content}
                             name="menu"
-                            checked={order === course.content }
+                            checked={order === course.content}
                             onChange={handleOrderChange}
                             required />
                           <span className="radio-text">{course.duration}</span>
                         </label>
                       )
                     })}
+                    </div>
                   </>
-
-
                 )
               })
               }
             </div>
           </div>
         </div>
-        {/*
-        <>
 
-                    {value.menuList.map((list) => {
-                      console.log(list)
-                      return (
-                        <label key={list.value} className="radio">
-                        <input
-                          className="radio-input"
-                          type="radio"
-                          value={list.value}
-                          name="menu"
-                          checked={ treatments === `${list.value}`}
-                          onChange={handleMenuChange}
-                          required />
-                        <span className="radio-text">{list.label}</span>
-                      </label>
-                      )
-                    })}
-                  </> */}
-
-
-
-        <div className="times inputWrapper">
-          <label className="bold">ご来店は</label><br />
-          <input
-            className="radio-input"
-            type="radio"
-            name="times"
-            value="初めて"
-            required
-          />
-          <label htmlFor="" className="radio">
+        <div className="visits inputWrapper">
+          <label className="bold">ご来店は</label><span className="alert">&nbsp;*</span>
+          <br />
+          <div className="flex">
+          <label className="radio">
+            <input
+              className="radio-input"
+              type="radio"
+              name="visits"
+              value="初めて"
+              checked={visits === "初めて"}
+              onClick={handleVisitsChange}
+              required
+            />
             <span className="radio-text">初めて</span>
           </label>
-          <input
-            className="radio-input" type="radio" name="times" value="2回目以降" />
-          <label
-            htmlFor="" className="radio"><span className="radio-text">2回目以降</span>
+          <label className="radio">
+            <input
+              className="radio-input"
+              type="radio"
+              name="visits"
+              value="2回目以降"
+              checked={visits === "2回目以降"}
+              onClick={handleVisitsChange}
+              />
+            <span className="radio-text">2回目以降</span>
           </label>
+          </div>
         </div>
 
         <div className="inputWrapper">
           <label className="bold"
-          >当店を知ったきっかけ<small>(複数選択可)</small></label
-          ><span className="alert">&nbsp;*</span><br />
+          >当店を知ったきっかけ<small>(複数選択可)</small></label>
+          <span className="alert">&nbsp;*</span><br />
           {reasons.map((reason) => {
             return (
-              <label className="checkbox-wrap" key={reason.label}>
+              <label key={reason.label} className="checkbox-wrap">
                 <input
+                className = "checkbox"
                   type="checkbox"
                   name="reason"
                   value={reason.label}
