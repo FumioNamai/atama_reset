@@ -1,10 +1,5 @@
 import { useState } from "react";
-import React from 'react';
 import { init, send } from "emailjs-com";
-import DatePicker, { registerLocale } from "react-datepicker"
-import ja from 'date-fns/locale/ja';
-import "react-datepicker/dist/react-datepicker.css"
-
 
 // Email.jsの環境変数
 const publicKey = import.meta.env.PUBLIC_KEY;
@@ -12,35 +7,44 @@ const serviceID = import.meta.env.PUBLIC_EMAIL_SERVICE_ID;
 const templateIDContact = import.meta.env.PUBLIC_EMAIL_TEMPLATE_ID_CONTACT;
 
 export default function FormReservation() {
-  // 予約可能日を明日以降にするため
-  const Tomorrow = new Date();
-  Tomorrow.setDate(Tomorrow.getDate() +1 )
 
   // 状態の取得
   const [userName, setUserName] = useState("")
   const [gender, setGender] = useState("")
   const [email, setEmail] = useState("")
   const [tel, setTel] = useState("")
-  const [selectedDate, setSelectedDate] = React.useState(Tomorrow)
+  const [selectedDate, setSelectedDate] = useState("")
   const [time, setTime] = useState("選択してください")
   const [visits, setVisits] = useState("")
   const [message, setMessage] = useState("")
   const [isConfirmed, setIsConfirmed] = useState(false)
   const [showModal, setShowModal] = useState(false);
 
+  // console.log(date);
   // 性別選択
   const handleGenderChange = (e) => {
     setGender(e.target.value)
   }
 
   // 希望日
-  //DatePickerの設定
-  registerLocale('ja', ja);
+  const today = new Date();
+  const handleDateChange = (e) => {
+    setSelectedDate(e.target.value)
 
-  // 入力確認画面表示
+    console.log(today);
+    console.log(e.target.value);
+    // 希望日が今日以前の時にアラートを出したい
+    // データの形式が違うため比較ができない
+    if (e.target.value < today ) {
+      console.log("受け入れられません");
+    }
+  }
+
+  // 入力確認画面に曜日も合わせて表示
   const weekDay = ["日","月","火","水","木","金","土"]
-  const n = selectedDate.getDay()
-  const dateText = `${selectedDate.getFullYear()}年${selectedDate.getMonth() +1}月${selectedDate.getDate()}日(${weekDay[n]})`
+  const date = new Date(selectedDate)
+  const n = date.getDay()
+  const dateText =  `${date.getFullYear()}年${date.getMonth() +1}月${date.getDate()}日(${weekDay[n]})`
 
   // 希望時間
   const TIME_OPTIONS = [
@@ -151,7 +155,6 @@ export default function FormReservation() {
         time: time,
         order: order,
         visits: visits,
-        reasons: reasons,
         message: message,
       }
       send(serviceID, templateIDContact, templateParams, publicKey).then(() => {
@@ -164,7 +167,7 @@ export default function FormReservation() {
         setTime("");
         setOrder("");
         setVisits("");
-        setReasons("")
+        setReasons("");
         setMessage("");
       })
     } else {
@@ -189,8 +192,7 @@ export default function FormReservation() {
   }
 
   // 以下の項目全てに入力されたときに入力確認画面がアクティブになる
-  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || selectedDate === "" || time === "選択してください" || order === "" || visits === "" || checkedReasons.length === 0 || isConfirmed === false;
-
+  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || selectedDate === "" || time === "" || order === "" || visits === "" || checkedReasons.length === 0 ||  isConfirmed === false;
 
   return (
     <>
@@ -268,13 +270,12 @@ export default function FormReservation() {
 
         <div className="inputWrapper">
           <label className="bold"
-          >希望日</label><span className="alert">&nbsp;*</span><br />
-          <DatePicker
-          dateFormat="yyyy/MM/dd"
-          locale='ja'
-          selected={selectedDate}
-          onChange={ date => setSelectedDate(date)}
-          minDate={Tomorrow}
+          >希望日</label><span className="alert">&nbsp;*</span><br /><input
+            type="date"
+            value={selectedDate}
+            onChange = {handleDateChange}
+            // onChange={(e) => setSelectedDate(e.target.value)}
+            required
           />
         </div>
         <div className="inputWrapper">

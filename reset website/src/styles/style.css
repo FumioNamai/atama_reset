@@ -334,11 +334,11 @@ option {
   overflow: scroll;
 }
 
-@media screen and (768px <= width) {
+@media screen and (768px <= width){
   .modal {
     height: 70%;
     position: absolute;
-    top: 140px;
+    /* top: 140px; */
   }
 }
 
@@ -349,23 +349,21 @@ option {
 .inputDetails {
   margin-block: 4rem;
 }
-
-.modal h4 {
-  margin-block: 0;
-}
-
 .modal p {
   padding-block: 0 2rem;
   white-space: pre-wrap;
+}
+.modal h4 {
+  margin-block: 0;
 }
 
 .modal li {
   font-size: 1.8rem;
 }
+
 .modal li:last-child {
   padding-block: 0 2rem;
 }
-
 
 .modalButtons {
   display: flex;
