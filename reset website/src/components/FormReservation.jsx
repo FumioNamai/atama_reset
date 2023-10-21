@@ -274,7 +274,6 @@ export default function FormReservation() {
           selected={selectedDate}
           onChange={ date => setSelectedDate(date)}
           minDate={Tomorrow}
-          required
           />
         </div>
         <div className="inputWrapper">
