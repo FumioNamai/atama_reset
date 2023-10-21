@@ -4,11 +4,11 @@ import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 
 export default function Test() {
-  const [selectedDate, setSelectedDate] = useState(new Date)
+  const [selectedDate, setSelectedDate] = useState()
 
   return (
     <DatePicker
-    dateFormat="yyyy/MM/dd"
+    // dateFormat="yyyy/MM/dd"
     locale='ja'
     selected={selectedDate}
     onChange={ date => setSelectedDate(date)}

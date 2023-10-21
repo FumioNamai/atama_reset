@@ -1,4 +1,5 @@
 import { useState } from "react";
+import React from 'react';
 import { init, send } from "emailjs-com";
 import DatePicker, { registerLocale } from "react-datepicker"
 import ja from 'date-fns/locale/ja';
@@ -20,15 +21,13 @@ export default function FormReservation() {
   const [gender, setGender] = useState("")
   const [email, setEmail] = useState("")
   const [tel, setTel] = useState("")
-  const [selectedDate, setSelectedDate] = useState(Tomorrow)
+  const [selectedDate, setSelectedDate] = React.useState(Tomorrow)
   const [time, setTime] = useState("選択してください")
   const [visits, setVisits] = useState("")
   const [message, setMessage] = useState("")
   const [isConfirmed, setIsConfirmed] = useState(false)
   const [showModal, setShowModal] = useState(false);
 
-
-  console.log(Tomorrow);
   // 性別選択
   const handleGenderChange = (e) => {
     setGender(e.target.value)
