@@ -179,6 +179,7 @@ export default function InquiryForm() {
         <input type="hidden" name="reservation_number" />
 
         <h4 className="borderLeft">予約フォーム</h4>
+        <p className="alert">「*」は必須項目です</p>
 
         <div className="inputWrapper">
           <label className="bold">お名前</label><span className="alert">&nbsp;*</span>

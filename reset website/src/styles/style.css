@@ -103,6 +103,7 @@ h1,h2,h3,p,ul,li {
 .alert {
   color: var(--alert);
   font-size: 1.4rem;
+  padding: 0;
 }
 .link {
   color: var(--link);
@@ -184,7 +185,8 @@ textarea {
 }
 
 
-.inquiry-form h4 {
+.inquiry-form h4,
+.reservation-form h4 {
   margin-block: 2.4rem .4rem;
 
 }
@@ -322,6 +324,14 @@ textarea {
   height: 80%;
   background-color: #fff;
   padding: 2.4rem;
+}
+
+@media screen and (768px <= width){
+  .modal {
+    height: 70%;
+    position: absolute;
+    top: 140px;
+  }
 }
 
 .modal h3 {

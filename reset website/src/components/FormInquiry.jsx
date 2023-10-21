@@ -78,6 +78,7 @@ export default function InquiryForm() {
         <input type="hidden" name="inquiry_number" />
 
         <h4 className="borderLeft">お問い合わせフォーム</h4>
+        <p className="alert">「*」は必須項目です</p>
 
         <div className="inputWrapper">
           <label className="bold">お名前</label><span className="alert">&nbsp;*</span>
