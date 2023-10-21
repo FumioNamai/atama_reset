@@ -5,7 +5,7 @@ const publicKey = import.meta.env.PUBLIC_KEY;
 const serviceID = import.meta.env.PUBLIC_EMAIL_SERVICE_ID;
 const templateIDContact = import.meta.env.PUBLIC_EMAIL_TEMPLATE_ID_CONTACT;
 
-export default function InquiryForm() {
+export default function FormReservation() {
   // 状態の取得
   const [userName, setUserName] = useState("")
   const [gender, setGender] = useState("")
@@ -102,6 +102,8 @@ export default function InquiryForm() {
     { label: "その他", checked: false },
   ])
 
+  const checkedReasons = reasons.filter(reason => reason.checked === true )
+  console.log(checkedReasons);
   const handleReasonChange = (e) => {
     const newReasons = reasons.map(reason => {
       const newReason = { ...reason }
@@ -130,7 +132,8 @@ export default function InquiryForm() {
         date: date,
         time: time,
         order: order,
-        // 要修正
+        visits: visits,
+        reasons: reasons,
         message: message,
       }
       send(serviceID, templateIDContact, templateParams, publicKey).then(() => {
@@ -142,7 +145,8 @@ export default function InquiryForm() {
         setDate("");
         setTime("");
         setOrder("");
-        // 要修正
+        setVisits("");
+        setReasons("")
         setMessage("");
       })
     } else {
@@ -170,7 +174,8 @@ export default function InquiryForm() {
 
   // 要修正
   // 以下の項目全てに入力されたときに入力確認画面がアクティブになる
-  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || date === "" || time === "" || order === "" || visits === "" || isConfirmed === false;
+  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || date === "" || time === "" || order === "" || visits === "" || checkedReasons.length === 0 || isConfirmed === false;
+
 
   return (
     <>
@@ -249,6 +254,7 @@ export default function InquiryForm() {
         <div className="inputWrapper">
           <label className="bold"
           >希望日</label><span className="alert">&nbsp;*</span><br /><input
+            className="date"
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
@@ -414,6 +420,24 @@ export default function InquiryForm() {
                 <p>{email}</p>
                 <h4>電話番号</h4>
                 <p>{tel}</p>
+                <h4>希望日</h4>
+                <p>{date}</p>
+                <h4>希望時間</h4>
+                <p>{time}</p>
+                <h4>ご希望のメニュー</h4>
+                <p>{order}</p>
+                <h4>ご来店は</h4>
+                <p>{visits}</p>
+                <h4>当店を知ったきっかけ</h4>
+                <ul>
+                { checkedReasons.map((checkedReason) => {
+                  return(
+                    <li key={checkedReason.label}>・{checkedReason.label}</li>
+                  )
+                })}
+
+                </ul>
+                {/* <p>{reasons}</p> */}
                 <h4>ご要望等</h4>
                 <p>{message}</p>
               </div>
