@@ -1,0 +1,55 @@
+---
+import Layout from "@layouts/layout.astro";
+import Test from "@components/Test"
+
+---
+
+<Layout title="test">
+  <main>
+    <Test client:load/>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin-top: 40px;
+  }
+
+  p {
+    font-size: 1.8rem;
+    line-height: 1.75;
+  }
+
+  h2 {
+    margin-block: 6.4rem;
+  }
+
+  .top {
+    text-align: center;
+  }
+
+  .voice {
+    padding-inline: 1.6rem;
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+  }
+
+  .image {
+    width: 343px;
+    height: auto;
+    margin: 1.6rem auto;
+  }
+
+  @media screen and (768px <= width) {
+    .image {
+      width: 500px;
+      margin-block: 4rem 8rem;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+</style>
