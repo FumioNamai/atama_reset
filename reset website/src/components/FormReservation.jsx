@@ -1,32 +1,49 @@
 import { useState } from "react";
 import { init, send } from "emailjs-com";
+import DatePicker, { registerLocale } from "react-datepicker"
+import ja from 'date-fns/locale/ja';
+import "react-datepicker/dist/react-datepicker.css"
 
+
+// Email.jsの環境変数
 const publicKey = import.meta.env.PUBLIC_KEY;
 const serviceID = import.meta.env.PUBLIC_EMAIL_SERVICE_ID;
 const templateIDContact = import.meta.env.PUBLIC_EMAIL_TEMPLATE_ID_CONTACT;
 
 export default function FormReservation() {
+  // 予約可能日を明日以降にするため
+  const Tomorrow = new Date();
+  Tomorrow.setDate(Tomorrow.getDate() +1 )
+
   // 状態の取得
   const [userName, setUserName] = useState("")
   const [gender, setGender] = useState("")
   const [email, setEmail] = useState("")
   const [tel, setTel] = useState("")
-  const [date, setDate] = useState("")
-  const [time, setTime] = useState("")
+  const [selectedDate, setSelectedDate] = useState(Tomorrow)
+  const [time, setTime] = useState("選択してください")
   const [visits, setVisits] = useState("")
-  // 要修正
   const [message, setMessage] = useState("")
   const [isConfirmed, setIsConfirmed] = useState(false)
   const [showModal, setShowModal] = useState(false);
-
 
   // 性別選択
   const handleGenderChange = (e) => {
     setGender(e.target.value)
   }
 
+  // 希望日
+  //DatePickerの設定
+  registerLocale('ja', ja);
+
+  // 入力確認画面表示
+  const weekDay = ["日","月","火","水","木","金","土"]
+  const n = selectedDate.getDay()
+  const dateText = `${selectedDate.getFullYear()}年${selectedDate.getMonth() +1}月${selectedDate.getDate()}日(${weekDay[n]})`
+
   // 希望時間
   const TIME_OPTIONS = [
+    "選択してください",
     "13:00 ~",
     "13:30 ~",
     "14:00 ~",
@@ -103,7 +120,7 @@ export default function FormReservation() {
   ])
 
   const checkedReasons = reasons.filter(reason => reason.checked === true )
-  console.log(checkedReasons);
+
   const handleReasonChange = (e) => {
     const newReasons = reasons.map(reason => {
       const newReason = { ...reason }
@@ -129,7 +146,7 @@ export default function FormReservation() {
         gender: gender,
         email: email,
         tel: tel,
-        date: date,
+        date: dateText,
         time: time,
         order: order,
         visits: visits,
@@ -142,7 +159,7 @@ export default function FormReservation() {
         setGender("");
         setEmail("");
         setTel("");
-        setDate("");
+        setSelectedDate("");
         setTime("");
         setOrder("");
         setVisits("");
@@ -170,11 +187,8 @@ export default function FormReservation() {
     closeModal();
   }
 
-
-
-  // 要修正
   // 以下の項目全てに入力されたときに入力確認画面がアクティブになる
-  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || date === "" || time === "" || order === "" || visits === "" || checkedReasons.length === 0 || isConfirmed === false;
+  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || selectedDate === "" || time === "選択してください" || order === "" || visits === "" || checkedReasons.length === 0 || isConfirmed === false;
 
 
   return (
@@ -253,12 +267,14 @@ export default function FormReservation() {
 
         <div className="inputWrapper">
           <label className="bold"
-          >希望日</label><span className="alert">&nbsp;*</span><br /><input
-            className="date"
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            required
+          >希望日</label><span className="alert">&nbsp;*</span><br />
+          <DatePicker
+          dateFormat="yyyy/MM/dd"
+          locale='ja'
+          selected={selectedDate}
+          onChange={ date => setSelectedDate(date)}
+          minDate={Tomorrow}
+          required
           />
         </div>
         <div className="inputWrapper">
@@ -421,7 +437,7 @@ export default function FormReservation() {
                 <h4>電話番号</h4>
                 <p>{tel}</p>
                 <h4>希望日</h4>
-                <p>{date}</p>
+                <p>{dateText}</p>
                 <h4>希望時間</h4>
                 <p>{time}</p>
                 <h4>ご希望のメニュー</h4>
@@ -435,9 +451,7 @@ export default function FormReservation() {
                     <li key={checkedReason.label}>・{checkedReason.label}</li>
                   )
                 })}
-
                 </ul>
-                {/* <p>{reasons}</p> */}
                 <h4>ご要望等</h4>
                 <p>{message}</p>
               </div>

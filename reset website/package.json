@@ -17,6 +17,7 @@
     "astro": "^3.0.9",
     "emailjs-com": "^3.2.0",
     "microcms-js-sdk": "^2.6.1",
+    "react-datepicker": "^4.21.0",
     "ress": "^5.0.2",
     "swr": "^2.2.4"
   },
