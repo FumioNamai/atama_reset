@@ -24,6 +24,14 @@ export default function FormReservation() {
   const [message, setMessage] = useState("")
   const [isConfirmed, setIsConfirmed] = useState(false)
   const [showModal, setShowModal] = useState(false);
+  const [errMessage, setErrMessage] = useState("")
+
+  // 希望日が今日以前の日付を選択したとき
+  if (selectedDate > tomorrow || selectedDate === "") {
+    setErrMessage("")
+  } else {
+    setErrMessage("明日以降の日付を選択してください。")
+  }
 
   // 入力確認画面に曜日も合わせて表示
   const weekDay = ["日","月","火","水","木","金","土"]
@@ -165,7 +173,7 @@ export default function FormReservation() {
   }
 
   // 以下の項目全てに入力されたときに入力確認画面がアクティブになる
-  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || selectedDate ==="" || time === "" || order === "" || visits === "" || checkedReasons.length === 0 ||  isConfirmed === false;
+  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || selectedDate < tomorrow || selectedDate ==="" || time === "" || order === "" || visits === "" || checkedReasons.length === 0 ||  isConfirmed === false;
 
   // console.log(selectedDate);
   return (
@@ -253,6 +261,7 @@ export default function FormReservation() {
             required
           />
           </label>
+          <p className="errMessage">{errMessage}</p>
         </div>
         <div className="inputWrapper">
           <label className="bold"

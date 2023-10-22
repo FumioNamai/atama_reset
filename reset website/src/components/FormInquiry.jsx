@@ -81,7 +81,7 @@ export default function InquiryForm() {
         <p className="alert">「*」は必須項目です</p>
 
         <div className="inputWrapper">
-          <label className="bold">お名前<span className="alert">&nbsp;*</span>
+          <label className="bold"> お名前<span className="alert">&nbsp;*</span>
           <br />
           <input
             type="text"

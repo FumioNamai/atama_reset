@@ -185,6 +185,12 @@ textarea {
   gap: 3.2rem;
 }
 
+.errMessage {
+  font-size: 1.6rem;
+  padding: 0;
+  color: var(--highlight);
+}
+
 option {
   font-size: 1.8rem;
 }
