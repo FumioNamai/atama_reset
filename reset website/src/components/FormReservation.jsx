@@ -29,14 +29,13 @@ export default function FormReservation() {
   // 希望日
   const today = new Date();
   const handleDateChange = (e) => {
+    e.preventDefault();
     setSelectedDate(e.target.value)
-
-    console.log(today);
-    console.log(e.target.value);
+    const selected = new Date(e.target.value)
     // 希望日が今日以前の時にアラートを出したい
-    // データの形式が違うため比較ができない
-    if (e.target.value < today ) {
-      console.log("受け入れられません");
+    if (selected < today ) {
+      window.alert(" 希望日は明日以降の日付を選択してください。");
+      setSelectedDate("")
     }
   }
 
@@ -192,8 +191,9 @@ export default function FormReservation() {
   }
 
   // 以下の項目全てに入力されたときに入力確認画面がアクティブになる
-  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || selectedDate === "" || time === "" || order === "" || visits === "" || checkedReasons.length === 0 ||  isConfirmed === false;
+  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || new Date(selectedDate) < today || selectedDate == false || time === "" || order === "" || visits === "" || checkedReasons.length === 0 ||  isConfirmed === false;
 
+  console.log(selectedDate);
   return (
     <>
       {/* 予約フォーム */}
@@ -274,9 +274,9 @@ export default function FormReservation() {
             type="date"
             value={selectedDate}
             onChange = {handleDateChange}
-            // onChange={(e) => setSelectedDate(e.target.value)}
             required
           />
+          <p className="sideNote">※明日以降の日付を選択してください</p>
         </div>
         <div className="inputWrapper">
           <label className="bold"
@@ -421,7 +421,7 @@ export default function FormReservation() {
           </ul>
         </div>
         <div></div>
-        <button type="confirm" onClick={ShowModal} disabled={disableConfirm}>入力確認画面へ</button>
+        <button className="btn-form" type="confirm" onClick={ShowModal} disabled={disableConfirm}>入力確認画面へ</button>
 
         {/* モーダルウィンドウ */}
         {showModal ? (
@@ -459,10 +459,10 @@ export default function FormReservation() {
 
               <div className="modalButtons">
                 <div>
-                  <button type="submit" onClick={handleSubmit}>送信する</button>
+                  <button className="btn-form" onClick={closeModal}>入力画面に戻る</button>
                 </div>
                 <div>
-                  <button onClick={closeModal}>入力画面に戻る</button>
+                  <button className="btn-form" type="submit" onClick={handleSubmit}>送信する</button>
                 </div>
               </div>
 
