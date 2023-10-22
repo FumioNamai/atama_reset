@@ -1,5 +1,6 @@
 
 ###z-index
+modal(入力確認画面) 1100
 hamburger 1000
 GlobalNav 500
 Header 300
@@ -141,6 +142,10 @@ ___
 
   radioボタンの挙動に問題あり。
   マークのオン、オフに合わせてvalueを切り替えるようにしたい。
+
+  datepicker.jsを使用
+  実装して、開発環境では正常に動作したが、デプロイ後に<DatePicker />の部分が<[object Object]>に変ってしまい、解決法を見出せなかったため、断念。
+
 
 
 

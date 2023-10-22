@@ -7,6 +7,10 @@ const serviceID = import.meta.env.PUBLIC_EMAIL_SERVICE_ID;
 const templateIDContact = import.meta.env.PUBLIC_EMAIL_TEMPLATE_ID_CONTACT;
 
 export default function FormReservation() {
+  // 明日日付を yyyy-mm-dd の形式で取得
+  const today = new Date();
+  today.setDate(today.getDate() + 1);
+  const tomorrow = today.toLocaleString('sv-SE').slice(0,10)
 
   // 状態の取得
   const [userName, setUserName] = useState("")
@@ -15,29 +19,11 @@ export default function FormReservation() {
   const [tel, setTel] = useState("")
   const [selectedDate, setSelectedDate] = useState("")
   const [time, setTime] = useState("選択してください")
+  const [order, setOrder] = useState("")
   const [visits, setVisits] = useState("")
   const [message, setMessage] = useState("")
   const [isConfirmed, setIsConfirmed] = useState(false)
   const [showModal, setShowModal] = useState(false);
-
-  // console.log(date);
-  // 性別選択
-  const handleGenderChange = (e) => {
-    setGender(e.target.value)
-  }
-
-  // 希望日
-  const today = new Date();
-  const handleDateChange = (e) => {
-    e.preventDefault();
-    setSelectedDate(e.target.value)
-    const selected = new Date(e.target.value)
-    // 希望日が今日以前の時にアラートを出したい
-    if (selected < today ) {
-      window.alert(" 希望日は明日以降の日付を選択してください。");
-      setSelectedDate("")
-    }
-  }
 
   // 入力確認画面に曜日も合わせて表示
   const weekDay = ["日","月","火","水","木","金","土"]
@@ -64,14 +50,6 @@ export default function FormReservation() {
     "19:30 ~",
     "20:00 ~",
   ]
-
-  //来店回数
-  const handleVisitsChange = (e) => {
-    setVisits(e.target.value)
-  }
-
-  // メニュー選択
-  const [order, setOrder] = useState("")
 
   // メニューリスト
   const MENUS = [
@@ -109,11 +87,6 @@ export default function FormReservation() {
     }
   ]
 
-  const handleOrderChange = (e) => {
-    setOrder(e.target.value)
-  }
-
-
   //きっかけ
   const [reasons, setReasons] = useState([
     { label: "ホームページ", checked: false },
@@ -135,7 +108,6 @@ export default function FormReservation() {
     })
     setReasons(newReasons);
   };
-
 
   //メール送信処理
   const sendMail = () => {
@@ -177,11 +149,13 @@ export default function FormReservation() {
   const ShowModal = (e) => {
     e.preventDefault();
     setShowModal(true)
+    document.body.style.overflow = "hidden"
   }
 
   const closeModal = (e) => {
     e.preventDefault();
     setShowModal(false)
+    document.body.style.overflow = "auto"
   }
 
   const handleSubmit = (e) => {
@@ -191,9 +165,9 @@ export default function FormReservation() {
   }
 
   // 以下の項目全てに入力されたときに入力確認画面がアクティブになる
-  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || new Date(selectedDate) < today || selectedDate == false || time === "" || order === "" || visits === "" || checkedReasons.length === 0 ||  isConfirmed === false;
+  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || selectedDate ==="" || time === "" || order === "" || visits === "" || checkedReasons.length === 0 ||  isConfirmed === false;
 
-  console.log(selectedDate);
+  // console.log(selectedDate);
   return (
     <>
       {/* 予約フォーム */}
@@ -226,7 +200,7 @@ export default function FormReservation() {
                 value="男性"
                 name="gender"
                 checked={gender === "男性"}
-                onClick={handleGenderChange}
+                onClick={(e) => setGender(e.target.value)}
                 required /><span className="radio-text">男性</span></label>
             <label className="radio">
               <input
@@ -235,7 +209,7 @@ export default function FormReservation() {
                 value="女性"
                 name="gender"
                 checked={gender === "女性"}
-                onClick={handleGenderChange}
+                onClick={(e) => setGender(e.target.value)}
                 required /><span className="radio-text">女性</span>
             </label>
           </div>
@@ -273,10 +247,10 @@ export default function FormReservation() {
           >希望日</label><span className="alert">&nbsp;*</span><br /><input
             type="date"
             value={selectedDate}
-            onChange = {handleDateChange}
+            onChange = {(e) => setSelectedDate(e.target.value)}
+            min = {tomorrow}
             required
           />
-          <p className="sideNote">※明日以降の日付を選択してください</p>
         </div>
         <div className="inputWrapper">
           <label className="bold"
@@ -313,7 +287,7 @@ export default function FormReservation() {
                             value={course.content}
                             name="menu"
                             checked={order === course.content}
-                            onChange={handleOrderChange}
+                            onChange={ (e) => setOrder(e.target.value)}
                             required />
                           <span className="radio-text">{course.duration}</span>
                         </label>
@@ -339,7 +313,7 @@ export default function FormReservation() {
               name="visits"
               value="初めて"
               checked={visits === "初めて"}
-              onClick={handleVisitsChange}
+              onClick={(e) => setVisits(e.target.value)}
               required
             />
             <span className="radio-text">初めて</span>
@@ -351,7 +325,7 @@ export default function FormReservation() {
               name="visits"
               value="2回目以降"
               checked={visits === "2回目以降"}
-              onClick={handleVisitsChange}
+              onClick={(e) => setVisits(e.target.value)}
               />
             <span className="radio-text">2回目以降</span>
           </label>
@@ -462,7 +436,7 @@ export default function FormReservation() {
                   <button className="btn-form" onClick={closeModal}>入力画面に戻る</button>
                 </div>
                 <div>
-                  <button className="btn-form" type="submit" onClick={handleSubmit}>送信する</button>
+                  <button className="btn-form bold" type="submit" onClick={handleSubmit}>送信する</button>
                 </div>
               </div>
 
