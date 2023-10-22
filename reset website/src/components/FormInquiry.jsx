@@ -81,7 +81,7 @@ export default function InquiryForm() {
         <p className="alert">「*」は必須項目です</p>
 
         <div className="inputWrapper">
-          <label className="bold">お名前</label><span className="alert">&nbsp;*</span>
+          <label className="bold">お名前<span className="alert">&nbsp;*</span>
           <br />
           <input
             type="text"
@@ -89,10 +89,12 @@ export default function InquiryForm() {
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
             required />
+            </label>
         </div>
 
         <div className="inputWrapper">
-          <label className="bold">性別</label><span className="alert">&nbsp;*</span>
+          <h5 className="bold">性別<span className="alert">&nbsp;*</span>
+          </h5>
           <br />
           <div className="gender">
             {GENDER.map((value) => {
@@ -115,7 +117,7 @@ export default function InquiryForm() {
 
         <div className="inputWrapper">
           <label className="bold">
-            メールアドレス</label><span className="alert">&nbsp;*</span>
+            メールアドレス<span className="alert">&nbsp;*</span>
           <br /><input
             type="email"
             name="user_email"
@@ -124,12 +126,12 @@ export default function InquiryForm() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-
+          </label>
         </div>
 
         <div className="inputWrapper">
           <label className="bold">
-            電話番号</label><span className="alert">&nbsp;*</span>
+            電話番号<span className="alert">&nbsp;*</span>
           <br />
           <input
             type="tel"
@@ -138,10 +140,11 @@ export default function InquiryForm() {
             value={tel}
             onChange={(e) => setTel(e.target.value)}
             required />
+            </label>
         </div>
 
         <div>
-          <label className="bold">お問い合わせ内容</label><span className="alert">&nbsp;*</span>
+          <label className="bold">お問い合わせ内容<span className="alert">&nbsp;*</span>
           <br />
           <textarea
             name="message"
@@ -150,6 +153,7 @@ export default function InquiryForm() {
             onChange={(e) => setMessage(e.target.value)}
             required>
           </textarea>
+          </label>
         </div>
 
 
@@ -182,7 +186,7 @@ export default function InquiryForm() {
           </ul>
         </div>
         <div></div>
-        <button type="confirm" onClick={ShowModal} disabled={disableConfirm}>入力確認画面へ</button>
+        <button className="btn-form" type="confirm" onClick={ShowModal} disabled={disableConfirm}>入力確認画面へ</button>
 
         {/* モーダルウィンドウ */}
         {showModal ? (
@@ -204,10 +208,10 @@ export default function InquiryForm() {
 
               <div className="modalButtons">
                 <div>
-                  <button type="submit" onClick={handleSubmit}>送信する</button>
+                  <button  className="btn-form"type="submit" onClick={handleSubmit}>送信する</button>
                 </div>
                 <div>
-                  <button onClick={closeModal}>入力画面に戻る</button>
+                  <button  className="btn-form"onClick={closeModal}>入力画面に戻る</button>
                 </div>
               </div>
 

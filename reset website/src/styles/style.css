@@ -70,6 +70,11 @@ h4 {
   font-size: 1.8rem;
 }
 
+h5 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
 p {
   font-size: 1.8rem;
 }
@@ -136,6 +141,7 @@ form {
 
 label {
   font-size: 1.8rem;
+  cursor: pointer;
 }
 
 .inquiry-form h4,
@@ -216,6 +222,7 @@ option {
 /* チェックボックスカスタマイズ */
 .checkbox-wrap {
   display: block;
+  width: fit-content;
   position: relative;
   cursor: pointer;
   font-size: 2rem;
@@ -257,6 +264,7 @@ option {
 }
 .checkmark-text {
   padding-left: 24px;
+  padding-bottom: 0;
 }
 
 /* 注意事項のチェックボックス*/
@@ -355,9 +363,10 @@ option {
 }
 
 .modal{
+  max-width: 680px;
   width: 80%;
   height: 80%;
-  background-color: #fff;
+  background-color: var(--bgPrimary);
   padding: 2.4rem;
   overflow: scroll;
 }
@@ -397,7 +406,7 @@ option {
 .modalButtons {
   display: flex;
   justify-content: center;
-  gap: 4rem;
+  gap: 10%;
 }
 
 .inputWrapper {

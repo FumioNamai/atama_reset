@@ -178,7 +178,7 @@ export default function FormReservation() {
         <p className="alert">「*」は必須項目です</p>
 
         <div className="inputWrapper">
-          <label className="bold">お名前</label><span className="alert">&nbsp;*</span>
+          <label className="bold">お名前<span className="alert">&nbsp;*</span>
           <br />
           <input
             type="text"
@@ -186,11 +186,11 @@ export default function FormReservation() {
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
             required />
+            </label>
         </div>
 
         <div className="inputWrapper">
-          <label className="bold">性別</label><span className="alert">&nbsp;*</span>
-          <br />
+          <h5 className="bold">性別<span className="alert">&nbsp;*</span></h5>
 
           <div className="gender">
             <label className="radio">
@@ -217,7 +217,7 @@ export default function FormReservation() {
 
         <div className="inputWrapper">
           <label className="bold">
-            メールアドレス</label><span className="alert">&nbsp;*</span>
+            メールアドレス<span className="alert">&nbsp;*</span>
           <br /><input
             type="email"
             name="user_email"
@@ -226,12 +226,12 @@ export default function FormReservation() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-
+          </label>
         </div>
 
         <div className="inputWrapper">
           <label className="bold">
-            電話番号</label><span className="alert">&nbsp;*</span>
+            電話番号<span className="alert">&nbsp;*</span>
           <br />
           <input
             type="tel"
@@ -240,21 +240,23 @@ export default function FormReservation() {
             value={tel}
             onChange={(e) => setTel(e.target.value)}
             required />
+            </label>
         </div>
 
         <div className="inputWrapper">
           <label className="bold"
-          >希望日</label><span className="alert">&nbsp;*</span><br /><input
+          >希望日<span className="alert">&nbsp;*</span><br /><input
             type="date"
             value={selectedDate}
             onChange = {(e) => setSelectedDate(e.target.value)}
             min = {tomorrow}
             required
           />
+          </label>
         </div>
         <div className="inputWrapper">
           <label className="bold"
-          >希望時間</label><span className="alert">&nbsp;*</span><br />
+          >希望時間</label><span className="alert bold">&nbsp;*</span><br />
           <select
             name="time"
             value={time}
@@ -269,7 +271,7 @@ export default function FormReservation() {
           </select>
         </div>
         <div className="inputWrapper">
-          <label className="bold">ご希望のメニュー</label><span className="alert">&nbsp;*</span>
+          <h5 className="bold">ご希望のメニュー<span className="alert">&nbsp;*</span></h5>
 
           <div className="menuList">
             <div className="">
@@ -303,8 +305,10 @@ export default function FormReservation() {
         </div>
 
         <div className="visits inputWrapper">
-          <label className="bold">ご来店は</label><span className="alert">&nbsp;*</span>
-          <br />
+          <h5 className="bold">
+            ご来店は
+            <span className="alert">&nbsp;*</span>
+          </h5>
           <div className="flex">
           <label className="radio">
             <input
@@ -333,9 +337,9 @@ export default function FormReservation() {
         </div>
 
         <div className="inputWrapper">
-          <label className="bold"
-          >当店を知ったきっかけ<small>(複数選択可)</small></label>
-          <span className="alert">&nbsp;*</span><br />
+          <h5 className="bold"
+          >当店を知ったきっかけ<small>(複数選択可)</small>
+          <span className="alert">&nbsp;*</span><br /></h5>
           {reasons.map((reason) => {
             return (
               <label key={reason.label} className="checkbox-wrap">
@@ -348,14 +352,14 @@ export default function FormReservation() {
                   onChange={handleReasonChange}
                 />
                 <span className="checkmark"></span>
-                <label className="checkmark-text">{reason.label}</label>
+                <p className="checkmark-text">{reason.label}</p>
               </label>
             )
           })}
         </div>
 
         <div className="inputWrapper">
-          <label className="bold">ご要望等</label>
+          <label className="bold">ご要望等
           <br />
           <textarea
             name="message"
@@ -364,12 +368,13 @@ export default function FormReservation() {
             onChange={(e) => setMessage(e.target.value)}
             required>
           </textarea>
+          </label>
         </div>
 
 
         <div className="confirm">
           <p>ページ下部に記載の注意事項を必ずご確認ください。</p>
-          <div className="flex"><p>注意事項を確認した</p><span className="alert">&nbsp;*</span>
+          <div className="flex"><p>注意事項を確認した</p><span className="alert bold">&nbsp;*</span>
             <label className="checkbox-wrap">
               <input
                 type="checkbox"
