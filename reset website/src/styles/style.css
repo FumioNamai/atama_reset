@@ -188,7 +188,7 @@ textarea {
 .errMessage {
   font-size: 1.6rem;
   padding: 0;
-  color: var(--highlight);
+  color: var(--alert);
 }
 
 option {
@@ -417,4 +417,11 @@ option {
 
 .inputWrapper {
   margin-block: 4rem;
+}
+
+.modal .message {
+  margin-block: 1rem 2.6rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--gray-25);
+  min-height: 50px;
 }

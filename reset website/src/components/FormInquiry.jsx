@@ -186,29 +186,38 @@ export default function InquiryForm() {
           </ul>
         </div>
         <div></div>
-        <button className="btn-form" type="confirm" onClick={ShowModal} disabled={disableConfirm}>入力確認画面へ</button>
+        <button className="btn-form" type="confirm" onClick={ShowModal} >入力確認画面へ</button>
 
         {/* モーダルウィンドウ */}
         {showModal ? (
           <div id="overlay">
             <div className="modal">
-              <h3>以下の内容で送信してよろしいですか？</h3>
+            {disableConfirm ?
+            <>
+            <h3>入力内容をご確認ください</h3>
+            <p className="alert">必須項目が未入力です</p>
+            </>
+            :
+           <h3>以下の内容で送信してよろしいですか？</h3>
+            }
               <div className="inputDetails">
                 <h4>お名前</h4>
-                <p>{userName}</p>
+                {userName ? <p>{userName}</p> : <p className="alert">未入力です</p>}
                 <h4>性別</h4>
-                <p>{gender}</p>
+                {gender ? <p>{gender}</p> : <p className="alert">未入力です</p>}
                 <h4>メールアドレス</h4>
-                <p>{email}</p>
+                {email ? <p>{email}</p> : <p className="alert">未入力です</p>}
                 <h4>電話番号</h4>
-                <p>{tel}</p>
+                {tel ? <p>{tel}</p> : <p className="alert">未入力です</p>}
                 <h4>お問い合わせ内容</h4>
-                <p>{message}</p>
+                <div className="message">
+                {message ? <p>{message}</p> : <p className="alert">未入力です</p>}
+                </div>
               </div>
 
               <div className="modalButtons">
                 <div>
-                  <button  className="btn-form"type="submit" onClick={handleSubmit}>送信する</button>
+                  <button  className="btn-form"type="submit" onClick={handleSubmit}disabled={disableConfirm}>送信する</button>
                 </div>
                 <div>
                   <button  className="btn-form"onClick={closeModal}>入力画面に戻る</button>

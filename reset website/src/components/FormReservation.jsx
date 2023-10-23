@@ -10,7 +10,7 @@ export default function FormReservation() {
   // 明日日付を yyyy-mm-dd の形式で取得
   const today = new Date();
   today.setDate(today.getDate() + 1);
-  const tomorrow = today.toLocaleString('sv-SE').slice(0,10)
+  const tomorrow = today.toLocaleString('sv-SE').slice(0, 10)
 
   // 状態の取得
   const [userName, setUserName] = useState("")
@@ -18,7 +18,7 @@ export default function FormReservation() {
   const [email, setEmail] = useState("")
   const [tel, setTel] = useState("")
   const [selectedDate, setSelectedDate] = useState("")
-  const [time, setTime] = useState("選択してください")
+  const [time, setTime] = useState("")
   const [order, setOrder] = useState("")
   const [visits, setVisits] = useState("")
   const [message, setMessage] = useState("")
@@ -27,21 +27,20 @@ export default function FormReservation() {
   const [errMessage, setErrMessage] = useState("")
 
   // 希望日が今日以前の日付を選択したとき
-  if (selectedDate > tomorrow || selectedDate === "") {
+  if (selectedDate >= tomorrow || selectedDate === "") {
     setErrMessage("")
   } else {
-    setErrMessage("明日以降の日付を選択してください。")
+    setErrMessage("明日以降の日付を選択してください")
   }
 
   // 入力確認画面に曜日も合わせて表示
-  const weekDay = ["日","月","火","水","木","金","土"]
+  const weekDay = ["日", "月", "火", "水", "木", "金", "土"]
   const date = new Date(selectedDate)
   const n = date.getDay()
-  const dateText =  `${date.getFullYear()}年${date.getMonth() +1}月${date.getDate()}日(${weekDay[n]})`
+  const dateText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日(${weekDay[n]})`
 
   // 希望時間
   const TIME_OPTIONS = [
-    "選択してください",
     "13:00 ~",
     "13:30 ~",
     "14:00 ~",
@@ -104,7 +103,7 @@ export default function FormReservation() {
     { label: "その他", checked: false },
   ])
 
-  const checkedReasons = reasons.filter(reason => reason.checked === true )
+  const checkedReasons = reasons.filter(reason => reason.checked === true)
 
   const handleReasonChange = (e) => {
     const newReasons = reasons.map(reason => {
@@ -172,10 +171,10 @@ export default function FormReservation() {
     closeModal();
   }
 
-  // 以下の項目全てに入力されたときに入力確認画面がアクティブになる
-  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || selectedDate < tomorrow || selectedDate ==="" || time === "" || order === "" || visits === "" || checkedReasons.length === 0 ||  isConfirmed === false;
+  // 以下の項目全てに入力されたときに送信ボタンがアクティブになる
+  const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || selectedDate < tomorrow || selectedDate === "" || time === "" || order === "" || visits === "" || checkedReasons.length === 0 || isConfirmed === false;
 
-  // console.log(selectedDate);
+
   return (
     <>
       {/* 予約フォーム */}
@@ -187,14 +186,14 @@ export default function FormReservation() {
 
         <div className="inputWrapper">
           <label className="bold">お名前<span className="alert">&nbsp;*</span>
-          <br />
-          <input
-            type="text"
-            name="user_name"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-            required />
-            </label>
+            <br />
+            <input
+              type="text"
+              name="user_name"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              required />
+          </label>
         </div>
 
         <div className="inputWrapper">
@@ -226,40 +225,40 @@ export default function FormReservation() {
         <div className="inputWrapper">
           <label className="bold">
             メールアドレス<span className="alert">&nbsp;*</span>
-          <br /><input
-            type="email"
-            name="user_email"
-            placeholder="atama@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+            <br /><input
+              type="email"
+              name="user_email"
+              placeholder="atama@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </label>
         </div>
 
         <div className="inputWrapper">
           <label className="bold">
             電話番号<span className="alert">&nbsp;*</span>
-          <br />
-          <input
-            type="tel"
-            name="tel"
-            placeholder="090-1234-5678"
-            value={tel}
-            onChange={(e) => setTel(e.target.value)}
-            required />
-            </label>
+            <br />
+            <input
+              type="tel"
+              name="tel"
+              placeholder="090-1234-5678"
+              value={tel}
+              onChange={(e) => setTel(e.target.value)}
+              required />
+          </label>
         </div>
 
         <div className="inputWrapper">
           <label className="bold"
           >希望日<span className="alert">&nbsp;*</span><br /><input
-            type="date"
-            value={selectedDate}
-            onChange = {(e) => setSelectedDate(e.target.value)}
-            min = {tomorrow}
-            required
-          />
+              type="date"
+              value={selectedDate}
+              onChange={(e) => setSelectedDate(e.target.value)}
+              min={tomorrow}
+              required
+            />
           </label>
           <p className="errMessage">{errMessage}</p>
         </div>
@@ -289,21 +288,21 @@ export default function FormReservation() {
                   <>
                     <p key={menu.category} className="categoryName">{menu.category}</p>
                     <div className="flex">
-                    {menu.course.map((course) => {
-                      return (
-                        <label key={course.content} className="radio">
-                          <input
-                            className="radio-input"
-                            type="radio"
-                            value={course.content}
-                            name="menu"
-                            checked={order === course.content}
-                            onChange={ (e) => setOrder(e.target.value)}
-                            required />
-                          <span className="radio-text">{course.duration}</span>
-                        </label>
-                      )
-                    })}
+                      {menu.course.map((course) => {
+                        return (
+                          <label key={course.content} className="radio">
+                            <input
+                              className="radio-input"
+                              type="radio"
+                              value={course.content}
+                              name="menu"
+                              checked={order === course.content}
+                              onChange={(e) => setOrder(e.target.value)}
+                              required />
+                            <span className="radio-text">{course.duration}</span>
+                          </label>
+                        )
+                      })}
                     </div>
                   </>
                 )
@@ -319,41 +318,41 @@ export default function FormReservation() {
             <span className="alert">&nbsp;*</span>
           </h5>
           <div className="flex">
-          <label className="radio">
-            <input
-              className="radio-input"
-              type="radio"
-              name="visits"
-              value="初めて"
-              checked={visits === "初めて"}
-              onClick={(e) => setVisits(e.target.value)}
-              required
-            />
-            <span className="radio-text">初めて</span>
-          </label>
-          <label className="radio">
-            <input
-              className="radio-input"
-              type="radio"
-              name="visits"
-              value="2回目以降"
-              checked={visits === "2回目以降"}
-              onClick={(e) => setVisits(e.target.value)}
+            <label className="radio">
+              <input
+                className="radio-input"
+                type="radio"
+                name="visits"
+                value="初めて"
+                checked={visits === "初めて"}
+                onClick={(e) => setVisits(e.target.value)}
+                required
               />
-            <span className="radio-text">2回目以降</span>
-          </label>
+              <span className="radio-text">初めて</span>
+            </label>
+            <label className="radio">
+              <input
+                className="radio-input"
+                type="radio"
+                name="visits"
+                value="2回目以降"
+                checked={visits === "2回目以降"}
+                onClick={(e) => setVisits(e.target.value)}
+              />
+              <span className="radio-text">2回目以降</span>
+            </label>
           </div>
         </div>
 
         <div className="inputWrapper">
           <h5 className="bold"
           >当店を知ったきっかけ<small>(複数選択可)</small>
-          <span className="alert">&nbsp;*</span><br /></h5>
+            <span className="alert">&nbsp;*</span><br /></h5>
           {reasons.map((reason) => {
             return (
               <label key={reason.label} className="checkbox-wrap">
                 <input
-                className = "checkbox"
+                  className="checkbox"
                   type="checkbox"
                   name="reason"
                   value={reason.label}
@@ -369,14 +368,14 @@ export default function FormReservation() {
 
         <div className="inputWrapper">
           <label className="bold">ご要望等
-          <br />
-          <textarea
-            name="message"
-            rows="5"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            required>
-          </textarea>
+            <br />
+            <textarea
+              name="message"
+              rows="5"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required>
+            </textarea>
           </label>
         </div>
 
@@ -409,40 +408,60 @@ export default function FormReservation() {
           </ul>
         </div>
         <div></div>
-        <button className="btn-form" type="confirm" onClick={ShowModal} disabled={disableConfirm}>入力確認画面へ</button>
+        <button className="btn-form" type="confirm" onClick={ShowModal}
+        // disabled={disableConfirm}
+        >入力確認画面へ</button>
 
         {/* モーダルウィンドウ */}
         {showModal ? (
           <div id="overlay">
             <div className="modal">
-              <h3>以下の内容で送信してよろしいですか？</h3>
+            {disableConfirm ?
+            <>
+            <h3>入力内容をご確認ください</h3>
+            <p className="alert">必須項目が未入力です</p>
+            </>
+            :
+           <h3>以下の内容で送信してよろしいですか？</h3>
+            }
+
               <div className="inputDetails">
                 <h4>お名前</h4>
-                <p>{userName}</p>
+                {userName ? <p>{userName}</p> : <p className="alert">未入力です</p>}
                 <h4>性別</h4>
-                <p>{gender}</p>
+                {gender ? <p>{gender}</p> : <p className="alert">未入力です</p>}
                 <h4>メールアドレス</h4>
-                <p>{email}</p>
+                {email ? <p>{email}</p> : <p className="alert">未入力です</p>}
                 <h4>電話番号</h4>
-                <p>{tel}</p>
+                {tel ? <p>{tel}</p> : <p className="alert">未入力です</p>}
                 <h4>希望日</h4>
-                <p>{dateText}</p>
+                {selectedDate ? <p>{dateText}</p> : <p className="alert">未入力です</p>}
                 <h4>希望時間</h4>
-                <p>{time}</p>
+                {time ? <p>{time}</p>: <p className="alert">選択してください</p>}
                 <h4>ご希望のメニュー</h4>
-                <p>{order}</p>
+                {order ? <p>{order}</p>: <p className="alert">選択してください</p>}
                 <h4>ご来店は</h4>
-                <p>{visits}</p>
+                {visits ? <p>{visits}</p> : <p className="alert">選択してください</p>}
                 <h4>当店を知ったきっかけ</h4>
-                <ul>
-                { checkedReasons.map((checkedReason) => {
-                  return(
-                    <li key={checkedReason.label}>・{checkedReason.label}</li>
-                  )
-                })}
-                </ul>
+                {
+                  checkedReasons.length !== 0 ?
+                    <ul>
+                      {checkedReasons.map((checkedReason) => {
+                        return (
+                          <li key={checkedReason.label}>・{checkedReason.label}</li>
+                        )
+                      })}
+                    </ul>
+                    :
+                    <p className="alert">選択してください</p>
+                }
+
                 <h4>ご要望等</h4>
+                <div className="message">
                 <p>{message}</p>
+                </div>
+                <h4>「注意事項を確認した」</h4>
+                {isConfirmed ? <p>確認済み</p> : <p className="alert">チェックを入れてください</p>}
               </div>
 
               <div className="modalButtons">
@@ -450,7 +469,12 @@ export default function FormReservation() {
                   <button className="btn-form" onClick={closeModal}>入力画面に戻る</button>
                 </div>
                 <div>
-                  <button className="btn-form bold" type="submit" onClick={handleSubmit}>送信する</button>
+                  <button
+                    className="btn-form bold" type="submit"
+                    onClick={handleSubmit}
+                    disabled={disableConfirm}
+                  >送信する
+                  </button>
                 </div>
               </div>
 
