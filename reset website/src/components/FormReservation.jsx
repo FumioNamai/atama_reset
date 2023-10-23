@@ -26,6 +26,7 @@ export default function FormReservation() {
   const [showModal, setShowModal] = useState(false);
   const [errMessage, setErrMessage] = useState("")
 
+
   // 希望日が今日以前の日付を選択したとき
   if (selectedDate >= tomorrow || selectedDate === "") {
     setErrMessage("")
@@ -129,10 +130,13 @@ export default function FormReservation() {
         gender: gender,
         email: email,
         tel: tel,
-        date: dateText,
+        dateText: dateText,
         time: time,
         order: order,
         visits: visits,
+        reasons: checkedReasons.map((checkedReason) => {
+          return checkedReason.label
+        }),
         message: message,
       }
       send(serviceID, templateIDContact, templateParams, publicKey).then(() => {
