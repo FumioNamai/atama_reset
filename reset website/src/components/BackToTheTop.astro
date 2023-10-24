@@ -1,17 +1,22 @@
-<!-- 未使用 -->
-
 <button id="js-hamburger2">
+  <a href="#">
   <img src="/hamburger.svg" alt="">
-  <p>その他</p>
+  <p>トップへ戻る</p>
+</a>
 </button>
 
 <style>
+  html {
+    scroll-behavior: smooth;
+  }
   button {
     background-color: transparent;
     border: transparent;
     cursor: pointer;
   }
-
+  a {
+    text-decoration: none;
+  }
   p {
     margin: 0;
     color: var(--textWhite);
@@ -22,7 +27,7 @@
 
 </style>
 
-<script>
+<!-- <script>
   const body = document.querySelector("#js-body")
   const hamburger = document.querySelector("#js-hamburger");
   const hamburger2 = document.querySelector("#js-hamburger2");
@@ -37,4 +42,4 @@
     globalNav.classList.toggle("open");
     menu.classList.toggle("open");
   });
-</script>
+</script> -->
