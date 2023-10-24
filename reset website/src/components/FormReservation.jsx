@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { init, send } from "emailjs-com";
 
@@ -104,6 +105,7 @@ export default function FormReservation() {
     { label: "その他", checked: false },
   ])
 
+
   const checkedReasons = reasons.filter(reason => reason.checked === true)
 
   const handleReasonChange = (e) => {
@@ -116,6 +118,16 @@ export default function FormReservation() {
     })
     setReasons(newReasons);
   };
+
+  // 入力確認モーダルに入力内容を表示
+  const InputDetails = ({ title, props, msg, errMsg }) => {
+    return (
+      <>
+        <h4>{title}</h4>
+        {props ? <p>{msg}</p> : <p className="alert">{errMsg}</p>}
+      </>
+    )
+  }
 
   //メール送信処理
   const sendMail = () => {
@@ -420,32 +432,64 @@ export default function FormReservation() {
         {showModal ? (
           <div id="overlay">
             <div className="modal">
-            {disableConfirm ?
-            <>
-            <h3>入力内容をご確認ください</h3>
-            <p className="alert">必須項目が未入力です</p>
-            </>
-            :
-           <h3>以下の内容で送信してよろしいですか？</h3>
-            }
+              {disableConfirm ?
+                <>
+                  <h3>入力内容をご確認ください</h3>
+                  <p className="alert">必須項目が未入力です</p>
+                </>
+                :
+                <h3>以下の内容で送信してよろしいですか？</h3>
+              }
 
               <div className="inputDetails">
-                <h4>お名前</h4>
-                {userName ? <p>{userName}</p> : <p className="alert">未入力です</p>}
-                <h4>性別</h4>
-                {gender ? <p>{gender}</p> : <p className="alert">未入力です</p>}
-                <h4>メールアドレス</h4>
-                {email ? <p>{email}</p> : <p className="alert">未入力です</p>}
-                <h4>電話番号</h4>
-                {tel ? <p>{tel}</p> : <p className="alert">未入力です</p>}
-                <h4>希望日</h4>
-                {selectedDate ? <p>{dateText}</p> : <p className="alert">未入力です</p>}
-                <h4>希望時間</h4>
-                {time ? <p>{time}</p>: <p className="alert">選択してください</p>}
-                <h4>ご希望のメニュー</h4>
-                {order ? <p>{order}</p>: <p className="alert">選択してください</p>}
-                <h4>ご来店は</h4>
-                {visits ? <p>{visits}</p> : <p className="alert">選択してください</p>}
+                <InputDetails
+                  title={"お名前"}
+                  props={userName}
+                  msg={userName}
+                  errMsg={"未入力です"}
+                />
+                <InputDetails
+                  title={"性別"}
+                  props={gender}
+                  msg={gender}
+                  errMsg={"未入力です"}
+                />
+                <InputDetails
+                  title={"メールアドレス"}
+                  props={email}
+                  msg={email}
+                  errMsg={"未入力です"}
+                />
+                <InputDetails
+                  title={"電話番号"}
+                  props={tel}
+                  msg={tel}
+                  errMsg={"未入力です"}
+                />
+                <InputDetails
+                  title={"希望日"}
+                  props={selectedDate}
+                  msg={dateText}
+                  errMsg={"未入力です"}
+                />
+                <InputDetails
+                  title={"希望時間"}
+                  props={time}
+                  msg={time}
+                  errMsg={"選択してください"}
+                />
+                <InputDetails
+                  title={"ご希望のメニュー"}
+                  props={order}
+                  msg={order}
+                  errMsg={"選択してください"}
+                />
+                <InputDetails
+                  title={"ご来店は"}
+                  props={visits}
+                  msg={visits}
+                  errMsg={"選択してください"}
+                />
                 <h4>当店を知ったきっかけ</h4>
                 {
                   checkedReasons.length !== 0 ?
@@ -462,10 +506,14 @@ export default function FormReservation() {
 
                 <h4>ご要望等</h4>
                 <div className="message">
-                <p>{message}</p>
+                  <p>{message}</p>
                 </div>
-                <h4>「注意事項を確認した」</h4>
-                {isConfirmed ? <p>確認済み</p> : <p className="alert">チェックを入れてください</p>}
+                <InputDetails
+                  title={"「注意事項を確認した」"}
+                  props={isConfirmed}
+                  msg={"確認済み"}
+                  errMsg={"選択しチェックを入れてください"}
+                />
               </div>
 
               <div className="modalButtons">
