@@ -27,14 +27,15 @@ import logo2 from "../assets/logo2.png";
   <div class="large">
     <p>
       名古屋市 昭和高校横 ヘッドマッサージサロン<span>
-        頭ほぐし専門店 reset</span>
+        頭ほぐし専門店 reset</span
+      >
     </p>
     <div class="wrapper">
       <div class="headerNav">
         <div class="left">
           <div class="logo">
             <a href="/">
-              <Image src={logo} alt="ロゴ" width = 90  height = 90 />
+              <Image src={logo} alt="ロゴ" width="90" height="90" />
             </a>
           </div>
         </div>
@@ -113,11 +114,26 @@ import logo2 from "../assets/logo2.png";
       display: none;
     }
 
+    /* position:fixed のための設定 */
+    .spacer {
+      display: block;
+      background-color: var(--bgPrimary);
+      width: 100%;
+      height: 64px;
+    }
+    .small {
+      position: absolute;
+      top: 0;
+      position: fixed;
+      z-index: 300;
+      background-color: #f4f4f4c4;
+    }
+
     @media screen and (768px <= width) {
       .spacer {
-        display: block;
+        /* display: block;
         background-color: var(--bgPrimary);
-        width: 100%;
+        width: 100%; */
         height: 130px;
       }
       .small {
@@ -144,7 +160,6 @@ import logo2 from "../assets/logo2.png";
         margin-right: 1rem;
         margin-bottom: -1rem;
         filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
-
       }
       span {
         display: inline;
@@ -184,8 +199,8 @@ import logo2 from "../assets/logo2.png";
         filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.5));
       }
       .large.right p {
-      filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
-    }
+        filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+      }
     }
   </style>
 </header>
