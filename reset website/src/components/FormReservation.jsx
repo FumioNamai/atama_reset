@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { init, send } from "emailjs-com";
+import { InputDetails } from "./InputDetails";
 
 // Email.jsの環境変数
 const publicKey = import.meta.env.PUBLIC_KEY;
@@ -27,6 +28,12 @@ export default function FormReservation() {
   const [showModal, setShowModal] = useState(false);
   const [errMessage, setErrMessage] = useState("")
 
+
+  // 性別選択
+  const GENDER = ["男性", "女性"];
+  const handleGenderChange = (e) => {
+    setGender(e.target.value)
+  }
 
   // 希望日が今日以前の日付を選択したとき
   if (selectedDate >= tomorrow || selectedDate === "") {
@@ -119,16 +126,6 @@ export default function FormReservation() {
     setReasons(newReasons);
   };
 
-  // 入力確認モーダルに入力内容を表示
-  const InputDetails = ({ title, props, msg, errMsg }) => {
-    return (
-      <>
-        <h4>{title}</h4>
-        {props ? <p>{msg}</p> : <p className="alert">{errMsg}</p>}
-      </>
-    )
-  }
-
   //メール送信処理
   const sendMail = () => {
     if (
@@ -216,25 +213,21 @@ export default function FormReservation() {
           <h5 className="bold">性別<span className="alert">&nbsp;*</span></h5>
 
           <div className="gender">
-            <label className="radio">
-              <input
-                className="radio-input"
-                type="radio"
-                value="男性"
-                name="gender"
-                checked={gender === "男性"}
-                onClick={(e) => setGender(e.target.value)}
-                required /><span className="radio-text">男性</span></label>
-            <label className="radio">
-              <input
-                className="radio-input"
-                type="radio"
-                value="女性"
-                name="gender"
-                checked={gender === "女性"}
-                onClick={(e) => setGender(e.target.value)}
-                required /><span className="radio-text">女性</span>
-            </label>
+          {GENDER.map((value) => {
+              return (
+                <label key={value} className="radio">
+                  <input
+                    className="radio-input"
+                    type="radio"
+                    value={value}
+                    checked={gender === value}
+                    onChange={handleGenderChange}
+                    required
+                  />
+                  <span className="radio-text">{value}</span>
+                </label>
+              )
+            })}
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { init, send } from "emailjs-com";
+import { InputDetails } from "./InputDetails";
 
 const publicKey = import.meta.env.PUBLIC_KEY;
 const serviceID = import.meta.env.PUBLIC_EMAIL_SERVICE_ID;
@@ -15,16 +16,13 @@ export default function InquiryForm() {
   const [isConfirmed, setIsConfirmed] = useState(false)
   const [showModal, setShowModal] = useState(false);
 
-
+  // 性別選択
   const GENDER = ["男性", "女性"];
-
   const handleGenderChange = (e) => {
     setGender(e.target.value)
   }
 
-
-
-  //メール送信処理
+  // メール送信処理
   const sendMail = () => {
     if (
       publicKey !== undefined &&
@@ -201,14 +199,30 @@ export default function InquiryForm() {
            <h3>以下の内容で送信してよろしいですか？</h3>
             }
               <div className="inputDetails">
-                <h4>お名前</h4>
-                {userName ? <p>{userName}</p> : <p className="alert">未入力です</p>}
-                <h4>性別</h4>
-                {gender ? <p>{gender}</p> : <p className="alert">未入力です</p>}
-                <h4>メールアドレス</h4>
-                {email ? <p>{email}</p> : <p className="alert">未入力です</p>}
-                <h4>電話番号</h4>
-                {tel ? <p>{tel}</p> : <p className="alert">未入力です</p>}
+              <InputDetails
+                  title={"お名前"}
+                  props={userName}
+                  msg={userName}
+                  errMsg={"未入力です"}
+                />
+                <InputDetails
+                  title={"性別"}
+                  props={gender}
+                  msg={gender}
+                  errMsg={"未入力です"}
+                />
+                <InputDetails
+                  title={"メールアドレス"}
+                  props={email}
+                  msg={email}
+                  errMsg={"未入力です"}
+                />
+                <InputDetails
+                  title={"電話番号"}
+                  props={tel}
+                  msg={tel}
+                  errMsg={"未入力です"}
+                />
                 <h4>お問い合わせ内容</h4>
                 <div className="message">
                 {message ? <p>{message}</p> : <p className="alert">未入力です</p>}
