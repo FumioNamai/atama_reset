@@ -6,7 +6,7 @@ import brain_fatigue from "../assets/brain-fatigue.webp"
 
 <Layout title="脳疲労とは">
   <main>
-    <section>
+    <section class="brain_fatigue">
     <h2>「脳疲労」とは...</h2>
     <div class="upperPart">
     <div class="image">
@@ -17,37 +17,79 @@ import brain_fatigue from "../assets/brain-fatigue.webp"
     <p>筋肉を使いすぎると筋肉疲労が起こるように、脳も使いすぎると<br><span class="bold">「脳疲労」を起こし<br>正常に機能しなくなります。</p></span>
     <p>疲労やストレスにより<br>脳が正常に機能しなくなると<br><span class="bold">自律神経を司る視床下部にまで影響が及び、<br>身体にさまざまな不調が表れます。</span></p>
       <p><span class="bold">慢性疲労は<br>“単なる体の疲れ” ではなく<br>「脳の疲れ」</span>です。</p>
-
   </article>
 </div>
-  <div class="certificatiion">
-    <p>
-      日本ヘッドセラピスト認定協会<br>
-      日本ヘッドセラピスト専門学院<br>
-      1級ヘッドセラピスト<br>
-      有能技能賞取得
-    </p>
-    <p>
-      日本ヘッドセラピスト認定協会<br>
-      腸セラピスト
-    </p>
-    <p>頭ほぐし専門店 reset</p>
+  <div class="lists">
+    <div class="at_risk list">
+      <h3>～脳疲労を起こしやすい人とは～</h3>
+      <ul>
+        <li>・パソコンやスマホをよく使う</li>
+        <li>・キリのいいところまでやらないと嫌</li>
+        <li>・責任感が強い</li>
+        <li>・集中力が高い</li>
+        <li>・没頭すると周りが見えなくなる</li>
+        <li>・マルチタクス(役割過多)</li>
+        <li>・ストレス解消のため体を動かすのが習慣</li>
+        <li>・夜勤など、仕事の時間が不規則</li>
+        <li>・休日は予定を詰める</li>
+        <li>・日頃から人と多く接する</li>
+        <li>・運転中あまり休憩を取らない</li>
+        <li>・熱いお風呂に長湯をする</li>
+        <li>・屋外で過ごす時間が長い</li>
+      </ul>
+    </div>
+    <div class="check_list list">
+      <h3>～脳疲労チェック</h3>
+      <ul>
+        <li>・疲れやすい</li>
+        <li>・やる気が出ない</li>
+        <li>・イライラする</li>
+        <li>・物忘れが増えた</li>
+        <li>・凡ミスをする</li>
+        <li>・集中力が続かない</li>
+        <li>・文章がなかなか頭に入ってこない</li>
+        <li>・焦燥感がある</li>
+        <li>・いいアイデアがひらめかない</li>
+        <li>・優柔不断になった</li>
+        <li>・日中に眠くなる</li>
+        <li>・いびきをかく</li>
+        <li>・疲れが取れない</li>
+        <li>・寝つきが悪い</li>
+        <li>・眠りが浅い</li>
+        <li>・ゴロゴロしたい</li>
+      </ul>
+    </div>
   </div>
+  <p><span class="bold">どれか当てはまる方は、<br>脳が疲れて「脳疲労」を起こしているかも。</span></p>
+  <p><span class="bold">脳疲労を放っておくと、<br>自律神経が乱れ、<br>全身にさまざまな不調を引き起こします。</span></p>
+  <p>自律神経は<br>血圧・呼吸・体温・消化・心拍・発汗などを司っています。
+  </p>
+  <p><span class="bold">自律神経の乱れは健康に大きく影響します。</span></p>
+
 </section>
   </main>
 </Layout>
 
 <style>
   section {
-    text-align: center;
+    /* text-align: center; */
     max-width: 900px;
     margin: 0 auto;
     padding-block: 40px;
     padding-inline: 1.6rem;
   }
+  .brain_fatigue h2{
+    text-align: left;
+    padding-bottom: 1.6rem;
+  }
 
   .image {
-    margin-block: 64px;
+
+  }
+  img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1.6rem;
   }
 
   article {
@@ -60,9 +102,11 @@ import brain_fatigue from "../assets/brain-fatigue.webp"
     padding-bottom: 2.4rem;
   }
 
-
-
   @media screen and ( 900px <= width ){
+    .brain_fatigue h2{
+    text-align: left;
+    padding-bottom: 4rem;
+  }
     .upperPart {
     display: flex;
     flex-direction: row-reverse;
@@ -78,7 +122,17 @@ import brain_fatigue from "../assets/brain-fatigue.webp"
     max-width: 404px;
     height: auto;
   }
+
+  .lists {
+    display: flex;
+    gap: 4rem;
   }
+
+  .list {
+    max-width: 404px;
+  }
+  }
+
 
 
 </style>
