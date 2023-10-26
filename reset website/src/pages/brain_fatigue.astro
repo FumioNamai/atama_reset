@@ -96,13 +96,33 @@ import brain_fatigue from "../assets/brain-fatigue.webp"
     text-align: left;
   }
 
+  h3 {
+    font-size: 1.8rem;
+    padding-bottom: .8rem;
+  }
+
   p {
     line-height: 200%;
     letter-spacing: 2.7px;
     padding-bottom: 2.4rem;
   }
 
+  li {
+    font-size: 1.8rem;
+    line-height: 200%;
+  }
+
+  .lists {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    margin-block: 1.6rem;
+  }
+
   @media screen and ( 900px <= width ){
+    section {
+      padding-inline: 2.4rem;
+    }
     .brain_fatigue h2{
     text-align: left;
     padding-bottom: 4rem;
@@ -124,8 +144,8 @@ import brain_fatigue from "../assets/brain-fatigue.webp"
   }
 
   .lists {
-    display: flex;
-    gap: 4rem;
+    flex-direction: row;
+    gap: 1.6rem;
   }
 
   .list {
