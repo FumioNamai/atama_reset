@@ -13,7 +13,7 @@ import DiscountPriceTag from "@components/DiscountPriceTag.astro";
       <div class="container">
         <h2>腸セラピー</h2>
         <div class="image">
-          <Image src={intestine} alt="" />
+          <Image src={intestine} alt="" loading="eager"/>
         </div>
         <article>
           <div class="explanation">
@@ -223,15 +223,15 @@ import DiscountPriceTag from "@components/DiscountPriceTag.astro";
     }
 
     aside {
-      position: sticky;
-      top: 130px;
+      /* position: sticky; */
+      /* top: 130px; */
       padding: 2.4rem;
       height: fit-content;
       display: flex;
       flex-direction: column;
       gap: 1.6rem;
       border: 1px solid var(--gray-25);
-      opacity: 0.7;
+      opacity: 0.8;
       margin-inline-end: 2.4rem;
     }
 

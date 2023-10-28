@@ -14,7 +14,9 @@ const { time, originalPrice, discountPrice } = Astro.props;
   }
   .course_discount {
     display: flex;
+    overflow: hidden;
     justify-content: space-around;
+    height: 30px;
   }
 
   .course_discount p {
@@ -37,7 +39,7 @@ const { time, originalPrice, discountPrice } = Astro.props;
 
   .strikethrough {
     padding-left: 16px;
-    margin-right: -16px;
+    /* margin-right: -16px; */
   }
   .d-price {
     color: var(--attention);
