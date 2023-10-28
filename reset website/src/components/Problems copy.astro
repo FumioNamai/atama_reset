@@ -130,6 +130,14 @@ const problems = [
     animation: fadein 1s forwards linear;
     animation-iteration-count: 1;
   }
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
   .fadein:nth-child(1) {
     animation-delay: 0.1s;
   }
