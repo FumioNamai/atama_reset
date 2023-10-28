@@ -1,0 +1,72 @@
+---
+import Layout from "@layouts/layout.astro";
+import { Image }  from "astro:assets";
+import enterprise from "../assets/enterprise.webp";
+import ContactAddress from "@components/ContactAddress.astro"
+---
+
+<Layout title="企業・団体様">
+  <main>
+    <section>
+    <h2>企業・団体様</h2>
+    <div class="image">
+      <Image src={enterprise} alt="" />
+    </div>
+    <article>
+    <p>
+      当店では、企業様や団体様への訪問施術やイベントを承っております。
+    </p>
+    <p>
+      お気軽にお問い合わせください。
+    </p>
+    <p>
+      従業員の方の福利厚生にもお役立ていただいております。
+    </p>
+    <p>
+      ※個人宅への出張施術は行っておりません
+    </p>
+  </article>
+  <ContactAddress />
+  <div class="notice">
+    <p class="bold">～営業のお電話について～</p>
+    <p>大切なお客様との時間のために、<br><span class="bold">営業中のお電話はご遠慮いただきますようお願い致します。<br>お問い合わせは必ずメールにて</span>お願い致します。</p>
+    <p>営業時間｜12時 ~ 21時［不定休］</p>
+  </div>
+</Layout>
+
+<style>
+  section {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+    padding-block: 40px;
+    padding-inline: 1.6rem;
+  }
+
+  .image {
+    margin-block: 64px;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  article {
+    text-align: left;
+  }
+
+  p {
+    line-height: 200%;
+    letter-spacing: 2.7px;
+  }
+
+  .notice p{
+    line-height: 150%;
+    text-align: left;
+  }
+
+  @media screen and ( 900px <= width ){
+  }
+
+
+</style>
