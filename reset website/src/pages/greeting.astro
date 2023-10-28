@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/layout.astro";
 import { Image }  from "astro:assets";
+import thanks from "../assets/Thanks.webp"
 import clinic_image3 from "../assets/clinic_image_3.webp"
 import clinic_image4 from "../assets/clinic_image_4.webp"
 
@@ -11,7 +12,7 @@ import clinic_image4 from "../assets/clinic_image_4.webp"
     <section>
     <h2>ごあいさつ</h2>
     <div class="image">
-      <img src="/thanks.jpg" alt="ありがとうございます！" />
+      <Image src={thanks} alt="ありがとうございます！" width=320 height=213 loading="eager"/>
     </div>
     <article>
     <p>「頭から体の不調を整える」 をモットーに。</p>

@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import QandA from "../assets/Q&A.jpg"
+import QandA from "../assets/Q&A.webp"
 import Layout from "@layouts/layout.astro";
 import Accordion from "@components/Accordion.astro";
 
@@ -10,7 +10,7 @@ import Accordion from "@components/Accordion.astro";
   <main>
     <h3>よくあるご質問</h3>
     <div class="image">
-      <Image src= { QandA } alt="Q&A" />
+      <Image src= { QandA } alt="Q&A" loading="eager" width=640 height=327 />
     </div>
 
     <Accordion>
