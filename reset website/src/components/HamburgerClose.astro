@@ -1,4 +1,4 @@
-<button class="hamburgerClose" id="js-hamburgerClose">
+<button class="hamburgerClose open" id="js-hamburgerClose">
   <span></span>
   <span></span>
 </button>
@@ -22,15 +22,24 @@
     display: block;
     position: relative;
     filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+    transition: all 1s .5s ease;
   }
-  .hamburgerClose span:nth-child(1) {
+  .hamburgerClose.open span:nth-child(1) {
     margin: 6px 0;
     top: 4px;
     transform: rotate(45deg);
+    opacity: 1;
   }
-  .hamburgerClose span:nth-child(2) {
+  .hamburgerClose.open span:nth-child(2) {
     top: -4px;
     transform: rotate(-45deg);
+    opacity: 1;
+  }
+  .hamburgerClose span:nth-child(1) {
+    opacity: 0;
+  }
+  .hamburgerClose span:nth-child(2) {
+    opacity: 0;
   }
 
   img {
@@ -44,11 +53,11 @@
 
   p {
     color: var(--textWhite);
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: "Noto Sans JP", sans-serif;
     font-size: 1rem;
   }
 
-  @media screen and ( 768px <= width ){
+  @media screen and (768px <= width) {
     .hamburgerClose {
       width: 90px;
       height: 90px;
@@ -61,33 +70,35 @@
       height: 3px;
       border-radius: 1.5px;
     }
-    .hamburgerClose span:nth-child(1) {
-    top: 4.5px;
-  }
-  .hamburgerClose span:nth-child(2) {
-    top: -4.5px;
-  }
+    .hamburgerClose.open span:nth-child(1) {
+      top: 4.5px;
+    }
+    .hamburgerClose.open span:nth-child(2) {
+      top: -4.5px;
+    }
   }
 </style>
 
 <script>
-  const body = document.querySelector("#js-body")
-  const hamburgerClose = document.querySelector(".hamburgerClose");
-  const hamburger = document.querySelectorAll(".hamburger");
+  const body = document.querySelector("#js-body");
+  const hamburgerClose = document.querySelector("#js-hamburgerClose");
+  // const hamburger = document.querySelectorAll(".hamburger");
+  const hamburger = document.querySelector("#js-hamburger");
   const globalNav = document.querySelector("#js-globalNav");
   const menuList = document.querySelector("#js-globalNav-menu");
-  const menu = document.querySelectorAll(".menu")
+  const menu = document.querySelectorAll(".menu");
 
-    hamburgerClose.addEventListener("click", function () {
-      body.classList.toggle("inactive");
-      hamburgerClose.classList.toggle("open")
-      hamburger.forEach((hamburger) => {
-        hamburger.classList.toggle("open");
-      })
-      globalNav.classList.toggle("open");
-      menuList.classList.toggle("open");
-      menu.forEach((menu) => {
-        menu.classList.toggle("open")
-      })
-    })
+  hamburgerClose.addEventListener("click", function () {
+    body.classList.remove("inactive");
+    hamburgerClose.classList.remove("open");
+    // hamburger.forEach((hamburger) => {
+    hamburger.classList.remove("open");
+    // })
+    hamburger.classList.remove("open");
+    globalNav.classList.remove("open");
+    menuList.classList.remove("open");
+    menu.forEach((menu) => {
+      menu.classList.remove("open");
+    });
+  });
 </script>

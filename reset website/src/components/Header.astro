@@ -8,101 +8,101 @@ import logo2 from "../assets/logo2.png";
 <header>
   <div class="spacer"></div>
   <div class="wrapper">
-    <div class="small">
-      <p>名古屋市 昭和高校横 ヘッドマッサージサロン</p>
-      <div class="headerNav">
-        <div class="left">
-          <Hamburger />
-          <div class="logo">
-            <a href="/">
-              <Image
-                src={logo2}
-                alt="ロゴ"
-                width="150"
-                height="82"
-                loading="eager"
-              />
-            </a>
-          </div>
-        </div>
-        <div class="right">
-          <a href="/contact">ご予約</a>
-        </div>
-      </div>
+    <p class="location">
+      名古屋市 昭和高校横 ヘッドマッサージサロン<span>
+        頭ほぐし専門店 reset</span
+      >
+    </p>
+    <div class="hamburger">
+      <Hamburger />
     </div>
-
-    <div class="large">
-      <p>
-        名古屋市 昭和高校横 ヘッドマッサージサロン<span>
-          頭ほぐし専門店 reset</span
-        >
-      </p>
-      <div class="headerNav">
-        <div class="left">
-          <a href="/">
-            <div class="logo">
-              <Image
-                src={logo}
-                alt="ロゴ"
-                width="90"
-                height="90"
-                loading="eager"
-              />
-            </div>
-          </a>
-        </div>
-        <div class="right">
-          <div class="contact">
-            <a href="/contact">ご予約・お問い合わせ</a>
-          </div>
-          <Hamburger />
-        </div>
-      </div>
+    <div class="logo2">
+      <a href="/">
+        <Image src={logo2} alt="ロゴ" width="150" height="82" loading="eager" />
+      </a>
     </div>
+    <div class="logo">
+      <a href="/">
+        <Image src={logo} alt="ロゴ" width="90" height="90" loading="eager" />
+      </a>
+    </div>
+    <div class="dot"></div>
+    <a href="/contact" class="contact">ご予約<span>・お問い合わせ</span></a>
   </div>
 </header>
 
 <style>
-  header {
+  .spacer {
     height: 74px;
   }
 
-  .large {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 60px 75px repeat(2, 1fr) 80px;
+    grid-template-rows: 14px 60px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    position: fixed;
+    z-index: 300;
+    background-color: #f4f4f4c4;
+  }
+
+  .location {
+    grid-row: 1 / 2;
+    grid-column: 3 / 6;
+    text-align: end;
+    padding-right: 10px;
+    font-size: 1rem;
+    /* margin: 0; */
+    color: var(--primary);
+  }
+
+  span {
     display: none;
   }
-  .small {
-    position: relative;
-    width: 100%;
-    height: 74px;
-    z-index: 300;
-  }
 
-  .small p {
-    text-align: end;
-    margin-right: 1rem;
-    margin-bottom: 0rem;
-    padding: 0;
+  .hamburger {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    width: 60px;
   }
-
-  .small .headerNav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .logo2 {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    margin-block: auto;
   }
-
-  .small .left {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .small .logo img {
+  .logo2 img {
     width: 75px;
     height: 41px;
   }
-
-  .small .right {
+  .logo {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    /* margin-block: auto; */
+    display: none;
+  }
+  .logo img {
+    width: 90px;
+    height: 90px;
+  }
+  .contact {
+    grid-row: 2 / 3;
+    grid-column: 5 / 6;
+    line-height: 32px;
+    text-decoration: none;
+    font-size: 1.6rem;
+    color: var(--primary);
+    font-weight: bold;
+    margin-block: auto;
+  }
+  .dot {
+    grid-row: 2 / 3;
+    grid-column: 5 / 6;
     margin-right: 20px;
+    margin-block: auto;
     text-align: center;
     width: 60px;
     height: 32px;
@@ -112,102 +112,52 @@ import logo2 from "../assets/logo2.png";
     background-position: center;
   }
 
-  .small .right a {
-    line-height: 32px;
-    text-decoration: none;
-    font-size: 1.6rem;
-    color: var(--primary);
-    font-weight: bold;
-  }
-
-  p {
-    padding: 0;
-    font-size: 1rem;
-    margin: 0;
-    color: var(--primary);
-  }
-
-  span {
-    display: none;
-  }
-
-  /* position:fixed のための設定 */
-  .small {
-    position: absolute;
-    top: 0;
-    position: fixed;
-    z-index: 300;
-    background-color: #f4f4f4c4;
-  }
-
   @media screen and (768px <= width) {
-    header {
+    .spacer {
       height: 134px;
     }
-    .small {
-      display: none;
-    }
-    .large {
-      display: block;
-      position: absolute;
-      top: 0;
-      position: fixed;
-      background-color: #f4f4f47a;
-      width: 100%;
-      height: 134px;
-      z-index: 300;
+    .wrapper {
+      grid-template-columns: 0px 90px repeat(2, 1fr) 180px 90px 0px;
+      grid-template-rows: 20px 90px 20px;
+      grid-column-gap: 20px;
     }
 
-    .large p {
+    .location {
+      grid-row: 1 / 2;
+      grid-column: 4 / 7;
       font-size: 1.4rem;
-      text-align: end;
-      height: 2rem;
-      margin-right: 1rem;
-      /* margin-bottom: -1rem; */
-      filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
+      padding-right: 0px;
     }
+
     span {
       display: inline;
     }
 
-    .large .headerNav {
-      height: 90px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-inline: 22px;
-    }
-
-    .large .logo img {
-      margin-top: 3px;
+    .hamburger {
+      grid-row: 2 / 3;
+      grid-column: 6 / 7;
       width: 90px;
-      filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
     }
-
-    .large .contact {
-      background-image: url(/menu-background.png);
-      background-repeat: no-repeat;
-      background-position: center;
+    .logo2 {
+      display: none;
     }
-
-    .large .right {
-      display: flex;
-      flex-direction: row;
-      text-align: center;
-      width: auto;
-      gap: 16px;
+    .logo {
+      display: block;
+      grid-row: 2 / 3;
+      grid-column: 2 / 3;
     }
-
-    .large .right a {
-      line-height: 90px;
-      text-decoration: none;
+    .contact {
+      grid-row: 2 / 3;
+      grid-column: 5 / 6;
       font-size: 1.8rem;
-      color: var(--primary);
-      font-weight: bold;
-      filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.5));
     }
-    .large.right p {
-      filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+    .dot {
+      grid-row: 2 / 3;
+      grid-column: 5 / 6;
+      width: 180px;
+      height: 64px;
+      background-size: 64px;
     }
   }
+
 </style>

@@ -30,7 +30,7 @@
     background-color: var(--primary);
     display: block;
     position: relative;
-    transition: ease 0.5s;
+    transition: ease .5s;
   }
 
   .hamburger span:nth-child(2) {
@@ -111,18 +111,20 @@
 <script>
   const body = document.querySelector("#js-body")
   const globalNav = document.querySelector("#js-globalNav");
-  const hamburgers = document.querySelectorAll(".hamburger");
+  // const hamburgers = document.querySelectorAll(".hamburger");
+  const hamburger = document.querySelector("#js-hamburger")
   const hamburgerClose = document.querySelector("#js-hamburgerClose");
   const menuList = document.querySelector("#js-globalNav-menu");
 
-  hamburgers.forEach((hamburger) => {
+
+  // hamburgers.forEach((hamburger) => {
     hamburger.addEventListener("click", function () {
       body.classList.toggle("inactive");
       hamburger.classList.add("open");
-      globalNav.classList.toggle("open");
-      hamburgerClose.classList.remove("open")
+      globalNav.classList.add("open");
+      hamburgerClose.classList.add("open")
       menuList.classList.toggle("open");
   })
-});
+// });
 
 </script>

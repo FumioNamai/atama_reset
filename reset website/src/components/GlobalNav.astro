@@ -121,7 +121,7 @@ const nav = [
       z-index: 500;
       opacity: 0;
       width: 100%;
-      transition: all ease 0.5s;
+      transition: all ease 1s;
     }
 
     .globalNav.open {
@@ -243,7 +243,7 @@ const nav = [
     }
       nav {
         margin-top: 2px;
-        padding: 24px;
+        padding: 24px 27px 24px 24px;
         align-items: center;
         flex-direction: row-reverse;
       }
@@ -276,11 +276,11 @@ const nav = [
 
   menulists.forEach((menulist) => {
     menulist.addEventListener("click", function () {
-      body.classList.toggle("inactive");
-      hamburgerClose.classList.toggle("open");
-      hamburger.classList.toggle("open");
-      globalNav.classList.toggle("open");
-      menu.classList.toggle("open");
+      body.classList.remove("inactive");
+      hamburgerClose.classList.remove("open");
+      hamburger.classList.remove("open");
+      globalNav.classList.remove("open");
+      menu.classList.remove("open");
     });
   });
 </script>
