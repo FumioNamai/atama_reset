@@ -12,6 +12,7 @@
 
 
 <style>
+  /* ハンバーガーアイコン */
   .hamburger {
     width: 60px;
     height: 60px;
@@ -56,12 +57,8 @@
   }
 
   .menu {
-    display: none; /* デスクトップのときに表示させる */
-    padding-top: 2px;
-    margin-left: -2px;
-    transform: scale(0.7);
+    display: none;
   }
-
 
   @media screen and ( 768px <= width ) {
     .hamburger {
@@ -105,7 +102,7 @@
     color: var(--primary);
   }
 
-  .menu.open {
+  .open .menu {
     display: none;
   }
   }
@@ -113,22 +110,19 @@
 
 <script>
   const body = document.querySelector("#js-body")
-  const hamburgers = document.querySelectorAll(".hamburger");
   const globalNav = document.querySelector("#js-globalNav");
+  const hamburgers = document.querySelectorAll(".hamburger");
   const hamburgerClose = document.querySelector("#js-hamburgerClose");
   const menuList = document.querySelector("#js-globalNav-menu");
-  const menu = document.querySelectorAll(".menu");
 
   hamburgers.forEach((hamburger) => {
     hamburger.addEventListener("click", function () {
       body.classList.toggle("inactive");
-      hamburger.classList.toggle("open");
+      hamburger.classList.add("open");
       globalNav.classList.toggle("open");
-      hamburgerClose.classList.toggle("open")
+      hamburgerClose.classList.remove("open")
       menuList.classList.toggle("open");
-      menu.forEach((menu) => {
-        menu.classList.toggle("open");
-      })
   })
-  });
+});
+
 </script>

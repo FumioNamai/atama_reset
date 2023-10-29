@@ -51,6 +51,16 @@ html {
   overflow: hidden;
   width: 100%;
 }
+.inactive .bodyInner {
+  scrollbar-gutter: stable;
+  overflow: auto;
+}
+
+/* 調査中 */
+.inactive>header {
+  scrollbar-gutter: stable;
+  overflow: auto;
+}
 
 h1 {
   font-weight: 400;

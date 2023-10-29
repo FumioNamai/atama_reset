@@ -25,13 +25,16 @@ const { title } = Astro.props;
 		<title>頭ほぐし専門店reset | {title}</title>
 	</head>
 	<body id="js-body">
+		<div class="bodyInner">
 		<Header />
 		<GlobalNav />
 			<slot />
 		<Footer />
 		<BottomNav />
-
+	</div>
+  </body>
 </html>
 
 <style>
+
 </style>

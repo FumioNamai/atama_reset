@@ -6,36 +6,48 @@ import logo2 from "../assets/logo2.png";
 ---
 
 <header>
-  <div class="small">
-    <p>名古屋市 昭和高校横 ヘッドマッサージサロン</p>
-    <div class="headerNav">
-      <div class="left">
-        <Hamburger />
-        <div class="logo">
-          <a href="/">
-            <Image src={logo2} alt="ロゴ" width="150" height="82" loading="eager"/>
-          </a>
+  <div class="spacer"></div>
+  <div class="wrapper">
+    <div class="small">
+      <p>名古屋市 昭和高校横 ヘッドマッサージサロン</p>
+      <div class="headerNav">
+        <div class="left">
+          <Hamburger />
+          <div class="logo">
+            <a href="/">
+              <Image
+                src={logo2}
+                alt="ロゴ"
+                width="150"
+                height="82"
+                loading="eager"
+              />
+            </a>
+          </div>
+        </div>
+        <div class="right">
+          <a href="/contact">ご予約</a>
         </div>
       </div>
-      <div class="right">
-        <a href="/contact">ご予約</a>
-      </div>
     </div>
-  </div>
 
-  <div class="spacer"></div>
-  <div class="large">
-    <p>
-      名古屋市 昭和高校横 ヘッドマッサージサロン<span>
-        頭ほぐし専門店 reset</span
-      >
-    </p>
-    <div class="wrapper">
+    <div class="large">
+      <p>
+        名古屋市 昭和高校横 ヘッドマッサージサロン<span>
+          頭ほぐし専門店 reset</span
+        >
+      </p>
       <div class="headerNav">
         <div class="left">
           <a href="/">
             <div class="logo">
-              <Image src={logo} alt="ロゴ" width="90" height="90" loading="eager"/>
+              <Image
+                src={logo}
+                alt="ロゴ"
+                width="90"
+                height="90"
+                loading="eager"
+              />
             </div>
           </a>
         </div>
@@ -48,157 +60,154 @@ import logo2 from "../assets/logo2.png";
       </div>
     </div>
   </div>
+</header>
 
-  <style>
+<style>
+  header {
+    height: 74px;
+  }
+
+  .large {
+    display: none;
+  }
+  .small {
+    position: relative;
+    width: 100%;
+    height: 74px;
+    z-index: 300;
+  }
+
+  .small p {
+    text-align: end;
+    margin-right: 1rem;
+    margin-bottom: 0rem;
+    padding: 0;
+  }
+
+  .small .headerNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .small .left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .small .logo img {
+    width: 75px;
+    height: 41px;
+  }
+
+  .small .right {
+    margin-right: 20px;
+    text-align: center;
+    width: 60px;
+    height: 32px;
+    background-image: url(/menu-background.png);
+    background-repeat: no-repeat;
+    background-size: 32px;
+    background-position: center;
+  }
+
+  .small .right a {
+    line-height: 32px;
+    text-decoration: none;
+    font-size: 1.6rem;
+    color: var(--primary);
+    font-weight: bold;
+  }
+
+  p {
+    padding: 0;
+    font-size: 1rem;
+    margin: 0;
+    color: var(--primary);
+  }
+
+  span {
+    display: none;
+  }
+
+  /* position:fixed のための設定 */
+  .small {
+    position: absolute;
+    top: 0;
+    position: fixed;
+    z-index: 300;
+    background-color: #f4f4f4c4;
+  }
+
+  @media screen and (768px <= width) {
     header {
-      height: 74px;
+      height: 134px;
     }
     .small {
-      position: relative;
-      width: 100%;
-      height: 64px;
-      z-index: 300;
+      display: none;
     }
-
-    .small p {
-      text-align: end;
-      margin-right: 1rem;
-      margin-bottom: 0rem;
-      padding: 0;
-    }
-
     .large {
-      display: none;
-    }
-    .small .headerNav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .small .left {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
-
-    .small .logo img {
-      width: 75px;
-      height: 41px;
-    }
-
-    .small .right {
-      margin-right: 20px;
-      text-align: center;
-      width: 60px;
-      height: 32px;
-      background-image: url(/menu-background.png);
-      background-repeat: no-repeat;
-      background-size: 32px;
-      background-position: center;
-    }
-
-    .small .right a {
-      line-height: 32px;
-      text-decoration: none;
-      font-size: 1.6rem;
-      color: var(--primary);
-      font-weight: bold;
-    }
-
-    p {
-      padding: 0;
-      font-size: 1rem;
-      margin: 0;
-      color: var(--primary);
-    }
-
-    span {
-      display: none;
-    }
-
-    /* position:fixed のための設定 */
-    .small {
+      display: block;
       position: absolute;
       top: 0;
       position: fixed;
-      z-index: 300;
-      background-color: #f4f4f4c4;
-    }
-
-    @media screen and (768px <= width) {
-      header {
+      background-color: #f4f4f47a;
+      width: 100%;
       height: 134px;
+      z-index: 300;
     }
-      .small {
-        display: none;
-      }
-      .large {
-        display: block;
-        position: absolute;
-        top: 0;
-        position: fixed;
-        background-color: #f4f4f47a;
-        width: 100%;
-        height: 134px;
-        z-index: 300;
-      }
 
-      .wrapper {
-        margin-top: -22px;
-      }
-
-      .large p {
-        font-size: 1.4rem;
-        text-align: end;
-        height: 2rem;
-        margin-right: 1rem;
-        /* margin-bottom: -1rem; */
-        filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
-      }
-      span {
-        display: inline;
-      }
-
-      .large .headerNav {
-        height: 90px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 22px;
-      }
-
-      .large .logo img {
-        margin-top: 3px;
-        width: 90px;
-        filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
-      }
-
-      .large .contact {
-        background-image: url(/menu-background.png);
-        background-repeat: no-repeat;
-        background-position: center;
-      }
-
-      .large .right {
-        display: flex;
-        flex-direction: row;
-        text-align: center;
-        width: auto;
-        gap: 16px;
-      }
-
-      .large .right a {
-        line-height: 90px;
-        text-decoration: none;
-        font-size: 1.8rem;
-        color: var(--primary);
-        font-weight: bold;
-        filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.5));
-      }
-      .large.right p {
-        filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
-      }
+    .large p {
+      font-size: 1.4rem;
+      text-align: end;
+      height: 2rem;
+      margin-right: 1rem;
+      /* margin-bottom: -1rem; */
+      filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
     }
-  </style>
-</header>
+    span {
+      display: inline;
+    }
+
+    .large .headerNav {
+      height: 90px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-inline: 22px;
+    }
+
+    .large .logo img {
+      margin-top: 3px;
+      width: 90px;
+      filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
+    }
+
+    .large .contact {
+      background-image: url(/menu-background.png);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .large .right {
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      width: auto;
+      gap: 16px;
+    }
+
+    .large .right a {
+      line-height: 90px;
+      text-decoration: none;
+      font-size: 1.8rem;
+      color: var(--primary);
+      font-weight: bold;
+      filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.5));
+    }
+    .large.right p {
+      filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+    }
+  }
+</style>

@@ -3,6 +3,7 @@
 modal(入力確認画面) 1100
 hamburger 1000
 GlobalNav 500
+bodyInner
 Header 300
 bottomNav 100
 
