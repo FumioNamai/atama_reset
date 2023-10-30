@@ -1,0 +1,35 @@
+---
+import Layout from "@layouts/layout.astro";
+
+---
+
+<Layout title="404 - Page not found">
+  <main>
+    <section>
+      <h2>404</h2>
+      <p>ページが見つかりません</p>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 680px;
+    height: calc(100vh - 248.4px);
+  }
+  p {
+    line-height: 200%;
+    letter-spacing: 2.7px;
+    padding-bottom: 2.4rem;
+  }
+
+  @media screen and (768px <= width) {
+    section {
+      height: calc(100vh - 305.4px);
+    }
+  }
+</style>
