@@ -1,0 +1,59 @@
+---
+const {
+  href,
+  label,
+  width,
+  fontSize = "1.6rem",
+  marginInline = "auto",
+} = Astro.props
+---
+
+<div class="moreButton">
+  <a href={href} class="more">{label}</a>
+  <span />
+</div>
+
+<style define:vars={{width,fontSize, marginInline}}>
+a {
+    text-decoration: none;
+    color: var(--textBlack);
+  }
+
+  a:hover{
+    color: var(--textGray);
+    border-bottom: 1px solid var(--textGray);
+  }
+  .more {
+    font-size: var(--fontSize);
+  }
+
+  .moreButton {
+    margin-inline: var(--marginInline);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: var(--width);
+    line-height: 1.5;
+    padding-right: 10px;
+    transition: all .5s;
+  }
+
+  .moreButton:hover {
+    padding-right: 0px;
+
+  }
+
+  span {
+    content: "";
+    color: var(--textBlack);
+    cursor: pointer;
+    display: block;
+    transform:rotate(-45deg);
+    width: 7px;
+    height: 7px;
+    margin-right: 1.2rem;
+    border-bottom: 1px solid var(--textBlack);
+    border-right: 1px solid var(--textBlack);
+  }
+</style>

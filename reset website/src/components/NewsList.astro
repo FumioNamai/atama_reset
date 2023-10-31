@@ -1,5 +1,6 @@
 ---
 import { getNews } from "src/library/news";
+import MoreButton from "./MoreButton.astro";
 
 const posts = await getNews({ limit: 2 });
 
@@ -30,10 +31,13 @@ const data = posts.contents.map((content) => ({
     </a>
     ))
   }
-  <div class="moreButton">
-  <a href="/news" class="more">もっと見る</a>
-  <span />
-  </div>
+  <MoreButton
+    href = "/news",
+    label = "もっと見る",
+    width = "110px"
+    marginInline = "auto 0"
+  />
+
 </div>
 </section>
 
@@ -52,25 +56,6 @@ const data = posts.contents.map((content) => ({
     color: var(--textGray);
   }
 
-  .more {
-    font-size: 1.6rem;
-  }
-
-  .moreButton {
-    margin-inline: auto 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 110px;
-    line-height: 1.5;
-    padding-right: 10px;
-    transition: all .5s;
-  }
-
-  .moreButton:hover {
-    padding-right: 0px;
-  }
   .container {
     max-width: 400px;
     margin-inline: auto;
@@ -115,18 +100,6 @@ const data = posts.contents.map((content) => ({
     margin-left: 1.2rem;
   }
 
-  span {
-    content: "";
-    color: var(--textBlack);
-    cursor: pointer;
-    display: block;
-    transform:rotate(-45deg);
-    width: 7px;
-    height: 7px;
-    margin-right: 1.2rem;
-    border-bottom: 1px solid var(--textBlack);
-    border-right: 1px solid var(--textBlack);
-  }
 </style>
 
 <script>

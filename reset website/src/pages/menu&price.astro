@@ -3,13 +3,14 @@ import Layout from "@layouts/layout.astro";
 import PriceTag from "@components/PriceTag.astro";
 import DiscountPriceTag from "@components/DiscountPriceTag.astro";
 import DiscountOuter from "@components/DiscountOuter.astro";
-import Sleep from "@components/Sleep.astro"
+import Sleep from "@components/Sleep.astro";
 
 import { Image } from "astro:assets";
 import menuHead from "../assets/menu-head.webp";
 import menuIntestine from "../assets/menu-intestine.webp";
 import menuCalf from "../assets/menu-calf.webp";
 import menuAll from "../assets/menu-all.webp";
+import MoreButton from "@components/MoreButton.astro";
 ---
 
 <Layout pageTitle="施術メニュー＆料金" description="">
@@ -20,7 +21,7 @@ import menuAll from "../assets/menu-all.webp";
     </h3>
     <div class="flex">
       <div class="introduction">
-        <Image src={menuHead} alt="" loading="eager"/>
+        <Image src={menuHead} alt="" loading="eager" />
         <p class="desc">
           当店の頭ほぐしは整体法を取り入れた施術です。自律神経を整える神経伝達物質の活性化が実現されることが実証されました。
         </p>
@@ -75,12 +76,19 @@ import menuAll from "../assets/menu-all.webp";
         <p class="desc">
           全身の血流を良くし、体内に溜まった毒素を排出したり、内臓機能の低下の改善を目指します。<br
           />
-          自律神経を整え、お腹の不調や冷え性、むくみ、疲労感の改善、免疫力の向上などを目的とします。<br
+           自律神経を整え、お腹の不調や冷え性、むくみ、疲労感の改善、免疫力の向上などを目的とします。<br
           />
           <span class="small"
             >※洋服の上から施術します。オイル等は使いません。</span
           >
         </p>
+        <MoreButton
+          href="/intestinal_therapy"
+          label="詳しくはこちら"
+          width="140px"
+          fontSize="1.4rem"
+          marginInline="auto 0"
+        />
       </div>
       <div class="price_list">
         <div class="course_outer">
@@ -115,12 +123,19 @@ import menuAll from "../assets/menu-all.webp";
         <p class="desc">
           ふくらはぎをやわらかくすることで全身の筋膜を緩め、身体のコリ改善や血行促進を目指します。<br
           />
-          血液循環をスムーズにすることで、余分な水分や老廃物を排出し、冷えやむくみの解消を目指します。<br
+           血液循環をスムーズにすることで、余分な水分や老廃物を排出し、冷えやむくみの解消を目指します。<br
           />
           <span class="small"
             >※洋服の上から施術します。オイル等は使いません。</span
           >
         </p>
+        <MoreButton
+          href="/calf_loosening"
+          label="詳しくはこちら"
+          width="140px"
+          fontSize="1.4rem"
+          marginInline="auto 0"
+        />
       </div>
       <div class="price_list">
         <div class="course_outer">
@@ -153,14 +168,20 @@ import menuAll from "../assets/menu-all.webp";
       <div class="introduction">
         <Image src={menuAll} alt="" />
         <p class="desc">
-          腸セラピー → ふくらはぎほぐし → 頭ほぐし<br
-          />
-          の全ての施術をおこなうことで、全身の不定愁訴の改善をめざします。<br
+          腸セラピー → ふくらはぎほぐし → 頭ほぐし<br />
+           の全ての施術をおこなうことで、全身の不定愁訴の改善をめざします。<br
           />
           <span class="small"
             >※洋服の上から施術します。オイル等は使いません。</span
           >
         </p>
+        <MoreButton
+          href="/indefinite_complaint"
+          label="不定愁訴とは"
+          width="120px"
+          fontSize="1.4rem"
+          marginInline="auto 0"
+        />
       </div>
       <div class="price_list">
         <div class="course_outer">
@@ -182,7 +203,6 @@ import menuAll from "../assets/menu-all.webp";
       </div>
     </div>
   </section>
-
   <Sleep />
 </Layout>
 
@@ -193,7 +213,7 @@ import menuAll from "../assets/menu-all.webp";
     padding-bottom: 40px;
   }
 
-  @media screen and ( 768px <= width) {
+  @media screen and (768px <= width) {
     .menu-price {
       max-width: 900px;
     }

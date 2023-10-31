@@ -3,6 +3,7 @@ import BlogList from "@components/BlogList.astro";
 
 import { getAllPosts } from "../../src/library/microcms";
 import ButtonBasic from "./ButtonBasic.astro";
+import MoreButton from "./MoreButton.astro";
 
 const posts = await getAllPosts(4);
 
@@ -28,10 +29,17 @@ const posts = await getAllPosts(4);
       </div>
     </div>
   </div>
-  <ButtonBasic
+  <MoreButton
+  href = "/blogs/1",
+  label = "ブログ一覧へ"
+  width = "125px"
+  fontSize = "1.6rem"
+  marginInline = "auto"
+  />
+  <!-- <ButtonBasic
   url = {"location.href='/blogs/1'"},
   text = {"もっと見る"}
-  />
+  /> -->
 </section>
 
 <style>

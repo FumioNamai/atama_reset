@@ -1,4 +1,6 @@
 ---
+import MoreButton from "./MoreButton.astro";
+
 const problems = [
   "頭痛、頭が重い",
   "首や肩のコリ",
@@ -40,7 +42,6 @@ const problems = [
     </div>
   </div>
 
-
   <div class="cause">
     <p class="text-1 fadeinText">「眠い」「疲れた」「飽きた」</p>
     <p class="text-2 fadeinText">それは<span class="bold large">『 脳疲労 』</span>のサイン</p>
@@ -51,6 +52,13 @@ const problems = [
     <div class="icon fadeinText"></div>
     <p class="text-5 fadeinText">疲れていない体が疲労感を感じる</p>
     <p class="text-6 fadeinText">自律神経の乱れを引き起こし<br>体のあらゆる部分に不調が出ます</p>
+    <div class="fadeinText">
+    <MoreButton
+    href = "/brain_fatigue",
+    label = "脳疲労とは..."
+    width = "125px"
+    marginInline = "auto"
+    /></div>
   </div>
 
   <p class="otherwise fadeinText">もしくは･･･</p>
@@ -184,6 +192,10 @@ const problems = [
   }
   .fadein:nth-child(13) {
     animation-delay: 1.3s;
+  }
+
+  .moreButton {
+    text-align: center;
   }
 
   .suggestion {
