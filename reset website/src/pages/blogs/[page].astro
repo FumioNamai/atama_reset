@@ -16,11 +16,11 @@ export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {
 };
 const { page } = Astro.props;
 
-const posts = await getAllPosts();
+// const posts = await getAllPosts();
 
 ---
 
-<Layout title="ブログ一覧">
+<Layout pageTitle="ブログ一覧" description="">
   <main>
     <section class="blogs">
       <h2>ブログ</h2>

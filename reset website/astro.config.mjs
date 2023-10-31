@@ -4,6 +4,9 @@ import netlify from "@astrojs/netlify/functions";
 
 import preact from "@astrojs/preact";
 
+import { siteMeta } from './src/library/constants';
+const { siteUrl } = siteMeta;
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [preact({
@@ -13,5 +16,6 @@ export default defineConfig({
     remotePatterns:[{ protocol: "https" }]
   },
   output: "server",
-  adapter: netlify()
+  adapter: netlify(),
+  site: siteUrl,
 });

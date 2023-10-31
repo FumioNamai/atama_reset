@@ -1,0 +1,44 @@
+---
+import { siteMeta } from "src/library/constants";
+const {
+  siteTitle,
+  siteDesc,
+  siteLocale,
+  siteType,
+  siteIcon,
+} = siteMeta;
+
+const {
+  pageTitle,
+  description = siteDesc,
+} = Astro.props;
+
+const title = pageTitle ? `${siteTitle} | ${pageTitle}` : siteTitle;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<head>
+  <meta charset="utf-8" />
+  <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,500&display=swap"
+    rel="stylesheet"
+  />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+
+  <title>{title}</title>
+  <meta property="og:title" content={title}>
+  <meta name="description" content={description}>
+  <meta property="og:description" content={description}>
+  <link rel="canonical" href={canonicalURL}/>
+  <meta property="og:url" content={canonicalURL}/>
+  <meta property="og:site_name" content={siteTitle}/>
+  <meta property="og:type" content={siteType}/>
+  <meta property="og:locale" content={siteLocale}/>
+  <!-- <link rel="icon" href={siteIcon}/> -->
+  <link rel="apple-touch-icon" href={siteIcon}/>
+</head>

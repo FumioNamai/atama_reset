@@ -36,7 +36,7 @@ body {
   font-family: 'Noto Serif JP', serif;
   margin: 0;
   overflow-x: auto;
-  overflow-y: auto;
+  overflow-y: scroll;
   min-width: 375px;
 }
 
@@ -53,13 +53,7 @@ html {
 }
 .inactive .bodyInner {
   scrollbar-gutter: stable;
-  overflow: auto;
-}
-
-/* 調査中 */
-.inactive>header {
-  scrollbar-gutter: stable;
-  overflow: auto;
+  overflow: scroll;
 }
 
 h1 {
