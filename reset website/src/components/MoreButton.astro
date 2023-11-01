@@ -17,6 +17,7 @@ const {
 a {
     text-decoration: none;
     color: var(--textBlack);
+    border-bottom: 1px solid transparent;
   }
 
   a:hover{
@@ -34,6 +35,7 @@ a {
     align-items: center;
     justify-content: space-between;
     width: var(--width);
+    height: 25px;
     line-height: 1.5;
     padding-right: 10px;
     transition: all .5s;
@@ -41,19 +43,23 @@ a {
 
   .moreButton:hover {
     padding-right: 0px;
-
   }
 
-  span {
+  .moreButton::after {
     content: "";
     color: var(--textBlack);
     cursor: pointer;
     display: block;
     transform:rotate(-45deg);
-    width: 7px;
-    height: 7px;
+    width: 10px;
+    height: 10px;
     margin-right: 1.2rem;
     border-bottom: 1px solid var(--textBlack);
     border-right: 1px solid var(--textBlack);
+  }
+
+  .moreButton:hover::after {
+    border-bottom: 1px solid var(--textGray);
+    border-right: 1px solid var(--textGray)
   }
 </style>
