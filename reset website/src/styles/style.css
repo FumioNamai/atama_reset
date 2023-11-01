@@ -1,8 +1,19 @@
 
-@import '@fontsource/noto-serif-jp';
+/* @import '@fontsource/noto-serif-jp'; */
+
 @import '@fontsource/noto-sans-jp';
 
 @import "../styles/splide.min.css";
+
+/* noto-serif-jp-regular - japanese_latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Noto Serif JP';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/noto-serif-jp-v21-japanese_latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
 
 /* 基本色 */
 :root {
