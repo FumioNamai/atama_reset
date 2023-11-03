@@ -76,6 +76,7 @@ const data = posts.contents.map((content) => ({
     text-align: start;
     padding-block: 2.4rem 0;
     border-bottom: 1px solid var(--gray-25);
+    max-width: 640px;
   }
 
   .publishedAt {
@@ -89,6 +90,11 @@ const data = posts.contents.map((content) => ({
 
   .richEditor {
     margin-block-end: 2.4rem;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
   }
 </style>
 
