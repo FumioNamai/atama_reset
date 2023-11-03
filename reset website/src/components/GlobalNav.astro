@@ -188,10 +188,11 @@ const nav = [
 
     #js-globalNav-menu a {
       transform: translateY(110%);
+      transition: transform ease 1s;
     }
 
     #js-globalNav-menu.open a {
-      transition: all ease .5s;
+      transition: transform ease 2s;
       transform: translateY(0%);
     }
 
@@ -228,8 +229,11 @@ const nav = [
       width: 0;
     }
 
-    .menu a:hover::after {
-      width: 100%;
+
+    @media (hover: hover) {
+      .menu a:hover::after {
+        width: 100%;
+      }
     }
 
     .menu li:nth-child(n + 11):nth-child(-n + 17) {
