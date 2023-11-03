@@ -6,6 +6,7 @@ const posts = await getNews({ limit: 2 });
 
 const data = posts.contents.map((content) => ({
   title: content.title,
+  tag:content.tag,
   publishedAt: content.publishedAt
     ? new Date(content.publishedAt)
         .toLocaleDateString("ja-JP")
@@ -21,9 +22,21 @@ const data = posts.contents.map((content) => ({
   {
     data.map((content) => (
       <a href="/news">
-      <div class="news-header">
-        <p class="publishedAT">{content.publishedAt}</p>
-        <div class="wrapper">
+        <div class="news-header">
+            { content.tag.map((tag) => {
+              switch (tag) {
+                case "重要":
+                  return <div class="tag important">重要</div>;
+                case "NEW":
+                  return <div class="tag new">NEW</div>;
+                  case "緊急":
+                  return <div class="tag emergency">緊急</div>;
+                default:
+                  break;
+              }
+            })
+            }
+            <div class="wrapper">
           <p>{content.title}</p>
           <span />
         </div>
@@ -78,11 +91,6 @@ const data = posts.contents.map((content) => ({
     border-bottom: 1px solid var(--textBlack);
     margin-bottom: 1.6rem;
     transition: all .5s;
-    padding-right: 10px;
-  }
-
-  .news-header:hover {
-    padding-right: 0px;
   }
 
   .publishedAT {

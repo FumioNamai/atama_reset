@@ -8,6 +8,7 @@ const client = createClient({
 export type News = {
   id: string,
   title: string,
+  tag: string,
   createdAt: string,
   publishedAt: string,
   article: {

@@ -4,7 +4,6 @@ import Layout from "@layouts/layout.astro";
 import { getNews } from "src/library/news";
 
 const posts = await getNews({ limit: 100 });
-// console.log(posts);
 
 const data = posts.contents.map((content) => ({
   title: content.title,
@@ -14,6 +13,7 @@ const data = posts.contents.map((content) => ({
         .split("/")
         .join(".")
     : "",
+  tag:content.tag,
   articles:content.article
 }));
 
@@ -27,6 +27,19 @@ const data = posts.contents.map((content) => ({
         data.map((content) => (
           <div class="container">
             <p class="publishedAt">{content.publishedAt}</p>
+            { content.tag.map((tag) => {
+          switch (tag) {
+            case "重要":
+              return <div class="tag important">重要</div>;
+            case "NEW":
+              return <div class="tag new">NEW</div>;
+              case "緊急":
+              return <div class="tag emergency">緊急</div>;
+            default:
+              break;
+          }
+        })
+      }
             <h3 class="title">{content.title}</h3>
             <article>
               {
