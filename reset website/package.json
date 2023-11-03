@@ -12,6 +12,8 @@
   "dependencies": {
     "@astrojs/netlify": "^3.0.0",
     "@astrojs/preact": "^3.0.0",
+    "@fontsource-variable/eb-garamond": "^5.0.16",
+    "@fontsource/eb-garamond": "^5.0.15",
     "@fontsource/noto-sans-jp": "^5.0.8",
     "@fontsource/noto-serif-jp": "^5.0.7",
     "@types/react-datepicker": "^4.19.1",
