@@ -1,21 +1,21 @@
 ---
-const { courseTitle , time, price } = Astro.props
+const { courseTitle , time, price, height="45px"} = Astro.props
 ---
 
-  <div class="course">
+  <div class="course" >
   <p>{ courseTitle }</p>
   <div class="time-price">
     <p class="time">{ time }<span>分コース</span></p>
-    <p>{ price }<span class="yen">円(税込)</span></p>
+    <p class="price">{ price }<span class="yen">円(税込)</span></p>
   </div>
 </div>
 
-<style>
+<style define:vars={{height}}>
   .course {
     box-sizing: border-box;
     margin: 0 auto;
     width: 280px;
-    height: 45px;
+    height: var(--height);
     padding-block: 8px;
     padding-inline: 10px;
     background-color: rgba(102, 175, 195, 0.3);
@@ -34,7 +34,7 @@ const { courseTitle , time, price } = Astro.props
   .time-price {
     display: flex;
     justify-content: space-around;
-    gap: 46px;
+    /* gap: 46px; */
   }
 
   .time-price p {
@@ -53,6 +53,11 @@ const { courseTitle , time, price } = Astro.props
   .time {
     display: inline-block;
     width: 100px;
+    text-align: right;
+  }
+
+  .price {
+    width: 130px;
     text-align: right;
   }
 </style>
