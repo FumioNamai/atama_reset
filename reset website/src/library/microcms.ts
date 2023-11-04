@@ -47,7 +47,7 @@ export const getBlogs = async (queries?: MicroCMSQueries) => {
       }})
 };
 
-export async function getAllPosts( limit = 10) {
+export async function getAllPosts( limit = 100) {
     const posts = await client.get({
       endpoint: "blogs",
       queries: {
@@ -70,7 +70,7 @@ export const getBlogDetail = async (
   });
 };
 
-export async function getAllSlugs(limit:10) {
+export async function getAllSlugs(limit:100) {
     const slugs = await client.get({
       endpoint: 'blogs',
       queries: { fields: 'title,slug', orders:'-publishDate', limit:limit},
