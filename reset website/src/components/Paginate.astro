@@ -61,7 +61,7 @@ const { prev, next, currentPage,lastPage} = Astro.props;
       currentPage + 1 < lastPage ? (
         <li  class="dot">...</li>
         <li class="pNumber">
-          <a href={lastPage}>{lastPage}</a>
+          <a href={`/blogs/${lastPage}`}>{lastPage}</a>
         </li>
       ) : (
         <li />
