@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/layout.astro";
 import BlogPreview from "../components/BlogPreview.jsx";
-import ButtonBasic from "@components/ButtonBasic.astro"
+import BackButton from "@components/BackButton.astro";
 ---
 
 <Layout pageTitle="ブログプレビュー">
@@ -10,9 +10,11 @@ import ButtonBasic from "@components/ButtonBasic.astro"
       <div class="container">
         <BlogPreview client:only="preact" />
         <!-- client:only　でサーバーサイドでレンダリングしない設定 -->
-        <ButtonBasic
-          url = {"location.href='/blogs/1'"},
-          text = {"一覧に戻る"}
+        <BackButton
+          href = "/blogs/1",
+          label = "一覧に戻る",
+          width = "130px",
+          fontSize = "1.8rem",
         />
       </div>
       <aside>

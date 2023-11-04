@@ -30,19 +30,19 @@ const BlogPreview = () => {
 
   return (
     <>
-        <p className={styles.publishedAt}>
+        <p className={styles?.publishedAt}>
           {pubDate}
         </p>
         <h2 className={styles.title}>{data.title}</h2>
         <div className={styles.setHtml} dangerouslySetInnerHTML={{ __html: data?.article.rich_editor ?? "" }} />
-        <div className={styles.image}>
+        <div className={styles?.image}>
           <img
             style={img}
             className={styles.blogImg}
-            src={data.eyecatch.url}
+            src={data.eyecatch?.url}
             alt=""
-            height={data.eyecatch.height}
-            width={data.eyecatch.width}
+            height={data.eyecatch?.height}
+            width={data.eyecatch?.width}
           />
         </div>
 
