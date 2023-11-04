@@ -47,7 +47,7 @@ export async function getAllPosts( limit = 100) {
       limit: limit,
     },
   })
-  return posts.contents
+  // return posts.contents
 }
 
 // export const getBlogs = async (queries?: MicroCMSQueries) => {

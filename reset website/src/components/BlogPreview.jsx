@@ -1,6 +1,6 @@
 
 import useSWR from "swr"
-import { getBlogDetail } from "../library/microcms";
+import { getAllPosts } from "../library/microcms";
 import styles from "../styles/BlogPreview.module.css"
 
 
@@ -12,7 +12,7 @@ const BlogPreview = () => {
 
   const { data, error, isLoading, isValidating } = useSWR(
     contentId === null || draftKey === null ? null : ["/preview", contentId, draftKey],
-    ([, contentId, draftKey]) => getBlogDetail(contentId, { draftKey })
+    ([, contentId, draftKey]) => getAllPosts(contentId, { draftKey })
   )
 
   const pubDate = new Date(data?.publishedAt)
