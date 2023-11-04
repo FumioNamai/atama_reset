@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/layout.astro";
-import { getBlogs, getAllPosts } from "../../library/microcms";
+import { getAllPosts } from "../../library/microcms";
 import BlogList from "@components/BlogList.astro";
 import BackButton from "@components/BackButton.astro";
 
@@ -8,7 +8,7 @@ export const prerender = true;
 
 // 詳細記事ページの全パスを取得
 export async function getStaticPaths({}) {
-  const blogs = await getBlogs({ fields: ["id"]["slug"] });
+  const blogs = await getAllPosts();
   return blogs.contents.map((content) => ({
     params: {
       // []内に入れる変数を指定
@@ -33,7 +33,6 @@ if (content.publishedAt) {
 }
 // aside用 microCMSを呼び出す
 const posts = await getAllPosts(5);
-
 ---
 
 <Layout pageTitle="ブログ記事">
@@ -88,7 +87,7 @@ const posts = await getAllPosts(5);
         <div class="blog-list">
           <h3>最近の投稿</h3>
           {
-            posts.map((post) => (
+            posts.contents.map((post) => (
               <BlogList
                 id={post.id}
                 slug={post.slug}

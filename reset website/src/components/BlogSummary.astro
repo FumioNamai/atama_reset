@@ -2,7 +2,6 @@
 import BlogList from "@components/BlogList.astro";
 
 import { getAllPosts } from "../../src/library/microcms";
-import ButtonBasic from "./ButtonBasic.astro";
 import MoreButton from "./MoreButton.astro";
 
 const posts = await getAllPosts(4);
@@ -15,7 +14,7 @@ const posts = await getAllPosts(4);
     <div class="sliderWrap splide__track">
       <div class="container splide__list">
         {
-          posts.map((post) => (
+          posts.contents.map((post) => (
             <BlogList
               id={post.id}
               slug={post.slug}

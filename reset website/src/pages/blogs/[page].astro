@@ -3,22 +3,18 @@ import type { GetStaticPathsOptions } from "astro";
 import Layout from "@layouts/layout.astro";
 import BlogList from "@components/BlogList.astro";
 // microCMSを呼び出す
-import { getBlogs, getAllPosts } from "../../../src/library/microcms";
+import { getAllPosts } from "../../../src/library/microcms";
 import Paginate from "@components/Paginate.astro";
 
 
 export const prerender = true;
 
 export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {
-  const blogs = await getBlogs();
+  const blogs = await getAllPosts();
   // pageSize = 一覧に表示する記事の数
-  console.log(blogs);
   return paginate(blogs.contents, { pageSize: 5 });
 };
 const { page } = Astro.props;
-
-
-// const posts = await getAllPosts();
 
 ---
 
@@ -28,14 +24,14 @@ const { page } = Astro.props;
       <h2>ブログ</h2>
       <div class="container">
         {
-          page.data.map((page) => (
+          page.data.map((data) => (
             <BlogList
-              id={page.id}
-              slug={page.slug}
-              src={page.eyecatch.url}
-              date={page.publishedAt}
-              title={page.title}
-              summary={page.summary}
+              id={data.id}
+              slug={data.slug}
+              src={data.eyecatch.url}
+              date={data.publishedAt}
+              title={data.title}
+              summary={data.summary}
             />
           ))
         }
