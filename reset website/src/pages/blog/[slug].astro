@@ -107,11 +107,11 @@ const posts = await getAllPosts(5);
 
 <style>
   .container {
-    margin: 0 auto;
     height: auto;
     max-width: 640px;
     padding-inline: 1.6rem;
     padding-block: 4rem;
+    margin-inline: auto;
   }
 
   article {
@@ -144,12 +144,15 @@ const posts = await getAllPosts(5);
     text-align: center;
   }
 
-  @media screen and (768px <= width) {
+  @media screen and (945px <= width) {
     section {
       display: flex;
       flex-direction: row;
       max-width: 900px;
       margin: 4rem auto;
+    }
+    .container {
+      width: 568px;
     }
     aside {
       display: block;

@@ -8,7 +8,7 @@ import sleeping from "../assets/sleeping.svg";
 import smile from "../assets/smile.svg";
 import counseling from "../assets/counseling.webp";
 import head from "../assets/head.webp";
-import refreshing2 from "../assets/refreshing2.webp";
+import refreshing2s from "../assets/refreshing2s.webp";
 ---
 
 <section class="steps" id="steps">
@@ -35,9 +35,7 @@ import refreshing2 from "../assets/refreshing2.webp";
           </p>
         </div>
         <div class="image">
-          <div class="image">
-            <Image src={counseling} alt="" class="icon" />
-          </div>
+            <Image src={counseling} alt="" width=320 height=213.5 />
         </div>
       </div>
       <div class="step_line"></div>
@@ -94,7 +92,7 @@ import refreshing2 from "../assets/refreshing2.webp";
           </p>
         </div>
         <div class="image">
-          <Image src={head} alt="" />
+          <Image src={head} alt="" width=320 height=213.5 />
         </div>
       </div>
       <div class="step_line"></div>
@@ -116,7 +114,7 @@ import refreshing2 from "../assets/refreshing2.webp";
           </p>
         </div>
         <div class="image">
-          <Image src={refreshing2} alt="" />
+          <Image src={refreshing2s} alt="" width=320 height=213.5 />
         </div>
       </div>
       <span class="dot"></span>
@@ -158,11 +156,11 @@ import refreshing2 from "../assets/refreshing2.webp";
     }
   }
 
+  /* サイズ調整が必要 */
   .image {
     margin: 0 auto 18px auto;
     width: 320px;
   }
-
   .step {
     margin-left: 28px;
     padding-left: 12px;
