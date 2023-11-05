@@ -9,6 +9,7 @@ export const prerender = true;
 // 詳細記事ページの全パスを取得
 export async function getStaticPaths({}) {
   const blogs = await getAllPosts();
+
   return blogs.contents.map((content) => ({
     params: {
       // []内に入れる変数を指定

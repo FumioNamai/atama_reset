@@ -8,35 +8,35 @@ const client = createClient({
   apiKey: import.meta.env.PUBLIC_MICROCMS_API_KEY,
 });
 
-//  型定義
-// export type Blog = {
-//   id: string,
-//   title: string,
-//   slug: string,
-//   publishedAt: string,
-//   eyecatch: {
-//     url: string,
-//     height: number,
-//     width: number,
-//   },
-//   summary: string,
-//   article: {
-//     image:  {
-//       url: string,
-//       height: number,
-//       width: number,
-//     },
-//     text: string,
-//     rich_editor: string,
-//   },
-// };
-// export type BlogResponse = {
-//   totalCount: number,
-//   offset: number,
-//   limit: number,
-//   contents: Blog[],
-//   draftKey: string,
-// }
+// 型定義
+export type Blog = {
+  id: string,
+  title: string,
+  slug: string,
+  publishedAt: string,
+  eyecatch: {
+    url: string,
+    height: number,
+    width: number,
+  },
+  summary: string,
+  article: {
+    image:  {
+      url: string,
+      height: number,
+      width: number,
+    },
+    text: string,
+    rich_editor: string,
+  },
+};
+export type BlogResponse = {
+  totalCount: number,
+  offset: number,
+  limit: number,
+  contents: Blog[],
+  draftKey: string,
+}
 
 // APIの呼び出し
 export async function getAllPosts( limit = 100) {

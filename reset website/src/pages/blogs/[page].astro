@@ -12,10 +12,9 @@ export const prerender = true;
 export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {
   const blogs = await getAllPosts();
   // pageSize = 一覧に表示する記事の数
-  return paginate(blogs.contents, { pageSize: 5 });
+  return paginate(blogs.contents, { pageSize: 3 });
 };
 const { page } = Astro.props;
-console.log(page);
 
 ---
 

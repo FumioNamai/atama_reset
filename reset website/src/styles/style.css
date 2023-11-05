@@ -33,7 +33,9 @@
 body {
   color: var(--textBlack);
   background-color: var(--bgPrimary);
-  font-family: 'Noto Serif JP', serif;
+  /* font-family: 'Noto Serif JP', serif; */
+  font-family: serif;
+  font-weight: 500s;
   margin: 0;
   overflow-x: auto;
   overflow-y: scroll;
