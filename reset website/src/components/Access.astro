@@ -52,6 +52,7 @@ import clinic_image_4 from "../assets/clinic_image_4.webp";
           />お過ごしくださいませ。
         </p>
       </div>
+      <div class="clinic-image">
       <div class="splide" role="group" aria-label="治療院の画像" id="imageSlider">
         <div class="splide__track">
           <div class="splide__arrows"></div>
@@ -72,6 +73,7 @@ import clinic_image_4 from "../assets/clinic_image_4.webp";
         </div>
         <ul class="splide__pagination"></ul>
       </div>
+    </div>
     </div>
   </div>
 </section>
@@ -217,11 +219,16 @@ import clinic_image_4 from "../assets/clinic_image_4.webp";
     .clinic-flex-wrap {
       display: flex;
       flex-direction: row;
+      gap: 40px;
     }
 
     .clinic-text {
       width: 430px;
     }
+    .clinic-image {
+      width: 430px;
+      padding-top: 3.6rem;
+  }
 
     .splide {
       margin-inline: 0;
