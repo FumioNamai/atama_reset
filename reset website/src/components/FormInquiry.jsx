@@ -230,11 +230,11 @@ export default function InquiryForm() {
               </div>
 
               <div className="modalButtons">
-                <div>
-                  <button  className="btn-form"type="submit" onClick={handleSubmit}disabled={disableConfirm}>送信する</button>
+              <div>
+                  <button  className="btn-form"onClick={closeModal}>入力画面に戻る</button>
                 </div>
                 <div>
-                  <button  className="btn-form"onClick={closeModal}>入力画面に戻る</button>
+                  <button  className="btn-form"type="submit" onClick={handleSubmit}disabled={disableConfirm}>送信する</button>
                 </div>
               </div>
 
