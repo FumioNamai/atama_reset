@@ -35,10 +35,6 @@ const posts = await getAllPosts(4);
   fontSize = "1.6rem"
   marginInline = "auto"
   />
-  <!-- <ButtonBasic
-  url = {"location.href='/blogs/1'"},
-  text = {"もっと見る"}
-  /> -->
 </section>
 
 <style>
@@ -54,11 +50,12 @@ const posts = await getAllPosts(4);
 
   h2 {
     text-align: center;
+    margin-bottom: 2.4rem;
   }
 
   .splide {
     margin-inline: auto;
-    max-width: 1260px;
+    max-width: 1068px;
     margin-bottom: 2.4rem;
   }
   .sliderWrap {
@@ -130,15 +127,15 @@ const posts = await getAllPosts(4);
   // Splideのオプション設定
   const options = {
     type: "slide",
-    fixedWidth:"300px",
-    height: "340px",
+    fixedWidth:"252px",
+    height: "300px",
     gap: "20px",
     padding:  { left: '4rem', right: '4rem' },
     focus    : 'center',
     trimSpace: false,
     mediaQuery: "min",
     breakpoints: {
-      1260: {
+      1068: {
         focus    : false,
         trimSpace: true,
         arrows: false,
