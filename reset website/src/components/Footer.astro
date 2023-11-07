@@ -7,34 +7,34 @@ import logo from "../assets/reset_logo.svg";
   <div class="container">
     <p class="name">頭ほぐし専門店 reset</p>
     <div class="content">
-      <a href="/">
-        <Image src={logo} alt="ロゴ" width={90} height={90}/>
+      <a href="/" class="logo">
+        <Image src={logo} alt="ロゴ" width={120} height={120} />
       </a>
       <div class="detail">
-          <p>営業時間｜12時～21時［不定休］</p>
-          <p>TEL｜080-9271-7855</p>
-          <p>E-mail｜atama.reset@gmail.com</p>
-          <p>〒468-0066</p>
-          <address>愛知県名古屋市天白区元八事1-107</address>
-          <p>「リライフ治療院」内</p>
+        <p>営業時間｜12時～21時［不定休］</p>
+        <p>TEL｜080-9271-7855</p>
+        <p>E-mail｜atama.reset@gmail.com</p>
+        <p>〒468-0066</p>
+        <address>愛知県名古屋市天白区元八事1-107</address>
+        <p>「リライフ治療院」内</p>
       </div>
     </div>
-      <div class="copyright">
-        <p>©2023 頭ほぐし専門店 reset　All rights reserved.</p>
-      </div>
+    <div class="copyright">
+      <p>©2023 頭ほぐし専門店 reset　All rights reserved.</p>
+    </div>
   </div>
 </footer>
 <style>
   footer {
-    margin-bottom:60px;  /* BottomNav用のスペース */
+    margin-bottom: 60px; /* BottomNav用のスペース */
   }
 
-  @media screen and (768px <= width){
+  @media screen and (768px <= width) {
     footer {
       margin-bottom: 0px;
     }
-
   }
+
   .container {
     height: auto;
     padding-inline: 7%;
@@ -46,17 +46,35 @@ import logo from "../assets/reset_logo.svg";
     padding-block: 12px;
     color: var(--textWhite);
     font-weight: normal;
-    font-size: 1.6rem;
+    font-size: 2rem;
   }
+
   .content {
+    height: 90px;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
+  }
+  @media screen and (450px <= width) {
+    .content {
+      height: 120px;
+    }
+  }
+
+  .logo {
+    width: 90px;
+    height: auto;
+  }
+  @media screen and (450px <= width) {
+    .logo {
+      width: 120px;
+    }
   }
 
   img {
-    width: 90px;
+    width: 100%;
+    height: auto;
   }
 
   .detail {
@@ -67,16 +85,23 @@ import logo from "../assets/reset_logo.svg";
   .detail p {
     padding: 0;
     font-size: 1.2rem;
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: "Noto Sans JP", sans-serif;
     color: var(--textWhite);
     line-height: 125%;
+  }
+
+  @media screen and (450px <= width) {
+    .detail p {
+      font-size: 1.4rem;
+      line-height: 150%;
+    }
   }
 
   .detail address {
     font-style: normal;
     margin: 0;
     font-size: 1.2rem;
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: "Noto Sans JP", sans-serif;
     color: var(--textWhite);
     line-height: 125%;
   }
@@ -84,9 +109,14 @@ import logo from "../assets/reset_logo.svg";
   .copyright p {
     color: var(--gray-50);
     padding-block: 16px 4px;
-    font-size: 1rem;
-    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1.2rem;
+    font-family: "Noto Sans JP", sans-serif;
     text-align: center;
     text-decoration: none;
+  }
+  @media screen and (450px <= width) {
+    .copyright p {
+      font-size: 1.4rem;
+    }
   }
 </style>
