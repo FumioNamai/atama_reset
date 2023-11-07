@@ -273,7 +273,7 @@ export default function FormReservation() {
         </div>
         <div className="inputWrapper">
           <label className="bold"
-          >希望時間</label><span className="alert">&nbsp;*</span><br />
+          >希望時間<span className="alert">&nbsp;*</span></label><br />
           <select
             name="time"
             value={time}
