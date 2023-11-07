@@ -28,7 +28,6 @@ import logo from "../assets/reset_logo.svg";
   footer {
     margin-bottom: 60px; /* BottomNav用のスペース */
   }
-
   @media screen and (768px <= width) {
     footer {
       margin-bottom: 0px;
@@ -37,8 +36,13 @@ import logo from "../assets/reset_logo.svg";
 
   .container {
     height: auto;
-    padding-inline: 7%;
+    padding-inline: 1.6rem;
     background-color: var(--bgFooter);
+  }
+  @media screen and (450px <= width) {
+    .container {
+    padding-inline: 2.4rem;
+  }
   }
 
   .name {
