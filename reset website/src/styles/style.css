@@ -53,6 +53,7 @@ html {
   overflow: hidden;
   width: 100%;
 }
+
 .inactive .bodyInner {
   scrollbar-gutter: stable;
   overflow: scroll;
