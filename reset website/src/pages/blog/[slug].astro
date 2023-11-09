@@ -22,7 +22,13 @@ export async function getStaticPaths({}) {
 
 // 記事の詳細情報を取得
 const { content } = Astro.props;
+
+const eyecatchHeight = content.eyecatch.height
+const eyecatchWidth = content.eyecatch.width
+
 const articles = content.article;
+const articleHeight = content.article.height
+const articleWidth = content.article.width
 
 // 日付の表示を変更
 let pubDate;
@@ -44,6 +50,7 @@ const posts = await getAllPosts(5);
         <h2 class="title">{content.title}</h2>
         <div class="image">
           <img
+            class="eyecatchImg"
             src={content.eyecatch.url}
             alt=""
             height={content.eyecatch.height}
@@ -60,6 +67,7 @@ const posts = await getAllPosts(5);
                   return (
                     <div class="image">
                       <img
+                        class="articleImg"
                         src={article.image.url}
                         alt=""
                         height={article.image.height}
@@ -105,7 +113,13 @@ const posts = await getAllPosts(5);
   </main>
 </Layout>
 
-<style>
+<style define:vars={{
+  eyecatchHeight,
+  eyecatchWidth ,
+  articleWidth,
+  articleHeight
+  }}>
+
   .container {
     height: auto;
     max-width: 640px;
@@ -128,13 +142,20 @@ const posts = await getAllPosts(5);
 
   .image {
     margin: 0 0 1.6rem 0 ;
-    width: 100%;
   }
 
   img {
-    max-width: 568px;
-    width: auto;
-    height: auto;
+    max-width: 100%;
+    /* aspect-ratio: auto; */
+  }
+  .eyecatchImg {
+    width: var(--eyecatchWidth);
+    height: var(--eyecatchHeight);
+  }
+
+  .articleImg {
+    width: var(--articleWidth);
+    height: var(--articleHeight);
   }
 
   aside {
