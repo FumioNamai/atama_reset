@@ -1,18 +1,16 @@
 
 import useSWR from "swr"
-import { getAllPosts } from "../library/microcms";
+import { getBlogDetail } from "../library/microcms";
 import styles from "../styles/BlogPreview.module.css"
-
 
 const BlogPreview = () => {
   const params = new URLSearchParams(window.location.search);
   const contentId = params.get("contentId")
   const draftKey = params.get("draftKey")
 
-
   const { data, error, isLoading, isValidating } = useSWR(
     contentId === null || draftKey === null ? null : ["/preview", contentId, draftKey],
-    ([, contentId, draftKey]) => getAllPosts(contentId, { draftKey })
+    ([, contentId, draftKey]) => getBlogDetail(contentId, { draftKey })
   )
 
   const pubDate = new Date(data?.publishedAt)
@@ -22,10 +20,16 @@ const BlogPreview = () => {
 
   if (error) return <div>エラーが発生しました</div>;
   if (isLoading) return <div>読み込み中...</div>;
-
-  const img = {
-    width: "100%",
+  // if (isValidating) return <div>更新中...</div>;
+  const eyecatchImg = {
+    width: data.eyecatch?.width,
     height: "auto",
+    maxWidth: "100%",
+  }
+  const articleImg = {
+    width: data.article?.width,
+    height: "auto",
+    maxWidth: "100%",
   }
 
   return (
@@ -37,7 +41,7 @@ const BlogPreview = () => {
         <div className={styles.setHtml} dangerouslySetInnerHTML={{ __html: data?.article.rich_editor ?? "" }} />
         <div className={styles?.image}>
           <img
-            style={img}
+            style={eyecatchImg}
             className={styles.blogImg}
             src={data.eyecatch?.url}
             alt=""
@@ -45,7 +49,7 @@ const BlogPreview = () => {
             width={data.eyecatch?.width}
           />
         </div>
-
+        {isValidating && <div>更新中...</div>}
         <article>
           {
             data.article.map((article) => {
@@ -54,9 +58,9 @@ const BlogPreview = () => {
                   return <div className={styles.setHtml} dangerouslySetInnerHTML={{ __html: article?.rich_editor ?? "" }} />;
                 case "image":
                   return (
-                    <div className={styles.image}>
+                    <div className={styles.image} >
                       <img
-                        style={img}
+                        style={articleImg}
                         className={styles.blogImg}
                         src={article?.image.url}
                         alt=""
@@ -78,4 +82,4 @@ const BlogPreview = () => {
 }
 
 
-export default BlogPreview
+export default BlogPreview;

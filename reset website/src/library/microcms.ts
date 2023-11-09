@@ -1,6 +1,6 @@
 // SDK利用準備
 import { createClient } from "microcms-js-sdk";
-// import type { MicroCMSQueries } from "microcms-js-sdk";
+import type { MicroCMSQueries } from "microcms-js-sdk";
 
 
 const client = createClient({
@@ -90,16 +90,16 @@ export async function getAllPosts( limit = 100) {
 //   });
 //   return posts.contents
 // }
-
 // fields: 'id,title,slug,publishedAt,summary,eyecatch',
 
-// limitを増やす必要あり
-// export async function getBlogDetail(
-//   queries?: MicroCMSQueries
-// ) {
-//   return await client.getListDetail<Blog>({
-//     endpoint: "blogs",
-//     queries: {
-//     },
-//   });
-// };
+// BlogPreview.jsxに渡すデータを取得
+export const  getBlogDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) =>  {
+  return await client.getListDetail<Blog>({
+    endpoint: "blogs",
+    contentId,
+    queries,
+  });
+};
