@@ -32,7 +32,7 @@ export async function getNews({limit}) {
     const posts = await client.get({
       endpoint: "news",
       queries: {
-        orders: "-createdAt",
+        orders: "-publishedAt",
         limit: limit,
       }
     })
