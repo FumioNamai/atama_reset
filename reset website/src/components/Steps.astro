@@ -99,7 +99,7 @@ import refreshing2s from "../assets/refreshing2s.webp";
     </div>
 
     <div class="step">
-      <h3><Image src={smile} alt="" class="icon" />終了</h3>
+      <h3><Image src={smile} alt="" class="icon" />施術後</h3>
       <div class="flex">
         <div class="text">
           <p>
@@ -221,8 +221,7 @@ import refreshing2s from "../assets/refreshing2s.webp";
     position: absolute;
     top: 100%;
     left: -5px;
-    opacity: 0;
-    transition: 1ms 5s;
+    opacity: 1;
   }
 </style>
 
@@ -263,18 +262,18 @@ import refreshing2s from "../assets/refreshing2s.webp";
         this.els.forEach((el) => observer.observe(el));
       }
     }
-    const dot = document.querySelector(".dot");
+    // const dot = document.querySelector(".dot");
+    // console.log(dot);
     const stretch = function (el, isIntersecting) {
       if (isIntersecting) {
         el.style.height = "calc(100% - 36px)";
-        dot.style.opacity = 1;
+        // dot.style.opacity = 1;
       }
     };
+
     const stretchTrigger = new ScrollObserver(".step_line", stretch, {
       rootMargin: "0px 0px",
-      // rootMargin: "-300px 0px",
       threshold: 0.5,
-      // threshold: 1,
     });
 
     const fadein = function (el, isIntersecting) {

@@ -5,11 +5,13 @@ import styles from "./AccordionR.module.css"
 export default function AccordionR(props) {
   const [isOpen, setIsOpen] = useState(false)
   const [isRotate, setIsRotate] = useState()
-  if (isOpen) {
-    setIsRotate("rotate(225deg)")
-  } else {
-    setIsRotate("rotate(45deg)")
-  }
+  // if (isOpen) {
+  //   setIsRotate("rotate(225deg)")
+  // } else {
+  //   setIsRotate("rotate(45deg)")
+  // }
+
+  isOpen ? setIsRotate("rotate(225deg)") : setIsRotate("rotate(45deg)")
 
   return (
     <div className={styles.accordion}>
