@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import QandA from "../assets/Q&A.webp"
 import Layout from "@layouts/layout.astro";
 import Accordion from "@components/Accordion.astro";
-
+// import AccordionR from "@components/AccordionR.jsx";
 ---
 
 <Layout pageTitle="よくあるご質問" description="">
@@ -113,6 +113,10 @@ import Accordion from "@components/Accordion.astro";
         </p>
       </div>
     </Accordion>
+    <!-- <AccordionR client:load
+    title="「ヘッドスパと何が違うの？」"
+content="aaaaaaaaaaaaa"
+    /> -->
   </main>
 </Layout>
 

@@ -69,6 +69,7 @@ export default function InquiryForm() {
   // 以下の項目全てに入力されたときに入力確認画面がアクティブになる
   const disableConfirm = userName === "" || gender === null || email === "" || tel === "" || message === "" || isConfirmed === false;
 
+
   return (
     <>
       {/* 問い合わせフォーム */}
