@@ -26,9 +26,10 @@ import Layout from "@layouts/layout.astro";
         <dl>
           <dt>２．個人情報の利用目的</dt>
           <dd>
-            当店は、以下の目的で個人情報を利用致します。<br
-            />（お客様に関する個人情報）
+            当店は、以下の目的で個人情報を利用致します。
           </dd>
+        <p class="purpose">（お客様に関する個人情報）</p>
+
           <p class="text-indent">
             （１）
             当店のサービスの提供及びお客様による当院のサービスの利用のため
@@ -54,7 +55,7 @@ import Layout from "@layouts/layout.astro";
           <p class="text-indent">
             （９） その他、上記利用目的に付随する目的のため
           </p>
-          <dd>（お取引先様に関する個人情報）</dd>
+          <p class="purpose">（お取引先様に関する個人情報）</p>
           <p class="text-indent">
             （１）業務上必要なご連絡、契約の履行、商談等のため
           </p>
@@ -324,9 +325,12 @@ import Layout from "@layouts/layout.astro";
         }
 
         dd {
-          margin: 0;
+          margin: 0 ;
         }
-
+        .purpose {
+          padding-top: 1rem;
+          padding-bottom: 0;
+        }
         .text-indent {
           padding-bottom: 0;
           padding-left: 5.6rem;
