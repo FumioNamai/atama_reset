@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <div class="accordion">
@@ -37,8 +38,8 @@
     line-height: 150%;
   }
   .question.is-open .arrow {
-  transform: rotate(225deg);
-}
+    transform: rotate(225deg);
+  }
   .wrapper {
     display: flex;
     flex-direction: row;
@@ -46,7 +47,7 @@
   }
 
   h3 {
-    font-family: 'Noto Serif JP', serif;
+    font-family: "Noto Serif JP", serif;
     font-weight: normal;
     padding-right: 8px;
   }
@@ -65,7 +66,7 @@
     border-bottom: 1px solid var(--textBlack);
     border-right: 1px solid var(--textBlack);
     content: "";
-    transition: transform 0.5s;
+    transition: all 0.5s;
   }
 
   .answer {
@@ -77,40 +78,37 @@
     padding-top: 0px;
     padding-bottom: 0px;
     transition: all 0.5s;
-    /* transition: overflow 1s; */
-    /* transition: line-height 1s;
-    transition: padding 1s; */
-    animation-name: closeAnime;
-    animation-duration: .5s;
-    animation-fill-mode: forwards;
+    /* animation-name: closeAnime;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards; */
   }
-/*
+
   .answer.is-open {
     overflow: visible;
     opacity: 1;
     line-height: 250%;
     padding-top: 16px;
     padding-bottom: 16px;
-    transition: all 0.5s; */
-    /* transition: overflow 1s; */
-    /* transition: line-height 1s;
+    transition: all 0.5s;
+  /* transition: overflow 1s; */
+  /* transition: line-height 1s;
     transition: padding 1s; */
-  /* } */
-  .answer p {
+  }
+  /* .answer p {
     padding-bottom: 16px;
   }
 
   .answer.is-open {
     animation-name: openAnime;
-    animation-duration: .5s;
+    animation-duration: 0.5s;
     animation-fill-mode: forwards;
   }
   @keyframes openAnime {
     0% {
       opacity: 0;
       line-height: 0%;
-    padding-top: 0px;
-    padding-bottom: 0px;
+      padding-top: 0px;
+      padding-bottom: 0px;
     }
     50% {
       opacity: 0;
@@ -118,16 +116,16 @@
     100% {
       opacity: 1;
       line-height: 250%;
-    padding-top: 16px;
-    padding-bottom: 16px;
+      padding-top: 16px;
+      padding-bottom: 16px;
     }
   }
   @keyframes closeAnime {
     0% {
       opacity: 1;
       line-height: 250%;
-    padding-top: 16px;
-    padding-bottom: 16px;
+      padding-top: 16px;
+      padding-bottom: 16px;
     }
     50% {
       opacity: 0;
@@ -135,10 +133,10 @@
     100% {
       opacity: 0;
       line-height: 0%;
-    padding-top: 0px;
-    padding-bottom: 0px;
+      padding-top: 0px;
+      padding-bottom: 0px;
     }
-  }
+  } */
 </style>
 
 <script>
