@@ -17,7 +17,7 @@
     "@fontsource/noto-sans-jp": "^5.0.8",
     "@fontsource/noto-serif-jp": "^5.0.7",
     "@types/react-datepicker": "^4.19.1",
-    "astro": "^3.0.9",
+    "astro": "^3.5.2",
     "emailjs-com": "^3.2.0",
     "microcms-js-sdk": "^2.6.1",
     "react-datepicker": "^4.21.0",

@@ -190,7 +190,6 @@ input {
 input,
 textarea,
 select {
-  box-sizing: border-box;
   margin-top: 4px;
   border-radius: 8px;
   font-size: 1.6rem;
@@ -278,7 +277,6 @@ option {
   height: 18px;
   width: 18px;
   border: 2px solid var(--textGray);
-  box-sizing: border-box;
   border-radius: 4px;
   background-color: #fff;
 }
