@@ -391,7 +391,7 @@ export default function FormReservation() {
 
         <div className="confirm">
           <p>ページ下部に記載の注意事項を必ずご確認ください。</p>
-          <div className="flex"><p>注意事項を確認した</p><span className="alert bold">&nbsp;*</span>
+          <div className="flex"><b>注意事項を確認した<span className="alert bold">&nbsp;*</span></b>
             <label className="checkbox-wrap">
               <input
                 type="checkbox"

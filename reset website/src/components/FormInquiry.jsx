@@ -158,7 +158,7 @@ export default function InquiryForm() {
 
         <div className="confirm">
           <p>ページ下部に記載の注意事項を必ずご確認ください。</p>
-          <div className="flex"><p>注意事項を確認した</p><span className="alert">&nbsp;*</span>
+          <div className="flex bold"><b>注意事項を確認した<span className="alert">&nbsp;*</span></b>
 
             <label className="checkbox-wrap">
               <input
@@ -184,7 +184,6 @@ export default function InquiryForm() {
             </li>
           </ul>
         </div>
-        <div></div>
         <button className="btn-form" type="confirm" onClick={ShowModal} >入力確認画面へ</button>
 
         {/* モーダルウィンドウ */}
@@ -197,7 +196,7 @@ export default function InquiryForm() {
             <p className="alert">必須項目が未入力です</p>
             </>
             :
-           <h3>以下の内容で送信してよろしいですか？</h3>
+            <h3>以下の内容で送信してよろしいですか？</h3>
             }
               <div className="inputDetails">
               <InputDetails

@@ -30,6 +30,9 @@
 }
 
 /* 基本設定 */
+* {
+  box-sizing: border-box;
+}
 body {
   color: var(--textBlack);
   background-color: var(--bgPrimary);
@@ -82,6 +85,10 @@ h5 {
 }
 
 p {
+  font-size: 1.8rem;
+}
+
+b {
   font-size: 1.8rem;
 }
 
