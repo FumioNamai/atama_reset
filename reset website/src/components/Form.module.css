@@ -1,0 +1,105 @@
+/* ボタン */
+.btnForm {
+  display: block;
+  padding: 8px 16px;
+  margin: 20px auto;
+  border-radius: 20px;
+  border: 1px solid var(--primary);
+  color: var(--textWhite);
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0px 5px 3px 0px rgba(0, 0, 0, 0.6);
+  background-color: var(--primary);
+}
+.btnForm:active {
+box-shadow: none;
+transform: translateY(3px);
+}
+.btnForm:hover {
+opacity: 0.7;
+  color: var(--textWhite);
+}
+.btnForm:disabled {
+color: var(--textGray);
+background-color: transparent;
+border: 1px solid var(--gray-25);
+box-shadow: none;
+background-color: var(--bgSecondary);
+}
+.btnForm:disabled:hover {
+opacity: 1;
+}
+
+
+/* 入力確認モーダル */
+/* #overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+} */
+
+.modal{
+  max-width: 680px;
+  width: 80%;
+  height: 80%;
+  background-color: var(--bgPrimary);
+  padding: 2.4rem;
+  overflow: scroll;
+}
+
+@media screen and (768px <= width){
+  .modal {
+    height: 70%;
+    position: absolute;
+    /* top: 140px; */
+  }
+}
+
+.modal h3 {
+  font-size: 2rem;
+}
+
+.inputDetails {
+  margin-block: 4rem;
+}
+
+.modal p {
+  padding-block: 0 2rem;
+  white-space: pre-wrap;
+}
+.modal h4 {
+  margin-block: 0;
+}
+
+.modal li {
+  font-size: 1.8rem;
+}
+
+.modal li:last-child {
+  padding-block: 0 2rem;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+}
+
+.inputWrapper {
+  margin-block: 4rem;
+}
+
+.modal .message {
+  margin-block: 1rem 2.6rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--gray-25);
+  min-height: 50px;
+}

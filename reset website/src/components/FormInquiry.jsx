@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { init, send } from "emailjs-com";
 import { InputDetails } from "./InputDetails";
+import styles from "./Form.module.css";
 
 const publicKey = import.meta.env.PUBLIC_KEY;
 const serviceID = import.meta.env.PUBLIC_EMAIL_SERVICE_ID;
@@ -184,12 +185,12 @@ export default function InquiryForm() {
             </li>
           </ul>
         </div>
-        <button className="btn-form" type="confirm" onClick={ShowModal} >入力確認画面へ</button>
+        <button className={styles.btnForm} type="confirm" onClick={ShowModal} >入力確認画面へ</button>
 
         {/* モーダルウィンドウ */}
         {showModal ? (
           <div id="overlay">
-            <div className="modal">
+            <div className={styles.modal}>
             {disableConfirm ?
             <>
             <h3>入力内容をご確認ください</h3>
@@ -198,7 +199,7 @@ export default function InquiryForm() {
             :
             <h3>以下の内容で送信してよろしいですか？</h3>
             }
-              <div className="inputDetails">
+              <div className={styles.inputDetails}>
               <InputDetails
                   title={"お名前"}
                   props={userName}
@@ -224,17 +225,17 @@ export default function InquiryForm() {
                   errMsg={"未入力です"}
                 />
                 <h4>お問い合わせ内容</h4>
-                <div className="message">
+                <div className={styles.message}>
                 {message ? <p>{message}</p> : <p className="alert">未入力です</p>}
                 </div>
               </div>
 
-              <div className="modalButtons">
+              <div className={styles.modalButtons}>
               <div>
-                  <button  className="btn-form"onClick={closeModal}>入力画面に戻る</button>
+                  <button  className={styles.btnForm} onClick={closeModal}>入力画面に戻る</button>
                 </div>
                 <div>
-                  <button  className="btn-form"type="submit" onClick={handleSubmit}disabled={disableConfirm}>送信する</button>
+                  <button  className={styles.btnForm}  type="submit" onClick={handleSubmit}disabled={disableConfirm}>送信する</button>
                 </div>
               </div>
 

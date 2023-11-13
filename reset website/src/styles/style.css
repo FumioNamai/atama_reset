@@ -166,9 +166,8 @@ p {
   padding-block-end: 1.6rem;
 }
 
-
 /* 予約・問い合わせフォーム */
-form {
+.form {
   margin-block: 6.4rem;
 }
 
@@ -256,7 +255,6 @@ option {
   font-weight: bold;
   padding-block:  1.6rem 0;
 }
-
 /* チェックボックスカスタマイズ */
 .checkbox-wrap {
   display: block;
@@ -404,20 +402,19 @@ option {
   z-index: 1100;
 }
 
-.modal{
+/* .modal{
   max-width: 680px;
   width: 80%;
   height: 80%;
   background-color: var(--bgPrimary);
   padding: 2.4rem;
   overflow: scroll;
-}
-
+} */
+/*
 @media screen and (768px <= width){
   .modal {
     height: 70%;
     position: absolute;
-    /* top: 140px; */
   }
 }
 
@@ -460,4 +457,4 @@ option {
   padding-left: 1rem;
   border-left: 3px solid var(--gray-25);
   min-height: 50px;
-}
+} */

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { init, send } from "emailjs-com";
 import { InputDetails } from "./InputDetails";
+import styles from "./Form.module.css";
 
 // Email.jsの環境変数
 const publicKey = import.meta.env.PUBLIC_KEY;
@@ -321,7 +322,8 @@ export default function FormReservation() {
           </div>
         </div>
 
-        <div className="visits inputWrapper">
+        {/* <div className="visits inputWrapper"> */}
+        <div className={styles.inputWrapper}>
           <h5 className="bold">
             ご来店は
             <span className="alert">&nbsp;*</span>
@@ -353,7 +355,7 @@ export default function FormReservation() {
           </div>
         </div>
 
-        <div className="inputWrapper">
+        <div className={styles.inputWrapper}>
           <h5 className="bold"
           >当店を知ったきっかけ<small>(複数選択可)</small>
             <span className="alert">&nbsp;*</span><br /></h5>
@@ -375,7 +377,7 @@ export default function FormReservation() {
           })}
         </div>
 
-        <div className="inputWrapper">
+        <div className={styles.inputWrapper}>
           <label className="bold">ご要望等
             <br />
             <textarea
@@ -417,14 +419,14 @@ export default function FormReservation() {
           </ul>
         </div>
         <div></div>
-        <button className="btn-form" type="confirm" onClick={ShowModal}
+        <button className={styles.btnForm} type="confirm" onClick={ShowModal}
         // disabled={disableConfirm}
         >入力確認画面へ</button>
 
         {/* モーダルウィンドウ */}
         {showModal ? (
           <div id="overlay">
-            <div className="modal">
+            <div className={styles.modal}>
               {disableConfirm ?
                 <>
                   <h3>入力内容をご確認ください</h3>
@@ -434,7 +436,7 @@ export default function FormReservation() {
                 <h3>以下の内容で送信してよろしいですか？</h3>
               }
 
-              <div className="inputDetails">
+              <div className={styles.inputDetails}>
                 <InputDetails
                   title={"お名前"}
                   props={userName}
@@ -498,7 +500,7 @@ export default function FormReservation() {
                 }
 
                 <h4>ご要望等</h4>
-                <div className="message">
+                <div className={styles.message}>
                   <p>{message}</p>
                 </div>
                 <InputDetails
@@ -509,13 +511,13 @@ export default function FormReservation() {
                 />
               </div>
 
-              <div className="modalButtons">
+              <div className={styles.modalButtons}>
                 <div>
-                  <button className="btn-form" onClick={closeModal}>入力画面に戻る</button>
+                  <button className={styles.btnForm} onClick={closeModal}>入力画面に戻る</button>
                 </div>
                 <div>
                   <button
-                    className="btn-form bold" type="submit"
+                    className={styles.btnForm} type="submit"
                     onClick={handleSubmit}
                     disabled={disableConfirm}
                   >送信する
