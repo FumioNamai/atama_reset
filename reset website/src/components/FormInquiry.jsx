@@ -74,13 +74,13 @@ export default function InquiryForm() {
   return (
     <>
       {/* 問い合わせフォーム */}
-      <form id="inquiry-form" className="inquiry-form">
+      <form id="inquiry-form" className={styles.inquiryForm}>
         <input type="hidden" name="inquiry_number" />
 
         <h4 className="borderLeft">お問い合わせフォーム</h4>
         <p className="alert">「*」は必須項目です</p>
 
-        <div className="inputWrapper">
+        <div className={styles.inputWrapper}>
           <label className="bold"> お名前<span className="alert">&nbsp;*</span>
           <br />
           <input
@@ -92,11 +92,11 @@ export default function InquiryForm() {
             </label>
         </div>
 
-        <div className="inputWrapper">
+        <div className={styles.inputWrapper}>
           <h5 className="bold">性別<span className="alert">&nbsp;*</span>
           </h5>
           <br />
-          <div className="gender">
+          <div className={styles.gender}>
             {GENDER.map((value) => {
               return (
                 <label key={value} className="radio">
@@ -115,7 +115,7 @@ export default function InquiryForm() {
           </div>
         </div>
 
-        <div className="inputWrapper">
+        <div className={styles.inputWrapper}>
           <label className="bold">
             メールアドレス<span className="alert">&nbsp;*</span>
           <br /><input
@@ -129,7 +129,7 @@ export default function InquiryForm() {
           </label>
         </div>
 
-        <div className="inputWrapper">
+        <div className={styles.inputWrapper}>
           <label className="bold">
             電話番号<span className="alert">&nbsp;*</span>
           <br />
@@ -157,25 +157,25 @@ export default function InquiryForm() {
         </div>
 
 
-        <div className="confirm">
+        <div className={styles.confirm}>
           <p>ページ下部に記載の注意事項を必ずご確認ください。</p>
-          <div className="flex bold"><b>注意事項を確認した<span className="alert">&nbsp;*</span></b>
+          <div className={`${styles.flex} ${styles.bold}`}><b>注意事項を確認した<span className="alert">&nbsp;*</span></b>
 
-            <label className="checkbox-wrap">
+            <label className={styles.checkboxWrap}>
               <input
-                type="checkbox"
+                type={styles.checkbox}
                 name="confirm"
                 checked={isConfirmed}
                 onChange={() => setIsConfirmed(prevState => !prevState)}
                 required
               />
-              <span className="checkmark"></span>
+              <span className={styles.checkmark}></span>
             </label>
           </div>
           <p><a href="">プライバシーポリシー</a>が適用されます。</p>
         </div>
 
-        <div className="notice">
+        <div className={styles.notice}>
           <h4 >注意事項</h4>
           <ul>
             <li>

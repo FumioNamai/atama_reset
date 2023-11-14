@@ -192,13 +192,13 @@ export default function FormReservation() {
   return (
     <>
       {/* 予約フォーム */}
-      <form id="reservation-form" className="reservation-form">
+      <form id="reservation-form" className={styles.reservationForm}>
         <input type="hidden" name="reservation_number" />
 
         <h4 className="borderLeft">予約フォーム</h4>
         <p className="alert">「*」は必須項目です</p>
 
-        <div className="inputWrapper">
+        <div className={styles.inputWrapper}>
           <label className="bold">お名前<span className="alert">&nbsp;*</span>
             <br />
             <input
@@ -210,29 +210,29 @@ export default function FormReservation() {
           </label>
         </div>
 
-        <div className="inputWrapper">
+        <div  className={styles.inputWrapper}>
           <h5 className="bold">性別<span className="alert">&nbsp;*</span></h5>
 
-          <div className="gender">
+          <div className={styles.gender}>
           {GENDER.map((value) => {
               return (
-                <label key={value} className="radio">
+                <label key={value} className={styles.radio}>
                   <input
-                    className="radio-input"
+                    className={styles.radioInput}
                     type="radio"
                     value={value}
                     checked={gender === value}
                     onChange={handleGenderChange}
                     required
                   />
-                  <span className="radio-text">{value}</span>
+                  <span className={styles.radioText}>{value}</span>
                 </label>
               )
             })}
           </div>
         </div>
 
-        <div className="inputWrapper">
+        <div className={styles.inputWrapper}>
           <label className="bold">
             メールアドレス<span className="alert">&nbsp;*</span>
             <br /><input
@@ -246,7 +246,7 @@ export default function FormReservation() {
           </label>
         </div>
 
-        <div className="inputWrapper">
+        <div className={styles.inputWrapper}>
           <label className="bold">
             電話番号<span className="alert">&nbsp;*</span>
             <br />
@@ -260,7 +260,7 @@ export default function FormReservation() {
           </label>
         </div>
 
-        <div className="inputWrapper">
+        <div className={styles.inputWrapper}>
           <label className="bold"
           >希望日<span className="alert">&nbsp;*</span><br /><input
               type="date"
@@ -270,9 +270,9 @@ export default function FormReservation() {
               required
             />
           </label>
-          <p className="errMessage">{errMessage}</p>
+          <p className={styles.errMessage}>{errMessage}</p>
         </div>
-        <div className="inputWrapper">
+        <div className={styles.inputWrapper}>
           <label className="bold"
           >希望時間<span className="alert">&nbsp;*</span></label><br />
           <select
@@ -288,28 +288,28 @@ export default function FormReservation() {
             }
           </select>
         </div>
-        <div className="inputWrapper">
+        <div className={styles.inputWrapper}>
           <h5 className="bold">ご希望のメニュー<span className="alert">&nbsp;*</span></h5>
 
-          <div className="menuList">
+          <div className={styles.menuList}>
             <div className="">
               {MENUS.map((menu) => {
                 return (
                   <>
-                    <p key={menu.category} className="categoryName">{menu.category}</p>
-                    <div className="flex">
+                    <p key={menu.category} className={styles.categoryName}>{menu.category}</p>
+                    <div className={styles.flex}>
                       {menu.course.map((course) => {
                         return (
-                          <label key={course.content} className="radio">
+                        <label key={course.content} className={styles.radio}>
                             <input
-                              className="radio-input"
+                              className={styles.radioInput}
                               type="radio"
                               value={course.content}
                               name="menu"
                               checked={order === course.content}
                               onChange={(e) => setOrder(e.target.value)}
                               required />
-                            <span className="radio-text">{course.duration}</span>
+                            <span className={styles.radioText}>{course.duration}</span>
                           </label>
                         )
                       })}
@@ -323,15 +323,16 @@ export default function FormReservation() {
         </div>
 
         {/* <div className="visits inputWrapper"> */}
-        <div className={styles.inputWrapper}>
+        <div className={`${styles.visits} ${styles.inputWrapper}`}>
+        {/* <div className={styles.inputWrapper}> */}
           <h5 className="bold">
             ご来店は
             <span className="alert">&nbsp;*</span>
           </h5>
-          <div className="flex">
-            <label className="radio">
+          <div className={styles.flex}>
+            <label className={styles.radio}>
               <input
-                className="radio-input"
+                className={styles.radioInput}
                 type="radio"
                 name="visits"
                 value="初めて"
@@ -339,18 +340,18 @@ export default function FormReservation() {
                 onClick={(e) => setVisits(e.target.value)}
                 required
               />
-              <span className="radio-text">初めて</span>
+              <span className={styles.radioText}>初めて</span>
             </label>
-            <label className="radio">
+            <label className={styles.radio}>
               <input
-                className="radio-input"
+                className={styles.radioInput}
                 type="radio"
                 name="visits"
                 value="2回目以降"
                 checked={visits === "2回目以降"}
                 onClick={(e) => setVisits(e.target.value)}
               />
-              <span className="radio-text">2回目以降</span>
+              <span className={styles.radioText}>2回目以降</span>
             </label>
           </div>
         </div>
@@ -361,17 +362,17 @@ export default function FormReservation() {
             <span className="alert">&nbsp;*</span><br /></h5>
           {reasons.map((reason) => {
             return (
-              <label key={reason.label} className="checkbox-wrap">
+              <label key={reason.label} className={styles.checkboxWrap}>
                 <input
-                  className="checkbox"
+                  className={styles.checkbox}
                   type="checkbox"
                   name="reason"
                   value={reason.label}
                   checked={reason.checked}
                   onChange={handleReasonChange}
                 />
-                <span className="checkmark"></span>
-                <p className="checkmark-text">{reason.label}</p>
+                <span className={styles.checkmark}></span>
+                <p className={styles.checkmarkText}>{reason.label}</p>
               </label>
             )
           })}
@@ -391,10 +392,10 @@ export default function FormReservation() {
         </div>
 
 
-        <div className="confirm">
+        <div className={styles.confirm}>
           <p>ページ下部に記載の注意事項を必ずご確認ください。</p>
-          <div className="flex"><b>注意事項を確認した<span className="alert bold">&nbsp;*</span></b>
-            <label className="checkbox-wrap">
+          <div className={styles.flex}><b>注意事項を確認した<span className="alert bold">&nbsp;*</span></b>
+            <label className={styles.checkboxWrap}>
               <input
                 type="checkbox"
                 name="confirm"
@@ -402,13 +403,13 @@ export default function FormReservation() {
                 onChange={() => setIsConfirmed(prevState => !prevState)}
                 required
               />
-              <span className="checkmark"></span>
+              <span className={styles.checkmark}></span>
             </label>
           </div>
           <p><a href="">プライバシーポリシー</a>が適用されます。</p>
         </div>
 
-        <div className="notice">
+        <div className={styles.notice}>
           <h4 >注意事項</h4>
           <ul>
             <li>

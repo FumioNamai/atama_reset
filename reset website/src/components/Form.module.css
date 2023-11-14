@@ -1,3 +1,152 @@
+
+.flex {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.gender {
+  display: flex;
+  gap: 3.2rem;
+}
+
+.errMessage {
+  font-size: 1.6rem;
+  padding: 0;
+  color: var(--alert);
+}
+
+.inquiryForm h4,
+.reservationForm h4 {
+  font-size: 2rem;
+  margin-block: 2.4rem .4rem;
+}
+
+.notice h4 {
+  margin-block: 2.4rem .4rem;
+}
+
+.confirm {
+  text-align: center;
+}
+
+.confirm p {
+  padding-bottom: 8px;
+}
+
+.menuList .flex,
+.visits .flex {
+  align-items: center;
+  justify-content: left;
+  gap: 2.4rem;
+}
+
+.categoryName {
+  font-weight: bold;
+  padding-block:  1.6rem 0;
+}
+
+/* チェックボックスカスタマイズ */
+.checkboxWrap {
+  display: block;
+  width: fit-content;
+  position: relative;
+  cursor: pointer;
+  font-size: 2rem;
+  user-select: none;
+  margin-top: 4px;
+}
+.checkboxWrap input {
+  display: none;
+}
+.checkboxWrap .checkmark {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  border: 2px solid var(--textGray);
+  border-radius: 4px;
+  background-color: #fff;
+}
+.checkboxWrap .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: -8px;
+  left: 6px;
+  width: 6px;
+  height: 16px;
+  border: 2px solid var(--highlight);
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.checkboxWrap input:checked + .checkmark {
+  background-color: #fff;
+}
+.checkboxWrap input:checked + .checkmark:after {
+  display: block;
+}
+.checkmarkText {
+  padding-left: 24px;
+  padding-bottom: 0;
+}
+
+/* 注意事項のチェックボックス*/
+.flex .checkboxWrap {
+  top: -5px;
+  left: 6px;
+}
+
+
+/* 注意事項 */
+.notice>h4 {
+  text-align: center;
+}
+
+/* ラジオボタンカスタマイズ */
+.radioInput {
+  display: none;
+  position: absolute;
+
+}
+.radioText {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.radioText::before {
+  content:"";
+  display: block;
+  border-radius: 50%;
+  border: 2px solid var(--textGray);
+  width: 14px;
+  height: 14px;
+  background-color: #fff;
+}
+.radioText::after {
+  content:"";
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  /* width: 10px; */
+  /* height: 10px; */
+}
+.radioInput:checked+.radioText::after {
+  content:"";
+  left: 3.5px;
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+  background-color: var(--highlight);
+}
+
+
+
 /* ボタン */
 .btnForm {
   display: block;
@@ -33,18 +182,7 @@ opacity: 1;
 
 
 /* 入力確認モーダル */
-/* #overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1100;
-} */
+/* #overlay styles.cssに記載 */
 
 .modal{
   max-width: 680px;
