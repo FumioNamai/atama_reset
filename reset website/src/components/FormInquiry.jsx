@@ -99,16 +99,16 @@ export default function InquiryForm() {
           <div className={styles.gender}>
             {GENDER.map((value) => {
               return (
-                <label key={value} className="radio">
+                <label key={value} className={styles.radio}>
                   <input
-                    className="radio-input"
+                    className={styles.radioInput}
                     type="radio"
                     value={value}
                     checked={gender === value}
                     onChange={handleGenderChange}
                     required
                   />
-                  <span className="radio-text">{value}</span>
+                  <span className={styles.radioText}>{value}</span>
                 </label>
               )
             })}
@@ -172,7 +172,7 @@ export default function InquiryForm() {
               <span className={styles.checkmark}></span>
             </label>
           </div>
-          <p><a href="">プライバシーポリシー</a>が適用されます。</p>
+          <p><a href="/privacy_policy">プライバシーポリシー</a>が適用されます。</p>
         </div>
 
         <div className={styles.notice}>

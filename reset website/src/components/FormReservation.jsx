@@ -292,7 +292,6 @@ export default function FormReservation() {
           <h5 className="bold">ご希望のメニュー<span className="alert">&nbsp;*</span></h5>
 
           <div className={styles.menuList}>
-            <div className="">
               {MENUS.map((menu) => {
                 return (
                   <>
@@ -320,7 +319,6 @@ export default function FormReservation() {
               }
             </div>
           </div>
-        </div>
 
         {/* <div className="visits inputWrapper"> */}
         <div className={`${styles.visits} ${styles.inputWrapper}`}>
@@ -406,7 +404,7 @@ export default function FormReservation() {
               <span className={styles.checkmark}></span>
             </label>
           </div>
-          <p><a href="">プライバシーポリシー</a>が適用されます。</p>
+          <p><a href="/privacy_policy">プライバシーポリシー</a>が適用されます。</p>
         </div>
 
         <div className={styles.notice}>
