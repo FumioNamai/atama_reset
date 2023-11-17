@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { ReactAccordion } from "@components/ReactAccordion.jsx";
+import { ReactAccordionBox } from "./ReactAccordionBox.jsx";
 import styles from "./AccordionR.module.css"
 
-export default function AccordionR(props) {
+export default function ReactAccordion(props) {
+// console.log("props",children);
   const [isOpen, setIsOpen] = useState(false)
   const [isRotate, setIsRotate] = useState()
   // if (isOpen) {
@@ -12,14 +13,13 @@ export default function AccordionR(props) {
   // }
 
   isOpen ? setIsRotate("rotate(225deg)") : setIsRotate("rotate(45deg)")
-
   return (
     <div className={styles.accordion}>
       <div className={styles.question} onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.wrapper}>
           <h3>Q</h3>
           <p>
-            {props.title}
+            {props.question}
           </p>
         </div>
         <span className={styles.arrow} style={{
@@ -27,24 +27,15 @@ export default function AccordionR(props) {
         }}
         ></span>
       </div>
-      <ReactAccordion isOpen={isOpen}>
-        <div className={styles.answer} style={{height:"200px"}}>
+      <ReactAccordionBox isOpen={isOpen}>
+        <div className={styles.answer}>
           <h3>A</h3>
-          <p>
-          {props.content}
-          </p>
+          {props.answer}
+          <div>
+          {props.children}
+          </div>
         </div>
-        {/* <span>height:</span>
-        <input
-        value={height}
-        onChange={ (e) => setHeight(e.target.value)}
-        type="number" />
-        <div
-        style={{
-          height:`${height}px`,
-          backgroundColor:"white"
-        }}></div> */}
-      </ReactAccordion>
+      </ReactAccordionBox>
     </div>
   )
 }

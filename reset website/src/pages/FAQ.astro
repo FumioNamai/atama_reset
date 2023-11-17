@@ -3,7 +3,8 @@ import { Image } from "astro:assets";
 import QandA from "../assets/Q&A.webp"
 import Layout from "@layouts/layout.astro";
 import Accordion from "@components/Accordion.astro";
-// import AccordionR from "@components/AccordionR.jsx";
+import ReactAccordion from "@components/ReactAccrdion.jsx";
+// import AccordionX from "@components/AccordionX.jsx";
 ---
 
 <Layout pageTitle="よくあるご質問" description="">
@@ -13,7 +14,7 @@ import Accordion from "@components/Accordion.astro";
       <Image src= { QandA } alt="Q&A" loading="eager" width=640 height=327 />
     </div>
 
-    <Accordion>
+    <ReactAccordion client:load>
       <span slot="question">男性でも施術を受けられますか？</span>
       <div slot="answer" class="answer">
         <p>
@@ -21,8 +22,8 @@ import Accordion from "@components/Accordion.astro";
           />お客様の症状に合わせた内容をご提案、ご提供させていただきます。
         </p>
       </div>
-    </Accordion>
-    <Accordion>
+    </ReactAccordion>
+    <ReactAccordion client:load>
       <span slot="question">当日予約はできますか？</span>
       <div slot="answer" class="answer">
         <p>
@@ -33,8 +34,8 @@ import Accordion from "@components/Accordion.astro";
           また、週末のご予約は前以て集中することもございます。
         <br><br>お早めのご予約をお勧め致します。</p>
       </div>
-    </Accordion>
-    <Accordion>
+    </ReactAccordion>
+    <ReactAccordion client:load>
       <span slot="question">２人同時に施術できますか？</span>
       <div slot="answer" class="answer">
         <p>
@@ -47,8 +48,8 @@ import Accordion from "@components/Accordion.astro";
           >がございますので是非お申し付けください。
         </p>
       </div>
-    </Accordion>
-    <Accordion>
+    </ReactAccordion>
+    <ReactAccordion client:load>
       <span slot="question">ワックスをつけたままでもいいですか？</span>
       <div slot="answer" class="answer">
         <p>
@@ -59,8 +60,8 @@ import Accordion from "@components/Accordion.astro";
           >ので、ご遠慮いただきますようご協力お願いいたします。
         </p>
       </div>
-    </Accordion>
-    <Accordion>
+    </ReactAccordion>
+    <ReactAccordion client:load>
       <span slot="question">キャッシュレス対応してますか？</span>
       <div slot="answer" class="answer">
         <p>
@@ -70,8 +71,8 @@ import Accordion from "@components/Accordion.astro";
           ご不便お掛けしますが宜しくお願いいたします。
         </p>
       </div>
-    </Accordion>
-    <Accordion>
+    </ReactAccordion>
+    <ReactAccordion client:load>
       <span slot="question">駐車場はありますか？</span>
       <div slot="answer" class="answer">
         <p>
@@ -79,8 +80,8 @@ import Accordion from "@components/Accordion.astro";
           <span class="bold highlight">１３番、１５番、１６番</span>をご利用ください。
         </p>
       </div>
-    </Accordion>
-    <Accordion>
+    </ReactAccordion>
+    <ReactAccordion client:load>
       <span slot="question">ギフト券はありますか？</span>
       <div slot="answer" class="answer">
         <p>
@@ -89,8 +90,8 @@ import Accordion from "@components/Accordion.astro";
           <span class="bold highlight">お支払いは現金のみ</span>となります。
         </p>
       </div>
-    </Accordion>
-    <Accordion>
+    </ReactAccordion>
+    <ReactAccordion client:load>
       <span slot="question">未成年も施術を受けられますか？</span>
       <div slot="answer" class="answer">
         <p>
@@ -104,19 +105,33 @@ import Accordion from "@components/Accordion.astro";
           <br><br>また、未成年の方のお支払いは保護者の方にお願いします。
           <br><br>学生割引がございますので、学生証をお忘れなく♪</p>
       </div>
-    </Accordion>
-    <Accordion>
+    </ReactAccordion>
+    <ReactAccordion client:load>
       <span slot="question">「ヘッドスパと何が違うの？」</span>
       <div slot="answer" class="answer">
         <p>
           詳しくは<a href="/blog/what-is-different-from-190612">こちら</a>
         </p>
       </div>
-    </Accordion>
-    <!-- <AccordionR client:load
-    title="「ヘッドスパと何が違うの？」"
-content="aaaaaaaaaaaaa"
-    /> -->
+    </ReactAccordion>
+    <ReactAccordion client:load>
+    <span slot="question">ギフト券はありますか？</span>
+    <div slot="answer" class="answer">
+      <p>
+        各種ご用意しております。<br />
+        料金の明記はございませんので、大切な方への贈り物にいかがですか。<br />
+        <span class="bold highlight">お支払いは現金のみ</span>となります。
+      </p>
+    </div>
+  </ReactAccordion>
+
+  <!-- <AccordionX>
+    <p>
+      各種ご用意しております。<br />
+      料金の明記はございませんので、大切な方への贈り物にいかがですか。<br />
+      <span class="bold highlight">お支払いは現金のみ</span>となります。
+    </p>
+  </AccordionX> -->
   </main>
 </Layout>
 
@@ -148,3 +163,4 @@ content="aaaaaaaaaaaaa"
   }
 
 </style>
+@components/ReactAccrdion.jsx
