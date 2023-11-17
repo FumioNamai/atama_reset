@@ -47,7 +47,7 @@ h3 {
   flex-direction: row;
   overflow: hidden;
   line-height: 250%;
-  opacity: 1;
+  /* opacity: 1; */
   padding-block: 1.6rem;
   /* transition: all 0.5s; */
 }
