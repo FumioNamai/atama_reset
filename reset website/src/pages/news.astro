@@ -7,6 +7,7 @@ const posts = await getNews({ limit: 100 });
 
 const data = posts.contents.map((content) => ({
   title: content.title,
+  pubDateDisplay: content.pubDateDisplay,
   publishedAt: content.publishedAt
     ? new Date(content.publishedAt)
         .toLocaleDateString("ja-JP")
@@ -16,6 +17,7 @@ const data = posts.contents.map((content) => ({
   tag:content.tag,
   articles:content.article
 }));
+console.log(data);
 
 ---
 
@@ -26,7 +28,7 @@ const data = posts.contents.map((content) => ({
       {
         data.map((content) => (
           <div class="container">
-            <p class="publishedAt">{content.publishedAt}</p>
+            { content.pubDateDisplay ? <p class="publishedAt">{content.publishedAt}</p> : <div></div>}
             { content.tag.map((tag) => {
           switch (tag) {
             case "重要":
