@@ -40,7 +40,7 @@ const articleHeight = content.article.height
 const articleWidth = content.article.width
 
 // 日付の表示を変更
-let pubDate = dayjs.utc(content.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')
+const pubDate = dayjs.utc(content.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')
 // let pubDate;
 // console.log(pubDate);
 
