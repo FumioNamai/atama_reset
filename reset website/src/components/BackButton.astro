@@ -9,7 +9,7 @@ const {
 ---
 
 <div class="backButton">
-  <a href={href} class="more">{label}</a>
+  <a href={href} class="back">{label}</a>
   <span />
 </div>
 
@@ -24,7 +24,8 @@ a {
     color: var(--textGray);
     border-bottom: 1px solid var(--textGray);
   }
-  .more {
+  .back {
+    padding: 0;
     font-size: var(--fontSize);
   }
 
@@ -35,10 +36,9 @@ a {
     align-items: center;
     justify-content: space-between;
     width: var(--width);
-    height: 25px;
-    line-height: 1.5;
-    padding-left: 10px;
+    padding-bottom:0;
     transition: all .5s;
+    padding-left: 10px;
   }
 
   .backButton:hover {
@@ -49,10 +49,9 @@ a {
     content: "";
     color: var(--textBlack);
     display: block;
-    transform:rotate(45deg);
+    transform:rotate(45deg)translateY(-1px);
     width: 10px;
     height: 10px;
-    margin-left: 1.2rem;
     border-bottom: 1px solid var(--textBlack);
     border-left: 1px solid var(--textBlack);
   }

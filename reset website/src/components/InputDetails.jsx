@@ -1,4 +1,4 @@
-  // 入力確認モーダルに入力内容を表示
+  // // 入力確認モーダルに入力内容を表示
   export const InputDetails = ({ title, props, msg, errMsg }) => {
     return (
       <>
