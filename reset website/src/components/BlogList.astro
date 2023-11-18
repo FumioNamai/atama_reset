@@ -1,6 +1,14 @@
 ---
+import dayjs from "dayjs"
+import utc from "dayjs/plugin/utc"
+import timezone from "dayjs/plugin/timezone";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 let { id,slug, src, date, title, summary } = Astro.props;
-date = new Date(date).toLocaleDateString("ja-JP").split("/").join(".");
+date = new Date(date)
+date = dayjs.utc(date).tz('Asia/Tokyo').format('YYYY.MM.DD')
 ---
 
 <div class="container bloglist splide__slide" >

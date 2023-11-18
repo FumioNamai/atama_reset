@@ -1,7 +1,7 @@
 
 import useSWR from "swr"
 import { getBlogDetail } from "../library/microcms";
-import styles from "../styles/BlogPreview.module.css"
+import styles from "./BlogPreview.module.css"
 
 const BlogPreview = () => {
   const params = new URLSearchParams(window.location.search);
@@ -34,6 +34,7 @@ const BlogPreview = () => {
 
   return (
     <>
+          {isValidating && <div>更新中...</div>}
         <p className={styles?.publishedAt}>
           {pubDate}
         </p>
@@ -49,7 +50,6 @@ const BlogPreview = () => {
             width={data.eyecatch?.width}
           />
         </div>
-        {isValidating && <div>更新中...</div>}
         <article>
           {
             data.article.map((article) => {
