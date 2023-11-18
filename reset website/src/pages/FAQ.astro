@@ -2,9 +2,12 @@
 import { Image } from "astro:assets";
 import QandA from "../assets/Q&A.webp"
 import Layout from "@layouts/layout.astro";
+
+// Reactでの実装
+import ReactAccordion from "@components/ReactAccordion.jsx";
+
+// JSでの実装 <ReactAccordion client:load>を<Accordion>に変えるだけ
 import Accordion from "@components/Accordion.astro";
-import ReactAccordion from "@components/ReactAccrdion.jsx";
-// import AccordionX from "@components/AccordionX.jsx";
 ---
 
 <Layout pageTitle="よくあるご質問" description="">
@@ -124,14 +127,6 @@ import ReactAccordion from "@components/ReactAccrdion.jsx";
       </p>
     </div>
   </ReactAccordion>
-
-  <!-- <AccordionX>
-    <p>
-      各種ご用意しております。<br />
-      料金の明記はございませんので、大切な方への贈り物にいかがですか。<br />
-      <span class="bold highlight">お支払いは現金のみ</span>となります。
-    </p>
-  </AccordionX> -->
   </main>
 </Layout>
 
@@ -157,10 +152,5 @@ import ReactAccordion from "@components/ReactAccrdion.jsx";
     object-fit: contain;
   }
 
-  .answer p {
-    font-size: 1.6rem;
-    padding: 0;
-  }
 
 </style>
-@components/ReactAccrdion.jsx

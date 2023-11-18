@@ -23,7 +23,8 @@
   flex-direction: row;
   align-items: first baseline;
 }
-h3 {
+.wrapper>h3,
+.answer>h3 {
   font-family: 'Noto Serif JP', serif;
   font-weight: normal;
   padding-right: 8px;
@@ -47,11 +48,13 @@ h3 {
   flex-direction: row;
   overflow: hidden;
   line-height: 250%;
-  /* opacity: 1; */
+  /* opacity: 1; React無しの実装で使用*/
   padding-block: 1.6rem;
-  /* transition: all 0.5s; */
+  /* transition: all 0.5s; React無しの実装で使用*/
 }
-/* .answer.is-open {
+
+/* React無しの実装で使用
+.answer.is-open {
   opacity: 1;
   line-height: 250%;
   padding-top: 16px;

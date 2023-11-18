@@ -49,7 +49,7 @@ export const ReactAccordionBox = (props) => {
       style={{
         height:heightStyle,
         overflow:isOverflowHidden ? "hidden" : "",
-        transition: "height .5s"
+        transition: "height 1s"
       }}
       onTransitionEnd={handleTransitionEnd}
       >

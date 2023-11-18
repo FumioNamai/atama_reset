@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { ReactAccordionBox } from "./ReactAccordionBox.jsx";
-import styles from "./AccordionR.module.css"
+import styles from "./ReactAccordion.module.css"
 
 export default function ReactAccordion(props) {
-// console.log("props",children);
   const [isOpen, setIsOpen] = useState(false)
   const [isRotate, setIsRotate] = useState()
   // if (isOpen) {
