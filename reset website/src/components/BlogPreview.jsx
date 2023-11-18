@@ -21,10 +21,7 @@ const BlogPreview = () => {
 
   let pubDate = new Date(data?.publishedAt)
   pubDate = dayjs.utc(pubDate).tz('Asia/Tokyo').format('YYYY.MM.DD')
-  // const pubDate = new Date(data?.publishedAt)
-  //   .toLocaleDateString("ja-JP")
-  //   .split("/")
-  //   .join(".");
+
 
   if (error) return <div>エラーが発生しました</div>;
   if (isLoading) return <div>読み込み中...</div>;
