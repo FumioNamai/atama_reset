@@ -51,7 +51,7 @@ html {
 }
 
 /* オーバーレイの下でページが不要にスクロールするのを防ぐ。オーバーレイが外側に残ることを防ぐ*/
-.inactive {
+body.inactive {
   position: relative;
   overflow: hidden;
   width: 100%;
