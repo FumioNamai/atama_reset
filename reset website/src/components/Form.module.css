@@ -186,8 +186,8 @@ opacity: 1;
 
 .modal{
   max-width: 680px;
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
   background-color: var(--bgPrimary);
   padding: 2.4rem;
   overflow: scroll;
@@ -195,7 +195,8 @@ opacity: 1;
 
 @media screen and (768px <= width){
   .modal {
-    height: 70%;
+    height: 80%;
+    width: 80%;
     position: absolute;
     /* top: 140px; */
   }
