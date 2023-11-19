@@ -3,7 +3,7 @@
 ---
 
 
-<button class="hamburger" id="js-hamburger" title="hamburger-menu">
+<button class="hamburger" id="js-hamburgerLeft" title="hamburger-menu">
   <span></span>
   <span></span>
   <span></span>
@@ -22,6 +22,7 @@
     border-color: transparent;
     z-index: 1000;
     cursor: pointer;
+    display: block;
   }
 
   .hamburger span {
@@ -63,11 +64,12 @@
 
   @media screen and ( 768px <= width ) {
     .hamburger {
-    width: 90px;
+      display: none;
+    /* width: 90px;
     height: 90px;
-    padding: 28px;
+    padding: 28px; */
   }
-  .hamburger span {
+  /* .hamburger span {
     width: 30px;
     height: 3px;
     border-radius: 1.5px;
@@ -95,7 +97,7 @@
   }
 
   .menu {
-    display: block; /* デスクトップのときに表示させる */
+    display: block;
     transform: translateY(10px);
     margin-top: 5px;
     margin-left: -10px;
@@ -106,27 +108,29 @@
 
   .open .menu {
     display: none;
-  }
-  }
+  } */
+}
 </style>
 
 <script>
   const body = document.querySelector("#js-body")
-  const globalNavs = document.querySelectorAll(".globalNav");
+  // const globalNavs = document.querySelectorAll(".globalNav");
+  const globalNavLeft = document.querySelector("#js-globalNavLeft")
   // const hamburgers = document.querySelectorAll(".hamburger");
-  const hamburger = document.querySelector("#js-hamburger")
-  const hamburgerClose = document.querySelector("#js-hamburgerClose");
+  const hamburgerLeft = document.querySelector("#js-hamburgerLeft")
+  const hamburgerCloseLeft = document.querySelector("#js-hamburgerCloseLeft");
   const menuList = document.querySelector("#js-globalNav-menu");
 
 
   // hamburgers.forEach((hamburger) => {
-    hamburger.addEventListener("click", function () {
+    hamburgerLeft.addEventListener("click", function () {
       body.classList.toggle("inactive");
-      hamburger.classList.add("open");
-      globalNavs.forEach((globalNav) => {
-        globalNav.classList.add("open");
-      })
-      hamburgerClose.classList.add("open")
+      hamburgerLeft.classList.add("open");
+      // globalNavs.forEach((globalNav) => {
+        // globalNav.classList.add("open");
+      // })
+      globalNavLeft.classList.add("open");
+      hamburgerCloseLeft.classList.add("open")
       menuList.classList.toggle("open");
   })
 // });

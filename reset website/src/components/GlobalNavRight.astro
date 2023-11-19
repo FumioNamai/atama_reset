@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import logo from "../assets/reset_logo.svg";
-import HamburgerClose from "./HamburgerClose.astro";
+import HamburgerCloseRight from "./HamburgerCloseRight.astro";
 const nav = [
   {
     href: "/contact",
@@ -52,7 +52,7 @@ const nav = [
     label: "脳疲労とは？",
   },
   {
-    href: "/cerebrospinal_fluid",
+    href: "/cerebrospinalFluid",
     label: "脳脊髄液と睡眠",
   },
   {
@@ -82,10 +82,10 @@ const nav = [
 ];
 ---
 
-<div class="globalNav" id="js-globalNav">
+<div class="globalNav" id="js-globalNavRight">
   <div class="container">
     <nav>
-      <HamburgerClose />
+      <HamburgerCloseRight />
       <div class="logo">
         <a href="/" class="globalNav-logo"
           ><Image src={logo} alt="ロゴ" width="90" height="90" /></a
@@ -112,7 +112,7 @@ const nav = [
       height: auto;
       position: fixed;
       top: 0;
-      right: -100%;
+      right: -50%;
       background: linear-gradient(
         180deg,
         rgba(84, 105, 158, 0.95) 0%,
@@ -120,14 +120,10 @@ const nav = [
       );
       z-index: 500;
       opacity: 0;
-      width: 100%;
+      width: 50%;
       transition: all ease 1s;
     }
 
-    .globalNav.open {
-      opacity: 1;
-      transform: translate(-100%, 0);
-    }
     nav {
       margin-top: 12px;
       display: flex;
@@ -239,6 +235,10 @@ const nav = [
       width: 50%;
       right: -50%;
     }
+    .globalNav.open {
+      opacity: 1;
+      transform: translate(-100%, 0);
+    }
       nav {
         margin-top: 2px;
         padding: 24px 27px 24px 24px;
@@ -266,18 +266,18 @@ const nav = [
 <script>
   //ページ内リンクをクリックしたときに、ナビゲーションを閉じる
   const body = document.querySelector("#js-body");
-  const hamburgerClose = document.querySelector("#js-hamburgerClose");
+  const hamburgerCloseRight = document.querySelector("#js-hamburgerCloseRight");
   const menulists = document.querySelectorAll(".menu a");
-  const hamburger = document.querySelector("#js-hamburger");
-  const globalNav = document.querySelector("#js-globalNav");
+  const hamburgerRight = document.querySelector("#js-hamburgerRight");
+  const globalNavRight = document.querySelector("#js-globalNavRight");
   const menu = document.querySelector("#js-globalNav-menu");
 
   menulists.forEach((menulist) => {
     menulist.addEventListener("click", function () {
       body.classList.remove("inactive");
-      hamburgerClose.classList.remove("open");
-      hamburger.classList.remove("open");
-      globalNav.classList.remove("open");
+      hamburgerCloseRight.classList.remove("open");
+      hamburgerRight.classList.remove("open");
+      globalNavRight.classList.remove("open");
       menu.classList.remove("open");
     });
   });

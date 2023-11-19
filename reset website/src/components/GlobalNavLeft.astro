@@ -1,0 +1,285 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/reset_logo.svg";
+import HamburgerCloseLeft from "./HamburgerCloseLeft.astro";
+const nav = [
+  {
+    href: "/contact",
+    label: "ご予約・お問い合わせ",
+  },
+  {
+    href: "/",
+    label: "ホーム",
+  },
+  {
+    href: "/greeting",
+    label: "ごあいさつ",
+  },
+  {
+    href: "/news",
+    label: "お知らせ",
+  },
+  {
+    href: "/blogs/1",
+    label: "ブログ",
+  },
+  {
+    href: "/menu&price",
+    label: "施術メニュー & 料金",
+  },
+  {
+    href: "/#access",
+    label: "アクセス",
+  },
+  {
+    href: "/first_time",
+    label: "初めてのお客様へ",
+  },
+  {
+    href: "/FAQ",
+    label: "よくあるご質問",
+  },
+  {
+    href: "/voice",
+    label: "お客様の声",
+  },
+  {
+    href: "/#effect",
+    label: "期待される効果",
+  },
+  {
+    href: "/brain_fatigue",
+    label: "脳疲労とは？",
+  },
+  {
+    href: "/cerebrospinalFluid",
+    label: "脳脊髄液と睡眠",
+  },
+  {
+    href: "/intestinal_therapy",
+    label: "腸セラピー",
+  },
+  {
+    href: "/calf_loosening",
+    label: "ふくらはぎほぐし",
+  },
+  {
+    href: "/indefinite_complaint",
+    label: "不定愁訴とは",
+  },
+  {
+    href: "/first_time#steps",
+    label: "施術の流れ",
+  },
+  {
+    href: "/enterprise",
+    label: "企業・団体様",
+  },
+  {
+    href: "/privacy_policy",
+    label: "プライバシーポリシー",
+  },
+];
+---
+
+<div class="globalNav" id="js-globalNavLeft">
+  <div class="container">
+    <nav>
+      <HamburgerCloseLeft />
+      <div class="logo">
+        <a href="/" class="globalNav-logo"
+          ><Image src={logo} alt="ロゴ" width="90" height="90" /></a
+        >
+      </div>
+    </nav>
+    <div class="wrapper" id="js-globalNav-menu">
+      <div class="menu">
+        <ul>
+          {
+            nav.map((nav_item) => (
+              <li>
+                <a href={nav_item.href}>{nav_item.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .globalNav {
+      height: auto;
+      position: fixed;
+      top: 0;
+      left: -100%;
+      background: linear-gradient(
+        180deg,
+        rgba(84, 105, 158, 0.95) 0%,
+        rgba(174, 183, 206, 0.95) 100%
+      );
+      z-index: 500;
+      opacity: 0;
+      width: 100%;
+      transition: all ease 1s;
+    }
+
+    .globalNav.open {
+      opacity: 1;
+      transform: translate(100%, 0);
+    }
+    nav {
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    button {
+      background-color: transparent;
+      border: transparent;
+      padding: 0;
+      margin-top: 5px;
+      height: 90px;
+      width: 0px;
+      position: absolute;
+    }
+
+    .container {
+      height: 100vh;
+      overflow-y: scroll;
+    }
+
+    .globalNav-logo {
+      display: block;
+      margin: 16px 16px auto auto;
+    }
+
+    .globalNav img {
+      display: block;
+      width: 60px;
+      height: 60px;
+    }
+
+    .menu li:first-child {
+      margin-block: 45px;
+      margin-inline: auto;
+      width: fit-content;
+    }
+
+    .menu li:first-child a:hover {
+      background-color: rgba(58, 72, 109, 0.5);
+    }
+
+    .menu li:first-child a {
+      padding: 4px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--textWhite);
+    }
+
+    .menu li:first-child a::after {
+      opacity: 0; /* 下線を消す */
+    }
+
+    #js-globalNav-menu {
+      height: 1100px;
+      padding-inline: 10%;
+    }
+
+    #js-globalNav-menu.open a {
+      transition: transform ease 2s;
+      transform: translateY(0%);
+    }
+
+    ul {
+      display: inline-block;
+      width: 100%;
+      padding: 0 0 10rem 0 ;
+    }
+
+    li {
+      list-style: none;
+      margin-block-end: 24px;
+      overflow: hidden;
+    }
+
+    .menu a {
+      padding-bottom: 4px;
+      position: relative;
+      text-decoration: none;
+      color: var(--textWhite);
+      font-size: 1.8rem;
+      display: inline-block; /* 下線のアニメーションを文字幅に合わせるため */
+    }
+
+    .menu a::after {
+      background-color: var(--textWhite);
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 1px;
+      left: 0;
+      position: absolute;
+      transition: 0.1s;
+      width: 0;
+    }
+
+
+    @media (hover: hover) {
+      .menu a:hover::after {
+        width: 100%;
+      }
+    }
+
+    .menu li:nth-child(n + 11):nth-child(-n + 17) {
+      text-align: right;
+    }
+
+    @media screen and (768px <= width) {
+      .globalNav {
+        display: none;
+      /* width: 50%; */
+      /* right: -50%; */
+    }
+      nav {
+        margin-top: 2px;
+        padding: 24px 27px 24px 24px;
+        align-items: center;
+        flex-direction: row-reverse;
+      }
+
+      .globalNav img {
+        display: none;
+      }
+
+      /* 全画面表示の場合に使用 */
+      /* .globalNav img {
+        width: 90px;
+        height: 90px;
+      }
+      .globalNav-logo {
+        margin: 0;
+      } */
+    }
+
+  </style>
+</div>
+
+<script>
+  //ページ内リンクをクリックしたときに、ナビゲーションを閉じる
+  const body = document.querySelector("#js-body");
+  const hamburgerCloseLeft = document.querySelector("#js-hamburgerCloseLeft");
+  const menulists = document.querySelectorAll(".menu a");
+  const hamburgerLeft = document.querySelector("#js-hamburgerLeft");
+  const globalNavLeft = document.querySelector("#js-globalNavLeft");
+  const menu = document.querySelector("#js-globalNav-menu");
+
+  menulists.forEach((menulist) => {
+    menulist.addEventListener("click", function () {
+      body.classList.remove("inactive");
+      hamburgerCloseLeft.classList.remove("open");
+      hamburgerLeft.classList.remove("open");
+      globalNavLeft.classList.remove("open");
+      menu.classList.remove("open");
+    });
+  });
+</script>
