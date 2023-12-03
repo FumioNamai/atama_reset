@@ -6,7 +6,6 @@ import { useState,useRef,useEffect } from "react";
 // };
 export const ReactAccordionBox = (props) => {
   // 初期状態は高さを0pxに設定
-  // console.log(props);
   const [heightStyle, setHeightStyle] = useState(
     props.isOpen ? "" :"0px"
   );
