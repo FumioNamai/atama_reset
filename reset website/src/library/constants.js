@@ -6,5 +6,5 @@ export const siteMeta = {
   siteType: 'website',
   siteLocale: 'ja_JP',
   siteIcon: '/logo.png',
-  formatDetection:'{email:false,telephone:false}'
+  formatDetection:'{email=no,telephone=no}'
 }
