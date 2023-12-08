@@ -5,5 +5,5 @@ export const siteMeta = {
   // siteUrl: 'http://localhost:4321/',
   siteType: 'website',
   siteLocale: 'ja_JP',
-  siteIcon: '',
+  siteIcon: '/logo.png',
 }
