@@ -7,23 +7,25 @@ const posts = await getNews({ limit: 3 });
 const data = posts.contents.map((content) => ({
   title: content.title,
   tag:content.tag,
+  summary: content.summary,
   pubDateDisplay: content.pubDateDisplay,
   publishedAt: content.publishedAt
-    ? new Date(content.publishedAt)
-        .toLocaleDateString("ja-JP")
-        .split("/")
-        .join(".")
-    : "",
+  ? new Date(content.publishedAt)
+  .toLocaleDateString("ja-JP")
+  .split("/")
+  .join(".")
+  : "",
 }));
+
 ---
 
 <section class="news">
   <h2>お知らせ</h2>
   <div class="container">
-  {
-    data.map((content) => (
-      <a href="/news">
-        <div class="news-header">
+    {
+      data.map((content) => (
+        <a href="/news">
+          <div class="news-header">
             { content.tag.map((tag) => {
               switch (tag) {
                 case "重要":
@@ -37,9 +39,9 @@ const data = posts.contents.map((content) => ({
               }
             })
             }
-            <div class="wrapper">
+          <div class="wrapper">
           <p>{content.title}</p>
-          <span />
+          <p class="setHtml" set:html={content.summary} />
         </div>
       </div>
     </a>
@@ -103,10 +105,7 @@ const data = posts.contents.map((content) => ({
 
   .wrapper {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    line-height: 1;
+    flex-direction: column;
     margin-left: 1.2rem;
   }
 
@@ -114,6 +113,10 @@ const data = posts.contents.map((content) => ({
     transform: rotate(-15deg);
     margin-left: -10px;
     margin-bottom: -10px;
+  }
+
+  .setHtml {
+    padding: 0;
   }
 </style>
 
