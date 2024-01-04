@@ -41,7 +41,7 @@ const data = posts.contents.map((content) => ({
             }
           <div class="wrapper">
           <p>{content.title}</p>
-          <p class="setHtml" set:html={content.summary} />
+          <div class="setHtml" set:html={content.summary} />
         </div>
       </div>
     </a>
