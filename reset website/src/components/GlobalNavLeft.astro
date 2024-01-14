@@ -84,11 +84,12 @@ const nav = [
 
 <div class="globalNav" id="js-globalNavLeft">
   <div class="container">
+      <img class="arrow-down is-active" src="/arrowhead-up-fill.svg" alt="" width="40px" height="40px">
     <nav>
       <HamburgerCloseLeft />
-      <div class="logo">
+      <div>
         <a href="/" class="globalNav-logo"
-          ><Image src={logo} alt="ロゴ" width="90" height="90" /></a
+          ><Image class="logo" src={logo} alt="ロゴ" width="90" height="90" /></a
         >
       </div>
     </nav>
@@ -104,11 +105,15 @@ const nav = [
           }
         </ul>
       </div>
+      <div class="trigger"></div>
     </div>
   </div>
+</div>
+
 
   <style>
     .globalNav {
+      /* padding-bottom: 50px; */
       height: auto;
       position: fixed;
       top: 0;
@@ -154,7 +159,7 @@ const nav = [
       margin: 16px 16px auto auto;
     }
 
-    .globalNav img {
+    .logo {
       display: block;
       width: 60px;
       height: 60px;
@@ -181,7 +186,7 @@ const nav = [
     }
 
     #js-globalNav-menu {
-      height: 1100px;
+      height: auto;
       padding-inline: 10%;
     }
 
@@ -193,7 +198,7 @@ const nav = [
     ul {
       display: inline-block;
       width: 100%;
-      padding: 0 0 10rem 0 ;
+      padding-block: 3rem ;
     }
 
     li {
@@ -260,9 +265,29 @@ const nav = [
         margin: 0;
       } */
     }
+    .arrow-down {
+      position: fixed;
+      left: calc(50% - 20px);
+      bottom: 5%;
+      transform: rotate(180deg);
+    }
+
+    .is-active {
+      animation: blinking 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes blinking {
+      0% {opacity: 0;}
+      100% {opacity: .5;}
+    }
+
+    .is-inactive {
+      animation: none;
+      opacity: 0;
+    }
 
   </style>
-</div>
+
 
 <script>
   //ページ内リンクをクリックしたときに、ナビゲーションを閉じる
@@ -282,4 +307,58 @@ const nav = [
       menu.classList.remove("open");
     });
   });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    class ScrollObserver {
+      constructor(els, cb, options) {
+        //監視対象のelementsを取得
+        this.els = document.querySelectorAll(els);
+        //オプションのデフォルト設定を定義
+        const defaultOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0,
+        };
+        this.cb = cb;
+        //デフォルト設定に、個別設定のオプションをマージする
+        this.options = Object.assign(defaultOptions, options);
+        //
+        this._init();
+      }
+      _init() {
+        const callback = (entries) => {
+          entries.forEach((entry) => {
+            //監視対象の要素が領域内に入った場合の処理
+            if (entry.isIntersecting) {
+              this.cb(entry.target, true)
+            } else {
+              this.cb(entry.target, false); //true=isIntersectingがfaulse
+              //処理後に監視を切る処理
+              // observer.unobserve(entry.target);
+            }
+          });
+        };
+        const observer = new IntersectionObserver(
+          callback.bind(this),
+          this.options
+        );
+        //対象の要素elを監視
+        this.els.forEach((el) => observer.observe(el));
+      }
+    }
+
+    const rising = function(el, isIntersecting) {
+      const arrowDown = document.querySelector(".arrow-down")
+      if(isIntersecting) {
+        arrowDown.classList.remove("is-active")
+        arrowDown.classList.add("is-inactive")
+      }else {
+        arrowDown.classList.remove("is-inactive")
+        arrowDown.classList.add("is-active")
+      }
+    }
+
+    const trigger = new ScrollObserver(".trigger", rising , null)
+
+  })
 </script>
