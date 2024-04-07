@@ -87,23 +87,23 @@
 
 <script>
   const body = document.querySelector("#js-body");
-  // const globalNavs = document.querySelectorAll(".globalNav");
   const globalNavRight = document.querySelector("#js-globalNavRight")
-  // const hamburgers = document.querySelectorAll(".hamburger");
   const hamburgerRight = document.querySelector("#js-hamburgerRight");
   const hamburgerCloseRight = document.querySelector("#js-hamburgerCloseRight");
   const menuList = document.querySelector("#js-globalNav-menu");
+  // const globalNavs = document.querySelectorAll(".globalNav");
+  // const hamburgers = document.querySelectorAll(".hamburger");
 
   // hamburgers.forEach((hamburger) => {
     hamburgerRight.addEventListener("click", function () {
     body.classList.add("inactive");
     hamburgerRight.classList.add("open");
-    // globalNavs.forEach((globalNav) => {
-    //   globalNav.classList.add("open");
-    // });
     globalNavRight.classList.add("open")
     hamburgerCloseRight.classList.add("open");
     menuList.classList.add("open");
+    // globalNavs.forEach((globalNav) => {
+    //   globalNav.classList.add("open");
+    // });
   });
   // });
 </script>

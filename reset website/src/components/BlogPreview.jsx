@@ -39,50 +39,50 @@ const BlogPreview = () => {
 
   return (
     <>
-          {isValidating && <div>更新中...</div>}
-        <p className={styles?.publishedAt}>
-          {pubDate}
-        </p>
-        <h2 className={styles.title}>{data.title}</h2>
-        <div className={styles.setHtml} dangerouslySetInnerHTML={{ __html: data?.article.rich_editor ?? "" }} />
-        <div className={styles?.image}>
-          <img
-            style={eyecatchImg}
-            className={styles.blogImg}
-            src={data.eyecatch?.url}
-            alt=""
-            height={data.eyecatch?.height}
-            width={data.eyecatch?.width}
-          />
-        </div>
-        <article>
-          {
-            data.article.map((article) => {
-              switch (article.fieldId) {
-                case "rich_editor":
-                  return <div className={styles.setHtml} dangerouslySetInnerHTML={{ __html: article?.rich_editor ?? "" }} />;
-                case "image":
-                  return (
-                    <div className={styles.image} >
-                      <img
-                        style={articleImg}
-                        className={styles.blogImg}
-                        src={article?.image.url}
-                        alt=""
-                        height={article?.image.height}
-                        width={article?.image.width}
-                      />
-                    </div>
-                  );
-                case "text":
-                  return <p>{article?.text}</p>;
-                default:
-                  break;
-              }
-            })
-          }
-        </article>
-</>
+      {isValidating && <div>更新中...</div>}
+      <p className={styles?.publishedAt}>
+        {pubDate}
+      </p>
+      <h2 className={styles.title}>{data.title}</h2>
+      <div className={styles.setHtml} dangerouslySetInnerHTML={{ __html: data?.article.rich_editor ?? "" }} />
+      <div className={styles?.image}>
+        <img
+          style={eyecatchImg}
+          className={styles.blogImg}
+          src={data.eyecatch?.url}
+          alt=""
+          height={data.eyecatch?.height}
+          width={data.eyecatch?.width}
+        />
+      </div>
+      <article>
+        {
+          data.article.map((article) => {
+            switch (article.fieldId) {
+              case "rich_editor":
+                return <div className={styles.setHtml} dangerouslySetInnerHTML={{ __html: article?.rich_editor ?? "" }} />;
+              case "image":
+                return (
+                  <div className={styles.image} >
+                    <img
+                      style={articleImg}
+                      className={styles.blogImg}
+                      src={article?.image.url}
+                      alt=""
+                      height={article?.image.height}
+                      width={article?.image.width}
+                    />
+                  </div>
+                );
+              case "text":
+                return <p>{article?.text}</p>;
+              default:
+                break;
+            }
+          })
+        }
+      </article>
+    </>
   )
 }
 

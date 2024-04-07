@@ -1,4 +1,4 @@
-import { useState,useRef,useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 // type Props = {
 //   isOpen:boolean;
@@ -7,7 +7,7 @@ import { useState,useRef,useEffect } from "react";
 export const ReactAccordionBox = (props) => {
   // 初期状態は高さを0pxに設定
   const [heightStyle, setHeightStyle] = useState(
-    props.isOpen ? "" :"0px"
+    props.isOpen ? "" : "0px"
   );
   // 初期状態はoverflow: hiddenに設定
   const [isOverflowHidden, setIsOverflowHidden] = useState(!props.isOpen)
@@ -15,7 +15,7 @@ export const ReactAccordionBox = (props) => {
   const elContentRef = useRef(null)
 
   useEffect(() => {
-    if(elAccordionRef.current == null) {
+    if (elAccordionRef.current == null) {
       return;
     }
     // 処理の最初にoverflow:hiddenをセットするためisOverflowをtrueにする
@@ -26,35 +26,35 @@ export const ReactAccordionBox = (props) => {
     //setTimeoutを使ってワンテンポ置いて目標の高さに設定する
     setTimeout(() => {
       setHeightStyle(() => {
-        if(elContentRef.current == null) {
+        if (elContentRef.current == null) {
           return "0px";
         }
         return props.isOpen ? `${elContentRef.current.clientHeight}px` : "0px";
 
       })
-    },100)
-  },[props.isOpen])
+    }, 100)
+  }, [props.isOpen])
 
   const handleTransitionEnd = () => {
     // 開いたときは高さとoverflowの設定を解除
-    if(props.isOpen) {
+    if (props.isOpen) {
       setHeightStyle("");
       setIsOverflowHidden(false);
     }
   }
-    return (
+  return (
     <div
       ref={elAccordionRef}
       style={{
-        height:heightStyle,
-        overflow:isOverflowHidden ? "hidden" : "",
+        height: heightStyle,
+        overflow: isOverflowHidden ? "hidden" : "",
         transition: "height 1s"
       }}
       onTransitionEnd={handleTransitionEnd}
-      >
-    <div ref={elContentRef}>
-    {props.children}
-    </div>
+    >
+      <div ref={elContentRef}>
+        {props.children}
+      </div>
     </div>
   )
 }

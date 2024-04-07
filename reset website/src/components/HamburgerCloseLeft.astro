@@ -88,6 +88,14 @@
   // const globalNavs = document.querySelectorAll(".globalNav");
   const menuList = document.querySelector("#js-globalNav-menu");
   const menu = document.querySelectorAll(".menu");
+  const bodyCover = document.querySelector(".bodyCover");
+
+  bodyCover.addEventListener("click", function() {
+    body.classList.remove("inactive")
+    hamburgerCloseLeft.classList.remove("open");
+    hamburgerLeft.classList.remove("open");
+    globalNavLeft.classList.remove("open");
+  })
 
   hamburgerCloseLeft.addEventListener("click", function () {
     body.classList.remove("inactive");

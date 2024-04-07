@@ -85,9 +85,17 @@
   // const hamburger = document.querySelectorAll(".hamburger");
   const hamburgerRight = document.querySelector("#js-hamburgerRight");
   // const globalNavs = document.querySelectorAll(".globalNav");
-  const globalNavsRight = document.querySelector("#js-globalNavRight")
+  const globalNavRight = document.querySelector("#js-globalNavRight")
   const menuList = document.querySelector("#js-globalNav-menu");
   const menu = document.querySelectorAll(".menu");
+  const bodyCover = document.querySelector(".bodyCover");
+
+  bodyCover.addEventListener("click", function() {
+    body.classList.remove("inactive")
+    hamburgerCloseRight.classList.remove("open");
+    hamburgerRight.classList.remove("open");
+    globalNavRight.classList.remove("open")
+  })
 
   hamburgerCloseRight.addEventListener("click", function () {
     body.classList.remove("inactive");
@@ -99,7 +107,7 @@
     // globalNavs.forEach((globalNav) => {
     //     globalNav.classList.add("open");
     //   })
-    globalNavsRight.classList.remove("open")
+    globalNavRight.classList.remove("open")
     menuList.classList.remove("open");
     menu.forEach((menu) => {
       menu.classList.remove("open");
