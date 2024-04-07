@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import netlify from "@astrojs/netlify";
+import netlify from '@astrojs/netlify/netlify-functions.';
 import preact from "@astrojs/preact";
 import { siteMeta } from './src/library/constants';
 import sitemap from "@astrojs/sitemap";
