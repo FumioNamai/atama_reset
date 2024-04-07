@@ -2,24 +2,6 @@
 import Layout from "@layouts/layout.astro";
 import { Image }  from "astro:assets";
 import brain_fatigue from "../assets/brain-fatigue.webp"
-
-const checks = [
-  "疲れやすい",
-  "イライラする",
-  "物忘れが増えた",
-  "凡ミスをする",
-  "集中力が続かない",
-  "文章がなかなか頭に入ってこない",
-  "焦燥感がある",
-  "いいアイデアがひらめかない",
-  "優柔不断になった",
-  "日中に眠くなる",
-  "いびきをかく",
-  "疲れが取れない",
-  "寝つきが悪い",
-  "眠りが浅い",
-  "ゴロゴロしたい",
-];
 ---
 
 <Layout pageTitle="脳疲労とは" description="">
@@ -59,15 +41,22 @@ const checks = [
     <div class="check_list list">
       <h3>～脳疲労チェック～</h3>
       <ul>
-        {checks.map((check) => (
-          <li><img
-          class="check"
-          src="/checked.svg"
-          alt="チェック"
-          width="14px"
-          height="15px"
-        />{check}</li>
-        ))}
+        <li>・疲れやすい</li>
+        <li>・やる気が出ない</li>
+        <li>・イライラする</li>
+        <li>・物忘れが増えた</li>
+        <li>・凡ミスをする</li>
+        <li>・集中力が続かない</li>
+        <li>・文章がなかなか頭に入ってこない</li>
+        <li>・焦燥感がある</li>
+        <li>・いいアイデアがひらめかない</li>
+        <li>・優柔不断になった</li>
+        <li>・日中に眠くなる</li>
+        <li>・いびきをかく</li>
+        <li>・疲れが取れない</li>
+        <li>・寝つきが悪い</li>
+        <li>・眠りが浅い</li>
+        <li>・ゴロゴロしたい</li>
       </ul>
     </div>
   </div>
@@ -103,12 +92,6 @@ const checks = [
     margin-bottom: 1.6rem;
   }
 
-  .check {
-    width: auto;
-    height: auto;
-    margin-inline: 4px;
-    margin-bottom: 0;
-  }
   article {
     text-align: left;
   }
@@ -125,11 +108,8 @@ const checks = [
   }
 
   li {
-    display: flex;
-    align-items: center;
     font-size: 1.8rem;
     line-height: 200%;
-    margin: 0;
   }
 
   .lists {
