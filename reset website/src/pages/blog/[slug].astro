@@ -42,10 +42,8 @@ const slugs = blogs.contents.map(blog => {
 // 現在のページのslugIDを取得
 const currentSlugId = slugs.findIndex(slug => slug ===`${content.slug}-${content.id}` )
 // 前のページと次のページのslugを取得
-// const nextSlug = `/blog/${slugs[currentSlugId + 1]}`
-// const prevSlug = `/blog/${slugs[currentSlugId - 1]}`
-const nextSlug = slugs[currentSlugId + 1]
-const prevSlug = slugs[currentSlugId - 1]
+const nextSlug = `/blog/${slugs[currentSlugId + 1]}`
+const prevSlug = `/blog/${slugs[currentSlugId - 1]}`
 
 const eyecatchHeight = content.eyecatch.height
 const eyecatchWidth = content.eyecatch.width
@@ -112,10 +110,10 @@ const posts = await getAllPosts(5);
           }
         <div class="paginate">
           {
-            prevSlug ? <ArrowForward prev={prevSlug} /> : <div />
+            prevSlug === "/blog/undefined" ? <div /> : <ArrowForward prev={prevSlug} />
           }
           {
-            nextSlug ? <ArrowNext next={nextSlug}/> : <div />
+            nextSlug === "/blog/undefined" ? <div /> :<ArrowNext next={nextSlug}/>
           }
         </div>
         </article>
