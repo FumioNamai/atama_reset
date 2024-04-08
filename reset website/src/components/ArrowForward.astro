@@ -1,0 +1,33 @@
+---
+const { prev } = Astro.props;
+---
+
+<a href={prev}>
+  <div class="forward arrow">前へ</div>
+</a>
+
+<style>
+  .forward {
+    padding-inline: 0.8rem;
+    width: 7rem;
+    font-size: 1.6rem;
+  }
+  a {
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--textBlack);
+  }
+  a:hover {
+    color: var(--attention);
+  }
+  .forward.arrow::before {
+    transform: translateY(-10%) rotate(135deg);
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-bottom: 2px solid var(--attention);
+    border-right: 2px solid var(--attention);
+  }
+</style>

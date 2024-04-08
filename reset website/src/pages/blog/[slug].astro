@@ -7,6 +7,8 @@ import Layout from "@layouts/layout.astro";
 import { getAllPosts } from "../../library/microcms";
 import BlogList from "@components/BlogList.astro";
 import BackButton from "@components/BackButton.astro";
+import ArrowForward from "@components/ArrowForward.astro";
+import ArrowNext from "@components/ArrowNext.astro";
 
 export const prerender = true;
 
@@ -31,6 +33,19 @@ export async function getStaticPaths({}) {
 
 // 記事の詳細情報を取得
 const { content } = Astro.props;
+
+
+const blogs = await getAllPosts()
+// slugの一覧を取得
+const slugs = blogs.contents.map(blog => {
+  return blog.slug + "-" + blog.id
+})
+// 現在のページのslugIDを取得
+const currentSlugId = slugs.findIndex(slug => slug ===`${content.slug}-${content.id}` )
+// 前のページと次のページのslugを取得
+const nextSlug = slugs[currentSlugId + 1]
+const prevSlug = slugs[currentSlugId - 1]
+
 
 const eyecatchHeight = content.eyecatch.height
 const eyecatchWidth = content.eyecatch.width
@@ -95,15 +110,21 @@ const posts = await getAllPosts(5);
               }
             })
           }
+        <div class="paginate">
+          {
+            prevSlug ? <ArrowForward prev={prevSlug} /> : <div />
+          }
+          {
+            nextSlug ? <ArrowNext next={nextSlug}/> : <div />
+          }
+        </div>
         </article>
-
         <BackButton
           href = "/blogs/1",
           label = "一覧に戻る",
           width = "130px",
           fontSize = "1.8rem",
         />
-
       </div>
       <aside>
         <div class="blog-list">
@@ -142,7 +163,7 @@ const posts = await getAllPosts(5);
   }
 
   article {
-    margin-bottom: 40px;
+    margin-bottom: 64px;
   }
   .publishedAt {
     font-size: 1.4rem;
@@ -178,6 +199,24 @@ const posts = await getAllPosts(5);
   main a {
     padding: 0.8rem;
     text-align: center;
+  }
+
+  .paginate {
+    margin-top: 64px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 35%;
+  }
+
+  .paginate a {
+    padding:0;
+    text-decoration: none;
+    font-size: 16px;
+    color: var(--textBlack);
+  }
+  .paginate a:hover {
+    border-bottom: 1px solid var(--textGray);
   }
 
   @media screen and (945px <= width) {

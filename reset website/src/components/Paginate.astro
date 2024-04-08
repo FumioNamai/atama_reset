@@ -1,33 +1,29 @@
 ---
-const { prev, next, currentPage,lastPage} = Astro.props;
+import ArrowForward from "./ArrowForward.astro";
+import ArrowNext from "./ArrowNext.astro";
 
+const { prev, next, currentPage, lastPage } = Astro.props;
 ---
 
 <nav class="pagination">
   <!-- 前Pが存在する場合、前へリンクを表示 -->
-  {
-    prev ? (
-      <a href={prev}>
-        <div class="forward arrow">
-          前へ
-          </div>
-          </a>
-          ) : (
-          <div class="forward" />
-            )
-          }
+  {prev ? <ArrowForward prev={prev} /> : <div />}
 
-<ul>
+  <ul>
     <!--前々頁が存在する場合は 先頭の頁と...を表示-->
     {
       currentPage > 2 ? (
-        <li>
-          <a href="/blogs/1">1</a>
-        </li>
-        <li class="dot">...</li>
+        <>
+          <li>
+            <a href="/blogs/1">1</a>
+          </li>
+          <li class="dot">...</li>
+        </>
       ) : (
-        <li />
-        <li />
+        <>
+          <li />
+          <li />
+        </>
       )
     }
 
@@ -59,29 +55,24 @@ const { prev, next, currentPage,lastPage} = Astro.props;
     <!--次々頁が存在する場合は 最後の頁と...を表示-->
     {
       currentPage + 1 < lastPage ? (
-        <li  class="dot">...</li>
-        <li class="pNumber">
-          <a href={`/blogs/${lastPage}`}>{lastPage}</a>
-        </li>
+        <>
+          <li class="dot">...</li>
+          <li class="pNumber">
+            <a href={`/blogs/${lastPage}`}>{lastPage}</a>
+          </li>
+        </>
       ) : (
-        <li />
-        <li />
+        <>
+          <li />
+          <li />
+        </>
       )
     }
 
     <!-- 次頁が存在する場合、次へリンクを表示 -->
-    </ul>
-    {
-      next ? (
-        <a href={next}>
-        <div class="next arrow">
-          次へ
-        </div>
-      </a>
-      ) : (
-        <div class="next" />
-      )
-    }
+  </ul>
+
+  {next ? <ArrowNext next={next} /> : <div />}
 </nav>
 
 <style>
@@ -104,13 +95,6 @@ const { prev, next, currentPage,lastPage} = Astro.props;
     /* padding: 0.3rem .4rem; */
     display: inline-block;
     width: 3rem;
-  }
-
-  .pagination .forward,
-  .pagination .next {
-    padding-inline: .8rem;
-    width: 7rem;
-    font-size: 1.6rem;
   }
 
   a {
@@ -140,24 +124,5 @@ const { prev, next, currentPage,lastPage} = Astro.props;
 
   .dot {
     color: var(--textGray);
-  }
-  .forward.arrow::before {
-    transform: translateY(-10%) rotate(135deg);
-    content: "";
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-bottom: 2px solid var(--attention);
-    border-right: 2px solid var(--attention);
-  }
-
-  .next.arrow::after {
-    transform: translateY(-10%) rotate(315deg);
-    content: "";
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-bottom: 2px solid var(--attention);
-    border-right: 2px solid var(--attention);
   }
 </style>
