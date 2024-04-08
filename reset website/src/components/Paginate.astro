@@ -7,7 +7,7 @@ const { prev, next, currentPage, lastPage } = Astro.props;
 
 <nav class="pagination">
   <!-- 前Pが存在する場合、前へリンクを表示 -->
-  {prev ? <ArrowForward prev={prev} /> : <div />}
+  {prev ? <ArrowForward prev={prev} /> : <div class="blank"/>}
 
   <ul>
     <!--前々頁が存在する場合は 先頭の頁と...を表示-->
@@ -72,7 +72,7 @@ const { prev, next, currentPage, lastPage } = Astro.props;
     <!-- 次頁が存在する場合、次へリンクを表示 -->
   </ul>
 
-  {next ? <ArrowNext next={next} /> : <div />}
+  {next ? <ArrowNext next={next} /> : <div class="blank"/>}
 </nav>
 
 <style>
@@ -83,6 +83,7 @@ const { prev, next, currentPage, lastPage } = Astro.props;
   }
 
   .pagination ul {
+    width: 210px;
     padding: 0;
     list-style: none;
     display: flex;
@@ -124,5 +125,9 @@ const { prev, next, currentPage, lastPage } = Astro.props;
 
   .dot {
     color: var(--textGray);
+  }
+
+  .blank {
+    width: 70px;
   }
 </style>

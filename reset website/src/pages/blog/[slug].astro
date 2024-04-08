@@ -110,10 +110,10 @@ const posts = await getAllPosts(5);
           }
         <div class="paginate">
           {
-            prevSlug === "/blog/undefined" ? <div /> : <ArrowForward prev={prevSlug} />
+            prevSlug === "/blog/undefined" ? <div class="blank"/> : <ArrowForward prev={prevSlug} />
           }
           {
-            nextSlug === "/blog/undefined" ? <div /> :<ArrowNext next={nextSlug}/>
+            nextSlug === "/blog/undefined" ? <div class="blank"/> :<ArrowNext next={nextSlug}/>
           }
         </div>
         </article>
@@ -215,6 +215,9 @@ const posts = await getAllPosts(5);
   }
   .paginate a:hover {
     border-bottom: 1px solid var(--textGray);
+  }
+  .blank {
+    width: 70px;
   }
 
   @media screen and (945px <= width) {
