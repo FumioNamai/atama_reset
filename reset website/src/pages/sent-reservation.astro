@@ -1,5 +1,5 @@
 ---
-import ContactAddress from "@components/ContactOption.astro";
+import ContactOption from "@components/ContactOption.astro";
 import Layout from "@layouts/layout.astro";
 
 ---
@@ -14,7 +14,18 @@ import Layout from "@layouts/layout.astro";
     <p class="bold">ご予約内容をこちらで確認後、改めて予約確定のメールを送信いたします。</p>
     <p>もし、2営業日を過ぎても連絡がない場合は、正しく受信できなかった可能性がありますので、恐れ入りますが下記のメールアドレス、もしくはお電話にて再度のご連絡をお願いいたします。</p>
     </article>
-    <ContactAddress />
+    <ContactOption
+    title="メールでのお問い合わせ"
+    icon="/mail.svg"
+    href="mailto:atama.reset@gmail.com"
+    address="atama.reset@gmail.com"
+    />
+    <ContactOption
+    title="お電話でのお問い合わせ"
+    icon="/phone.svg"
+    href="tel:080-9271-7855"
+    address="080-9271-7855"
+    />
     <a href="/">HOMEに戻る</a>
 </section>
   </main>
@@ -43,6 +54,8 @@ import Layout from "@layouts/layout.astro";
 
   a {
     font-size: 1.8rem;
+    text-decoration: none;
+    color: var(--textBlack);
   }
 
 </style>

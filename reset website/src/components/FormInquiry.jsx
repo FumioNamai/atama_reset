@@ -228,6 +228,12 @@ export default function InquiryForm() {
                 <div className={styles.message}>
                 {message ? <p>{message}</p> : <p className="alert">未入力です</p>}
                 </div>
+                <InputDetails
+                  title={"「注意事項を確認した」"}
+                  props={isConfirmed}
+                  msg={"確認済み"}
+                  errMsg={"確認後、チェックを入れてください"}
+                />
               </div>
 
               <div className={styles.modalButtons}>
@@ -235,7 +241,7 @@ export default function InquiryForm() {
                   <button  className={styles.btnForm} onClick={closeModal}>入力画面に戻る</button>
                 </div>
                 <div>
-                  <button  className={styles.btnForm}  type="submit" onClick={handleSubmit}disabled={disableConfirm}>送信する</button>
+                  <button  className={`${styles.btnForm} ${styles.secondColor}`}  type="submit" onClick={handleSubmit}disabled={disableConfirm}>送信する</button>
                 </div>
               </div>
 

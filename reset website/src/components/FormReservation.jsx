@@ -506,7 +506,7 @@ export default function FormReservation() {
                   title={"「注意事項を確認した」"}
                   props={isConfirmed}
                   msg={"確認済み"}
-                  errMsg={"選択しチェックを入れてください"}
+                  errMsg={"確認後、チェックを入れてください"}
                 />
               </div>
 
@@ -516,7 +516,7 @@ export default function FormReservation() {
                 </div>
                 <div>
                   <button
-                    className={styles.btnForm} type="submit"
+                    className={`${styles.btnForm} ${styles.secondColor}`} type="submit"
                     onClick={handleSubmit}
                     disabled={disableConfirm}
                   >送信する
