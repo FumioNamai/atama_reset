@@ -1,6 +1,5 @@
 ---
 import Layout from "@layouts/layout.astro";
-// import Button from "@components/Button.jsx";
 import FormReservation from "@components/FormReservation.jsx";
 import FormInquiry from "@components/FormInquiry.jsx";
 import ContactOption from "@components/ContactOption.astro";
@@ -31,7 +30,7 @@ import ContactOption from "@components/ContactOption.astro";
 
         <div class="category">
           <!-- <label class="bold">種別</label><br /> -->
-          <p class="alert">いずれかを選択してください</p>
+          <p class="alert toggle">いずれかを選択してください</p>
           <div class="flex">
             <label class="radio"
               ><input
@@ -52,7 +51,7 @@ import ContactOption from "@components/ContactOption.astro";
               /><span class="radio-text">お問い合わせ</span></label
             >
           </div>
-          <p>（選択すると入力フォームが表示されます）</p>
+          <p class="toggle">（選択すると入力フォームを表示します）</p>
         </div>
 
         <!-- 予約フォーム JSでの実装-->
@@ -380,9 +379,6 @@ import ContactOption from "@components/ContactOption.astro";
   label {
     font-size: 1.8rem;
   }
-  input {
-    /* font-size: 1.6rem; */
-  }
 
   label,
   input,
@@ -521,13 +517,20 @@ const type = document.getElementsByName("type");
 function formSwitch() {
   const contactForm = document.querySelector(".contact-form");
   const inquiryForm = document.querySelector(".inquiry-form");
-
+  const toggle = document.querySelectorAll(".toggle")
+  console.log(toggle);
   if (type[0].checked) {
     contactForm.style.display = "block";
     inquiryForm.style.display = "none";
+    toggle.forEach(els => {
+      els.style.display = "none"
+    })
   } else if (type[1].checked) {
     contactForm.style.display = "none";
     inquiryForm.style.display = "block";
+    toggle.forEach(els => {
+      els.style.display = "none"
+    })
   }
 }
 
