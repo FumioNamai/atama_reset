@@ -185,7 +185,7 @@ select {
   border-radius: 8px;
   font-size: 1.6rem;
   padding: 4px 8px;
-  border: 2px solid var(--textGray);
+  border: 1px solid var(--textGray);
   font-family: 'Noto Sans JP', sans-serif;
   color: var(--textBlack);
 }
@@ -225,7 +225,7 @@ option {
   content:"";
   display: block;
   border-radius: 50%;
-  border: 2px solid var(--textGray);
+  border: 1px solid var(--textGray);
   width: 14px;
   height: 14px;
   background-color: #fff;
@@ -235,16 +235,15 @@ option {
   position: absolute;
   display: block;
   border-radius: 50%;
-
 }
 .radio-input:checked+.radio-text::after {
   content:"";
-  left: 3.5px;
+  left: 3px;
   position: absolute;
   display: block;
   border-radius: 50%;
-  width: 11px;
-  height: 11px;
+  width: 10px;
+  height: 10px;
   background-color: var(--highlight);
 }
 
