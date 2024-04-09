@@ -163,7 +163,7 @@ export default function InquiryForm() {
 
             <label className={styles.checkboxWrap}>
               <input
-                type={styles.checkbox}
+                type="checkbox"
                 name="confirm"
                 checked={isConfirmed}
                 onChange={() => setIsConfirmed(prevState => !prevState)}
