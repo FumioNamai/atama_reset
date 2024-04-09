@@ -95,7 +95,7 @@ export default function InquiryForm() {
         <div className={styles.inputWrapper}>
           <h5 className="bold">性別<span className="alert">&nbsp;*</span>
           </h5>
-          <br />
+
           <div className={styles.gender}>
             {GENDER.map((value) => {
               return (

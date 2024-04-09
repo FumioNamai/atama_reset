@@ -3,7 +3,7 @@ import Layout from "@layouts/layout.astro";
 // import Button from "@components/Button.jsx";
 import FormReservation from "@components/FormReservation.jsx";
 import FormInquiry from "@components/FormInquiry.jsx";
-import ContactAddress from "@components/ContactAddress.astro";
+import ContactOption from "@components/ContactOption.astro";
 ---
 
 <Layout pageTitle="ご予約・お問い合わせ" description="">
@@ -27,10 +27,11 @@ import ContactAddress from "@components/ContactAddress.astro";
       <!-- <Button  client:load /> -->
 
       <div class="byWeb">
-        <h3>WEBからのご予約・お問い合わせ</h3>
+        <h3>1. WEBからのご予約・お問い合わせ</h3>
 
         <div class="category">
           <!-- <label class="bold">種別</label><br /> -->
+          <p class="alert">いずれかを選択してください</p>
           <div class="flex">
             <label class="radio"
               ><input
@@ -38,7 +39,7 @@ import ContactAddress from "@components/ContactAddress.astro";
                 type="radio"
                 value="ご予約"
                 name="type"
-                onclick="formSwitch()"
+                onclick= formSwitch()
               /><span class="radio-text">ご予約</span></label
             >
             <label class="radio"
@@ -47,11 +48,11 @@ import ContactAddress from "@components/ContactAddress.astro";
                 type="radio"
                 value="お問い合わせ"
                 name="type"
-                onclick="formSwitch()"
+                onclick=formSwitch()
               /><span class="radio-text">お問い合わせ</span></label
             >
           </div>
-          <p>（選択すると入力フォームが開きます）</p>
+          <p>（選択すると入力フォームが表示されます）</p>
         </div>
 
         <!-- 予約フォーム JSでの実装-->
@@ -321,7 +322,19 @@ import ContactAddress from "@components/ContactAddress.astro";
         </div>
       </div>
 
-      <ContactAddress />
+      <ContactOption
+      title="2. メールでのご予約・お問い合わせ"
+      icon="/mail.svg"
+      href="mailto:atama.reset@gmail.com"
+      address="atama.reset@gmail.com"
+      />
+      <ContactOption
+      title="3. お電話でのご予約・お問い合わせ"
+      icon="/phone.svg"
+      href="tel:080-9271-7855"
+      address="080-9271-7855"
+      />
+
       <div class="notice">
         <p class="bold">施術中はお電話に出ることができません。</p>
         <p>
@@ -393,12 +406,17 @@ import ContactAddress from "@components/ContactAddress.astro";
     font-weight: bold;
   }
 
+  .category {
+    margin-block-start: 2rem;
+  }
   .category .flex {
     gap: 3.2rem;
+    margin-bottom: 1rem;
   }
 
   .category p {
     text-align: center;
+    padding-block-end: 0;
   }
   .contact-form {
     display: none;
@@ -407,6 +425,7 @@ import ContactAddress from "@components/ContactAddress.astro";
   .inquiry-form {
     display: none;
   }
+
 
   /* 入力確認画面（モーダル） */
   .modal {

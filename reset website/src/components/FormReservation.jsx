@@ -210,7 +210,7 @@ export default function FormReservation() {
           </label>
         </div>
 
-        <div  className={styles.inputWrapper}>
+        <div className={styles.inputWrapper}>
           <h5 className="bold">性別<span className="alert">&nbsp;*</span></h5>
 
           <div className={styles.gender}>
