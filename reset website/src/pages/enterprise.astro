@@ -2,7 +2,7 @@
 import Layout from "@layouts/layout.astro";
 import { Image }  from "astro:assets";
 import enterprise from "../assets/enterprise.webp";
-import ContactAddress from "@components/ContactOption.astro"
+import ContactOption from "@components/ContactOption.astro";
 ---
 
 <Layout pageTitle="企業・団体様" description="">
@@ -26,7 +26,18 @@ import ContactAddress from "@components/ContactOption.astro"
       ※個人宅への出張施術は行っておりません
     </p>
   </article>
-  <ContactAddress />
+  <ContactOption
+  title="メールでのお問い合わせ"
+  icon="/mail.svg"
+  href="mailto:atama.reset@gmail.com"
+  address="atama.reset@gmail.com"
+  />
+  <ContactOption
+  title="お電話でのお問い合わせ"
+  icon="/phone.svg"
+  href="tel:080-9271-7855"
+  address="080-9271-7855"
+  />
   <div class="notice">
     <p class="bold">～営業のお電話について～</p>
     <p>大切なお客様との時間のために、<br><span class="bold">営業中のお電話はご遠慮いただきますようお願い致します。<br>お問い合わせは必ずメールにて</span>お願い致します。</p>
