@@ -1,16 +1,18 @@
 ---
-const { next } = Astro.props;
+const { next,word,width} = Astro.props;
 ---
 
 <a href={next}>
-  <div class="next arrow">次へ</div>
+  <div class="next arrow">{word}</div>
 </a>
 
-<style>
+<style define:vars={{ width }}>
   .next {
     padding-inline: 0.8rem;
-    width: 7rem;
+    /* ここから */
+    width: var(--width);
     font-size: 1.6rem;
+    text-align: end;
   }
   a {
     cursor: pointer;

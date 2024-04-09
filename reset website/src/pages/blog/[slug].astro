@@ -110,10 +110,10 @@ const posts = await getAllPosts(5);
           }
         <div class="paginate">
           {
-            prevSlug === "/blog/undefined" ? <div class="blank"/> : <ArrowForward prev={prevSlug} />
+            prevSlug === "/blog/undefined" ? <div class="blank"/> : <ArrowForward prev={prevSlug} word="新しい記事へ" width="14rem"/>
           }
           {
-            nextSlug === "/blog/undefined" ? <div class="blank"/> :<ArrowNext next={nextSlug}/>
+            nextSlug === "/blog/undefined" ? <div class="blank"/> :<ArrowNext next={nextSlug} word="古い記事へ" width="14rem"/>
           }
         </div>
         </article>
@@ -217,7 +217,7 @@ const posts = await getAllPosts(5);
     border-bottom: 1px solid var(--textGray);
   }
   .blank {
-    width: 70px;
+    width: 14rem;
   }
 
   @media screen and (945px <= width) {

@@ -1,16 +1,17 @@
 ---
-const { prev } = Astro.props;
+const { prev,word,width} = Astro.props;
 ---
 
 <a href={prev}>
-  <div class="forward arrow">前へ</div>
+  <div class="forward arrow">{word}</div>
 </a>
 
-<style>
+<style define:vars={{width}}>
   .forward {
     padding-inline: 0.8rem;
-    width: 7rem;
+    width: var(--width);
     font-size: 1.6rem;
+    text-align: start;
   }
   a {
     cursor: pointer;
