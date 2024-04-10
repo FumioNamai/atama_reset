@@ -395,6 +395,7 @@ export default function FormReservation() {
           <div className={styles.flex}><b>注意事項を確認した<span className="alert bold">&nbsp;*</span></b>
             <label className={styles.checkboxWrap}>
               <input
+                className={styles.checkbox}
                 type="checkbox"
                 name="confirm"
                 checked={isConfirmed}

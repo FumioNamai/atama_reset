@@ -166,6 +166,7 @@ export default function InquiryForm() {
                 type="checkbox"
                 name="confirm"
                 checked={isConfirmed}
+                className={styles.checkbox}
                 onChange={() => setIsConfirmed(prevState => !prevState)}
                 required
               />
