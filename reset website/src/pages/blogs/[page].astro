@@ -15,7 +15,6 @@ export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {
   return paginate(blogs.contents, { pageSize: 5 });
 };
 const { page } = Astro.props;
-
 ---
 
 <Layout pageTitle="ブログ一覧" description="">

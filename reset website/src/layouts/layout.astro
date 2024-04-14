@@ -13,6 +13,19 @@ const props = Astro.props;
 
 <html lang="ja">
   <head>
+        <!-- Google tag (gtag.js) -->
+        <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-BQ1KP9VWRB"
+        ></script>
+        <script type="text/partytown">
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-BQ1KP9VWRB");
+        </script>
+
     <Meta {...props} ? />
     <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
@@ -26,32 +39,32 @@ const props = Astro.props;
       <Footer />
       <BottomNav />
     </div>
-    <style></style>
-  </body><style>
-    html {
-      scroll-padding-top: 74px;
-    }
-
-    @media screen and (768px <= width) {
+    <style>
       html {
-        scroll-padding-top: 130px;
+        scroll-padding-top: 74px;
       }
-    }
 
-    /* GlobalNavを開いたときのオーバーレイ */
-    .bodyCover {
-      display: none;
-      position: fixed;
-      overflow: hidden;
-      top: 0;
-      left: 0;
-      z-index: 400;
-      width: 100%;
-      height: 100vh;
-      background-color: #00000050;
-    }
-    .inactive .bodyCover {
-      display: block;
-    }
-  </style>
+      @media screen and (768px <= width) {
+        html {
+          scroll-padding-top: 130px;
+        }
+      }
+
+      /* GlobalNavを開いたときのオーバーレイ */
+      .bodyCover {
+        display: none;
+        position: fixed;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        z-index: 400;
+        width: 100%;
+        height: 100vh;
+        background-color: #00000050;
+      }
+      .inactive .bodyCover {
+        display: block;
+      }
+    </style>
+  </body>
 </html>

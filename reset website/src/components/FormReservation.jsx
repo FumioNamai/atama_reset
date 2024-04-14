@@ -369,8 +369,8 @@ export default function FormReservation() {
                   checked={reason.checked}
                   onChange={handleReasonChange}
                 />
-                <span className={styles.checkmark}></span>
-                <p className={styles.checkmarkText}>{reason.label}</p>
+                <span className={styles.checkMark}></span>
+                <p className={styles.checkMarkText}>{reason.label}</p>
               </label>
             )
           })}
@@ -402,7 +402,7 @@ export default function FormReservation() {
                 onChange={() => setIsConfirmed(prevState => !prevState)}
                 required
               />
-              <span className={styles.checkmark}></span>
+              <span className={styles.checkMark}></span>
             </label>
           </div>
           <p><a href="/privacy_policy">プライバシーポリシー</a>が適用されます。</p>

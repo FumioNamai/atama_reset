@@ -60,7 +60,7 @@
   opacity: 0;
 }
 
-.checkboxWrap .checkmark {
+.checkboxWrap .checkMark {
   position: absolute;
   top: 5px;
   left: 0;
@@ -71,7 +71,7 @@
   background-color: #fff;
 }
 
-.checkboxWrap .checkmark::after {
+.checkboxWrap .checkMark::after {
   content: "";
   position: absolute;
   display: none;
@@ -84,19 +84,19 @@
   transform: rotate(45deg);
 }
 
-.checkboxWrap input:checked + .checkmark {
+.checkboxWrap input:checked + .checkMark {
   background-color: #fff;
 }
-.checkboxWrap input:checked + .checkmark:after {
+.checkboxWrap input:checked + .checkMark:after {
   display: block;
 }
 
-.checkmarkText {
+.checkMarkText {
   padding-left: 4px;
   padding-bottom: 0;
 }
 
-.checkbox:focus-visible ~ .checkmark {
+.checkbox:focus-visible ~ .checkMark {
   border: 2px solid var(--black);
 }
 
