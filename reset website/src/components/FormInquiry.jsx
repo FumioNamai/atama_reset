@@ -143,7 +143,7 @@ export default function InquiryForm() {
             </label>
         </div>
 
-        <div>
+        <div className={styles.inputWrapper}>
           <label className="bold">お問い合わせ内容<span className="alert">&nbsp;*</span>
           <br />
           <textarea
