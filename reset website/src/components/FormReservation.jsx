@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { init, send } from "emailjs-com";
 import { InputDetails } from "./InputDetails";
@@ -392,7 +391,8 @@ export default function FormReservation() {
 
         <div className={styles.confirm}>
           <p>ページ下部に記載の注意事項を必ずご確認ください。</p>
-          <div className={styles.flex}><b>注意事項を確認した<span className="alert bold">&nbsp;*</span></b>
+          <div className={`${styles.flex} ${styles.bold}`}><b>注意事項を確認した<span className="alert bold">&nbsp;*</span></b>
+
             <label className={styles.checkboxWrap}>
               <input
                 className={styles.checkbox}

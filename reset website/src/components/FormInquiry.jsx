@@ -159,18 +159,18 @@ export default function InquiryForm() {
 
         <div className={styles.confirm}>
           <p>ページ下部に記載の注意事項を必ずご確認ください。</p>
-          <div className={`${styles.flex} ${styles.bold}`}><b>注意事項を確認した<span className="alert">&nbsp;*</span></b>
+          <div className={`${styles.flex} ${styles.bold}`}><b>注意事項を確認した<span className="alert bold">&nbsp;*</span></b>
 
             <label className={styles.checkboxWrap}>
               <input
+                className={styles.checkbox}
                 type="checkbox"
                 name="confirm"
                 checked={isConfirmed}
-                className={styles.checkbox}
                 onChange={() => setIsConfirmed(prevState => !prevState)}
                 required
               />
-              <span className={styles.checkmark}></span>
+              <span className={styles.checkMark}></span>
             </label>
           </div>
           <p><a href="/privacy_policy">プライバシーポリシー</a>が適用されます。</p>
