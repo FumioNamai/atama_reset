@@ -319,9 +319,7 @@ export default function FormReservation() {
             </div>
           </div>
 
-        {/* <div className="visits inputWrapper"> */}
         <div className={`${styles.visits} ${styles.inputWrapper}`}>
-        {/* <div className={styles.inputWrapper}> */}
           <h5 className="bold">
             ご来店は
             <span className="alert">&nbsp;*</span>
@@ -420,7 +418,6 @@ export default function FormReservation() {
         </div>
         <div></div>
         <button className={styles.btnForm} type="confirm" onClick={ShowModal}
-        // disabled={disableConfirm}
         >入力確認画面へ</button>
 
         {/* モーダルウィンドウ */}

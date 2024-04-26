@@ -1,47 +1,65 @@
-# Astro Starter Kit: Minimal
+# reset WEBサイト
 
-```
-npm create astro@latest -- --template minimal
-```
+## 目指した課題解決
+- 来店数増・問い合わせ数増・認知度の改善
+- より見やすく、わかりやすい新サイトの構築
+- よりレスポンスがよく、lighthouseで高く評価されるサイトに
+- MicroCMSを利用し、サイト所有者が『お知らせ』と『ブログ』への投稿可能に
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## サイトの概要
+- 頭ほぐしの専門店のWEBサイト(お知らせ・ブログ投稿・予約問い合わせフォーム)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## URL
+- https://atama-reset.com
 
-## 🚀 Project Structure
+## 開発したきっかけ
+- 知人が経営する店舗のサイトリニューアルを打診
 
-Inside of your Astro project, you'll see the following folders and files:
+## 実装予定の機能
+- フォームをReactHookFormで再構築
 
-```
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 使用技術
+- フレームワーク:Astro.js
+- インフラ:Vercel netlify
+- CMS:microCMS
+- ライブラリ:dayjs emailjs react-datepicker swr
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### デザイン
+- Figmaでデザイン
+- リラクゼーションを意識した柔和なデザイン、カラーリング
+- ターゲット（脳疲労がある方）が見やすいようにフォントサイズを大きめに、明るさを控えめに設定
+- ハンバーガーメニューをスマホサイズでは左側に、タブレット以上では右側に配置し、アニメーションを付加
+- タブレットサイズ以下の画面幅でボトムナビゲーションを表示
+- ブログページと予約ページへのアクセスを増やすため、画面上に常にリンクを表示
 
-Any static assets, like images, can be placed in the `public/` directory.
+### CSS
+- ヘッダーにグリッドレイアウトを使用
+- 「選ばれる理由」　グリッドレイアウトでレスポンシブ化
+- ハンバーガーメニューのアニメーション
+- ブログサマリーにコンテナクエリを使用しHOME用、ブログ一覧用、アサイド用の3サイズに対応
 
-## 🧞 Commands
+### JavaScript
+- IntersectionObserver スクロールに合わせて次のセクションを表示させる
+- IntersectionObserver 下にスクロールするとボトムナビゲーションを表示させる（ファーストビューの表示領域を確保するため）
+- IntersencionObserverをクラスコンポ―ネント化
+- 「アクセス」と「最近のブログ」のスライダーにsplideを使用
+- ブログ一覧、ブログ詳細ページにページネーションを実装
 
-All commands are run from the root of the project, from a terminal:
+### React
+- FAQページのアコーディオン
+- ご予約・お問い合わせフォーム
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:3000`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### Email.js
+- JavaScriptで実装すると環境変数が検証ツールから見えてしまうため、Reactで実装
 
-## 👀 Want to learn more?
+### CMS
+- microCMSを使用して、microCMSからブログ記事とお知らせ記事が投稿可能
+- microCMSで投稿するとNetlifyで自動的にデプロイしてアップ可能
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### GA4
+
+## 制作期間
+- 2024/7/7~8/8 Figmaでデザイン作成
+- 2024/8/9~ コーディング開始
+- 2024/12/4~ 公開開始
