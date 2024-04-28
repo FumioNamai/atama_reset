@@ -6,7 +6,7 @@ const {
   siteLocale,
   siteType,
   siteIcon,
-  // formatDetection,
+  formatDetection,
 } = siteMeta;
 
 const {
@@ -21,6 +21,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 <>
   <meta charset="utf-8" />
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'"> -->
   <!-- <link rel="icon" type="image/svg+xml" href="/favicon.ico" /> -->
   <!-- <link rel="icon" sizes="32x32" href="/favicon.ico" /> -->
 
@@ -37,7 +38,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:site_name" content={siteTitle} />
   <meta property="og:type" content={siteType} />
   <meta property="og:locale" content={siteLocale} />
-  <meta name="format-detection" content="email=no,telephone=no" />
+  <meta name="format-detection" content={formatDetection} />
   <link rel="icon" href={siteIcon} />
   <link rel="apple-touch-icon" href={siteIcon} />
   <!-- <link rel="preconnect" href="https://fonts.googleapis.com">

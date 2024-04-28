@@ -5,7 +5,7 @@ import BlogList from "@components/BlogList.astro";
 // microCMSを呼び出す
 import { getAllPosts } from "../../../src/library/microcms";
 import Paginate from "@components/Paginate.astro";
-
+import type { Blog } from "../../../src/library/microcms";
 
 export const prerender = true;
 
@@ -15,6 +15,7 @@ export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {
   return paginate(blogs.contents, { pageSize: 5 });
 };
 const { page } = Astro.props;
+
 ---
 
 <Layout pageTitle="ブログ一覧" description="">
@@ -23,7 +24,7 @@ const { page } = Astro.props;
       <h2>ブログ</h2>
       <div class="container">
         {
-          page.data.map((data) => (
+          page.data.map((data:Blog) => (
             <BlogList
               id={data.id}
               slug={data.slug}

@@ -11,24 +11,29 @@ const client = createClient({
 // 型定義
 export type Blog = {
   id: string,
+  createdAt: string,
+  updatedAt: string,
+  publishedAt: string,
   title: string,
   slug: string,
-  publishedAt: string,
   eyecatch: {
     url: string,
     height: number,
     width: number,
   },
   summary: string,
-  article: {
-    image:  {
-      url: string,
-      height: number,
-      width: number,
-    },
-    text: string,
-    rich_editor: string,
-  },
+  article: [
+    {
+      fieldId: string | undefined,
+      image: {
+        url: string | undefined,
+        height: number | undefined,
+        width: number | undefined,
+      },
+      text: string | undefined,
+      rich_editor: string | undefined,
+    }
+  ],
 };
 export type BlogResponse = {
   totalCount: number,
@@ -39,7 +44,7 @@ export type BlogResponse = {
 }
 
 // APIの呼び出し
-export async function getAllPosts( limit = 100) {
+export async function getAllPosts(limit = 100) {
   return await client.get({
     endpoint: "blogs",
     queries: {
@@ -50,53 +55,11 @@ export async function getAllPosts( limit = 100) {
   // return posts.contents
 }
 
-// export const getBlogs = async (queries?: MicroCMSQueries) => {
-//     return await client.get<BlogResponse>({
-//       endpoint: "blogs",
-//       queries:{
-//         orders: '-publishedAt',
-//       }})
-//     };
-// export const getBlogs = async ( limit = 100, offset = 0) => {
-//   return await client.get({
-//     endpoint: "blogs",
-//     queries : {
-//       offset,
-//       limit,
-//       orders: "-publishedAt"
-//     }
-//   })
-// }
-
-// export async function getAllSlugs(limit:100) {
-//     const slugs = await client.get({
-//       endpoint: 'blogs',
-//       queries: {
-//         fields: 'title,slug',
-//         orders:'-publishDate',
-//         limit:limit
-//       },
-//     })
-//     return slugs.contents
-// }
-
-// export async function getBlogDetail( limit = 100) {
-//   return await client.get({
-//     endpoint: "blogs",
-//     queries: {
-//       limit: limit,
-//       orders: '-publishedAt',
-//     },
-//   });
-//   return posts.contents
-// }
-// fields: 'id,title,slug,publishedAt,summary,eyecatch',
-
 // BlogPreview.jsxに渡すデータを取得
-export const  getBlogDetail = async (
+export const getBlogDetail = async (
   contentId: string,
   queries?: MicroCMSQueries
-) =>  {
+) => {
   return await client.getListDetail<Blog>({
     endpoint: "blogs",
     contentId,

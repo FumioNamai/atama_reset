@@ -1,10 +1,10 @@
 ---
-import dayjs from "dayjs"
-import utc from "dayjs/plugin/utc"
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 
 import Layout from "@layouts/layout.astro";
-import { getAllPosts } from "../../library/microcms";
+import { getAllPosts, type Blog } from "../../library/microcms";
 import BlogList from "@components/BlogList.astro";
 import BackButton from "@components/BackButton.astro";
 import ArrowForward from "@components/ArrowForward.astro";
@@ -15,56 +15,62 @@ export const prerender = true;
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-
 // 詳細記事ページの全パスを取得
 export async function getStaticPaths({}) {
   const blogs = await getAllPosts();
-  return blogs.contents.map((content) => ({
+  const contents = blogs.contents;
+  return contents.map((content) => ({
     params: {
       // []内に入れる変数を指定
       slug: content.slug + "-" + content.id,
       // page: content.slug,
     },
     props: { content },
-  }
-  ));
+  }));
 }
-
-// 記事の詳細情報を取得
+interface Props {
+  content: Blog;
+}
 const { content } = Astro.props;
 
-
-const blogs = await getAllPosts()
-// slugの一覧を取得
-const slugs = blogs.contents.map(blog => {
-  return blog.slug + "-" + blog.id
-})
-// 現在のページのslugIDを取得
-const currentSlugId = slugs.findIndex(slug => slug ===`${content.slug}-${content.id}` )
-// 前のページと次のページのslugを取得
-const nextSlug = `/blog/${slugs[currentSlugId + 1]}`
-const prevSlug = `/blog/${slugs[currentSlugId - 1]}`
-
-const eyecatchHeight = content.eyecatch.height
-const eyecatchWidth = content.eyecatch.width
+const eyecatchHeight = content.eyecatch.height;
+const eyecatchWidth = content.eyecatch.width;
 
 const articles = content.article;
-const articleHeight = content.article.height
-const articleWidth = content.article.width
+
+// ブログ記事内の画像サイズを取得
+let imageHeight: number = 0;
+let imageWidth: number = 0;
+articles.forEach(
+  (article) =>
+    article.image &&
+    (imageHeight = article.image.height, imageWidth = article.image.width)
+);
 
 // 日付の表示を変更
-const pubDate = dayjs.utc(content.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')
-// let pubDate;
-// console.log(pubDate);
+const pubDate = dayjs
+  .utc(content.publishedAt)
+  .tz("Asia/Tokyo")
+  .format("YYYY.MM.DD");
 
-// if (pubDate) {
-//   pubDate = new Date(pubDate)
-//   .toLocaleDateString("ja-JP")
-//   .split("/")
-//     .join(".");
-//     console.log(pubDate);
-// }
-// aside用 microCMSを呼び出す
+// pagination
+// 記事の詳細情報を取得
+const blogs = await getAllPosts();
+const contents: Blog[] = blogs.contents;
+// slugの一覧を取得
+const slugs = contents.map((content) => {
+  return content.slug + "-" + content.id;
+});
+
+// 現在のページのslugIDを取得
+const currentSlugId = slugs.findIndex(
+  (slug) => slug === `${content.slug}-${content.id}`
+);
+// 前のページと次のページのslugを取得
+const nextSlug = `/blog/${slugs[currentSlugId + 1]}`;
+const prevSlug = `/blog/${slugs[currentSlugId - 1]}`;
+
+// 最近の投稿を取得
 const posts = await getAllPosts(5);
 ---
 
@@ -108,20 +114,36 @@ const posts = await getAllPosts(5);
               }
             })
           }
-        <div class="paginate">
-          {
-            prevSlug === "/blog/undefined" ? <div class="blank"/> : <ArrowForward prev={prevSlug} word="新しい記事へ" width="14rem"/>
-          }
-          {
-            nextSlug === "/blog/undefined" ? <div class="blank"/> :<ArrowNext next={nextSlug} word="古い記事へ" width="14rem"/>
-          }
-        </div>
+          <div class="paginate">
+            {
+              prevSlug === "/blog/undefined" ? (
+                <div class="blank" />
+              ) : (
+                <ArrowForward
+                  prev={prevSlug}
+                  word="新しい記事へ"
+                  width="14rem"
+                />
+              )
+            }
+            {
+              nextSlug === "/blog/undefined" ? (
+                <div class="blank" />
+              ) : (
+                <ArrowNext next={nextSlug} word="古い記事へ" width="14rem" />
+              )
+            }
+          </div>
         </article>
         <BackButton
-          href = "/blogs/1",
-          label = "一覧に戻る",
-          width = "130px",
-          fontSize = "1.8rem",
+          href="/blogs/1"
+          ,
+          label="一覧に戻る"
+          ,
+          width="130px"
+          ,
+          fontSize="1.8rem"
+          ,
         />
       </div>
       <aside>
@@ -145,13 +167,14 @@ const posts = await getAllPosts(5);
   </main>
 </Layout>
 
-<style define:vars={{
-  eyecatchHeight,
-  eyecatchWidth ,
-  articleWidth,
-  articleHeight
-  }}>
-
+<style
+  define:vars={{
+    eyecatchHeight,
+    eyecatchWidth,
+    imageWidth,
+    imageHeight,
+  }}
+>
   .container {
     height: auto;
     max-width: 640px;
@@ -169,11 +192,11 @@ const posts = await getAllPosts(5);
   }
 
   .title {
-    padding: 0 0 1.6rem 0 ;
+    padding: 0 0 1.6rem 0;
   }
 
   .image {
-    margin: 0 0 1.6rem 0 ;
+    margin: 0 0 1.6rem 0;
   }
 
   img {
@@ -186,8 +209,8 @@ const posts = await getAllPosts(5);
   }
 
   .articleImg {
-    width: var(--articleWidth);
-    height: var(--articleHeight);
+    width: var(--imageWidth);
+    height: var(--imageHeight);
   }
 
   aside {
@@ -208,7 +231,7 @@ const posts = await getAllPosts(5);
   }
 
   .paginate a {
-    padding:0;
+    padding: 0;
     text-decoration: none;
     font-size: 16px;
     color: var(--textBlack);
