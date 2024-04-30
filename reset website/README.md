@@ -20,7 +20,7 @@
 
 ## 使用技術
 - フレームワーク:Astro.js
-- インフラ:Vercel netlify
+- インフラ:Netlify
 - CMS:microCMS
 - ライブラリ:dayjs emailjs react-datepicker swr
 

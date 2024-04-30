@@ -24,14 +24,14 @@ export type Blog = {
   summary: string,
   article: [
     {
-      fieldId: string | undefined,
+      fieldId?: string ,
       image: {
-        url: string | undefined,
-        height: number | undefined,
-        width: number | undefined,
+        url?: string ,
+        height?: number ,
+        width?: number ,
       },
-      text: string | undefined,
-      rich_editor: string | undefined,
+      text?: string ,
+      rich_editor?: string ,
     }
   ],
 };

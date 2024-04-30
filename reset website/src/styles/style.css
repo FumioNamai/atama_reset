@@ -194,7 +194,7 @@ textarea {
   min-width: 343px;
   width: 100%;
   padding: 8px;
-  font-family: 'Noto Sans JP', sans-serif;
+  /* font-family: 'Noto Sans JP', sans-serif; */
 }
 
 .flex {
