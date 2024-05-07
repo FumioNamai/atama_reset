@@ -23,8 +23,8 @@ export default defineConfig({
       protocol: "https"
     }]
   },
-  // output: "hybrid",
-  output: "server",
+  output: "hybrid",
+  // output: "server",
   adapter: netlify(),
   site: siteUrl
 });
