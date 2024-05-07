@@ -22,7 +22,7 @@
 - フレームワーク:Astro.js
 - インフラ:Netlify
 - CMS:microCMS
-- ライブラリ:dayjs emailjs react-datepicker swr
+- ライブラリ:dayjs emailjs swr
 
 
 ### デザイン
