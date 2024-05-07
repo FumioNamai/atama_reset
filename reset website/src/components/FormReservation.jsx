@@ -8,7 +8,7 @@ const publicKey = import.meta.env.PUBLIC_KEY;
 const serviceID = import.meta.env.PUBLIC_EMAIL_SERVICE_ID;
 const templateIDContact = import.meta.env.PUBLIC_EMAIL_TEMPLATE_ID_CONTACT;
 
-export const prerender = false;
+// export const prerender = false;
 
 export default function FormReservation() {
   // 明日日付を yyyy-mm-dd の形式で取得
