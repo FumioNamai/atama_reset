@@ -3,6 +3,8 @@ import { init, send } from "emailjs-com";
 import { InputDetails } from "./InputDetails";
 import styles from "./Form.module.css";
 
+export const prerender = false;
+
 const publicKey = import.meta.env.PUBLIC_KEY;
 const serviceID = import.meta.env.PUBLIC_EMAIL_SERVICE_ID;
 const templateIDInquiry = import.meta.env.PUBLIC_EMAIL_TEMPLATE_ID_INQUIRY;

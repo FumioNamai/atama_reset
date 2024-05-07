@@ -6,6 +6,8 @@ import useSWR from "swr"
 import { getBlogDetail } from "../library/microcms";
 import styles from "./BlogPreview.module.css"
 
+export const prerender = false;
+
 const BlogPreview = () => {
   const params = new URLSearchParams(window.location.search);
   const contentId = params.get("contentId")
