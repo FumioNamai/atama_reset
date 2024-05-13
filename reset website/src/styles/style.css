@@ -125,6 +125,10 @@ h1,h2,h3,p,ul,li {
 .link {
   color: var(--link);
 }
+.marker {
+  font-weight: bold;
+  background:linear-gradient(transparent 50%, #ffb6c1d4 80%)
+}
 .h3_borderLeft {
   border-left: 5px solid var(--positive);
   padding-left: 1.6rem;
