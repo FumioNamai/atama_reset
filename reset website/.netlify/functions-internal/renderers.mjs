@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
-import render from 'preact-render-to-string';
+import { render } from 'preact-render-to-string';
+import prepass from 'preact-ssr-prepass';
 
 const contexts = /* @__PURE__ */ new WeakMap();
 function getContext(result) {
@@ -72,8 +73,10 @@ var static_html_default = StaticHtml;
 const slotName = (str) => str.trim().replace(/[-_]([a-z])/g, (_, w) => w.toUpperCase());
 let originalConsoleError;
 let consoleFilterRefs = 0;
-function check(Component$1, props, children) {
+async function check(Component$1, props, children) {
   if (typeof Component$1 !== "function")
+    return false;
+  if (Component$1.name === "QwikComponent")
     return false;
   if (Component$1.prototype != null && typeof Component$1.prototype.render === "function") {
     return Component.isPrototypeOf(Component$1);
@@ -81,11 +84,11 @@ function check(Component$1, props, children) {
   useConsoleFilter();
   try {
     try {
-      const { html } = renderToStaticMarkup.call(this, Component$1, props, children, void 0);
+      const { html } = await renderToStaticMarkup.call(this, Component$1, props, children, void 0);
       if (typeof html !== "string") {
         return false;
       }
-      return html == "" ? false : !/\<undefined\>/.test(html);
+      return html == "" ? false : !/<undefined>/.test(html);
     } catch (err) {
       return false;
     }
@@ -96,7 +99,7 @@ function check(Component$1, props, children) {
 function shouldHydrate(metadata) {
   return metadata?.astroStaticSlot ? !!metadata.hydrate : true;
 }
-function renderToStaticMarkup(Component, props, { default: children, ...slotted }, metadata) {
+async function renderToStaticMarkup(Component, props, { default: children, ...slotted }, metadata) {
   const ctx = getContext(this.result);
   const slots = {};
   for (const [key, value] of Object.entries(slotted)) {
@@ -111,20 +114,17 @@ function renderToStaticMarkup(Component, props, { default: children, ...slotted 
   const newProps = { ...props, ...slots };
   const attrs = {};
   serializeSignals(ctx, props, attrs, propsMap);
-  const html = render(
-    h(
-      Component,
-      newProps,
-      children != null ? h(static_html_default, {
-        hydrate: shouldHydrate(metadata),
-        value: children
-      }) : children
-    )
+  const vNode = h(
+    Component,
+    newProps,
+    children != null ? h(static_html_default, {
+      hydrate: shouldHydrate(metadata),
+      value: children
+    }) : children
   );
-  return {
-    attrs,
-    html
-  };
+  await prepass(vNode);
+  const html = render(vNode);
+  return { attrs, html };
 }
 function useConsoleFilter() {
   consoleFilterRefs++;

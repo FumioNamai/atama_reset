@@ -9,15 +9,15 @@ import GlobalNavRight from "@components/GlobalNavRight.astro";
 import Meta from "@components/meta.astro";
 
 const props = Astro.props;
+const PUBLIC_GOOGLE_TAG_MANAGER_ID = import.meta.env.PUBLIC_GOOGLE_TAG_MANAGER_ID
 ---
-
 <html lang="ja">
   <head>
     <!-- Google tag (gtag.js) -->
     <script
       is:inline
       type="text/partytown"
-      src="https://www.googletagmanager.com/gtag/js?id=G-BQ1KP9VWRB"></script>
+      src=`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GOOGLE_TAG_MANAGER_ID}`></script>
     <script is:inline type="text/partytown">
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -25,7 +25,7 @@ const props = Astro.props;
       }
       gtag("js", new Date());
 
-      gtag("config", "G-BQ1KP9VWRB");
+      gtag("config", PUBLIC_GOOGLE_TAG_MANAGER_ID);
     </script>
 
     <Meta {...props} ? />
