@@ -116,17 +116,14 @@ const problems = [
   .problems-image {
     position: absolute;
     z-index: -10;
-    /* top: 10%; */
     top: 0%;
     left: 40%;
     width: 100%;
-    /* height: 80%; */
     height: 100%;
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url(../assets/problem.webp);
-    /* border-radius: 16px 0 0 16px; */
     filter: blur(1px);
     opacity: 0;
     transition: 1s .5s;
@@ -219,7 +216,6 @@ const problems = [
     background-size: cover;
     background-position: 20%;
     border-radius: 16px;
-    /* filter: blur(1px); */
     transform: translateY(20px);
     transition: 1s;
     opacity: 0;
@@ -269,7 +265,6 @@ const problems = [
     background-size: cover;
     background-position: 50% 75%;
     aspect-ratio: 375/128;
-    /* 画面幅が900pxを超えたらより細くする必要あり */
     opacity: 0;
     transition: 1s;
   }
@@ -343,43 +338,9 @@ const problems = [
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    class ScrollObserver {
-      constructor(els, cb, options) {
-        //監視対象のelementsを取得
-        this.els = document.querySelectorAll(els);
-        //オプションのデフォルト設定を定義
-        const defaultOptions = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0,
-        };
-        this.cb = cb;
-        //デフォルト設定に、個別設定のオプションをマージする
-        this.options = Object.assign(defaultOptions, options);
-        //
-        this._init();
-      }
-      _init() {
-        const callback = (entries) => {
-          entries.forEach((entry) => {
-            //監視対象の要素が領域内に入った場合の処理
-            if (entry.isIntersecting) {
-              this.cb(entry.target, true); //true=isIntersectingがtrue
-              //処理後に監視を切る処理
-              observer.unobserve(entry.target);
-            }
-            // else {
-            //   this.cb(entry.target, false);
-            // }
-          });
-        };
-        const observer = new IntersectionObserver(callback.bind(this), this.options);
-        //対象の要素elを監視
-        this.els.forEach(el => observer.observe(el));
-      }
-    }
+  import {ScrollObserver} from "./ScrollObserver"
 
+  document.addEventListener("DOMContentLoaded", function () {
     //Problemパート
     const cb1 = function (el, isIntersecting) {
       if (isIntersecting) {
@@ -393,7 +354,7 @@ const problems = [
       }
     };
     //ScrollObserverの初期化(第1引数"entry.target",第2引数コールバック関数、第3引数オプションの個別設定)
-    const problems = new ScrollObserver(".problems", cb1, {
+    new ScrollObserver(".problems", cb1, {
       rootMargin: "-50px 0px",
       threshold: 0.5,
     });
@@ -409,7 +370,7 @@ const problems = [
         textWrapper.style.transform = "translateY(-20px)";
       }
     };
-    const suggestion = new ScrollObserver(".suggestion", cb2, {
+    new ScrollObserver(".suggestion", cb2, {
       rootMargin: "-50px 0px",
       threshold: 0.5,
     });
@@ -422,8 +383,8 @@ const problems = [
         el.style.opacity = 0.6;
       }
     };
-    const causeImage = new ScrollObserver(".cause-image", causeImg, {
-      threshold: 1,
+    new ScrollObserver(".cause-image", causeImg, {
+      threshold: 1
     });
 
     const textFading = function (el, isIntersecting) {
@@ -431,7 +392,7 @@ const problems = [
         el.style.opacity = 1;
       }
     };
-    const fadeinText = new ScrollObserver(".fadeinText",  textFading, {
+    new ScrollObserver(".fadeinText",  textFading, {
       rootMargin: '-30% 0px',
       threshold: 0,
     });

@@ -1,18 +1,10 @@
----
-// const {
-//   els,
-//   cb,
-//   options
-// } = Astro.props
 
----
-
-<!-- propsをscriptに渡せるか不明なため、保留中 -->
-
-<script >
-  document.addEventListener("DOMContentLoaded", function () {
-    class ScrollObserver {
-      constructor({els}, {cb}, {options}) {
+  export  class ScrollObserver {
+    els: NodeListOf<Element>;
+    cb:(el: Element, isIntersecting:boolean) => void;
+    options: IntersectionObserverInit;
+    observer: IntersectionObserver;
+      constructor(els:string, cb: (el:Element,isIntersecting:boolean) => void, options: IntersectionObserverInit) {
         //監視対象のelementsを取得
         this.els = document.querySelectorAll(els);
         //オプションのデフォルト設定を定義
@@ -46,17 +38,3 @@
         this.els.forEach((el) => observer.observe(el));
       }
     }
-
-    // const fadein = function(el, isIntersecting) {
-    //   if(isIntersecting) {
-    //     el.style.opacity = 1;
-    //     el.style.transform = "none"
-    //   }
-    // }
-    // const fadeinTrigger = new ScrollObserver(".fadein", fadein , {
-    //   rootMargin: "-200px 0px",
-    //   threshold: 0.5,
-    // })
-
-  })
-</script>
