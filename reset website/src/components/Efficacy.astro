@@ -279,7 +279,7 @@ import MoreButton from "./MoreButton.astro";
         el.style.transform = "none"
       }
     }
-    const triangleTrigger = new ScrollObserver(".triangle-image img", triangle , {
+    new ScrollObserver(".triangle-image img", triangle , {
       rootMargin: "0px 0px",
       threshold: 1,
     })
@@ -291,7 +291,7 @@ import MoreButton from "./MoreButton.astro";
         el.style.transform = "none"
       }
     }
-    const fadeinTrigger = new ScrollObserver(".fadein", fadein , {
+    new ScrollObserver(".fadein", fadein , {
       rootMargin: "-200px 0px",
       threshold: 0,
     })

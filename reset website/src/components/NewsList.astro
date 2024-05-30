@@ -127,7 +127,7 @@ const data = posts.contents.map((content) => ({
         el.style.transform = "none";
       }
     };
-    const fadeinTrigger = new ScrollObserver(".news", fadein, {
+    new ScrollObserver(".news", fadein, {
       rootMargin: "-100px 0px",
       threshold: 0,
     });
