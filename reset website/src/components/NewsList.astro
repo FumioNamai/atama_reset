@@ -119,7 +119,7 @@ const data = posts.contents.map((content) => ({
 </style>
 
 <script>
-  import {ScrollObserver} from "./ScrollObserver"
+  import {ScrollObserverUnobserve} from "./ScrollObserverUnobserve"
   document.addEventListener("DOMContentLoaded", function () {
     const fadein = function (el, isIntersecting) {
       if (isIntersecting) {
@@ -127,7 +127,7 @@ const data = posts.contents.map((content) => ({
         el.style.transform = "none";
       }
     };
-    new ScrollObserver(".news", fadein, {
+    new ScrollObserverUnobserve(".news", fadein, {
       rootMargin: "-100px 0px",
       threshold: 0,
     });

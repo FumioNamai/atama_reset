@@ -338,7 +338,7 @@ const problems = [
 </style>
 
 <script>
-  import {ScrollObserver} from "./ScrollObserver"
+  import {ScrollObserverUnobserve} from "./ScrollObserverUnobserve"
 
   document.addEventListener("DOMContentLoaded", function () {
     //Problemパート
@@ -354,7 +354,7 @@ const problems = [
       }
     };
     //ScrollObserverの初期化(第1引数"entry.target",第2引数コールバック関数、第3引数オプションの個別設定)
-    new ScrollObserver(".problems", cb1, {
+    new ScrollObserverUnobserve(".problems", cb1, {
       rootMargin: "-50px 0px",
       threshold: 0.5,
     });
@@ -370,7 +370,7 @@ const problems = [
         textWrapper.style.transform = "translateY(-20px)";
       }
     };
-    new ScrollObserver(".suggestion", cb2, {
+    new ScrollObserverUnobserve(".suggestion", cb2, {
       rootMargin: "-50px 0px",
       threshold: 0.5,
     });
@@ -383,7 +383,7 @@ const problems = [
         el.style.opacity = 0.6;
       }
     };
-    new ScrollObserver(".cause-image", causeImg, {
+    new ScrollObserverUnobserve(".cause-image", causeImg, {
       threshold: 1
     });
 
@@ -392,7 +392,7 @@ const problems = [
         el.style.opacity = 1;
       }
     };
-    new ScrollObserver(".fadeinText",  textFading, {
+    new ScrollObserverUnobserve(".fadeinText",  textFading, {
       rootMargin: '-30% 0px',
       threshold: 0,
     });

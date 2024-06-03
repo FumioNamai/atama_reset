@@ -268,7 +268,7 @@ import MoreButton from "./MoreButton.astro";
 </style>
 
 <script>
-  import {ScrollObserver} from "./ScrollObserver"
+  import {ScrollObserverUnobserve} from "./ScrollObserverUnobserve"
 
   document.addEventListener("DOMContentLoaded", function () {
     const triangle = function(el, isIntersecting) {
@@ -278,7 +278,7 @@ import MoreButton from "./MoreButton.astro";
         el.style.transform = "none"
       }
     }
-    new ScrollObserver(".triangle-image img", triangle , {
+    new ScrollObserverUnobserve(".triangle-image img", triangle , {
       rootMargin: "0px 0px",
       threshold: 1,
     })
@@ -290,7 +290,7 @@ import MoreButton from "./MoreButton.astro";
         el.style.transform = "none"
       }
     }
-    new ScrollObserver(".fadein", fadein , {
+    new ScrollObserverUnobserve(".fadein", fadein , {
       rootMargin: "-200px 0px",
       threshold: 0,
     })

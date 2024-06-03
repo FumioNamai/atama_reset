@@ -1,5 +1,5 @@
 
-  export  class ScrollObserver {
+  export  class ScrollObserverUnobserve {
     els: NodeListOf<Element>;
     cb:(el: Element, isIntersecting:boolean) => void;
     options: IntersectionObserverInit;

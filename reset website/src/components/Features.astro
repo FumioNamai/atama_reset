@@ -241,7 +241,7 @@ import '@fontsource-variable/eb-garamond';
 </style>
 
 <script>
-  import {ScrollObserver} from "./ScrollObserver"
+  import {ScrollObserverUnobserve} from "./ScrollObserverUnobserve"
 
   document.addEventListener("DOMContentLoaded", function () {
     const fadeinImg = function (el, isIntersecting) {
@@ -250,7 +250,7 @@ import '@fontsource-variable/eb-garamond';
         el.style.transform = "none";
       }
     };
-    new ScrollObserver(".fadeinImg", fadeinImg, {
+    new ScrollObserverUnobserve(".fadeinImg", fadeinImg, {
       rootMargin: "-200px 0px",
       threshold: 0,
     });

@@ -153,9 +153,6 @@
   height: 10px;
   background-color: var(--highlight);
 }
-/* .radio {
-  position: relative;
-} */
 
 .radioInput:focus-visible ~ .radioText::after {
   content: "";
