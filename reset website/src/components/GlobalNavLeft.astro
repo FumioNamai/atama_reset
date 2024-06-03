@@ -84,12 +84,24 @@ const nav = [
 
 <div class="globalNav" id="js-globalNavLeft">
   <div class="container">
-      <img class="arrow-down is-active" src="/arrowhead-up-fill.svg" alt="" width="40px" height="40px">
+    <img
+      class="arrow-down is-active"
+      src="/arrowhead-up-fill.svg"
+      alt=""
+      width="40px"
+      height="40px"
+    />
     <nav>
       <HamburgerCloseLeft />
       <div>
         <a href="/" class="globalNav-logo"
-          ><Image class="logo" src={logo} alt="ロゴ" width="90" height="90" /></a
+          ><Image
+            class="logo"
+            src={logo}
+            alt="ロゴ"
+            width="90"
+            height="90"
+          /></a
         >
       </div>
     </nav>
@@ -110,187 +122,188 @@ const nav = [
   </div>
 </div>
 
+<style>
+  .globalNav {
+    /* padding-bottom: 50px; */
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    background: linear-gradient(
+      180deg,
+      rgba(84, 105, 158, 0.95) 0%,
+      rgba(174, 183, 206, 0.95) 100%
+    );
+    z-index: 500;
+    opacity: 0;
+    width: 100%;
+    transition: all ease 1s;
+  }
 
-  <style>
+  .globalNav.open {
+    opacity: 1;
+    transform: translate(100%, 0);
+  }
+  nav {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  button {
+    background-color: transparent;
+    border: transparent;
+    padding: 0;
+    margin-top: 5px;
+    height: 90px;
+    width: 0px;
+    position: absolute;
+  }
+
+  .container {
+    height: 100vh;
+    overflow-y: scroll;
+  }
+
+  .globalNav-logo {
+    display: block;
+    margin: 16px 16px auto auto;
+  }
+
+  .logo {
+    display: block;
+    width: 60px;
+    height: 60px;
+  }
+
+  .menu li:first-child {
+    margin-block: 45px;
+    margin-inline: auto;
+    width: fit-content;
+  }
+
+  .menu li:first-child a:hover {
+    background-color: rgba(58, 72, 109, 0.5);
+  }
+
+  .menu li:first-child a {
+    padding: 4px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--textWhite);
+  }
+
+  .menu li:first-child a::after {
+    opacity: 0; /* 下線を消す */
+  }
+
+  #js-globalNav-menu {
+    height: auto;
+    padding-inline: 10%;
+  }
+
+  #js-globalNav-menu.open a {
+    transition: transform ease 2s;
+    transform: translateY(0%);
+  }
+
+  ul {
+    display: inline-block;
+    width: 100%;
+  }
+
+  li {
+    list-style: none;
+    margin-block-end: 24px;
+    overflow: hidden;
+  }
+
+  .menu a {
+    padding-bottom: 4px;
+    position: relative;
+    text-decoration: none;
+    color: var(--textWhite);
+    font-size: 1.8rem;
+    display: inline-block; /* 下線のアニメーションを文字幅に合わせるため */
+  }
+
+  .menu a::after {
+    background-color: var(--textWhite);
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    transition: 0.1s;
+    width: 0;
+  }
+
+  @media (hover: hover) {
+    .menu a:hover::after {
+      width: 100%;
+    }
+  }
+
+  .menu li:nth-child(n + 11):nth-child(-n + 17) {
+    text-align: right;
+  }
+
+  @media screen and (768px <= width) {
     .globalNav {
-      /* padding-bottom: 50px; */
-      height: auto;
-      position: fixed;
-      top: 0;
-      left: -100%;
-      background: linear-gradient(
-        180deg,
-        rgba(84, 105, 158, 0.95) 0%,
-        rgba(174, 183, 206, 0.95) 100%
-      );
-      z-index: 500;
-      opacity: 0;
-      width: 100%;
-      transition: all ease 1s;
-    }
-
-    .globalNav.open {
-      opacity: 1;
-      transform: translate(100%, 0);
-    }
-    nav {
-      margin-top: 12px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    button {
-      background-color: transparent;
-      border: transparent;
-      padding: 0;
-      margin-top: 5px;
-      height: 90px;
-      width: 0px;
-      position: absolute;
-    }
-
-    .container {
-      height: 100vh;
-      overflow-y: scroll;
-    }
-
-    .globalNav-logo {
-      display: block;
-      margin: 16px 16px auto auto;
-    }
-
-    .logo {
-      display: block;
-      width: 60px;
-      height: 60px;
-    }
-
-    .menu li:first-child {
-      margin-block: 45px;
-      margin-inline: auto;
-      width: fit-content;
-    }
-
-    .menu li:first-child a:hover {
-      background-color: rgba(58, 72, 109, 0.5);
-    }
-
-    .menu li:first-child a {
-      padding: 4px 16px;
-      border-radius: 20px;
-      border: 1px solid var(--textWhite);
-    }
-
-    .menu li:first-child a::after {
-      opacity: 0; /* 下線を消す */
-    }
-
-    #js-globalNav-menu {
-      height: auto;
-      padding-inline: 10%;
-    }
-
-    #js-globalNav-menu.open a {
-      transition: transform ease 2s;
-      transform: translateY(0%);
-    }
-
-    ul {
-      display: inline-block;
-      width: 100%;
-    }
-
-    li {
-      list-style: none;
-      margin-block-end: 24px;
-      overflow: hidden;
-    }
-
-    .menu a {
-      padding-bottom: 4px;
-      position: relative;
-      text-decoration: none;
-      color: var(--textWhite);
-      font-size: 1.8rem;
-      display: inline-block; /* 下線のアニメーションを文字幅に合わせるため */
-    }
-
-    .menu a::after {
-      background-color: var(--textWhite);
-      bottom: 0;
-      content: "";
-      display: block;
-      height: 1px;
-      left: 0;
-      position: absolute;
-      transition: 0.1s;
-      width: 0;
-    }
-
-
-    @media (hover: hover) {
-      .menu a:hover::after {
-        width: 100%;
-      }
-    }
-
-    .menu li:nth-child(n + 11):nth-child(-n + 17) {
-      text-align: right;
-    }
-
-    @media screen and (768px <= width) {
-      .globalNav {
-        display: none;
+      display: none;
       /* width: 50%; */
       /* right: -50%; */
     }
-      nav {
-        margin-top: 2px;
-        padding: 24px 27px 24px 24px;
-        align-items: center;
-        flex-direction: row-reverse;
-      }
+    nav {
+      margin-top: 2px;
+      padding: 24px 27px 24px 24px;
+      align-items: center;
+      flex-direction: row-reverse;
+    }
 
-      .globalNav img {
-        display: none;
-      }
+    .globalNav img {
+      display: none;
+    }
 
-      /* 全画面表示の場合に使用 */
-      /* .globalNav img {
+    /* 全画面表示の場合に使用 */
+    /* .globalNav img {
         width: 90px;
         height: 90px;
       }
       .globalNav-logo {
         margin: 0;
       } */
-    }
-    .arrow-down {
-      position: fixed;
-      left: calc(50% - 20px);
-      bottom: 5%;
-      transform: rotate(180deg);
-    }
+  }
+  .arrow-down {
+    position: fixed;
+    left: calc(50% - 20px);
+    bottom: 5%;
+    transform: rotate(180deg);
+  }
 
-    .is-active {
-      animation: blinking 1s ease-in-out infinite alternate;
-    }
+  .is-active {
+    animation: blinking 1s ease-in-out infinite alternate;
+  }
 
-    @keyframes blinking {
-      0% {opacity: 0;}
-      100% {opacity: .5;}
-    }
-
-    .is-inactive {
-      animation: none;
+  @keyframes blinking {
+    0% {
       opacity: 0;
     }
-
-    .trigger {
-      height: 100px;
-      /* background-color: black; */
+    100% {
+      opacity: 0.5;
     }
-  </style>
+  }
 
+  .is-inactive {
+    animation: none;
+    opacity: 0;
+  }
+
+  .trigger {
+    height: 100px;
+    /* background-color: black; */
+  }
+</style>
 
 <script>
   //ページ内リンクをクリックしたときに、ナビゲーションを閉じる
@@ -311,57 +324,18 @@ const nav = [
     });
   });
 
+  import { ScrollObserver } from "./ScrollObserver";
   document.addEventListener("DOMContentLoaded", function () {
-    class ScrollObserver {
-      constructor(els, cb, options) {
-        //監視対象のelementsを取得
-        this.els = document.querySelectorAll(els);
-        //オプションのデフォルト設定を定義
-        const defaultOptions = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0,
-        };
-        this.cb = cb;
-        //デフォルト設定に、個別設定のオプションをマージする
-        this.options = Object.assign(defaultOptions, options);
-        //
-        this._init();
+    const rising = function (el, isIntersecting) {
+      const arrowDown = document.querySelector(".arrow-down");
+      if (isIntersecting) {
+        arrowDown.classList.remove("is-active");
+        arrowDown.classList.add("is-inactive");
+      } else {
+        arrowDown.classList.remove("is-inactive");
+        arrowDown.classList.add("is-active");
       }
-      _init() {
-        const callback = (entries) => {
-          entries.forEach((entry) => {
-            //監視対象の要素が領域内に入った場合の処理
-            if (entry.isIntersecting) {
-              this.cb(entry.target, true)
-            } else {
-              this.cb(entry.target, false); //true=isIntersectingがfaulse
-              //処理後に監視を切る処理
-              // observer.unobserve(entry.target);
-            }
-          });
-        };
-        const observer = new IntersectionObserver(
-          callback.bind(this),
-          this.options
-        );
-        //対象の要素elを監視
-        this.els.forEach((el) => observer.observe(el));
-      }
-    }
-
-    const rising = function(el, isIntersecting) {
-      const arrowDown = document.querySelector(".arrow-down")
-      if(isIntersecting) {
-        arrowDown.classList.remove("is-active")
-        arrowDown.classList.add("is-inactive")
-      }else {
-        arrowDown.classList.remove("is-inactive")
-        arrowDown.classList.add("is-active")
-      }
-    }
-
-    const trigger = new ScrollObserver(".trigger", rising , null)
-
-  })
+    };
+    new ScrollObserver(".trigger", rising, null);
+  });
 </script>

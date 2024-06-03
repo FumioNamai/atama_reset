@@ -226,52 +226,15 @@ import refreshing2s from "../assets/refreshing2s.webp";
 </style>
 
 <script>
+  import {ScrollObserver} from "./ScrollObserver"
+
   document.addEventListener("DOMContentLoaded", function () {
-    class ScrollObserver {
-      constructor(els, cb, options) {
-        //監視対象のelementsを取得
-        this.els = document.querySelectorAll(els);
-        //オプションのデフォルト設定を定義
-        const defaultOptions = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0,
-        };
-        this.cb = cb;
-        //デフォルト設定に、個別設定のオプションをマージする
-        this.options = Object.assign(defaultOptions, options);
-        //
-        this._init();
-      }
-      _init() {
-        const callback = (entries) => {
-          entries.forEach((entry) => {
-            //監視対象の要素が領域内に入った場合の処理
-            if (entry.isIntersecting) {
-              this.cb(entry.target, true); //true=isIntersectingがtrue
-              //処理後に監視を切る処理
-              observer.unobserve(entry.target);
-            }
-          });
-        };
-        const observer = new IntersectionObserver(
-          callback.bind(this),
-          this.options
-        );
-        //対象の要素elを監視
-        this.els.forEach((el) => observer.observe(el));
-      }
-    }
-    // const dot = document.querySelector(".dot");
-    // console.log(dot);
     const stretch = function (el, isIntersecting) {
       if (isIntersecting) {
         el.style.height = "calc(100% - 36px)";
-        // dot.style.opacity = 1;
       }
     };
-
-    const stretchTrigger = new ScrollObserver(".step_line", stretch, {
+    new ScrollObserver(".step_line", stretch, {
       rootMargin: "0px 0px",
       threshold: 0.5,
     });
@@ -281,7 +244,7 @@ import refreshing2s from "../assets/refreshing2s.webp";
         el.style.opacity = 1;
       }
     };
-    const fadeinTrigger = new ScrollObserver(".step", fadein, {
+    new ScrollObserver(".step", fadein, {
       rootMargin: "0px 0px",
       threshold: 0.5,
     });
