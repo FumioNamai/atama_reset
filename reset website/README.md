@@ -43,7 +43,7 @@
 ### JavaScript
 - IntersectionObserver スクロールに合わせて次のセクションを表示させる
 - IntersectionObserver 下にスクロールするとボトムナビゲーションを表示させる（ファーストビューの表示領域を確保するため）
-- IntersencionObserverをクラスコンポ―ネント化
+- IntersectionObserverをクラスコンポ―ネント化
 - 「アクセス」と「最近のブログ」のスライダーにsplideを使用
 - ブログ一覧、ブログ詳細ページにページネーションを実装
 
