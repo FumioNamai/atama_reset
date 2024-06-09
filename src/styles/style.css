@@ -110,6 +110,10 @@ h1,h2,h3,p,ul,li {
 .blog_line-through {
   text-decoration: line-through;
 }
+.blog_small_text_line-through {
+  font-size: 1.2rem;
+  text-decoration: line-through;
+}
 .primary {
   color: var(--primary);
 }
