@@ -3,20 +3,23 @@ const { time, originalPrice, discountPrice } = Astro.props;
 ---
 
 <div class="course_discount">
-  <div><p class="time">{time}<span>分コース</span></p></div>
-  <div><p class="strikethrough"><span><s>{originalPrice}円</s></span></p></div>
-<div><p class="d-price">{discountPrice}<span>円(税込)</span></p></div>
+  <div class="course"><p>{time}<span>分コース</span></p></div>
+  <div class="original-price">
+    <p><span><s>{originalPrice}円</s></span></p></div>
+<div class="discount-price">
+  <p class="d-price">{discountPrice}<span>円(税込)</span></p></div>
 </div>
 
 <style>
   p {
     padding: 0;
   }
+
   .course_discount {
     display: flex;
     overflow: hidden;
     justify-content: space-around;
-    height: 30px;
+    width: 290px;
   }
 
   .course_discount p {
@@ -24,22 +27,29 @@ const { time, originalPrice, discountPrice } = Astro.props;
     font-family: "Noto Sans JP", sans-serif;
   }
 
-  .time {
-    display: inline-block;
-    text-align: right;
-    width: 90px;
-  }
-
   .course_discount span {
     font-size: 1.2rem;
   }
+
   .time > span{
     font-size: 1.4rem;
   }
 
-  .strikethrough {
-    padding-left: 16px;
+  .course {
+    width: 90px;
+    text-align: right;
   }
+
+  .original-price {
+    width: 70px;
+    text-align: right;
+  }
+
+  .discount-price {
+    width: 110px;
+    text-align: right;
+  }
+
   .d-price {
     color: var(--attention);
     font-weight: bold;
