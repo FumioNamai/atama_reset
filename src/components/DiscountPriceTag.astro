@@ -3,9 +3,9 @@ const { time, originalPrice, discountPrice } = Astro.props;
 ---
 
 <div class="course_discount">
-  <p class="time">{time}<span>分コース</span></p>
-  <p class="strikethrough"><span><s>{originalPrice}円</s></span></p>
-  <p class="d-price">{discountPrice}<span>円(税込)</span></p>
+  <div><p class="time">{time}<span>分コース</span></p></div>
+  <div><p class="strikethrough"><span><s>{originalPrice}円</s></span></p></div>
+<div><p class="d-price">{discountPrice}<span>円(税込)</span></p></div>
 </div>
 
 <style>

@@ -1,0 +1,230 @@
+---
+import Layout from "@layouts/layout.astro";
+import DiscountPriceTag from "@components/DiscountPriceTag.astro";
+---
+
+<Layout pageTitle="各種割引" description="">
+  <main>
+    <div class="top">
+      <h2>各種割引</h2>
+      <div class="container">
+        <p>
+          当店では、お客様のお身体の改善やメンテナンスにお役立ていただきたく、さまざまな割引特典をご用意しております。
+        </p>
+      </div>
+    </div>
+    <div>
+      <div class="wrapper">
+        <h3 class="h3_borderLeft">初回割引</h3>
+        <div class="container">
+          <p>
+            初回ご来店時にご利用いただけます。<br />すべてのコースが対象です。
+          </p>
+          <div class="course_outer">
+            <div class="discount_outer">
+              <DiscountPriceTag
+                time="60"
+                originalPrice="7,000"
+                discountPrice="5,000"
+              />
+              <DiscountPriceTag
+                time="75"
+                originalPrice="8,500"
+                discountPrice="6,000"
+              />
+              <DiscountPriceTag
+                time="90"
+                originalPrice="10,000"
+                discountPrice="7,000"
+              />
+              <DiscountPriceTag
+                time="105"
+                originalPrice="11,500"
+                discountPrice="8,000"
+              />
+              <DiscountPriceTag
+                time="120"
+                originalPrice="13,000"
+                discountPrice="9,000"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrapper">
+        <h3 class="h3_borderLeft">紹介割引</h3>
+        <div class="container">
+          <p>
+            ご紹介された方、していただいた方、お二人ともにご利用いただけます。<br />すべてのコースが対象です。
+          </p>
+          <p class="bold center large">初回割引と同料金</p>
+        </div>
+      </div>
+
+      <div class="wrapper">
+        <h3 class="h3_borderLeft">学生割引</h3>
+        <div class="container">
+          <p>
+            学生証のご提示でご利用いただけます。<br />年齢制限なし<br />すべてのコースが対象です。
+          </p>
+          <p class="bold center large">初回割引と同料金</p>
+        </div>
+      </div>
+
+      <div class="wrapper">
+        <h3 class="h3_borderLeft">次回割引(1)</h3>
+        <div class="container">
+          <p>
+            １ヶ月以内の再来店でご利用いただけます。<br
+            />全コース対象で20%割引<br />回数の制限なし
+          </p>
+          <p>
+            ※リピーター様のほとんどのお客様が毎回こちらの割引をご利用いただいております。
+          </p>
+          <div class="course_outer">
+            <div class="discount_outer">
+              <DiscountPriceTag
+                time="60"
+                originalPrice="7,000"
+                discountPrice="5,600"
+              />
+              <DiscountPriceTag
+                time="75"
+                originalPrice="8,500"
+                discountPrice="6,800"
+              />
+              <DiscountPriceTag
+                time="90"
+                originalPrice="10,000"
+                discountPrice="8,000"
+              />
+              <DiscountPriceTag
+                time="105"
+                originalPrice="11,500"
+                discountPrice="9,200"
+              />
+              <DiscountPriceTag
+                time="120"
+                originalPrice="13,000"
+                discountPrice="10,400"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrapper">
+        <h3 class="h3_borderLeft">次回割引(2)</h3>
+        <div class="container">
+          <p>
+            ２ヶ月以内の再来店でご利用いただけます。<br
+            />全コース対象で10%割引<br />回数の制限なし
+          </p>
+
+          <div class="course_outer">
+            <div class="discount_outer">
+              <DiscountPriceTag
+                time="60"
+                originalPrice="7,000"
+                discountPrice="6,300"
+              />
+              <DiscountPriceTag
+                time="75"
+                originalPrice="8,500"
+                discountPrice="7,650"
+              />
+              <DiscountPriceTag
+                time="90"
+                originalPrice="10,000"
+                discountPrice="9,000"
+              />
+              <DiscountPriceTag
+                time="105"
+                originalPrice="11,500"
+                discountPrice="10,350"
+              />
+              <DiscountPriceTag
+                time="120"
+                originalPrice="13,000"
+                discountPrice="11,700"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+      <p>
+        その他、キャンペーンを実施することもございます。<br />
+        お楽しみに！
+      </p>
+    </div>
+
+    </div>
+  </main>
+
+  <style>
+    main {
+      max-width: 480px;
+      margin: 0 auto;
+      padding-bottom: 40px;
+    }
+    @media screen and (768px <= width) {
+      main {
+        max-width: 640px;
+      }
+    }
+
+    .top {
+      margin-bottom: 64px;
+    }
+
+    .wrapper {
+      margin-bottom: 60px;
+    }
+
+    .container {
+      margin-inline: 32px;
+    }
+
+    .discount_outer {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-align: center;
+      padding-block: 64px;
+    }
+
+    .h3_borderLeft {
+      margin-bottom: 12px;
+      margin-left: 16px;
+    }
+
+    .large {
+      font-size: 2rem;
+    }
+    .center {
+      text-align: center;
+    }
+
+    .flex {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 64px;
+    }
+
+    .course_outer {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+  </style>
+</Layout>
