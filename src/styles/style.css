@@ -101,6 +101,9 @@ h1,h2,h3,p,ul,li {
 .bold {
   font-weight: bold;
 }
+.blog_large_text {
+  font-size: 2rem;
+}
 .blog_small_text {
   font-size: 1.2rem;
 }
