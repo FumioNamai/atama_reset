@@ -11,6 +11,125 @@ import menuIntestine from "../assets/menu-intestine.webp";
 import menuCalf from "../assets/menu-calf.webp";
 import menuAll from "../assets/menu-all.webp";
 import MoreButton from "@components/MoreButton.astro";
+
+// 頭ほぐし
+// 通常価格
+const headPrice = [
+  {
+    id: "1",
+    courseTitle: "頭スッキリ！『脳疲労』解消",
+    time: "60",
+    price: "7,000",
+    height: "68px",
+  },
+  {
+    id: "2",
+    courseTitle: "お客様の症状に合わせた施術を",
+    time: "75",
+    price: "8,500",
+    height: "68px",
+  },
+  {
+    id: "3",
+    courseTitle: "深い眠りと共に究極のリラックスを",
+    time: "90",
+    price: "10,000",
+    height: "68px",
+  }
+];
+// 初回割引価格
+const discountHead = [
+  {
+    id: "1",
+    time: "60",
+    originalPrice: "7,000",
+    discountPrice: "5,000",
+  },
+  {
+    id: "2",
+    time: "75",
+    originalPrice: "8,500",
+    discountPrice: "6,000",
+  },
+  {
+    id: "3",
+    time: "90",
+    originalPrice: "10,000",
+    discountPrice: "7,000",
+  },
+];
+
+// +腸セラピー/+ふくらはぎほぐし
+// 通常価格
+const intestineOrCarfPrice = [
+  {
+    id: "1",
+    time: "90",
+    price: "10,000"
+  },
+  {
+    id: "2",
+    time: "105",
+    price: "11,500",
+  },
+  {
+    id: "3",
+    time: "120",
+    price: "13,000",
+  }
+];
+// 初回割引価格
+const discountIntestineOrCarf = [
+  {
+    id: "1",
+    time: "90",
+    originalPrice: "10,000",
+    discountPrice: "7,000",
+  },
+  {
+    id: "2",
+    time: "105",
+    originalPrice: "10,000",
+    discountPrice: "8,000",
+  },
+  {
+    id: "3",
+    time: "120",
+    originalPrice: "13,000",
+    discountPrice: "9,000",
+  },
+];
+
+// 全部
+// 通常価格
+const allPrice = [
+  {
+    id: "1",
+    time: "105",
+    price: "11,500",
+  },
+  {
+    id: "2",
+    time: "120",
+    price: "13,000",
+  }
+];
+// 初回割引価格
+const discountAll = [
+  {
+    id: "1",
+    time: "105",
+    originalPrice: "10,000",
+    discountPrice: "8,000",
+  },
+  {
+    id: "2",
+    time: "120",
+    originalPrice: "13,000",
+    discountPrice: "9,000",
+  },
+];
+
 ---
 
 <Layout pageTitle="施術メニュー＆料金" description="">
@@ -28,40 +147,28 @@ import MoreButton from "@components/MoreButton.astro";
       </div>
       <div class="price_list">
         <div class="course_outer">
-          <PriceTag
-            courseTitle="頭スッキリ！『脳疲労』解消"
-            time="60"
-            price="7,000"
-            height="68px"
-          />
-          <PriceTag
-            courseTitle="お客様の症状に合わせた施術を"
-            time="75"
-            price="8,500"
-            height="68px"
-          />
-          <PriceTag
-            courseTitle="深い眠りと共に究極のリラックスを"
-            time="90"
-            price="10,000"
-            height="68px"
-          />
+          {
+            headPrice.map(el => (
+              <PriceTag
+                id={el.id}
+                courseTitle={el.courseTitle}
+                time={el.time}
+                price={el.price}
+                height={el.height}
+              />
+            ))
+          }
           <DiscountOuter>
-            <DiscountPriceTag
-              time="60"
-              originalPrice="7,000"
-              discountPrice="5,000"
-            />
-            <DiscountPriceTag
-              time="75"
-              originalPrice="8,500"
-              discountPrice="6,000"
-            />
-            <DiscountPriceTag
-              time="90"
-              originalPrice="10,000"
-              discountPrice="7,000"
-            />
+            {
+              discountHead.map((el) => (
+                <DiscountPriceTag
+                  id={el.id}
+                  time={el.time}
+                  originalPrice={el.originalPrice}
+                  discountPrice={el.discountPrice}
+                />
+              ))
+            }
           </DiscountOuter>
         </div>
       </div>
@@ -79,7 +186,7 @@ import MoreButton from "@components/MoreButton.astro";
         <p class="desc">
           全身の血流を良くし、体内に溜まった毒素を排出したり、内臓機能の低下の改善を目指します。<br
           />
-           自律神経を整え、お腹の不調や冷え性、むくみ、疲労感の改善、免疫力の向上などを目的とします。<br
+          自律神経を整え、お腹の不調や冷え性、むくみ、疲労感の改善、免疫力の向上などを目的とします。<br
           />
           <span class="small"
             >※洋服の上から施術します。オイル等は使いません。</span
@@ -95,25 +202,26 @@ import MoreButton from "@components/MoreButton.astro";
       </div>
       <div class="price_list">
         <div class="course_outer">
-          <PriceTag time="90" price="10,000" />
-          <PriceTag time="105" price="11,500" />
-          <PriceTag time="120" price="13,000" />
+          {
+            intestineOrCarfPrice.map(el => (
+              <PriceTag
+                id={el.id}
+                time={el.time}
+                price={el.price}
+              />
+            ))
+          }
           <DiscountOuter>
-            <DiscountPriceTag
-              time="90"
-              originalPrice="10,000"
-              discountPrice="7,000"
-            />
-            <DiscountPriceTag
-              time="105"
-              originalPrice="11,500"
-              discountPrice="8,000"
-            />
-            <DiscountPriceTag
-              time="120"
-              originalPrice="13,000"
-              discountPrice="9,000"
-            />
+            {
+              discountIntestineOrCarf.map((el) => (
+                <DiscountPriceTag
+                  id={el.id}
+                  time={el.time}
+                  originalPrice={el.originalPrice}
+                  discountPrice={el.discountPrice}
+                />
+              ))
+            }
           </DiscountOuter>
         </div>
       </div>
@@ -126,7 +234,7 @@ import MoreButton from "@components/MoreButton.astro";
         <p class="desc">
           ふくらはぎをやわらかくすることで全身の筋膜を緩め、身体のコリ改善や血行促進を目指します。<br
           />
-           血液循環をスムーズにすることで、余分な水分や老廃物を排出し、冷えやむくみの解消を目指します。<br
+          血液循環をスムーズにすることで、余分な水分や老廃物を排出し、冷えやむくみの解消を目指します。<br
           />
           <span class="small"
             >※洋服の上から施術します。オイル等は使いません。</span
@@ -142,25 +250,26 @@ import MoreButton from "@components/MoreButton.astro";
       </div>
       <div class="price_list">
         <div class="course_outer">
-          <PriceTag time="90" price="10,000" />
-          <PriceTag time="105" price="11,500" />
-          <PriceTag time="120" price="13,000" />
+          {
+            intestineOrCarfPrice.map(el => (
+              <PriceTag
+                id={el.id}
+                time={el.time}
+                price={el.price}
+              />
+            ))
+          }
           <DiscountOuter>
-            <DiscountPriceTag
-              time="90"
-              originalPrice="10,000"
-              discountPrice="7,000"
-            />
-            <DiscountPriceTag
-              time="105"
-              originalPrice="11,500"
-              discountPrice="8,000"
-            />
-            <DiscountPriceTag
-              time="120"
-              originalPrice="13,000"
-              discountPrice="9,000"
-            />
+            {
+              discountIntestineOrCarf.map((el) => (
+                <DiscountPriceTag
+                  id={el.id}
+                  time={el.time}
+                  originalPrice={el.originalPrice}
+                  discountPrice={el.discountPrice}
+                />
+              ))
+            }
           </DiscountOuter>
         </div>
       </div>
@@ -172,8 +281,7 @@ import MoreButton from "@components/MoreButton.astro";
         <Image src={menuAll} alt="" />
         <p class="desc">
           腸セラピー → ふくらはぎほぐし → 頭ほぐし<br />
-           の全ての施術をおこなうことで、全身の不定愁訴の改善をめざします。<br
-          />
+          の全ての施術をおこなうことで、全身の不定愁訴の改善をめざします。<br />
           <span class="small"
             >※洋服の上から施術します。オイル等は使いません。</span
           >
@@ -188,19 +296,26 @@ import MoreButton from "@components/MoreButton.astro";
       </div>
       <div class="price_list">
         <div class="course_outer">
-          <PriceTag time="105" price="11,500" />
-          <PriceTag time="120" price="13,000" />
+          {
+            allPrice.map(el => (
+              <PriceTag
+                id={el.id}
+                time={el.time}
+                price={el.price}
+              />
+            ))
+          }
           <DiscountOuter>
-            <DiscountPriceTag
-              time="105"
-              originalPrice="11,500"
-              discountPrice="8,000"
-            />
-            <DiscountPriceTag
-              time="120"
-              originalPrice="13,000"
-              discountPrice="9,000"
-            />
+            {
+              discountAll.map((el) => (
+                <DiscountPriceTag
+                  id={el.id}
+                  time={el.time}
+                  originalPrice={el.originalPrice}
+                  discountPrice={el.discountPrice}
+                />
+              ))
+            }
           </DiscountOuter>
         </div>
       </div>
