@@ -2,7 +2,7 @@
 import { getNews } from "src/library/news";
 import MoreButton from "./MoreButton.astro";
 
-const posts = await getNews({ limit: 3 });
+const posts = await getNews({ limit: 2 });
 
 const data = posts.contents.map((content) => ({
   title: content.title,
