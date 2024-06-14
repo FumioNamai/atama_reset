@@ -1,31 +1,42 @@
 ---
-import { Image } from "astro:assets"
-import hero from "../assets/hero.webp"
+import { Image } from "astro:assets";
+import hero from "../assets/hero.webp";
 ---
-
 
 <section class="hero">
   <div class="container">
-    <Image src = { hero } alt="スッキリ爽快！" class = "heroImg" loading="eager" width="1000" height="605"/>
+    <Image
+      src={hero}
+      alt="スッキリ爽快！"
+      class="heroImg"
+      loading="eager"
+      width="1000"
+      height="605"
+    />
     <div class="horizon">
       <h1>
-        <span class="subTitle">頭の整体で身体の不調を整える</span><br>
-      頭ほぐし専門店 reset</h1>
+        <span class="subTitle">頭の整体で身体の不調を整える</span><br />
+        頭ほぐし専門店 reset
+      </h1>
     </div>
   </div>
 </section>
 
 <style>
-
   .heroImg {
     width: 100%;
     min-width: 375px;
-    max-height: 605px;
+    min-height: 467px;
     height: 70vh;
     object-fit: cover;
     opacity: 0;
     /* セクション全体をフェードインさせる */
     animation: fadein 3s forwards linear;
+  }
+  @media screen and (768px <= width) {
+    .heroImg {
+      min-height: 605px;
+    }
   }
   @keyframes fadein {
     0% {
@@ -40,12 +51,17 @@ import hero from "../assets/hero.webp"
     width: 100%;
     height: 70vh;
     min-width: 375px;
-    max-height: 605px;
+    min-height: 467px;
     position: relative;
+  }
+  @media screen and (768px <= width) {
+    .container {
+      min-height: 605px;
+    }
   }
 
   .horizon {
-    height: clamp(100px,20vw ,175px);
+    height: clamp(100px, 20vw, 175px);
     overflow: hidden;
     position: absolute;
     top: 55%;
@@ -59,22 +75,21 @@ import hero from "../assets/hero.webp"
 
   h1 {
     color: var(--textWhite);
-    text-shadow:
-    0px 0px 10px #000;
+    text-shadow: 0px 0px 10px #000;
     /* 名前を下から浮き上がらせる */
     animation: rising 3s forwards linear;
     opacity: 0;
     line-height: 150%;
     text-align: center;
-    font-size: clamp(3.4rem, 1rem + 5vw,5.5rem );
+    font-size: clamp(3.4rem, 1rem + 5vw, 5.5rem);
   }
 
   .subTitle {
-    font-size: clamp(2rem, 1rem + 2vw,3rem );
+    font-size: clamp(2rem, 1rem + 2vw, 3rem);
   }
   @keyframes rising {
     0% {
-      transform: translateY(clamp(100px,20vw ,175px));
+      transform: translateY(clamp(100px, 20vw, 175px));
       opacity: 0;
     }
     80% {
