@@ -5,16 +5,11 @@ import styles from "./ReactAccordion.module.css"
 export default function ReactAccordion(props) {
   const [isOpen, setIsOpen] = useState(false)
   const [isRotate, setIsRotate] = useState()
-  // if (isOpen) {
-  //   setIsRotate("rotate(225deg)")
-  // } else {
-  //   setIsRotate("rotate(45deg)")
-  // }
 
   isOpen ? setIsRotate("rotate(225deg)") : setIsRotate("rotate(45deg)")
   return (
     <div className={styles.accordion}>
-      <div className={styles.question} onClick={() => setIsOpen(!isOpen)}>
+      <button className={styles.question} onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.wrapper}>
           <h3>Q</h3>
           <p>
@@ -25,7 +20,7 @@ export default function ReactAccordion(props) {
           transform: isRotate
         }}
         ></span>
-      </div>
+      </button>
       <ReactAccordionBox isOpen={isOpen}>
         <div className={styles.answer}>
           <h3>A</h3>
