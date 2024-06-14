@@ -1,7 +1,4 @@
 
 User-agent: *
-Allow: /
+Disallow:
 Sitemap: https://atama-reset.com/sitemap-0.xml
-
-
-https://developers.google.com/search/docs/advanced/robots/create-robots-txt
