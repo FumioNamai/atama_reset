@@ -21,7 +21,7 @@ const data = posts.contents.map((content) => ({
   <div class="container">
     {
       data.map((content) => (
-        <a href="/news">
+        <a href={`/news#${content.title}`}>
           <div class="news-header">
             { content.tag.map((tag) => {
               switch (tag) {

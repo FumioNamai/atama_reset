@@ -40,7 +40,7 @@ const data = posts.contents.map((content) => ({
           }
         })
       }
-            <h3 class="title">{content.title}</h3>
+            <h3 class="title" id={content.title}>{content.title}</h3>
             <article>
               {
                 content.articles.map((article) => {
