@@ -79,7 +79,7 @@ const posts = await getAllPosts(5);
     <section class="blog">
       <div class="container">
         <p class="publishedAt">{pubDate}</p>
-        <h2 class="title">{content.title}</h2>
+        <h1 class="title">{content.title}</h1>
         <div class="image">
           <img
             class="eyecatchImg"
@@ -270,7 +270,6 @@ const posts = await getAllPosts(5);
   }
 </style>
 
-<!-- ブログ記事内に適用するCSS -->
 <style is:global>
   .setHtml p {
     line-height: 3rem;

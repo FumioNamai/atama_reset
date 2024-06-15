@@ -60,9 +60,13 @@ body.inactive {
   overflow: scroll;
 }
 
-h1 {
+/* h1 {
   font-size: 2.4rem;
   font-weight: 400;
+} */
+
+h1 {
+  font-size: 2.4rem;
 }
 
 h2 {

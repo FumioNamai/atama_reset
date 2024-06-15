@@ -14,9 +14,15 @@ import refreshing2s from "../assets/refreshing2s.webp";
 <section class="steps" id="steps">
   <div class="wrapper">
     <h2 class="borderBottom">施術の流れ</h2>
-
     <div class="step">
-      <h3><Image src={doorOpen} alt="" class="icon doorOpen" />ご来店</h3>
+      <h3>
+        <Image
+          src={doorOpen}
+          alt=""
+          class="icon doorOpen"
+          aria-hidden="true"
+        />ご来店
+      </h3>
       <div class="flex">
         <p></p>
         <div class="image"></div>
@@ -26,7 +32,12 @@ import refreshing2s from "../assets/refreshing2s.webp";
 
     <div class="step test">
       <h3>
-        <Image src={writing} alt="" class="icon" />カウンセリングシートのご記入
+        <Image
+          src={writing}
+          alt=""
+          class="icon"
+          aria-hidden="true"
+        />カウンセリングシートのご記入
       </h3>
       <div class="flex">
         <div class="text">
@@ -35,14 +46,27 @@ import refreshing2s from "../assets/refreshing2s.webp";
           </p>
         </div>
         <div class="image">
-            <Image src={counseling} alt="" width=320 height=213.5 />
+          <Image
+            src={counseling}
+            alt="カウンセリングシートのご記入"
+            width="320"
+            height="213.5"
+            aria-hidden="true"
+          />
         </div>
       </div>
       <div class="step_line"></div>
     </div>
 
     <div class="step">
-      <h3><Image src={question} alt="" class="icon" />カウンセリング</h3>
+      <h3>
+        <Image
+          src={question}
+          alt=""
+          class="icon"
+          aria-hidden="true"
+        />カウンセリング
+      </h3>
       <div class="flex">
         <div class="text">
           <p>
@@ -61,24 +85,28 @@ import refreshing2s from "../assets/refreshing2s.webp";
     </div>
 
     <div class="step">
-      <h3><Image src={wear} alt="" class="icon" />ご準備</h3>
+      <h3><Image src={wear} alt="" class="icon" aria-hidden="true" />ご準備</h3>
       <div class="flex">
         <div class="text">
-          <p>
-            アクセサリー全般・時計・ベルトは取り外しをお願いしております。
-          </p>
+          <p>アクセサリー全般・時計・ベルトは取り外しをお願いしております。</p>
           <p>
             ご希望のお客様には着替えていただき、ゆったりと施術を受けていただきます。<br
             />お気に入りのリラックス着をお持ちください。
           </p>
         </div>
-        <div class="image"></div>
       </div>
       <div class="step_line"></div>
     </div>
 
     <div class="step">
-      <h3><Image src={sleeping} alt="" class="icon" />施術スタート</h3>
+      <h3>
+        <Image
+          src={sleeping}
+          alt=""
+          class="icon"
+          aria-hidden="true"
+        />施術スタート
+      </h3>
       <div class="flex">
         <div class="text">
           <p>
@@ -92,14 +120,16 @@ import refreshing2s from "../assets/refreshing2s.webp";
           </p>
         </div>
         <div class="image">
-          <Image src={head} alt="" width=320 height=213.5 />
+          <Image src={head} alt="施術中" width="320" height="213.5" />
         </div>
       </div>
       <div class="step_line"></div>
     </div>
 
     <div class="step">
-      <h3><Image src={smile} alt="" class="icon" />施術後</h3>
+      <h3>
+        <Image src={smile} alt="" class="icon" aria-hidden="true" />施術後
+      </h3>
       <div class="flex">
         <div class="text">
           <p>
@@ -114,7 +144,7 @@ import refreshing2s from "../assets/refreshing2s.webp";
           </p>
         </div>
         <div class="image">
-          <Image src={refreshing2s} alt="" width=320 height=213.5 />
+          <Image src={refreshing2s} alt="施術終了" width="320" height="213.5" />
         </div>
       </div>
       <span class="dot"></span>
@@ -130,6 +160,7 @@ import refreshing2s from "../assets/refreshing2s.webp";
   .steps {
     margin: 64px auto;
     max-width: 900px;
+    position: relative;
   }
 
   .flex {
@@ -226,7 +257,7 @@ import refreshing2s from "../assets/refreshing2s.webp";
 </style>
 
 <script>
-  import {ScrollObserver} from "./ScrollObserver"
+  import { ScrollObserver } from "./ScrollObserver";
 
   document.addEventListener("DOMContentLoaded", function () {
     const stretch = function (el, isIntersecting) {

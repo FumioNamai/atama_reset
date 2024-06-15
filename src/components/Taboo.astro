@@ -1,9 +1,9 @@
 ---
 
 ---
-<section class="taboo" id="taboo">
+<section id="taboo">
   <div class="wrapper">
-    <h3>施術の禁忌</h3>
+    <h2>施術の禁忌</h2>
     <p>
       下記の事項に該当するお客様につきましては、大変申し訳ございませんが、施術をお断りさせていただいております。
     </p>
@@ -20,7 +20,7 @@
       <li>血圧を下げる薬を服用している</li>
     </ul>
     <p class="postscript">
-      ※腸セラピーの施術は、食後2時間後より可能です。（お飲み物の制限はございません）
+      ※腸セラピーの施術は、食後2時間後より可能です。<br />（お飲み物の制限はございません）
     </p>
     <div class="bordered">
       <p>当店の施術行為は治療を目的とした医療行為ではありません。</p>
@@ -32,16 +32,7 @@
 </section>
 
 <style>
-  h3 {
-    font-size: 2rem;
-    margin-bottom: 16px;
-  }
-
-  p {
-    padding-bottom: 8px;
-  }
-
-  .taboo {
+  section {
     padding: 24px 24px;
     background-image: url(/src/assets/taboo.webp);
     background-repeat: no-repeat;
@@ -49,8 +40,15 @@
     background-position-x: 20%;
     color: var(--textWhite);
   }
-  .taboo h3 {
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 16px;
     text-align: center;
+  }
+
+  p {
+    padding-bottom: 8px;
   }
 
   ul {
@@ -58,7 +56,7 @@
     padding-bottom: 8px;
   }
 
-  .taboo p,
+  p,
   li {
     list-style: none;
     font-size: 1.6rem;
@@ -93,7 +91,7 @@
   }
 
   @media screen and (900px <= width) {
-    .taboo {
+    section {
       display: flex;
       flex-direction: column;
     }

@@ -134,7 +134,7 @@ const discountAll = [
 
 <Layout pageTitle="施術メニュー＆料金" description="">
   <section class="menu-price">
-    <h2>施術メニュー & 料金</h2>
+    <h1>施術メニュー & 料金</h1>
     <h3 class="h3_borderLeft">
       頭ほぐし<span>（ドライヘッドマッサージ）</span>
     </h3>
@@ -175,7 +175,7 @@ const discountAll = [
     </div>
 
     <div class="options">
-      <h3>相乗効果オプションメニュー</h3>
+      <h2>相乗効果オプションメニュー</h2>
       <p>頭ほぐしと組み合わせることで、<br />より効果を感じていただけます。</p>
     </div>
 
@@ -330,16 +330,21 @@ const discountAll = [
     margin: 0 auto;
     padding-bottom: 40px;
   }
-
   @media screen and (768px <= width) {
     .menu-price {
       max-width: 900px;
     }
   }
-  h2 {
+
+  h1 {
     text-align: center;
     padding-block: 64px;
   }
+
+  h2 {
+    margin-bottom: 8px;
+  }
+
   .h3_borderLeft {
     margin-bottom: 12px;
     margin-left: 16px;

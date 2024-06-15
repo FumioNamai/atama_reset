@@ -6,13 +6,16 @@ const posts = await getNews({ limit: 2 });
 
 const data = posts.contents.map((content) => ({
   title: content.title,
-  tag:content.tag,
+  tag: content.tag,
   summary: content.summary,
   pubDateDisplay: content.pubDateDisplay,
-  publishedAt: content.publishedAt ? new Date(content.publishedAt).toLocaleDateString("ja-JP").split("/").join(".")
-  : "",
+  publishedAt: content.publishedAt
+    ? new Date(content.publishedAt)
+        .toLocaleDateString("ja-JP")
+        .split("/")
+        .join(".")
+    : "",
 }));
-
 ---
 
 <section class="news">
@@ -23,39 +26,38 @@ const data = posts.contents.map((content) => ({
       data.map((content) => (
         <a href={`/news#${content.title}`}>
           <div class="news-header">
-            { content.tag.map((tag) => {
+            {content.tag.map((tag) => {
               switch (tag) {
                 case "重要":
                   return <div class="tag important">重要</div>;
                 case "NEW":
                   return <div class="tag new">NEW</div>;
-                  case "緊急":
+                case "緊急":
                   return <div class="tag emergency">緊急</div>;
                 default:
                   break;
               }
-            })
-            }
-          <div class="wrapper">
-          <p>{content.title}</p>
-          <div class="setHtml" set:html={content.summary} />
-        </div>
-      </div>
-    </a>
-    ))
-  }
-  <MoreButton
-    href = "/news",
-    label = "もっと見る",
-    width = "114px"
-    marginInline = "auto 0"
-  />
-
-</div>
+            })}
+            <div class="wrapper">
+              <p>{content.title}</p>
+              <div class="setHtml" set:html={content.summary} />
+            </div>
+          </div>
+        </a>
+      ))
+    }
+    <MoreButton
+      href="/news"
+      ,
+      label="もっと見る"
+      ,
+      width="114px"
+      marginInline="auto 0"
+    />
+  </div>
 </section>
 
 <style>
-
   p {
     padding-block: 0.8rem;
     line-height: 150%;
@@ -66,7 +68,7 @@ const data = posts.contents.map((content) => ({
     color: var(--textBlack);
   }
 
-  a:hover{
+  a:hover {
     color: var(--textGray);
   }
 
@@ -92,7 +94,7 @@ const data = posts.contents.map((content) => ({
   .news-header {
     border-bottom: 1px solid var(--textBlack);
     margin-bottom: 1.6rem;
-    transition: all .5s;
+    transition: all 0.5s;
   }
 
   .publishedAT {
@@ -119,7 +121,7 @@ const data = posts.contents.map((content) => ({
 </style>
 
 <script>
-  import {ScrollObserverUnobserve} from "./ScrollObserverUnobserve"
+  import { ScrollObserverUnobserve } from "./ScrollObserverUnobserve";
   document.addEventListener("DOMContentLoaded", function () {
     const fadein = function (el, isIntersecting) {
       if (isIntersecting) {

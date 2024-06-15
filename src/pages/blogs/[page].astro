@@ -21,7 +21,7 @@ const { page } = Astro.props;
 <Layout pageTitle="ブログ一覧" description="">
   <main>
     <section class="blogs">
-      <h2>ブログ</h2>
+      <h1>ブログ</h1>
       <div class="container">
         {
           page.data.map((data:Blog) => (
@@ -52,7 +52,7 @@ const { page } = Astro.props;
     margin: 4rem auto;
   }
 
-  h2 {
+  h1 {
     text-align: center;
   }
 

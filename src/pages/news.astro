@@ -22,7 +22,7 @@ const data = posts.contents.map((content) => ({
 <Layout pageTitle="お知らせ" description="">
   <main>
     <section>
-      <h2>お知らせ</h2>
+      <h1>お知らせ</h1>
       {
         data.map((content) => (
           <div class="container">
@@ -40,7 +40,7 @@ const data = posts.contents.map((content) => ({
           }
         })
       }
-            <h3 class="title" id={content.title}>{content.title}</h3>
+            <h2 class="title" id={content.title}>{content.title}</h2>
             <article>
               {
                 content.articles.map((article) => {
@@ -82,9 +82,10 @@ const data = posts.contents.map((content) => ({
     padding-inline: 1.6rem;
   }
 
-  h2 {
+  h1 {
     margin-block-end: 2.4rem;
   }
+
   .container {
     text-align: start;
     padding-block: 2.4rem 0;
