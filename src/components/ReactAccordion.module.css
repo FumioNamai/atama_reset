@@ -3,14 +3,14 @@
   width: 100%;
 }
 
-button {
+.question {
+  /* buttonのデフォルト設定を変更 */
   border: none;
   font: inherit;
   color: inherit;
   background: none;
   width: 100%;
-}
-.question {
+
   display: flex;
   flex-direction: row;
   align-items: center;
