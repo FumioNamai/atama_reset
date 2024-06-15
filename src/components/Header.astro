@@ -3,7 +3,7 @@ import HamburgerLeft from "@components/HamburgerLeft.astro";
 import HamburgerRight from "@components/HamburgerRight.astro";
 
 import { Image } from "astro:assets";
-import logo from "../assets/reset_logo.svg";
+import logo1 from "../assets/reset_logo.svg";
 import logo2 from "../assets/reset_logo2.svg";
 ---
 
@@ -19,14 +19,14 @@ import logo2 from "../assets/reset_logo2.svg";
       <HamburgerLeft />
       <HamburgerRight />
     </div>
-    <div class="logo2">
+    <div class="logo1">
       <a href="/">
-        <Image src={logo2} alt="ロゴ" width="81" height="48" loading="eager" />
+        <Image src={logo1} alt="ホームへ" width="90" height="90" loading="eager"/>
       </a>
     </div>
-    <div class="logo">
+    <div class="logo2">
       <a href="/">
-        <Image src={logo} alt="ロゴ" width="90" height="90" loading="eager"/>
+        <Image src={logo2} alt="ホームへ" width="81" height="48" loading="eager" />
       </a>
     </div>
     <div class="dot"></div>
@@ -59,7 +59,6 @@ import logo2 from "../assets/reset_logo2.svg";
     text-align: end;
     padding-right: 10px;
     font-size: 1rem;
-    /* margin: 0; */
     color: var(--primary);
   }
 
@@ -72,6 +71,15 @@ import logo2 from "../assets/reset_logo2.svg";
     grid-column: 1 / 2;
     width: 60px;
   }
+  .logo1 {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    display: none;
+  }
+  .logo1 img {
+    width: 90px;
+    height: 90px;
+  }
   .logo2 {
     grid-row: 2 / 3;
     grid-column: 2 / 3;
@@ -80,16 +88,6 @@ import logo2 from "../assets/reset_logo2.svg";
   .logo2 img {
     width: 81px;
     height: 48px;
-  }
-  .logo {
-    grid-row: 2 / 3;
-    grid-column: 1 / 2;
-    /* margin-block: auto; */
-    display: none;
-  }
-  .logo img {
-    width: 90px;
-    height: 90px;
   }
   .contact {
     grid-row: 2 / 3;
@@ -140,13 +138,13 @@ import logo2 from "../assets/reset_logo2.svg";
       grid-column: 6 / 7;
       width: 90px;
     }
-    .logo2 {
-      display: none;
-    }
-    .logo {
+    .logo1 {
       display: block;
       grid-row: 2 / 3;
       grid-column: 2 / 3;
+    }
+    .logo2 {
+      display: none;
     }
     .contact {
       grid-row: 2 / 3;

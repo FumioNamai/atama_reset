@@ -1,11 +1,11 @@
 ---
-const {title,icon,href,address} = Astro.props
+const {title,icon,href,address,alt} = Astro.props
 ---
 
 <div class="byMail">
   <h3>{title}</h3>
   <!-- アイコンを入れる -->
-  <img src={icon} width="24" height="24"/>
+  <img src={icon} alt={alt} aria-hidden="true" width="24" height="24"/>
   <a href={href}>{address}</a>
 </div>
 
