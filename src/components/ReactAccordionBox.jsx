@@ -1,9 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 
-// type Props = {
-//   isOpen:boolean;
-//   children: ReactNode;
-// };
 export const ReactAccordionBox = (props) => {
   // 初期状態は高さを0pxに設定
   const [heightStyle, setHeightStyle] = useState(
