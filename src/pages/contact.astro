@@ -5,7 +5,10 @@ import FormInquiry from "@components/FormInquiry.jsx";
 import ContactOption from "@components/ContactOption.astro";
 ---
 
-<Layout pageTitle="ご予約・お問い合わせ" description="ご予約やお問い合わせ方法についてはこちらのページをご覧ください。">
+<Layout
+  pageTitle="ご予約・お問い合わせ"
+  description="ご予約やお問い合わせ方法についてはこちらのページをご覧ください。"
+>
   <main>
     <section class="contact">
       <h2>ご予約・お問い合わせ</h2>
@@ -21,17 +24,17 @@ import ContactOption from "@components/ContactOption.astro";
             href="/first_time#taboo">施術の禁忌</a
           >」を必ずお読みください。
         </p>
-        <p class="bold alert">※予約フォームからの送信をもってご予約確定ではございません。</p>
       </div>
 
       <!-- <Button  client:load /> -->
 
       <div class="byWeb">
         <h3>1. WEBからのご予約・お問い合わせ</h3>
+        <p class="bold alert center">
+          ※予約フォームからの送信をもって<br />ご予約確定ではございません。
+        </p>
 
         <div class="category">
-
-          <p class="alert toggle">いずれかを選択してください</p>
           <div class="flex">
             <label class="radio"
               ><input
@@ -48,10 +51,11 @@ import ContactOption from "@components/ContactOption.astro";
                 type="radio"
                 value="お問い合わせ"
                 name="type"
-                onclick=formSwitch()
+                onclick= formSwitch()
               /><span class="radio-text">お問い合わせ</span></label
             >
           </div>
+          <p class="alert toggle">いずれかを選択してください</p>
           <p class="toggle">（選択すると入力フォームを表示します）</p>
         </div>
         <div class="contact-form">
@@ -63,18 +67,18 @@ import ContactOption from "@components/ContactOption.astro";
       </div>
 
       <ContactOption
-      title="2. メールでのご予約・お問い合わせ"
-      icon="/mail.svg"
-      alt="メールアイコン"
-      href="mailto:atama.reset@gmail.com"
-      address="atama.reset@gmail.com"
+        title="2. メールでのご予約・お問い合わせ"
+        icon="/mail.svg"
+        alt="メールアイコン"
+        href="mailto:atama.reset@gmail.com"
+        address="atama.reset@gmail.com"
       />
       <ContactOption
-      title="3. お電話でのご予約・お問い合わせ"
-      icon="/phone.svg"
-      alt="電話アイコン"
-      href="tel:080-9271-7855"
-      address="080-9271-7855"
+        title="3. お電話でのご予約・お問い合わせ"
+        icon="/phone.svg"
+        alt="電話アイコン"
+        href="tel:080-9271-7855"
+        address="080-9271-7855"
       />
 
       <div class="notice">
@@ -85,7 +89,8 @@ import ContactOption from "@components/ContactOption.astro";
         </p>
         <p>後ほどこちらから折り返しご連絡させていただきます。</p>
         <p>
-          当日にコースをお選びいただくことも可能ですが、当店はご予約優先となっております。<br>
+          当日にコースをお選びいただくことも可能ですが、当店はご予約優先となっております。<br
+          />
           当日のご予約状況によってはご希望に添えない場合もございますので、ご了承ください。
         </p>
       </div>
@@ -113,8 +118,8 @@ import ContactOption from "@components/ContactOption.astro";
     text-align: center;
   }
 
-  .radio-text {
-    padding-top: 4px;
+  .center {
+    text-align: center;
   }
 
   label {
@@ -162,7 +167,6 @@ import ContactOption from "@components/ContactOption.astro";
     display: none;
   }
 
-
   /* 入力確認画面（モーダル） */
   .modal {
     display: none;
@@ -194,27 +198,26 @@ import ContactOption from "@components/ContactOption.astro";
 ></script>
 
 <script type="text/javascript">
+  //種別選択で表示するフォームを切り替える
+  const type = document.getElementsByName("type");
 
-//種別選択で表示するフォームを切り替える
-const type = document.getElementsByName("type");
+  function formSwitch() {
+    const contactForm = document.querySelector(".contact-form");
+    const inquiryForm = document.querySelector(".inquiry-form");
+    const toggle = document.querySelectorAll(".toggle");
 
-function formSwitch() {
-  const contactForm = document.querySelector(".contact-form");
-  const inquiryForm = document.querySelector(".inquiry-form");
-  const toggle = document.querySelectorAll(".toggle")
-
-  if (type[0].checked) {
-    contactForm.style.display = "block";
-    inquiryForm.style.display = "none";
-    toggle.forEach(els => {
-      els.style.display = "none"
-    })
-  } else if (type[1].checked) {
-    contactForm.style.display = "none";
-    inquiryForm.style.display = "block";
-    toggle.forEach(els => {
-      els.style.display = "none"
-    })
+    if (type[0].checked) {
+      contactForm.style.display = "block";
+      inquiryForm.style.display = "none";
+      toggle.forEach((els) => {
+        els.style.display = "none";
+      });
+    } else if (type[1].checked) {
+      contactForm.style.display = "none";
+      inquiryForm.style.display = "block";
+      toggle.forEach((els) => {
+        els.style.display = "none";
+      });
+    }
   }
-}
 </script>
