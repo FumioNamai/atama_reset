@@ -1,133 +1,146 @@
 ---
 import Layout from "@layouts/layout.astro";
-import { Image }  from "astro:assets";
-import thanks from "../assets/Thanks.webp"
-import clinic_image3 from "../assets/clinic_image_3.webp"
-import clinic_image4 from "../assets/clinic_image_4.webp"
-
+import { Image } from "astro:assets";
+import thanks from "../assets/Thanks.webp";
+import clinic_image3 from "../assets/clinic_image_3.webp";
+import clinic_image4 from "../assets/clinic_image_4.webp";
 ---
 
 <Layout pageTitle="ごあいさつ" description="">
   <main>
     <section>
-    <h1>ごあいさつ</h1>
-    <div class="image">
-      <Image src={thanks} alt="ありがとうございます！" width=320 height=213 loading="eager"/>
-    </div>
-    <article>
-    <p>「頭から体の不調を整える」 をモットーに。</p>
-    <p>当店は、お子様から幅広い年齢層のお客様にお越しいただいております。</p>
-    <p>
-      老若男女、<br />
-      すべての皆様のカラダもココロも<br />
-      元気にできるお手伝いができれば光栄です。
-    </p>
-    <p>
-      陽だまりのような<br />
-      ほっと心落ち着ける場所となりますよう<br />
-      ひとりひとりのお客様とのお時間を大切にいたします。<br />
-    </p>
-    <p>
-      完全個室のプライベート空間で<br />
-      日頃のお疲れをゆっくり癒してください。
-    </p>
-    <p>
-      お身体のお疲れ<br />
-      頭のお疲れ<br />
-      それらが引き起こす心のお疲れも<br />
-      当店でリセットして
-    </p>
-    <p>
-      皆さまの毎日が<br />
-      健康で、笑顔あふれるものになりますように。
-    </p>
-    <p>
-      皆さまとの一期一会を心よりお待ちしております。
-    </p>
-    <p>
-      健康なからだについての情報をブログに綴っています。
-    </p>
-    <p>
-      ぜひ毎日の健康の参考になさってください。
-    </p>
-  </article>
-  <div class="certificatiion">
-    <p>
-      日本ヘッドセラピスト認定協会<br>
-      日本ヘッドセラピスト専門学院<br>
-      1級ヘッドセラピスト<br>
-      有能技能賞取得
-    </p>
-    <p>
-      日本ヘッドセラピスト認定協会<br>
-      腸セラピスト
-    </p>
-    <p>頭ほぐし専門店 reset</p>
-  </div>
-  <div class="clinic-image-outer">
-    <div class="clinic-image">
-      <Image src={ clinic_image3 } alt="" >
-    </div>
-    <div class="clinic-image">
-      <Image src={ clinic_image4 } alt="" >
-    </div>
-  </div>
-</section>
-  </main>
-</Layout>
+      <h1>ごあいさつ</h1>
+      <div class="image">
+        <Image
+          src={thanks}
+          alt="ありがとうございます！"
+          width="320"
+          height="213"
+          loading="eager"
+        />
+      </div>
+      <article>
+        <p>「頭から体の不調を整える」 <br>をモットーに。</p>
+        <p>
+          当店は、お子様から幅広い年齢層のお客様にお越しいただいております。
+        </p>
+        <p>
+          老若男女、<br />
+          すべての皆さまのカラダもココロも<br />
+          元気にできるお手伝いができれば光栄です。
+        </p>
+        <p>
+          陽だまりのような<br />
+          ほっと心落ち着ける場所となりますよう<br />
+          ひとりひとりのお客様とのお時間を大切にいたします。<br />
+        </p>
+        <p>
+          完全個室のプライベート空間で<br />
+          日頃のお疲れをゆっくり癒してください。
+        </p>
+        <p>
+          お体のお疲れ<br />
+          頭のお疲れ<br />
+          それらが引き起こす心のお疲れも<br />
+          当店でリセットして
+        </p>
+        <p>
+          皆さまの毎日が<br />
+          健康で、笑顔あふれるものになりますように。
+        </p>
+        <div class="annotation">
+          <p>
+            施術者が一人であり<br />
+            一日のご予約に限りがございますこと、<br />
+            ご不便をお掛けいたしますが、
+          </p>
+          <p>
+            「お客様の大切なお時間を誠心誠意お預かりさせていただきたい」<br />
+            当店の想いをご理解いただけますと幸いです。
+          </p>
+        </div>
+        <p>皆さまとの一期一会を心よりお待ちしております。</p>
 
-<style>
-  section {
-    text-align: center;
-    max-width: 680px;
-    margin: 0 auto;
-    padding-block: 40px;
-    padding-inline: 1.6rem;
-  }
+      </article>
+      <div class="certificatiion">
+        <p>
+          日本ヘッドセラピスト認定協会<br />
+          日本ヘッドセラピスト専門学院<br />
+          1級ヘッドセラピスト<br />
+          有能技能賞取得
+        </p>
+        <p>
+          日本ヘッドセラピスト認定協会<br />
+          腸セラピスト
+        </p>
+        <p>頭ほぐし専門店 reset</p>
+      </div>
+      <div class="clinic-image-outer">
+        <div class="clinic-image">
+          <Image src={clinic_image3} alt="" />
+          <div class="clinic-image">
+            <Image src={clinic_image4} alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
 
-  .image {
-    margin-block: 64px;
-  }
+    <style>
+      section {
+        text-align: center;
+        max-width: 680px;
+        margin: 0 auto;
+        padding-block: 40px;
+        padding-inline: 1.6rem;
+      }
 
-  article {
-    text-align: left;
-  }
+      .image {
+        margin-block: 64px;
+      }
 
-  p {
-    line-height: 200%;
-    letter-spacing: 2.7px;
-    padding-bottom: 2.4rem;
-  }
+      article {
+        text-align: start;
+      }
 
-  .certificatiion {
-    margin-top: 64px;
-    text-align: right;
-  }
+      p {
+        line-height: 200%;
+        letter-spacing: 2.7px;
+        padding-bottom: 2.4rem;
+      }
 
-  .clinic-image-outer {
-    margin-top: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 680px;
-    height: auto;
-    gap: 40px;
-  }
+      .annotation {
+        margin-block: 4.8rem;
+      }
 
-  .clinic-image img {
-    width: 100%;
-    height: auto;
-  }
+      .certificatiion {
+        margin-top: 64px;
+        text-align: right;
+      }
 
-  @media screen and ( 900px <= width ){
-    .clinic-image-outer {
-      flex-direction: row;
-    }
-    article {
-    text-align: center;
-  }
-  }
+      .clinic-image-outer {
+        margin-top: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 680px;
+        height: auto;
+        gap: 40px;
+      }
 
+      .clinic-image img {
+        width: 100%;
+        height: auto;
+      }
 
-</style>
+      @media screen and (900px <= width) {
+        .clinic-image-outer {
+          flex-direction: row;
+        }
+        article {
+          text-align: center;
+        }
+      }
+    </style>
+  </main></Layout
+>
