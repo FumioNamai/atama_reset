@@ -52,6 +52,10 @@ export default function FormReservation() {
 
   // 希望時間
   const TIME_OPTIONS = [
+    "11:00 ~",
+    "11:30 ~",
+    "12:00 ~",
+    "12:30 ~",
     "13:00 ~",
     "13:30 ~",
     "14:00 ~",
@@ -288,6 +292,7 @@ export default function FormReservation() {
             })
             }
           </select>
+          <p className="alert">※10月1日(火)より11:00からのご予約を承ります</p>
         </div>
         <div className={styles.inputWrapper}>
           <h5 className="bold">ご希望のメニュー<span className="alert">&nbsp;*</span></h5>
