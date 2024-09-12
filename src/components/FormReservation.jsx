@@ -102,7 +102,6 @@ export default function FormReservation() {
     {
       category: "全部コース",
       course: [
-        { content: "全部コース90分", duration: "90分", checked: false },
         { content: "全部コース105分", duration: "105分", checked: false },
         { content: "全部コース120分", duration: "120分", checked: false },
       ],
