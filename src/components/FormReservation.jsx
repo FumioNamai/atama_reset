@@ -291,7 +291,7 @@ export default function FormReservation() {
             })
             }
           </select>
-          <p className="alert">※10月1日(火)より11:00からのご予約を承ります</p>
+          {/* <p className="alert">※10月1日(火)より11:00からのご予約を承ります</p> */}
         </div>
         <div className={styles.inputWrapper}>
           <h5 className="bold">ご希望のメニュー<span className="alert">&nbsp;*</span></h5>
