@@ -1,9 +1,9 @@
 ---
 import { getNews } from "src/library/news";
+import { getAllPosts } from "src/library/microcms";
 import MoreButton from "./MoreButton.astro";
 
 const posts = await getNews({ limit: 2 });
-
 const data = posts.contents.map((content) => ({
   title: content.title,
   tag: content.tag,
@@ -15,6 +15,14 @@ const data = posts.contents.map((content) => ({
         .split("/")
         .join(".")
     : "",
+}));
+
+
+const blogPosts = await getAllPosts(1);
+const blogData = blogPosts.contents.map((content) => ({
+  id: content.id,
+  title: content.title,
+  slug: content.slug,
 }));
 ---
 
@@ -55,6 +63,30 @@ const data = posts.contents.map((content) => ({
       marginInline="auto 0"
     />
   </div>
+
+    <h2>最新のブログ</h2>
+    <div class="container">
+    {
+      blogData.map((content) => (
+        <a href={`/blog/${content.slug}-${content.id}`}>
+          <div class="news-header">
+            <div class="wrapper">
+              <p>{content.title}</p>
+            </div>
+          </div>
+        </a>
+      ))
+    }
+    <MoreButton
+      href="/blogs/1"
+      ,
+      label="もっと見る"
+      ,
+      width="114px"
+      marginInline="auto 0"
+    />
+  </div>
+
 </section>
 
 <style>
@@ -74,7 +106,7 @@ const data = posts.contents.map((content) => ({
 
   .container {
     max-width: 400px;
-    margin-block-start: 2.4rem;
+    margin-block: 2.4rem;
     margin-inline: auto;
   }
 
