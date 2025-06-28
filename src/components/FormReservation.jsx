@@ -29,7 +29,19 @@ export default function FormReservation() {
   const [isConfirmed, setIsConfirmed] = useState(false)
   const [showModal, setShowModal] = useState(false);
   const [errMessage, setErrMessage] = useState("")
+  // const [courseTime, setCourseTime] = useState("")
 
+  // ボツ案
+  // メニュー選択のinput(ラジオボタン)からdata-set属性(data-times)を使って、MENUSのcourseオブジェクトに置いたdataTimeを取得。courseTimeで状態管理。
+  //if文で条件分岐して、希望時間の選択肢を出しわける。
+  // ➡わざわざdata-timesを用意しなくても、選択したコース名で条件分岐させられるためボツにした。
+
+  const handleOrderChange = (e) => {
+  const order = e.target.value;
+  // const times = e.target.dataset.times;
+  setOrder(order)
+  // setCourseTime(times)
+}
 
   // 性別選択
   const GENDER = ["男性", "女性"];
@@ -52,6 +64,7 @@ export default function FormReservation() {
 
   // 希望時間
   const TIME_OPTIONS = [
+    "先にメニューを選択してください",
     "11:00 ~",
     "11:30 ~",
     "12:00 ~",
@@ -73,7 +86,36 @@ export default function FormReservation() {
     "20:00 ~",
   ]
 
-  // メニューリスト
+  // let TIME_OPTIONS2
+  // if (courseTime === "") {
+  //   TIME_OPTIONS2 = TIME_OPTIONS
+  // } else if ( courseTime === "60") {
+  //   TIME_OPTIONS2 = TIME_OPTIONS.slice(1,20)
+  // } else if ( courseTime === "75" ) {
+  //   TIME_OPTIONS2 = TIME_OPTIONS.slice(1,19)
+  // } else if ( courseTime === "90" ) {
+  //   TIME_OPTIONS2 = TIME_OPTIONS.slice(1,19)
+  // } else if ( courseTime === "105" ) {
+  //   TIME_OPTIONS2 = TIME_OPTIONS.slice(1,18)
+  // }else if (courseTime === "120" ){
+  //   TIME_OPTIONS2 = TIME_OPTIONS.slice(1,18)
+  // }
+
+  let TIME_OPTIONS2
+  if (order.includes("60")) {
+    TIME_OPTIONS2 = TIME_OPTIONS.slice(1,20)
+  } else if ( order.includes("75") ) {
+    TIME_OPTIONS2 = TIME_OPTIONS.slice(1,19)
+  } else if ( order.includes("90") ) {
+    TIME_OPTIONS2 = TIME_OPTIONS.slice(1,19)
+  } else if ( order.includes("105") ) {
+    TIME_OPTIONS2 = TIME_OPTIONS.slice(1,18)
+  }else if (order.includes("120") ){
+    TIME_OPTIONS2 = TIME_OPTIONS.slice(1,18)
+  } else {
+    TIME_OPTIONS2 = TIME_OPTIONS
+  }
+
   const MENUS = [
     {
       category: "頭ほぐし",
@@ -276,23 +318,7 @@ export default function FormReservation() {
           </label>
           <p className={styles.errMessage}>{errMessage}</p>
         </div>
-        <div className={styles.inputWrapper}>
-          <label className="bold"
-          >希望時間<span className="alert">&nbsp;*</span></label><br />
-          <select
-            name="time"
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-            required>
-            {TIME_OPTIONS.map((time) => {
-              return (
-                <option key={time}>{time}</option>
-              )
-            })
-            }
-          </select>
-          {/* <p className="alert">※10月1日(火)より11:00からのご予約を承ります</p> */}
-        </div>
+
         <div className={styles.inputWrapper}>
           <h5 className="bold">ご希望のメニュー<span className="alert">&nbsp;*</span></h5>
 
@@ -309,9 +335,11 @@ export default function FormReservation() {
                               className={styles.radioInput}
                               type="radio"
                               value={course.content}
+                              // data-times={course.dataTimes}
                               name="menu"
                               checked={order === course.content}
-                              onChange={(e) => setOrder(e.target.value)}
+                              // onChange={(e) => setOrder(e.target.value)}
+                              onChange={handleOrderChange}
                               required />
                             <span className={styles.radioText}>{course.duration}</span>
                           </label>
@@ -324,7 +352,24 @@ export default function FormReservation() {
               }
             </div>
           </div>
-
+        <div className={styles.inputWrapper}>
+          <label className="bold"
+          >希望時間<span className="alert">&nbsp;*</span></label><br />
+          <select
+            disabled={order === ""}
+            name="time"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            required>
+            {TIME_OPTIONS2.map((time) => {
+              return (
+                <option key={time}>{time}</option>
+              )
+            })
+            }
+          </select>
+          {/* <p className="alert">※10月1日(火)より11:00からのご予約を承ります</p> */}
+        </div>
         <div className={`${styles.visits} ${styles.inputWrapper}`}>
           <h5 className="bold">
             ご来店は
@@ -471,15 +516,15 @@ export default function FormReservation() {
                   errMsg={"未入力です"}
                 />
                 <InputDetails
-                  title={"希望時間"}
-                  props={time}
-                  msg={time}
-                  errMsg={"選択してください"}
-                />
-                <InputDetails
                   title={"ご希望のメニュー"}
                   props={order}
                   msg={order}
+                  errMsg={"選択してください"}
+                />
+                <InputDetails
+                  title={"希望時間"}
+                  props={time}
+                  msg={time}
                   errMsg={"選択してください"}
                 />
                 <InputDetails
