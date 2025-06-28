@@ -29,19 +29,13 @@ export default function FormReservation() {
   const [isConfirmed, setIsConfirmed] = useState(false)
   const [showModal, setShowModal] = useState(false);
   const [errMessage, setErrMessage] = useState("")
-  // const [courseTime, setCourseTime] = useState("")
 
-  // ボツ案
-  // メニュー選択のinput(ラジオボタン)からdata-set属性(data-times)を使って、MENUSのcourseオブジェクトに置いたdataTimeを取得。courseTimeで状態管理。
-  //if文で条件分岐して、希望時間の選択肢を出しわける。
-  // ➡わざわざdata-timesを用意しなくても、選択したコース名で条件分岐させられるためボツにした。
 
+  //メニュー選択
   const handleOrderChange = (e) => {
   const order = e.target.value;
-  // const times = e.target.dataset.times;
   setOrder(order)
-  // setCourseTime(times)
-}
+  }
 
   // 性別選択
   const GENDER = ["男性", "女性"];
@@ -86,21 +80,7 @@ export default function FormReservation() {
     "20:00 ~",
   ]
 
-  // let TIME_OPTIONS2
-  // if (courseTime === "") {
-  //   TIME_OPTIONS2 = TIME_OPTIONS
-  // } else if ( courseTime === "60") {
-  //   TIME_OPTIONS2 = TIME_OPTIONS.slice(1,20)
-  // } else if ( courseTime === "75" ) {
-  //   TIME_OPTIONS2 = TIME_OPTIONS.slice(1,19)
-  // } else if ( courseTime === "90" ) {
-  //   TIME_OPTIONS2 = TIME_OPTIONS.slice(1,19)
-  // } else if ( courseTime === "105" ) {
-  //   TIME_OPTIONS2 = TIME_OPTIONS.slice(1,18)
-  // }else if (courseTime === "120" ){
-  //   TIME_OPTIONS2 = TIME_OPTIONS.slice(1,18)
-  // }
-
+  // 選択したメニューの所要時間によって希望時間の選択肢を増減させる
   let TIME_OPTIONS2
   if (order.includes("60")) {
     TIME_OPTIONS2 = TIME_OPTIONS.slice(1,20)
@@ -306,18 +286,6 @@ export default function FormReservation() {
           </label>
         </div>
 
-        <div className={styles.inputWrapper}>
-          <label className="bold"
-          >希望日<span className="alert">&nbsp;*</span><br /><input
-              type="date"
-              value={selectedDate}
-              onChange={(e) => setSelectedDate(e.target.value)}
-              min={tomorrow}
-              required
-            />
-          </label>
-          <p className={styles.errMessage}>{errMessage}</p>
-        </div>
 
         <div className={styles.inputWrapper}>
           <h5 className="bold">ご希望のメニュー<span className="alert">&nbsp;*</span></h5>
@@ -335,10 +303,8 @@ export default function FormReservation() {
                               className={styles.radioInput}
                               type="radio"
                               value={course.content}
-                              // data-times={course.dataTimes}
                               name="menu"
                               checked={order === course.content}
-                              // onChange={(e) => setOrder(e.target.value)}
                               onChange={handleOrderChange}
                               required />
                             <span className={styles.radioText}>{course.duration}</span>
@@ -352,6 +318,20 @@ export default function FormReservation() {
               }
             </div>
           </div>
+
+        <div className={styles.inputWrapper}>
+          <label className="bold"
+          >希望日<span className="alert">&nbsp;*</span><br /><input
+              type="date"
+              value={selectedDate}
+              onChange={(e) => setSelectedDate(e.target.value)}
+              min={tomorrow}
+              required
+            />
+          </label>
+          <p className={styles.errMessage}>{errMessage}</p>
+        </div>
+
         <div className={styles.inputWrapper}>
           <label className="bold"
           >希望時間<span className="alert">&nbsp;*</span></label><br />
@@ -368,6 +348,7 @@ export default function FormReservation() {
             })
             }
           </select>
+          <p className="alert">※ご希望の日時での予約可否は、<br/>メールにてお返事させていただきます。</p>
           {/* <p className="alert">※10月1日(火)より11:00からのご予約を承ります</p> */}
         </div>
         <div className={`${styles.visits} ${styles.inputWrapper}`}>
@@ -509,17 +490,17 @@ export default function FormReservation() {
                   msg={tel}
                   errMsg={"未入力です"}
                 />
+                  <InputDetails
+                    title={"ご希望のメニュー"}
+                    props={order}
+                    msg={order}
+                    errMsg={"選択してください"}
+                  />
                 <InputDetails
                   title={"希望日"}
                   props={selectedDate}
                   msg={dateText}
                   errMsg={"未入力です"}
-                />
-                <InputDetails
-                  title={"ご希望のメニュー"}
-                  props={order}
-                  msg={order}
-                  errMsg={"選択してください"}
                 />
                 <InputDetails
                   title={"希望時間"}
