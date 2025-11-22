@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { init, send } from "emailjs-com";
 import { InputDetails } from "./InputDetails";
 import styles from "./Form.module.css";
@@ -30,6 +30,16 @@ export default function FormReservation() {
   const [showModal, setShowModal] = useState(false);
   const [errMessage, setErrMessage] = useState("")
 
+  // -----------------------------
+  // reCAPTCHA v2 Script を読み込み
+  // -----------------------------
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://www.google.com/recaptcha/api.js";
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+  }, []);
 
   //メニュー選択
   const handleOrderChange = (e) => {
@@ -155,6 +165,16 @@ export default function FormReservation() {
 
   //メール送信処理
   const sendMail = () => {
+    // -----------------------------
+    // reCAPTCHA v2 のトークン取得
+    // -----------------------------
+    const token = grecaptcha.getResponse();
+
+    if (!token) {
+      alert("reCAPTCHA 認証を完了してください（私はロボットではありません）");
+      return;
+    }
+
     if (
       publicKey !== undefined &&
       serviceID !== undefined &&
@@ -187,6 +207,8 @@ export default function FormReservation() {
         setVisits("");
         setReasons("");
         setMessage("");
+        // reCAPTCHA リセット
+        grecaptcha.reset();
       })
     } else {
       console.log('キーがありません');
@@ -448,7 +470,20 @@ export default function FormReservation() {
             </li>
           </ul>
         </div>
-        <div></div>
+
+        {/* reCAPTCHA v2 ウィジェット追加 */}
+        {/* ----------------------------- */}
+        <div style={{
+          marginTop: "20px",
+          display: "flex",
+          justifyContent: "center"
+         }}>
+          <div
+            className="g-recaptcha"
+            data-sitekey="6LebihQsAAAAAHrugch81mfZcJisvtWSBgC5VE5M"
+          ></div>
+          </div>
+
         <button className={styles.btnForm} type="confirm" onClick={ShowModal}
         >入力確認画面へ</button>
 

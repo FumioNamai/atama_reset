@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { init, send } from "emailjs-com";
 import { InputDetails } from "./InputDetails";
 import styles from "./Form.module.css";
@@ -19,6 +19,17 @@ export default function InquiryForm() {
   const [isConfirmed, setIsConfirmed] = useState(false)
   const [showModal, setShowModal] = useState(false);
 
+  // -----------------------------
+  // reCAPTCHA v2 Script を読み込み
+  // -----------------------------
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://www.google.com/recaptcha/api.js";
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+  }, []);
+
   // 性別選択
   const GENDER = ["男性", "女性"];
   const handleGenderChange = (e) => {
@@ -27,6 +38,16 @@ export default function InquiryForm() {
 
   // メール送信処理
   const sendMail = () => {
+    // -----------------------------
+    // reCAPTCHA v2 のトークン取得
+    // -----------------------------
+    const token = grecaptcha.getResponse();
+
+    if (!token) {
+      alert("reCAPTCHA 認証を完了してください（私はロボットではありません）");
+      return;
+    }
+
     if (
       publicKey !== undefined &&
       serviceID !== undefined &&
@@ -39,6 +60,7 @@ export default function InquiryForm() {
         email: email,
         tel: tel,
         message: message,
+        // token は EmailJS 側で不要のため送らない
       }
       send(serviceID, templateIDInquiry, templateParams, publicKey).then(() => {
         window.location.href = "/sent-inquiry";
@@ -47,6 +69,8 @@ export default function InquiryForm() {
         setEmail("");
         setTel("");
         setMessage("");
+        // reCAPTCHA リセット
+        grecaptcha.reset();
       })
     } else {
       console.log('キーがありません');
@@ -188,6 +212,20 @@ export default function InquiryForm() {
             </li>
           </ul>
         </div>
+
+        {/* reCAPTCHA v2 ウィジェット追加 */}
+        {/* ----------------------------- */}
+        <div style={{
+          marginTop: "20px",
+          display: "flex",
+          justifyContent: "center"
+         }}>
+          <div
+            className="g-recaptcha"
+            data-sitekey="6LebihQsAAAAAHrugch81mfZcJisvtWSBgC5VE5M"
+          ></div>
+        </div>
+
         <button className={styles.btnForm} type="confirm" onClick={ShowModal} >入力確認画面へ</button>
 
         {/* モーダルウィンドウ */}
