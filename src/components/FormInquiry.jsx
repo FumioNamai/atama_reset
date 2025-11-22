@@ -243,7 +243,9 @@ export default function InquiryForm() {
           ></div>
         </div>
 
-        <button className={styles.btnForm} type="button" onClick={ShowModal} >入力確認画面へ</button>
+        <button className={styles.btnForm} type="button" onClick={ShowModal}
+        disabled={disableConfirm}>
+          入力確認画面へ</button>
 
         {/* モーダルウィンドウ */}
         {showModal ? (

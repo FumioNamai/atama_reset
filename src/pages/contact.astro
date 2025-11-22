@@ -195,6 +195,8 @@ import ContactOption from "@components/ContactOption.astro";
   }
 </style>
 
+
+
 <script
   type="text/javascript"
   src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
@@ -208,16 +210,19 @@ import ContactOption from "@components/ContactOption.astro";
     const contactForm = document.querySelector(".contact-form");
     const inquiryForm = document.querySelector(".inquiry-form");
     const toggle = document.querySelectorAll(".toggle");
+    const category = document.querySelector(".category");
 
     if (type[0].checked) {
       contactForm.style.display = "block";
       inquiryForm.style.display = "none";
+      category.style.display = "none";
       toggle.forEach((els) => {
         els.style.display = "none";
       });
     } else if (type[1].checked) {
       contactForm.style.display = "none";
       inquiryForm.style.display = "block";
+      category.style.display = "none";
       toggle.forEach((els) => {
         els.style.display = "none";
       });

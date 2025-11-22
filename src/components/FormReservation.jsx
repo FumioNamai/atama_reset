@@ -502,7 +502,8 @@ export default function FormReservation() {
           ></div>
           </div>
 
-        <button className={styles.btnForm} type="confirm" onClick={ShowModal}
+        <button className={styles.btnForm} type="confirm" onClick={ShowModal }
+        disabled={disableConfirm}
         >入力確認画面へ</button>
 
         {/* モーダルウィンドウ */}
