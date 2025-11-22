@@ -29,16 +29,27 @@ export default function FormReservation() {
   const [isConfirmed, setIsConfirmed] = useState(false)
   const [showModal, setShowModal] = useState(false);
   const [errMessage, setErrMessage] = useState("")
+  const [recaptchaToken, setRecaptchaToken] = useState("");
+
 
   // -----------------------------
   // reCAPTCHA v2 Script を読み込み
   // -----------------------------
   useEffect(() => {
+    window.handleRecaptchaChange = (token) => {
+    setRecaptchaToken(token);
+  };
     const script = document.createElement("script");
-    script.src = "https://www.google.com/recaptcha/api.js";
+    script.src = "https://www.google.com/recaptcha/api.js?hl=ja";
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
+
+    // onloadCallback をグローバルに定義しておく（windowにセット）
+    return () => {
+    document.body.removeChild(script);
+    delete window.handleRecaptchaChange;
+  };
   }, []);
 
   //メニュー選択
@@ -165,12 +176,16 @@ export default function FormReservation() {
 
   //メール送信処理
   const sendMail = () => {
+    if (typeof grecaptcha === "undefined") {
+    alert("reCAPTCHAの読み込みが完了していません。時間をおいてから再度お試しください。");
+    return;
+  }
+
     // -----------------------------
     // reCAPTCHA v2 のトークン取得
     // -----------------------------
-    const token = grecaptcha.getResponse();
 
-    if (!token) {
+    if (!recaptchaToken) {
       alert("reCAPTCHA 認証を完了してください（私はロボットではありません）");
       return;
     }
@@ -194,6 +209,7 @@ export default function FormReservation() {
           return checkedReason.label
         }),
         message: message,
+        "g-recaptcha-response": recaptchaToken,
       }
       send(serviceID, templateIDContact, templateParams, publicKey).then(() => {
         window.location.href = "/sent-reservation";
@@ -209,6 +225,7 @@ export default function FormReservation() {
         setMessage("");
         // reCAPTCHA リセット
         grecaptcha.reset();
+        setRecaptchaToken("");
       })
     } else {
       console.log('キーがありません');
@@ -481,6 +498,7 @@ export default function FormReservation() {
           <div
             className="g-recaptcha"
             data-sitekey="6LebihQsAAAAAHrugch81mfZcJisvtWSBgC5VE5M"
+            data-callback = "handleRecaptchaChange"
           ></div>
           </div>
 
