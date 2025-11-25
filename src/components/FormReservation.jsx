@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { init, send } from "emailjs-com";
 import { InputDetails } from "./InputDetails";
 import styles from "./Form.module.css";
@@ -35,6 +35,7 @@ export default function FormReservation() {
   // -----------------------------
   // reCAPTCHA v2 Script を読み込み
   // -----------------------------
+
   useEffect(() => {
     window.handleRecaptchaChange = (token) => {
     setRecaptchaToken(token);
@@ -52,10 +53,26 @@ export default function FormReservation() {
   };
   }, []);
 
+  // -----------------------------
+  // reCAPTCHA v2 のトークン取得
+  // -----------------------------
+
+  useEffect(() => {
+    if (showModal) {
+      if (window.grecaptcha) {
+        window.grecaptcha.render("recaptcha-modal", {
+          sitekey: "6LebihQsAAAAAHrugch81mfZcJisvtWSBgC5VE5M",
+          callback: (token) => setRecaptchaToken(token),
+        })
+      }
+    }
+  }, [showModal]);
+
+
   //メニュー選択
   const handleOrderChange = (e) => {
-  const order = e.target.value;
-  setOrder(order)
+    const order = e.target.value;
+    setOrder(order)
   }
 
   // 性別選択
@@ -104,15 +121,15 @@ export default function FormReservation() {
   // 選択したメニューの所要時間によって希望時間の選択肢を増減させる
   let TIME_OPTIONS2
   if (order.includes("60")) {
-    TIME_OPTIONS2 = TIME_OPTIONS.slice(1,20)
-  } else if ( order.includes("75") ) {
-    TIME_OPTIONS2 = TIME_OPTIONS.slice(1,19)
-  } else if ( order.includes("90") ) {
-    TIME_OPTIONS2 = TIME_OPTIONS.slice(1,19)
-  } else if ( order.includes("105") ) {
-    TIME_OPTIONS2 = TIME_OPTIONS.slice(1,18)
-  }else if (order.includes("120") ){
-    TIME_OPTIONS2 = TIME_OPTIONS.slice(1,18)
+    TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 20)
+  } else if (order.includes("75")) {
+    TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 19)
+  } else if (order.includes("90")) {
+    TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 19)
+  } else if (order.includes("105")) {
+    TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 18)
+  } else if (order.includes("120")) {
+    TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 18)
   } else {
     TIME_OPTIONS2 = TIME_OPTIONS
   }
@@ -177,13 +194,10 @@ export default function FormReservation() {
   //メール送信処理
   const sendMail = () => {
     if (typeof grecaptcha === "undefined") {
-    alert("reCAPTCHAの読み込みが完了していません。時間をおいてから再度お試しください。");
-    return;
-  }
+      alert("reCAPTCHAの読み込みが完了していません。時間をおいてから再度お試しください。");
+      return;
+    }
 
-    // -----------------------------
-    // reCAPTCHA v2 のトークン取得
-    // -----------------------------
 
     if (!recaptchaToken) {
       alert("reCAPTCHA 認証を完了してください（私はロボットではありません）");
@@ -226,6 +240,9 @@ export default function FormReservation() {
         // reCAPTCHA リセット
         grecaptcha.reset();
         setRecaptchaToken("");
+        setShowModal(false);
+        document.body.style.overflow = "auto";
+        //必要に応じてリダイレクト
       })
     } else {
       console.log('キーがありません');
@@ -236,12 +253,22 @@ export default function FormReservation() {
     e.preventDefault();
     setShowModal(true)
     document.body.style.overflow = "hidden"
+    //モーダルを開いたときにreCAPTCHAをリセット
+    //   if (typeof grecaptcha !== "undefined") {
+    //   grecaptcha.reset();
+    //   }
+    // setRecaptchaToken("");
   }
 
   const closeModal = (e) => {
     e.preventDefault();
     setShowModal(false)
     document.body.style.overflow = "auto"
+
+    if (typeof grecaptcha !== "undefined") {
+      grecaptcha.reset();
+      setRecaptchaToken("");
+    };
   }
 
   const handleSubmit = (e) => {
@@ -279,7 +306,7 @@ export default function FormReservation() {
           <h5 className="bold">性別<span className="alert">&nbsp;*</span></h5>
 
           <div className={styles.gender}>
-          {GENDER.map((value) => {
+            {GENDER.map((value) => {
               return (
                 <label key={value} className={styles.radio}>
                   <input
@@ -330,33 +357,33 @@ export default function FormReservation() {
           <h5 className="bold">ご希望のメニュー<span className="alert">&nbsp;*</span></h5>
 
           <div className={styles.menuList}>
-              {MENUS.map((menu) => {
-                return (
-                  <>
-                    <p key={menu.category} className={styles.categoryName}>{menu.category}</p>
-                    <div className={styles.flex}>
-                      {menu.course.map((course) => {
-                        return (
+            {MENUS.map((menu) => {
+              return (
+                <>
+                  <p key={menu.category} className={styles.categoryName}>{menu.category}</p>
+                  <div className={styles.flex}>
+                    {menu.course.map((course) => {
+                      return (
                         <label key={course.content} className={styles.radio}>
-                            <input
-                              className={styles.radioInput}
-                              type="radio"
-                              value={course.content}
-                              name="menu"
-                              checked={order === course.content}
-                              onChange={handleOrderChange}
-                              required />
-                            <span className={styles.radioText}>{course.duration}</span>
-                          </label>
-                        )
-                      })}
-                    </div>
-                  </>
-                )
-              })
-              }
-            </div>
+                          <input
+                            className={styles.radioInput}
+                            type="radio"
+                            value={course.content}
+                            name="menu"
+                            checked={order === course.content}
+                            onChange={handleOrderChange}
+                            required />
+                          <span className={styles.radioText}>{course.duration}</span>
+                        </label>
+                      )
+                    })}
+                  </div>
+                </>
+              )
+            })
+            }
           </div>
+        </div>
 
         <div className={styles.inputWrapper}>
           <label className="bold"
@@ -387,7 +414,7 @@ export default function FormReservation() {
             })
             }
           </select>
-          <p className="alert">※ご希望の日時での予約可否は、<br/>メールにてお返事させていただきます。</p>
+          <p className="alert">※ご希望の日時での予約可否は、<br />メールにてお返事させていただきます。</p>
           {/* <p className="alert">※10月1日(火)より11:00からのご予約を承ります</p> */}
         </div>
         <div className={`${styles.visits} ${styles.inputWrapper}`}>
@@ -459,7 +486,7 @@ export default function FormReservation() {
 
 
         <div className={styles.confirm}>
-          <p>ページ下部に記載の注意事項を必ずご確認ください。</p>
+          <p>下部に記載の注意事項を必ずご確認ください。</p>
           <div className={`${styles.flex} ${styles.bold}`}><b>注意事項を確認した<span className="alert bold">&nbsp;*</span></b>
 
             <label className={styles.checkboxWrap}>
@@ -474,14 +501,14 @@ export default function FormReservation() {
               <span className={styles.checkMark}></span>
             </label>
           </div>
-          <p><a href="/privacy_policy">プライバシーポリシー</a>が適用されます。</p>
+          <p><a href="/privacy_policy" target={"_blank"}>プライバシーポリシー</a>が適用されます。</p>
         </div>
 
         <div className={styles.notice}>
           <h4 >注意事項</h4>
           <ul>
             <li>
-              ・2営業日を過ぎましても連絡がない場合、お手数ではございますが、<a
+              2営業日を過ぎましても連絡がない場合、お手数ではございますが、<a
                 href="tel:080-9271-7855">080-9271-7855</a
               >までご連絡ください。
             </li>
@@ -490,20 +517,20 @@ export default function FormReservation() {
 
         {/* reCAPTCHA v2 ウィジェット追加 */}
         {/* ----------------------------- */}
-        <div style={{
+        {/* <div style={{
           marginTop: "20px",
           display: "flex",
           justifyContent: "center"
-         }}>
+        }}>
           <div
             className="g-recaptcha"
             data-sitekey="6LebihQsAAAAAHrugch81mfZcJisvtWSBgC5VE5M"
             data-callback = "handleRecaptchaChange"
           ></div>
-          </div>
+          </div> */}
 
-        <button className={styles.btnForm} type="confirm" onClick={ShowModal }
-        disabled={disableConfirm}
+        <button className={styles.btnForm} type="confirm" onClick={ShowModal}
+        // disabled={disableConfirm}
         >入力確認画面へ</button>
 
         {/* モーダルウィンドウ */}
@@ -544,12 +571,12 @@ export default function FormReservation() {
                   msg={tel}
                   errMsg={"未入力です"}
                 />
-                  <InputDetails
-                    title={"ご希望のメニュー"}
-                    props={order}
-                    msg={order}
-                    errMsg={"選択してください"}
-                  />
+                <InputDetails
+                  title={"ご希望のメニュー"}
+                  props={order}
+                  msg={order}
+                  errMsg={"選択してください"}
+                />
                 <InputDetails
                   title={"希望日"}
                   props={selectedDate}
@@ -594,16 +621,24 @@ export default function FormReservation() {
                 />
               </div>
 
+
+
+
               <div className={styles.modalButtons}>
                 <div>
                   <button className={styles.btnForm} onClick={closeModal}>入力画面に戻る</button>
                 </div>
+                {/* reCAPTCHA v2 ウィジェット追加 */}
+                <div
+                  id="recaptcha-modal"
+                  style={{
+                    margin: "40px auto 0 auto",
+                  }}></div>
                 <div>
                   <button
                     className={`${styles.btnForm} ${styles.secondColor}`} type="submit"
                     onClick={handleSubmit}
-                    disabled={disableConfirm}
-                  >送信する
+                    disabled={disableConfirm}>送信する
                   </button>
                 </div>
               </div>

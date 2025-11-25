@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { init, send } from "emailjs-com";
 import { InputDetails } from "./InputDetails";
 import styles from "./Form.module.css";
@@ -20,26 +20,20 @@ export default function InquiryForm() {
   const [showModal, setShowModal] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState("");
 
-  // -----------------------------
-  // reCAPTCHA v2 Script を読み込み
-  // -----------------------------
+  // reCAPTCHA v2 Script を読み込みはFormReservation.jsx側で設定
+
   useEffect(() => {
-    window.handleRecaptchaChange = (token) => {
-    setRecaptchaToken(token);
-  };
-    const script = document.createElement("script");
-    script.src = "https://www.google.com/recaptcha/api.js?hl=ja";
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
+    if (showModal) {
+      if (window.grecaptcha) {
+        window.grecaptcha.render("recaptcha-modal", {
+          sitekey: "6LebihQsAAAAAHrugch81mfZcJisvtWSBgC5VE5M",
+          callback: (token) => setRecaptchaToken(token),
+        })
+      }
+    }
+  }, [showModal]);
 
-    // onloadCallback をグローバルに定義しておく（windowにセット）
-    return () => {
-    document.body.removeChild(script);
-    delete window.handleRecaptchaChange;
-  };
 
-  }, []);
 
   // 性別選択
   const GENDER = ["男性", "女性"];
@@ -50,13 +44,9 @@ export default function InquiryForm() {
   // メール送信処理
   const sendMail = () => {
     if (typeof grecaptcha === "undefined") {
-    alert("reCAPTCHAの読み込みが完了していません。時間をおいてから再度お試しください。");
-    return;
-  }
-
-    // -----------------------------
-    // reCAPTCHA v2 のトークン取得
-    // -----------------------------
+      alert("reCAPTCHAの読み込みが完了していません。時間をおいてから再度お試しください。");
+      return;
+    }
 
     if (!recaptchaToken) {
       alert("reCAPTCHA 認証を完了してください（私はロボットではありません）");
@@ -87,6 +77,9 @@ export default function InquiryForm() {
         // reCAPTCHA リセット
         grecaptcha.reset();
         setRecaptchaToken("");
+        setShowModal(false);
+        document.body.style.overflow = "auto";
+        //必要に応じてリダイレクト
       })
     } else {
       console.log('キーがありません');
@@ -96,11 +89,18 @@ export default function InquiryForm() {
   const ShowModal = (e) => {
     e.preventDefault();
     setShowModal(true)
+    document.body.style.overflow = "hidden"
   }
 
   const closeModal = (e) => {
     e.preventDefault();
     setShowModal(false)
+    document.body.style.overflow = "auto"
+
+    if (typeof grecaptcha !== "undefined") {
+      grecaptcha.reset();
+      setRecaptchaToken("");
+    };
   }
 
   const handleSubmit = (e) => {
@@ -124,14 +124,14 @@ export default function InquiryForm() {
 
         <div className={styles.inputWrapper}>
           <label className="bold"> お名前<span className="alert">&nbsp;*</span>
-          <br />
-          <input
-            type="text"
-            name="user_name"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-            required />
-            </label>
+            <br />
+            <input
+              type="text"
+              name="user_name"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              required />
+          </label>
         </div>
 
         <div className={styles.inputWrapper}>
@@ -160,47 +160,47 @@ export default function InquiryForm() {
         <div className={styles.inputWrapper}>
           <label className="bold">
             メールアドレス<span className="alert">&nbsp;*</span>
-          <br /><input
-            type="email"
-            name="user_email"
-            placeholder="atama@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+            <br /><input
+              type="email"
+              name="user_email"
+              placeholder="atama@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </label>
         </div>
 
         <div className={styles.inputWrapper}>
           <label className="bold">
             電話番号<span className="alert">&nbsp;*</span>
-          <br />
-          <input
-            type="tel"
-            name="tel"
-            placeholder="090-1234-5678"
-            value={tel}
-            onChange={(e) => setTel(e.target.value)}
-            required />
-            </label>
+            <br />
+            <input
+              type="tel"
+              name="tel"
+              placeholder="090-1234-5678"
+              value={tel}
+              onChange={(e) => setTel(e.target.value)}
+              required />
+          </label>
         </div>
 
         <div className={styles.inputWrapper}>
           <label className="bold">お問い合わせ内容<span className="alert">&nbsp;*</span>
-          <br />
-          <textarea
-            name="message"
-            rows="5"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            required>
-          </textarea>
+            <br />
+            <textarea
+              name="message"
+              rows="5"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required>
+            </textarea>
           </label>
         </div>
 
 
         <div className={styles.confirm}>
-          <p>ページ下部に記載の注意事項を必ずご確認ください。</p>
+          <p>下部に記載の注意事項を必ずご確認ください。</p>
           <div className={`${styles.flex} ${styles.bold}`}><b>注意事項を確認した<span className="alert bold">&nbsp;*</span></b>
 
             <label className={styles.checkboxWrap}>
@@ -215,14 +215,14 @@ export default function InquiryForm() {
               <span className={styles.checkMark}></span>
             </label>
           </div>
-          <p><a href="/privacy_policy">プライバシーポリシー</a>が適用されます。</p>
+          <p><a href="/privacy_policy" target={"_blank"}>プライバシーポリシー</a>が適用されます。</p>
         </div>
 
         <div className={styles.notice}>
           <h4 >注意事項</h4>
           <ul>
             <li>
-              ・2営業日を過ぎましても連絡がない場合、お手数ではございますが、<a
+              2営業日を過ぎましても連絡がない場合、お手数ではございますが、<a
                 href="tel:080-9271-7855">080-9271-7855</a
               >までご連絡ください。
             </li>
@@ -231,36 +231,37 @@ export default function InquiryForm() {
 
         {/* reCAPTCHA v2 ウィジェット追加 */}
         {/* ----------------------------- */}
-        <div style={{
+        {/* <div style={{
           marginTop: "20px",
           display: "flex",
           justifyContent: "center"
-         }}>
+        }}>
           <div
             className="g-recaptcha"
             data-sitekey="6LebihQsAAAAAHrugch81mfZcJisvtWSBgC5VE5M"
-            data-callback = "handleRecaptchaChange"
+            data-callback="handleRecaptchaChange"
           ></div>
-        </div>
+        </div> */}
 
         <button className={styles.btnForm} type="button" onClick={ShowModal}
-        disabled={disableConfirm}>
+          // disabled={disableConfirm}
+          >
           入力確認画面へ</button>
 
         {/* モーダルウィンドウ */}
         {showModal ? (
           <div id="overlay">
             <div className={styles.modal}>
-            {disableConfirm ?
-            <>
-            <h3>入力内容をご確認ください</h3>
-            <p className="alert">必須項目が未入力です</p>
-            </>
-            :
-            <h3>以下の内容で送信してよろしいですか？</h3>
-            }
+              {disableConfirm ?
+                <>
+                  <h3>入力内容をご確認ください</h3>
+                  <p className="alert">必須項目が未入力です</p>
+                </>
+                :
+                <h3>以下の内容で送信してよろしいですか？</h3>
+              }
               <div className={styles.inputDetails}>
-              <InputDetails
+                <InputDetails
                   title={"お名前"}
                   props={userName}
                   msg={userName}
@@ -286,7 +287,7 @@ export default function InquiryForm() {
                 />
                 <h4>お問い合わせ内容</h4>
                 <div className={styles.message}>
-                {message ? <p>{message}</p> : <p className="alert">未入力です</p>}
+                  {message ? <p>{message}</p> : <p className="alert">未入力です</p>}
                 </div>
                 <InputDetails
                   title={"「注意事項を確認した」"}
@@ -297,11 +298,18 @@ export default function InquiryForm() {
               </div>
 
               <div className={styles.modalButtons}>
-              <div>
-                  <button  className={styles.btnForm} onClick={closeModal}>入力画面に戻る</button>
-                </div>
                 <div>
-                  <button  className={`${styles.btnForm} ${styles.secondColor}`}  type="button" onClick={handleSubmit}disabled={disableConfirm}>送信する</button>
+                  <button className={styles.btnForm} onClick={closeModal}>入力画面に戻る</button>
+                </div>
+                {/* reCAPTCHA v2 ウィジェット追加 */}
+                <div
+                  id="recaptcha-modal"
+                  style={{
+                    margin: "40px auto 0 auto",
+                  }}></div>
+                <div>
+                  <button className={`${styles.btnForm} ${styles.secondColor}`} type="button" onClick={handleSubmit} disabled={disableConfirm}>送信する
+                  </button>
                 </div>
               </div>
 

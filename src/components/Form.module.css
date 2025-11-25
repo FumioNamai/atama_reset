@@ -250,8 +250,7 @@ opacity: 1;
 
 .modalButtons {
   display: flex;
-  justify-content: center;
-  gap: 10%;
+  flex-direction: column;
 }
 
 .inputWrapper {
