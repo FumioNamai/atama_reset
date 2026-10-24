@@ -121,15 +121,20 @@ export default function FormReservation() {
   // 選択したメニューの所要時間によって希望時間の選択肢を増減させる
   let TIME_OPTIONS2
   if (order.includes("60")) {
-    TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 20)
+    // TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 20) 2026年3月7日修正
+    TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 18)
   } else if (order.includes("75")) {
-    TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 19)
+    // TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 19) 2026年3月7日修正
+    TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 17)
   } else if (order.includes("90")) {
-    TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 19)
+    // TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 19) 2026年3月7日修正
+    TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 17)
   } else if (order.includes("105")) {
-    TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 18)
+    // TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 18) 2026年3月7日修正
+    TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 16)
   } else if (order.includes("120")) {
-    TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 18)
+    // TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 18) 2026年3月7日修正
+    TIME_OPTIONS2 = TIME_OPTIONS.slice(1, 16)
   } else {
     TIME_OPTIONS2 = TIME_OPTIONS
   }
