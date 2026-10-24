@@ -16,7 +16,7 @@
     "@astrojs/netlify": "^3.0.0",
     "@astrojs/partytown": "^2.0.4",
     "@astrojs/preact": "^3.0.0",
-    "@astrojs/sitemap": "^3.0.5",
+    "@astrojs/sitemap": "^3.2.0",
     "@fontsource-variable/eb-garamond": "^5.0.16",
     "@fontsource/eb-garamond": "^5.0.15",
     "@fontsource/noto-sans-jp": "^5.0.8",
