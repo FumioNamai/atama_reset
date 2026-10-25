@@ -32,21 +32,27 @@
     margin-bottom: 1.6rem;
   }
 
-  @media screen and (768px <= width) {
-    .voice_card {
-      width: 46%;
-      margin: 0 auto;
-    }
-    .voice_card:nth-child(2n + 1) {
-      margin: 0 auto 0 2.4rem;
-    }
-    .voice_card:nth-child(2n) {
-      margin: 0 2.4rem 0 auto;
-    }
-    .voice_card:not(:first-child) {
-      margin-top: -9%;
-    }
+@media screen and (width >= 768px) {
+  .voice_card {
+    width: 46%;
   }
+
+  /* 奇数番目（1, 3, 5...番目）：左側 */
+  .voice_card:nth-of-type(odd) {
+    margin: 0 auto 0 2.4rem;
+
+  }
+
+  /* 偶数番目（2, 4, 6...番目）：右側 ＋ 上に持ち上げて重ねる */
+  .voice_card:nth-of-type(even) {
+    margin: 0 2.4rem 0 auto;
+  }
+
+  /* 4. 2番目以降：上に持ち上げて重ねる */
+  .voice_card:not(:first-child) {
+    margin-top: -9%;
+  }
+}
 </style>
 
 <script>

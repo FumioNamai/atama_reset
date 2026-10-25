@@ -190,4 +190,12 @@ import VoiceCard from "@components/VoiceCard.astro"
     height: auto;
   }
 
+@media screen and (width >= 768px) {
+  /* 親要素をフレックスボックスにして、横並び＆折り返しを許可する */
+  .card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* 左右に綺麗に配置する */
+  }
+}
 </style>

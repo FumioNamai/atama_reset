@@ -23,8 +23,11 @@ export default defineConfig({
       protocol: "https"
     }]
   },
-  output: "hybrid",
+  output: "static",
   // output: "server",
-  adapter: netlify(),
+  // adapter: netlify({
+    // Edge Functions をローカルで有効にしない（必要な場合のみ設定）
+    // edgeMiddleware: false
+  // }),
   site: siteUrl
 });

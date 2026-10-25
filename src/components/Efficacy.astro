@@ -75,19 +75,26 @@ import MoreButton from "./MoreButton.astro";
 </div>
 
 <div class="refresh-image fadein">
-  <Image src={refreshing} alt="スッキリ！">
+  <Image src={refreshing} alt="スッキリ！" />
 </div>
 
 <div class="add-info fadein">
   <p><span class="bold">
     当店でおこなうヘッドマッサージは</span><br>セロトニン脳波測定の実験により<br><span class="secondary">
     脳内のセロトニンが活性化</span><br>されることが証明されました</p>
-  <MoreButton
+  <!-- <MoreButton
   href = "/blog/scientific-basis-211004",
   label = "詳しくはこちら"
   width = "145px"
   marginInline = "auto"
+  /> -->
+  <MoreButton
+  href = "/blog/scientific-basis-240402",
+  label = "詳しくはこちら"
+  width = "145px"
+  marginInline = "auto"
   />
+
 </div>
 </section>
 
